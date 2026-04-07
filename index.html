@@ -97,6 +97,17 @@ a:hover { color: #a3c49a; }
 .announcement-bar a {
   color: var(--deep-black);
   text-decoration: underline;
+  white-space: nowrap;
+}
+@media (max-width: 600px) {
+  .announcement-bar {
+    font-size: 11px;
+    letter-spacing: 1px;
+    padding: 8px 12px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 }
 
 /* ===== NAVIGATION ===== */
