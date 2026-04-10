@@ -13,6 +13,9 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
+<!-- Gymdesk Widget Script — loaded once, powers both schedule and booking widgets -->
+<script src="https://gymdesk.com/js/widgets.js"></script>
+
 <!-- =====================================================
      META PIXEL — Replace YOUR_PIXEL_ID with actual ID
      Get from Meleah / GHL
@@ -793,6 +796,51 @@ h4 { font-size: 24px; letter-spacing: 2px; }
 }
 .temp-form select option { background: var(--black); }
 
+/* SMS Consent Checkboxes — A2P 10DLC */
+.sms-consent {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  border-top: 1px solid rgba(125,155,118,.12);
+  padding-top: 16px;
+}
+.consent-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  cursor: pointer;
+}
+.consent-label input[type="checkbox"] {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  margin-top: 3px;
+  accent-color: var(--green);
+  cursor: pointer;
+  padding: 0;
+  background: var(--deep-black);
+  border: 1px solid rgba(125,155,118,.4);
+}
+.consent-label span {
+  color: var(--light-grey);
+  font-size: 13px;
+  font-weight: 300;
+  line-height: 1.5;
+}
+
+/* Form policy links */
+.form-policy-links {
+  text-align: center;
+  font-size: 12px;
+  color: var(--light-grey);
+  font-weight: 300;
+  margin-top: 4px;
+}
+.form-policy-links a {
+  color: var(--green);
+  text-decoration: underline;
+}
+
 /* ===== FOOTER ===== */
 .footer {
   background: var(--deep-black);
@@ -1572,7 +1620,7 @@ h4 { font-size: 24px; letter-spacing: 2px; }
       Paste the embed code from Gymdesk dashboard.
     </div>
 
-    <!-- Temporary fallback form until Gymdesk is configured -->
+    <!-- Fallback form — feeds leads into GoHighLevel (GHL A2P compliant) -->
     <p style="text-align: center; color: var(--green); font-family: var(--font-heading); font-size: 14px; letter-spacing: 2px; margin-bottom: 20px;">OR FILL OUT THE FORM BELOW</p>
     <div class="temp-form">
       <input type="text" placeholder="Your Name" aria-label="Your Name">
@@ -1586,7 +1634,27 @@ h4 { font-size: 24px; letter-spacing: 2px; }
         <option value="kids">Kids Jiu-Jitsu</option>
         <option value="womens">Women's Only Jiu-Jitsu</option>
       </select>
-      <button class="btn btn-primary" style="width: 100;" type="button" onclick="alert('Form submitted! Someone from DFC will reach out shortly.');">Book My Free Class</button>
+
+      <!-- SMS Consent — A2P 10DLC Compliance (GHL). Neither box may be pre-checked. Both are optional. -->
+      <div class="sms-consent">
+        <label class="consent-label">
+          <input type="checkbox" name="sms_marketing" value="1">
+          <span>I consent to receive marketing text messages, about special offers, discounts, and service updates, from Detroit Fight Company at the phone number provided. Message frequency may vary. Message &amp; data rates may apply. Text HELP for assistance, reply STOP to opt out.</span>
+        </label>
+        <label class="consent-label">
+          <input type="checkbox" name="sms_nonmarketing" value="1">
+          <span>I consent to receive non-marketing text messages from Detroit Fight Company about class schedules, booking confirmations, and training updates. Message frequency may vary, message &amp; data rates may apply. Text HELP for assistance, reply STOP to opt out.</span>
+        </label>
+      </div>
+
+      <button class="btn btn-primary" style="width: 100%;" type="button" onclick="alert('Form submitted! Someone from DFC will reach out shortly.');">Book My Free Class</button>
+
+      <!-- Required policy links — must be visible below the form -->
+      <p class="form-policy-links">
+        By submitting this form you agree to our
+        <a href="/privacy-policy">Privacy Policy</a> and
+        <a href="/terms">Terms &amp; Conditions</a>.
+      </p>
     </div>
   </div>
 
@@ -1610,12 +1678,18 @@ h4 { font-size: 24px; letter-spacing: 2px; }
       <p><strong style="color: var(--white); font-weight: 600;">Detroit Fight Company</strong><br>
       1425 Tuskawilla Rd #209<br>
       Winter Springs, FL 32708</p>
+      <p style="color:var(--light-grey); font-size:13px; font-weight:300; margin-top:8px;">Detroit Fight LLC doing business as Detroit Fight Company</p>
     </div>
     <div>
       <p style="color:var(--light-grey); font-size:14px; font-weight:300; line-height:1.8;">
         <a href="tel:4076966969" style="color:var(--grey);">407-696-6969</a><br>
-        <a href="mailto:sean@detroitfight.com">sean@detroitfight.com</a><br>
+        <a href="/cdn-cgi/l/email-protection#3d4e585c537d5958494f5254495b545a5549135e5250"><span class="__cf_email__" data-cfemail="097a6c6867496d6c7d7b66607d6f606e617d276a6664">[email&#160;protected]</span></a><br>
         <a href="https://detroitfight.com">detroitfight.com</a>
+      </p>
+      <p style="margin-top:12px;">
+        <a href="/privacy-policy" style="color:var(--light-grey); font-size:13px; font-weight:300;">Privacy Policy</a>
+        &nbsp;·&nbsp;
+        <a href="/terms" style="color:var(--light-grey); font-size:13px; font-weight:300;">Terms &amp; Conditions</a>
       </p>
     </div>
     <div class="footer-right">
@@ -1636,7 +1710,7 @@ h4 { font-size: 24px; letter-spacing: 2px; }
 
 
 <!-- ===== SCRIPTS ===== -->
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 // Scroll animations
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
@@ -1663,17 +1737,4 @@ window.addEventListener('scroll', () => {
   sections.forEach(section => {
     const top = section.offsetTop - 150;
     if (window.scrollY >= top) {
-      current = section.getAttribute('id');
-    }
-  });
-  document.querySelectorAll('.nav-links a').forEach(a => {
-    a.classList.remove('active');
-    if (a.getAttribute('href') === '#' + current) {
-      a.classList.add('active');
-    }
-  });
-});
-</script>
-
-</body>
-</html>
+      current = section.getAtt
