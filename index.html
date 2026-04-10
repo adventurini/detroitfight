@@ -1734,4 +1734,17 @@ window.addEventListener('scroll', () => {
   sections.forEach(section => {
     const top = section.offsetTop - 150;
     if (window.scrollY >= top) {
-      current = section.getAtt
+      current = section.getAttribute('id');
+    }
+  });
+  document.querySelectorAll('.nav-links a').forEach(a => {
+    a.classList.remove('active');
+    if (a.getAttribute('href') === '#' + current) {
+      a.classList.add('active');
+    }
+  });
+});
+</script>
+
+</body>
+</html>
