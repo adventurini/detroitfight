@@ -970,16 +970,17 @@ h4 { font-size: 24px; letter-spacing: 2px; }
 @media (max-width: 768px) {
   .nav-links {
     display: none;
-    position: fixed;
-    top: 108px;
+    position: absolute;
+    top: 70px;
     left: 0;
     right: 0;
-    bottom: 0;
-    background: rgba(10,10,10,.98);
+    height: calc(100vh - 70px);
+    background: #0A0A0A;
     flex-direction: column;
     justify-content: flex-start;
     padding-top: 40px;
     gap: 0;
+    overflow-y: auto;
   }
   .nav-links.open { display: flex; }
   .nav-links li { width: 100%; text-align: center; }
