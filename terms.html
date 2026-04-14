@@ -4,17 +4,21 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Terms &amp; Conditions | Detroit Fight Company</title>
-<meta name="description" content="Terms and Conditions for Detroit Fight Company — Detroit Fight LLC doing business as Detroit Fight Company.">
-<meta name="robots" content="noindex, follow">
-<link rel="canonical" href="https://detroitfight.com/terms">
+<meta name="description" content="Terms and Conditions for membership and use of Detroit Fight Company facilities and services.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://detroitfight.com/terms.html">
+
 <link rel="icon" href="/favicon/favicon.ico" sizes="any">
 <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg">
+<link rel="icon" type="image/png" sizes="96x96" href="/favicon/favicon-96x96.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
 <link rel="manifest" href="/site.webmanifest">
 <meta name="theme-color" content="#7D9B76">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
 <style>
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 :root {
@@ -27,178 +31,328 @@
   --font-heading: 'Bebas Neue', sans-serif;
   --font-body: 'Barlow Condensed', sans-serif;
 }
+html { scroll-behavior: smooth; scroll-padding-top: 80px; }
 body {
   font-family: var(--font-body);
   background: var(--deep-black);
   color: var(--white);
   font-size: 17px;
   line-height: 1.6;
-  font-weight: 300;
+  font-weight: 400;
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
 }
-a { color: var(--green); text-decoration: none; }
-a:hover { text-decoration: underline; }
+img { max-width: 100%; display: block; }
+a { color: var(--green); text-decoration: none; transition: color .2s; }
+a:hover { color: #a3c49a; }
 
 .nav {
-  background: rgba(10,10,10,.95);
-  border-bottom: 1px solid rgba(125,155,118,.15);
-  padding: 0 30px;
-  position: sticky;
+  position: fixed;
   top: 0;
-  z-index: 100;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: rgba(10,10,10,.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(125,155,118,.15);
 }
 .nav-inner {
-  max-width: 1000px;
+  max-width: 1280px;
   margin: 0 auto;
+  padding: 0 30px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 64px;
+  height: 70px;
 }
-.nav-logo {
+.nav-logo img { height: 32px; width: auto; }
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  list-style: none;
+}
+.nav-links a {
   font-family: var(--font-heading);
-  font-size: 22px;
+  font-size: 15px;
   letter-spacing: 2px;
-  color: var(--white);
+  color: var(--grey);
+  text-transform: uppercase;
+  transition: color .2s;
 }
-.nav-back {
-  font-family: var(--font-body);
-  font-size: 14px;
-  font-weight: 400;
+.nav-links a:hover { color: var(--white); }
+.nav-cta {
+  background: var(--green) !important;
+  color: var(--deep-black) !important;
+  padding: 8px 18px !important;
+  border-radius: 2px;
+  font-weight: 700 !important;
+  letter-spacing: 1.5px !important;
+}
+.nav-cta:hover {
+  background: #a3c49a !important;
+  color: var(--deep-black) !important;
+}
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+}
+.nav-toggle span {
+  display: block;
+  width: 26px;
+  height: 2px;
+  background: var(--white);
+  margin: 6px 0;
+  transition: .3s;
+}
+.nav-toggle.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 6px); }
+.nav-toggle.open span:nth-child(2) { opacity: 0; }
+.nav-toggle.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -6px); }
+
+.section-tag {
+  font-family: var(--font-heading);
+  font-size: 13px;
+  letter-spacing: 4px;
   color: var(--green);
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+h1, h2, h3 {
+  font-family: var(--font-heading);
+  font-weight: 400;
+  line-height: 1.05;
   letter-spacing: 1px;
 }
+h1 { font-size: clamp(36px, 6vw, 72px); }
+h2 { font-size: clamp(22px, 3vw, 32px); margin: 36px 0 14px; }
+h3 { font-size: clamp(18px, 2.5vw, 22px); margin: 28px 0 10px; }
 
-.policy-wrap {
-  max-width: 800px;
+.sub-hero {
+  padding: 180px 30px 48px;
+  background: var(--deep-black);
+  text-align: center;
+  position: relative;
+}
+.sub-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 100%, rgba(125,155,118,.06) 0%, transparent 60%);
+  pointer-events: none;
+}
+.sub-hero h1 { margin-bottom: 12px; position: relative; }
+.sub-hero .body-text {
   margin: 0 auto;
-  padding: 64px 30px 100px;
+  text-align: center;
+  font-size: 18px;
+  color: var(--grey);
+  font-weight: 300;
+  max-width: 560px;
+  position: relative;
 }
-.policy-wrap h1 {
-  font-family: var(--font-heading);
-  font-size: 52px;
-  letter-spacing: 2px;
-  margin-bottom: 8px;
-  line-height: 1;
+
+.legal-prose {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 30px 100px;
 }
-.last-updated {
+.legal-prose p, .legal-prose li {
+  color: var(--grey);
+  font-size: 17px;
+  line-height: 1.75;
+  margin-bottom: 16px;
+  font-weight: 300;
+}
+.legal-prose ul { margin: 0 0 20px 1.25em; }
+.legal-prose li { margin-bottom: 8px; }
+.legal-prose strong { color: var(--white); font-weight: 600; }
+
+.footer {
+  background: var(--deep-black);
+  border-top: 1px solid rgba(125,155,118,.12);
+  padding: 48px 30px;
+}
+.footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+.footer-left p, .footer-right p {
   color: var(--light-grey);
   font-size: 14px;
   font-weight: 300;
-  margin-bottom: 48px;
-}
-.policy-wrap h2 {
-  font-family: var(--font-heading);
-  font-size: 24px;
-  letter-spacing: 2px;
-  color: var(--green);
-  margin: 40px 0 12px;
-}
-.policy-wrap p {
-  color: var(--grey);
-  font-size: 16px;
-  font-weight: 300;
   line-height: 1.8;
-  margin-bottom: 16px;
 }
-.policy-wrap ul {
-  color: var(--grey);
-  font-size: 16px;
-  font-weight: 300;
-  line-height: 1.8;
-  margin: 0 0 16px 24px;
-}
-.policy-wrap ul li { margin-bottom: 6px; }
-
-.policy-footer {
-  background: var(--deep-black);
-  border-top: 1px solid rgba(125,155,118,.12);
-  padding: 32px 30px;
+.footer-right { text-align: right; }
+.footer-bottom {
+  max-width: 1200px;
+  margin: 24px auto 0;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255,255,255,.05);
   text-align: center;
-}
-.policy-footer p {
   color: var(--light-grey);
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 300;
-  line-height: 1.8;
 }
-.policy-footer a { color: var(--green); }
+
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    right: 0;
+    height: calc(100vh - 70px);
+    background: #0A0A0A;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-top: 40px;
+    gap: 0;
+    overflow-y: auto;
+  }
+  .nav-links.open { display: flex; }
+  .nav-links li { width: 100%; text-align: center; }
+  .nav-links a {
+    display: block;
+    padding: 18px 30px;
+    font-size: 18px;
+    border-bottom: 1px solid rgba(255,255,255,.05);
+  }
+  .nav-cta {
+    margin: 20px 30px;
+    display: block;
+    text-align: center;
+  }
+  .nav-toggle { display: block; }
+  .sub-hero { padding: 150px 20px 40px; }
+  .legal-prose { padding: 0 20px 80px; }
+  .footer-right { text-align: left; }
+}
 </style>
 </head>
 <body>
 
 <nav class="nav">
   <div class="nav-inner">
-    <a href="/" class="nav-logo">Detroit Fight Company</a>
-    <a href="/" class="nav-back">← Back to Site</a>
+    <a href="index.html#home" class="nav-logo">
+      <img src="images/DFC_Logo.png" alt="Detroit Fight Company logo">
+    </a>
+    <button class="nav-toggle" onclick="this.classList.toggle('open'); document.getElementById('navLinks').classList.toggle('open');" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html#home">Home</a></li>
+      <li><a href="index.html#jiu-jitsu">Jiu-Jitsu</a></li>
+      <li><a href="index.html#boxing">Boxing</a></li>
+      <li><a href="index.html#muay-thai">Muay Thai</a></li>
+      <li><a href="index.html#coaches">Coaches</a></li>
+      <li><a href="index.html#schedule">Schedule</a></li>
+      <li><a href="index.html#pricing">Pricing</a></li>
+      <li><a href="index.html#the-gym">The Gym</a></li>
+      <li><a href="index.html#free-trial" class="nav-cta">Free Trial</a></li>
+    </ul>
   </div>
 </nav>
 
-<div class="policy-wrap">
+<header class="sub-hero">
+  <p class="section-tag">Legal</p>
   <h1>Terms &amp; Conditions</h1>
-  <p class="last-updated">Last Updated: April 2026</p>
+  <p class="body-text">Detroit Fight Company · 1425 Tuskawilla Rd #209, Winter Springs, FL 32708</p>
+</header>
 
-  <p>These Terms &amp; Conditions govern your use of the website and services provided by Detroit Fight LLC, doing business as Detroit Fight Company ("Detroit Fight Company," "we," "us," or "our"), located at 1425 Tuskawilla Rd #209, Winter Springs, FL 32708. By using our website or signing up for communications, you agree to these terms.</p>
+<main class="legal-prose">
+  <p><strong>Effective date:</strong> April 14, 2026</p>
+  <p>These Terms &amp; Conditions (“Terms”) govern your use of the facilities, programs, and services offered by <strong>Detroit Fight LLC</strong>, doing business as <strong>Detroit Fight Company</strong> (“DFC,” “we,” “us,” or “our”), including at our location at 1425 Tuskawilla Rd #209, Winter Springs, FL 32708. By enrolling, purchasing a membership, or participating in training, you agree to these Terms.</p>
 
-  <h2>1. Business Identity</h2>
-  <p>Detroit Fight Company is a martial arts and combat sports training facility operating as Detroit Fight LLC. We offer classes in Boxing, Muay Thai, and Brazilian Jiu-Jitsu for adults and children in Winter Springs, Florida.</p>
-  <p>If you opt in to receive text messages from us, you may receive communications including:</p>
-  <ul>
-    <li>Class schedules, booking confirmations, and training updates</li>
-    <li>Marketing messages such as special offers, discounts, promotions, and service announcements</li>
-  </ul>
-  <p>Marketing and non-marketing messages are sent separately based on the consent options you select.</p>
+  <h2>Membership and billing</h2>
+  <p>Memberships are billed on a recurring basis (typically monthly) according to the membership type you select and any written agreement or enrollment you complete. <strong>There is no long-term contract requirement</strong> beyond the billing cycle and notice provisions described below; however, you are responsible for all fees accrued through the effective cancellation date in accordance with these Terms.</p>
+  <p>Fees, payment methods, and any promotional rates are subject to change upon reasonable notice as permitted by law and your enrollment agreement. Failed payments may result in suspension or termination of access until the account is brought current.</p>
 
-  <h2>2. Opt-Out &amp; Support</h2>
-  <p>You may opt out of text messages at any time by replying <strong>STOP</strong> to any message we send. Once you reply STOP, you will no longer receive text messages from us (unless you opt back in).</p>
-  <p>For support, reply <strong>HELP</strong> to any message or contact us directly:</p>
-  <ul>
-    <li>Phone: <a href="tel:4076966969">407-696-6969</a></li>
-    <li>Email: <a href="mailto:sean@detroitfight.com">sean@detroitfight.com</a></li>
-  </ul>
+  <h2>Cancellation</h2>
+  <p>You may cancel your membership in accordance with our cancellation policy. <strong>To cancel, email sean@detroitfight.com at least 15 days before your next billing date.</strong> Cancellations are not effective until confirmed according to our internal processes and the timeline above. You remain responsible for charges that occur before cancellation takes effect.</p>
 
-  <h2>3. Carrier Liability</h2>
-  <p>Carriers are not liable for delayed or undelivered messages.</p>
+  <h2>Right of rescission</h2>
+  <p>If applicable law provides a right to cancel certain transactions within a specified period (for example, a <strong>three (3) day</strong> right of rescission for certain membership sales as may be required in your jurisdiction), you may cancel within that period as described in any notice or agreement provided to you at enrollment. If you believe this applies to your purchase, contact us promptly at <a href="mailto:sean@detroitfight.com">sean@detroitfight.com</a>.</p>
 
-  <h2>4. Message Frequency &amp; Rates</h2>
-  <p>Message frequency varies depending on your activity and the types of communications you have opted into. You may receive transactional messages (such as booking confirmations) more frequently than marketing messages.</p>
-  <p>Message and data rates may apply. Check with your mobile carrier for details about your plan's messaging rates.</p>
+  <h2>Assumption of risk and release of liability</h2>
+  <p>Combat sports, martial arts, fitness activities, and use of our equipment and facilities involve inherent risks of injury, including serious injury or death. By participating, you voluntarily assume all risks associated with training, sparring, drilling, conditioning, and related activities. To the fullest extent permitted by applicable law, you release, waive, discharge, and covenant not to sue Detroit Fight LLC (dba Detroit Fight Company), its owners, instructors, coaches, employees, contractors, volunteers, and agents from any and all liability for injuries or damages arising from participation, except where prohibited by law.</p>
+  <p>You represent that you are physically able to participate and will follow coach instructions and facility rules. If you have medical concerns, consult a physician before participating.</p>
 
-  <h2>5. Use of the Website</h2>
-  <p>You agree to use detroitfight.com only for lawful purposes and in a way that does not infringe the rights of others. We reserve the right to restrict or terminate access to our website at our discretion.</p>
+  <h2>Code of conduct</h2>
+  <p>All members and guests are expected to maintain a safe, respectful training environment. Prohibited conduct includes, without limitation: intentional harm to others outside of supervised training norms; harassment or discrimination; unsafe or reckless behavior; use of alcohol or illegal substances on premises; theft; or interference with others’ training. We may refuse service, revoke access, or terminate membership for violations of these expectations.</p>
 
-  <h2>6. Intellectual Property</h2>
-  <p>All content on detroitfight.com, including text, images, logos, and graphics, is owned by Detroit Fight Company or its licensors and may not be reproduced without written permission.</p>
+  <h2>Minors</h2>
+  <p>Where minors participate, a parent or legal guardian must complete required authorizations and assumes responsibility for the minor’s compliance with these Terms.</p>
 
-  <h2>7. Disclaimer of Warranties</h2>
-  <p>Our website and services are provided "as is" without warranties of any kind, express or implied. We do not warrant that the website will be uninterrupted or error-free.</p>
+  <h2>Intellectual property</h2>
+  <p>DFC names, logos, and branding are protected. You may not use our marks without prior written permission except as reasonably incidental to social sharing of your experience.</p>
 
-  <h2>8. Limitation of Liability</h2>
-  <p>To the extent permitted by law, Detroit Fight LLC shall not be liable for any indirect, incidental, or consequential damages arising out of your use of our website or services.</p>
+  <h2>Changes to these terms</h2>
+  <p>We may update these Terms from time to time. The revised Terms will be posted on this page with an updated effective date. Continued participation after changes constitutes acceptance unless applicable law requires otherwise.</p>
 
-  <h2>9. Privacy Policy</h2>
-  <p>Your use of our website and communications is also governed by our <a href="/privacy-policy">Privacy Policy</a>, which is incorporated into these Terms &amp; Conditions by reference.</p>
+  <h2>Governing law</h2>
+  <p>These Terms are governed by the laws of the State of Florida, without regard to conflict-of-law principles, except where preempted by applicable federal law.</p>
 
-  <h2>10. Changes to These Terms</h2>
-  <p>We may update these Terms &amp; Conditions from time to time. Continued use of our website or services after any changes constitutes your acceptance of the updated terms.</p>
-
-  <h2>11. Contact</h2>
+  <h2>Contact</h2>
   <p>
-    <strong>Detroit Fight Company</strong><br>
-    Detroit Fight LLC doing business as Detroit Fight Company<br>
-    1425 Tuskawilla Rd #209, Winter Springs, FL 32708<br>
-    Phone: <a href="tel:4076966969">407-696-6969</a><br>
+    <strong>Detroit Fight Company</strong> (Detroit Fight LLC)<br>
+    1425 Tuskawilla Rd #209<br>
+    Winter Springs, FL 32708<br>
     Email: <a href="mailto:sean@detroitfight.com">sean@detroitfight.com</a>
   </p>
-</div>
+</main>
 
-<footer class="policy-footer">
-  <p>
-    &copy; 2026 Detroit Fight Company. All rights reserved.<br>
-    Detroit Fight LLC doing business as Detroit Fight Company<br>
-    <a href="/privacy-policy">Privacy Policy</a> &nbsp;·&nbsp; <a href="/terms">Terms &amp; Conditions</a>
-  </p>
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-left">
+      <p><strong style="color: var(--white); font-weight: 600;">Detroit Fight Company</strong><br>
+      1425 Tuskawilla Rd #209<br>
+      Winter Springs, FL 32708</p>
+      <p style="color:var(--light-grey); font-size:13px; font-weight:300; margin-top:8px;">Detroit Fight LLC doing business as Detroit Fight Company</p>
+    </div>
+    <div>
+      <p style="color:var(--light-grey); font-size:14px; font-weight:300; line-height:1.8;">
+        <a href="tel:4076966969" style="color:var(--grey);">407-696-6969</a><br>
+        <a href="mailto:sean@detroitfight.com" style="color:var(--grey);">sean@detroitfight.com</a><br>
+        <a href="https://detroitfight.com">detroitfight.com</a>
+      </p>
+      <p style="margin-top:12px;">
+        <a href="privacy-policy.html" style="color:var(--light-grey); font-size:13px; font-weight:300;">Privacy Policy</a>
+        &nbsp;·&nbsp;
+        <a href="terms.html" style="color:var(--light-grey); font-size:13px; font-weight:300;">Terms &amp; Conditions</a>
+      </p>
+    </div>
+    <div class="footer-right">
+      <div style="display:flex; gap:20px; align-items:center; justify-content:flex-end;">
+        <a href="https://instagram.com/detroitfightcompany_" target="_blank" rel="noopener" aria-label="Instagram" style="color:var(--white); display:flex; align-items:center; opacity:.85; transition:opacity .2s;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=.85">
+          <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </a>
+        <a href="https://tiktok.com/@detroit.fight.co" target="_blank" rel="noopener" aria-label="TikTok" style="color:var(--white); display:flex; align-items:center; opacity:.85; transition:opacity .2s;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=.85">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.76a4.85 4.85 0 0 1-1.01-.07z"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    &copy; 2026 Detroit Fight Company. All rights reserved.
+  </div>
 </footer>
 
+<script>
+document.querySelectorAll('.nav-links a').forEach(function (link) {
+  link.addEventListener('click', function () {
+    document.getElementById('navLinks').classList.remove('open');
+    document.querySelector('.nav-toggle').classList.remove('open');
+  });
+});
+</script>
 </body>
 </html>

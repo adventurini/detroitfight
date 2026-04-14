@@ -4,17 +4,21 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Privacy Policy | Detroit Fight Company</title>
-<meta name="description" content="Privacy Policy for Detroit Fight Company — Detroit Fight LLC doing business as Detroit Fight Company.">
-<meta name="robots" content="noindex, follow">
-<link rel="canonical" href="https://detroitfight.com/privacy-policy">
+<meta name="description" content="Privacy Policy for Detroit Fight Company — how we collect, use, and protect your information.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://detroitfight.com/privacy-policy.html">
+
 <link rel="icon" href="/favicon/favicon.ico" sizes="any">
 <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg">
+<link rel="icon" type="image/png" sizes="96x96" href="/favicon/favicon-96x96.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
 <link rel="manifest" href="/site.webmanifest">
 <meta name="theme-color" content="#7D9B76">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
 <style>
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 :root {
@@ -27,201 +31,341 @@
   --font-heading: 'Bebas Neue', sans-serif;
   --font-body: 'Barlow Condensed', sans-serif;
 }
+html { scroll-behavior: smooth; scroll-padding-top: 80px; }
 body {
   font-family: var(--font-body);
   background: var(--deep-black);
   color: var(--white);
   font-size: 17px;
   line-height: 1.6;
-  font-weight: 300;
+  font-weight: 400;
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
 }
-a { color: var(--green); text-decoration: none; }
-a:hover { text-decoration: underline; }
+img { max-width: 100%; display: block; }
+a { color: var(--green); text-decoration: none; transition: color .2s; }
+a:hover { color: #a3c49a; }
 
-/* Nav */
 .nav {
-  background: rgba(10,10,10,.95);
-  border-bottom: 1px solid rgba(125,155,118,.15);
-  padding: 0 30px;
-  position: sticky;
+  position: fixed;
   top: 0;
-  z-index: 100;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: rgba(10,10,10,.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(125,155,118,.15);
 }
 .nav-inner {
-  max-width: 1000px;
+  max-width: 1280px;
   margin: 0 auto;
+  padding: 0 30px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 64px;
+  height: 70px;
 }
-.nav-logo {
+.nav-logo img { height: 32px; width: auto; }
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  list-style: none;
+}
+.nav-links a {
   font-family: var(--font-heading);
-  font-size: 22px;
+  font-size: 15px;
   letter-spacing: 2px;
-  color: var(--white);
+  color: var(--grey);
+  text-transform: uppercase;
+  transition: color .2s;
 }
-.nav-back {
-  font-family: var(--font-body);
-  font-size: 14px;
-  font-weight: 400;
+.nav-links a:hover { color: var(--white); }
+.nav-cta {
+  background: var(--green) !important;
+  color: var(--deep-black) !important;
+  padding: 8px 18px !important;
+  border-radius: 2px;
+  font-weight: 700 !important;
+  letter-spacing: 1.5px !important;
+}
+.nav-cta:hover {
+  background: #a3c49a !important;
+  color: var(--deep-black) !important;
+}
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+}
+.nav-toggle span {
+  display: block;
+  width: 26px;
+  height: 2px;
+  background: var(--white);
+  margin: 6px 0;
+  transition: .3s;
+}
+.nav-toggle.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 6px); }
+.nav-toggle.open span:nth-child(2) { opacity: 0; }
+.nav-toggle.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -6px); }
+
+.section-tag {
+  font-family: var(--font-heading);
+  font-size: 13px;
+  letter-spacing: 4px;
   color: var(--green);
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+h1, h2, h3 {
+  font-family: var(--font-heading);
+  font-weight: 400;
+  line-height: 1.05;
   letter-spacing: 1px;
 }
+h1 { font-size: clamp(36px, 6vw, 72px); }
+h2 { font-size: clamp(22px, 3vw, 32px); margin: 36px 0 14px; }
+h3 { font-size: clamp(18px, 2.5vw, 22px); margin: 28px 0 10px; }
 
-/* Content */
-.policy-wrap {
-  max-width: 800px;
+.sub-hero {
+  padding: 180px 30px 48px;
+  background: var(--deep-black);
+  text-align: center;
+  position: relative;
+}
+.sub-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 100%, rgba(125,155,118,.06) 0%, transparent 60%);
+  pointer-events: none;
+}
+.sub-hero h1 { margin-bottom: 12px; position: relative; }
+.sub-hero .body-text {
   margin: 0 auto;
-  padding: 64px 30px 100px;
+  text-align: center;
+  font-size: 18px;
+  color: var(--grey);
+  font-weight: 300;
+  max-width: 560px;
+  position: relative;
 }
-.policy-wrap h1 {
-  font-family: var(--font-heading);
-  font-size: 52px;
-  letter-spacing: 2px;
-  margin-bottom: 8px;
-  line-height: 1;
+
+.legal-prose {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 30px 100px;
 }
-.last-updated {
+.legal-prose p, .legal-prose li {
+  color: var(--grey);
+  font-size: 17px;
+  line-height: 1.75;
+  margin-bottom: 16px;
+  font-weight: 300;
+}
+.legal-prose ul { margin: 0 0 20px 1.25em; }
+.legal-prose li { margin-bottom: 8px; }
+.legal-prose strong { color: var(--white); font-weight: 600; }
+
+.footer {
+  background: var(--deep-black);
+  border-top: 1px solid rgba(125,155,118,.12);
+  padding: 48px 30px;
+}
+.footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+.footer-left p, .footer-right p {
   color: var(--light-grey);
   font-size: 14px;
   font-weight: 300;
-  margin-bottom: 48px;
-}
-.policy-wrap h2 {
-  font-family: var(--font-heading);
-  font-size: 24px;
-  letter-spacing: 2px;
-  color: var(--green);
-  margin: 40px 0 12px;
-}
-.policy-wrap p {
-  color: var(--grey);
-  font-size: 16px;
-  font-weight: 300;
-  line-height: 1.8;
-  margin-bottom: 16px;
-}
-.policy-wrap ul {
-  color: var(--grey);
-  font-size: 16px;
-  font-weight: 300;
-  line-height: 1.8;
-  margin: 0 0 16px 24px;
-}
-.policy-wrap ul li { margin-bottom: 6px; }
-
-.required-clause {
-  background: var(--black);
-  border-left: 3px solid var(--green);
-  padding: 20px 24px;
-  margin: 20px 0;
-  color: var(--grey);
-  font-size: 15px;
-  font-weight: 300;
   line-height: 1.8;
 }
-
-/* Footer */
-.policy-footer {
-  background: var(--deep-black);
-  border-top: 1px solid rgba(125,155,118,.12);
-  padding: 32px 30px;
+.footer-right { text-align: right; }
+.footer-bottom {
+  max-width: 1200px;
+  margin: 24px auto 0;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255,255,255,.05);
   text-align: center;
-}
-.policy-footer p {
   color: var(--light-grey);
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 300;
-  line-height: 1.8;
 }
-.policy-footer a { color: var(--green); }
+
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    right: 0;
+    height: calc(100vh - 70px);
+    background: #0A0A0A;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-top: 40px;
+    gap: 0;
+    overflow-y: auto;
+  }
+  .nav-links.open { display: flex; }
+  .nav-links li { width: 100%; text-align: center; }
+  .nav-links a {
+    display: block;
+    padding: 18px 30px;
+    font-size: 18px;
+    border-bottom: 1px solid rgba(255,255,255,.05);
+  }
+  .nav-cta {
+    margin: 20px 30px;
+    display: block;
+    text-align: center;
+  }
+  .nav-toggle { display: block; }
+  .sub-hero { padding: 150px 20px 40px; }
+  .legal-prose { padding: 0 20px 80px; }
+  .footer-right { text-align: left; }
+}
 </style>
 </head>
 <body>
 
 <nav class="nav">
   <div class="nav-inner">
-    <a href="/" class="nav-logo">Detroit Fight Company</a>
-    <a href="/" class="nav-back">← Back to Site</a>
+    <a href="index.html#home" class="nav-logo">
+      <img src="images/DFC_Logo.png" alt="Detroit Fight Company logo">
+    </a>
+    <button class="nav-toggle" onclick="this.classList.toggle('open'); document.getElementById('navLinks').classList.toggle('open');" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html#home">Home</a></li>
+      <li><a href="index.html#jiu-jitsu">Jiu-Jitsu</a></li>
+      <li><a href="index.html#boxing">Boxing</a></li>
+      <li><a href="index.html#muay-thai">Muay Thai</a></li>
+      <li><a href="index.html#coaches">Coaches</a></li>
+      <li><a href="index.html#schedule">Schedule</a></li>
+      <li><a href="index.html#pricing">Pricing</a></li>
+      <li><a href="index.html#the-gym">The Gym</a></li>
+      <li><a href="index.html#free-trial" class="nav-cta">Free Trial</a></li>
+    </ul>
   </div>
 </nav>
 
-<div class="policy-wrap">
+<header class="sub-hero">
+  <p class="section-tag">Legal</p>
   <h1>Privacy Policy</h1>
-  <p class="last-updated">Last Updated: April 2026</p>
+  <p class="body-text">Detroit Fight Company · 1425 Tuskawilla Rd #209, Winter Springs, FL 32708</p>
+</header>
 
-  <p>This Privacy Policy describes how Detroit Fight LLC, doing business as Detroit Fight Company ("Detroit Fight Company," "we," "us," or "our"), collects, uses, and shares information about you when you visit detroitfight.com, interact with our forms, or communicate with us via text message or other channels.</p>
+<main class="legal-prose">
+  <p><strong>Effective date:</strong> April 14, 2026</p>
+  <p>Detroit Fight LLC, doing business as <strong>Detroit Fight Company</strong> (“we,” “us,” or “our”), respects your privacy. This Privacy Policy describes how we collect, use, and share personal information when you visit our website, communicate with us, or enroll in classes and membership programs at our facility in Winter Springs, Florida.</p>
 
-  <h2>Information We Collect</h2>
-  <p>We collect information you provide directly to us, including:</p>
+  <h2>Information we collect</h2>
+  <p>We may collect the following categories of information, depending on how you interact with us:</p>
   <ul>
-    <li>Name, email address, and phone number when you complete a contact or booking form</li>
-    <li>Class interest and membership preferences</li>
-    <li>Communications you send us via email, phone, or text</li>
-    <li>Information collected automatically when you visit our website (IP address, browser type, pages visited, referring URL)</li>
+    <li><strong>Contact and identity information</strong> — such as your name, email address, and phone number when you submit an inquiry, book a trial class, sign up for membership, or communicate with us.</li>
+    <li><strong>Membership and attendance information</strong> — such as program selection, class scheduling, billing-related communications, and notes you choose to provide (for example, experience level or health considerations relevant to training).</li>
+    <li><strong>Communications preferences</strong> — such as whether you opt in to marketing or transactional SMS, where applicable.</li>
+    <li><strong>Technical data</strong> — such as browser type, device information, and usage data collected through cookies or similar technologies on our website (see your browser settings to manage cookies).</li>
   </ul>
 
-  <h2>How We Use Your Information</h2>
-  <p>We use the information we collect to:</p>
+  <h2>How we use your information</h2>
+  <p>We use personal information for legitimate business purposes, including to:</p>
   <ul>
-    <li>Respond to your inquiries and booking requests</li>
-    <li>Send you class schedules, booking confirmations, and training updates</li>
-    <li>Send you marketing communications about special offers, discounts, and service updates (only with your consent)</li>
-    <li>Operate, maintain, and improve our website and services</li>
-    <li>Comply with legal obligations</li>
+    <li>Respond to inquiries and provide customer support;</li>
+    <li>Schedule classes, manage memberships, and operate our gym services;</li>
+    <li>Send operational messages related to your membership, scheduling, or account (for example, confirmations or important notices);</li>
+    <li>Send marketing communications when you have opted in or as otherwise permitted by law;</li>
+    <li>Improve our website, services, and member experience;</li>
+    <li>Comply with legal obligations and protect the safety of our members, staff, and facility.</li>
   </ul>
 
-  <h2>Text Messaging &amp; SMS Communications</h2>
-  <p>If you provide your phone number and opt in to receive text messages from us, you may receive SMS communications regarding class schedules, booking confirmations, training updates, and/or marketing messages (such as special offers and service announcements), depending on the consent options you selected.</p>
-  <p>You can opt out of text messages at any time by replying <strong>STOP</strong> to any message. Reply <strong>HELP</strong> for support. Message and data rates may apply. Message frequency varies.</p>
+  <h2>SMS text messages</h2>
+  <p>If you provide a mobile number and opt in to receive SMS messages from us, you understand that message frequency may vary, message and data rates may apply, and you may opt out at any time as described in the consent language presented at signup (for example, by replying <strong>STOP</strong> where applicable, or by contacting us using the information below). We do not sell your phone number.</p>
 
-  <div class="required-clause">
-    No mobile information will be shared with third parties/affiliates for marketing/promotional purposes. Information sharing to subcontractors in support services, such as customer service, is permitted. All other use case categories exclude text messaging originator opt-in data and consent; this information will not be shared with any third parties.
-  </div>
+  <h2>Sharing of information</h2>
+  <p>We do <strong>not</strong> sell your personal information. We may share information with service providers who assist us in operating our business (for example, payment processing, scheduling or gym management software, email delivery, or analytics), subject to appropriate safeguards. We may also disclose information if required by law or to protect our rights, members, or the public.</p>
 
-  <h2>Information Sharing</h2>
-  <p>We do not sell your personal information. We may share your information with:</p>
-  <ul>
-    <li><strong>Service providers</strong> who assist us in operating our business (such as CRM platforms, email services, and booking systems), under agreements that protect your data</li>
-    <li><strong>Legal authorities</strong> when required by law or to protect our rights</li>
-  </ul>
+  <h2>Data retention</h2>
+  <p>We retain personal information for as long as reasonably necessary to fulfill the purposes described in this policy, unless a longer retention period is required or permitted by law.</p>
 
-  <h2>Cookies &amp; Tracking Technologies</h2>
-  <p>Our website may use cookies and similar technologies to collect usage data and improve your experience. You can control cookie settings through your browser preferences.</p>
+  <h2>Security</h2>
+  <p>We use reasonable administrative, technical, and organizational measures designed to protect personal information. No method of transmission over the Internet or electronic storage is completely secure.</p>
 
-  <h2>Data Retention</h2>
-  <p>We retain your personal information for as long as necessary to fulfill the purposes described in this policy, unless a longer retention period is required by law.</p>
+  <h2>Your choices</h2>
+  <p>You may opt out of marketing emails by using the unsubscribe link in those messages, where available. To opt out of promotional SMS, follow the instructions provided in those messages or contact us. You may also contact us to ask questions about your information or to submit requests as required by applicable law.</p>
 
-  <h2>Your Rights</h2>
-  <p>Depending on your location, you may have the right to access, correct, or delete your personal information. To make a request, contact us using the information below.</p>
+  <h2>Children</h2>
+  <p>Our services are not directed to children under 13 in a manner that collects personal information online without appropriate parental consent. If you believe we have collected information from a child inappropriately, please contact us.</p>
 
-  <h2>Children's Privacy</h2>
-  <p>Our website is not directed to children under 13. We do not knowingly collect personal information from children under 13. If you believe we have inadvertently collected such information, please contact us so we can delete it.</p>
+  <h2>Changes to this policy</h2>
+  <p>We may update this Privacy Policy from time to time. We will post the revised policy on this page and update the effective date above.</p>
 
-  <h2>Changes to This Policy</h2>
-  <p>We may update this Privacy Policy from time to time. We will post the updated policy on this page with a revised "Last Updated" date.</p>
-
-  <h2>Contact Us</h2>
-  <p>If you have questions about this Privacy Policy or your personal data, contact us at:</p>
+  <h2>Contact us</h2>
+  <p>For privacy-related questions, to opt out of certain communications, or to exercise rights you may have under applicable law, contact us at:</p>
   <p>
     <strong>Detroit Fight Company</strong><br>
-    Detroit Fight LLC doing business as Detroit Fight Company<br>
-    1425 Tuskawilla Rd #209, Winter Springs, FL 32708<br>
-    Phone: <a href="tel:4076966969">407-696-6969</a><br>
-    Email: <a href="mailto:sean@detroitfight.com">sean@detroitfight.com</a><br>
-    Website: <a href="https://detroitfight.com">detroitfight.com</a>
+    1425 Tuskawilla Rd #209<br>
+    Winter Springs, FL 32708<br>
+    Email: <a href="mailto:sean@detroitfight.com">sean@detroitfight.com</a>
   </p>
-</div>
+</main>
 
-<footer class="policy-footer">
-  <p>
-    &copy; 2026 Detroit Fight Company. All rights reserved.<br>
-    Detroit Fight LLC doing business as Detroit Fight Company<br>
-    <a href="/privacy-policy">Privacy Policy</a> &nbsp;·&nbsp; <a href="/terms">Terms &amp; Conditions</a>
-  </p>
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-left">
+      <p><strong style="color: var(--white); font-weight: 600;">Detroit Fight Company</strong><br>
+      1425 Tuskawilla Rd #209<br>
+      Winter Springs, FL 32708</p>
+      <p style="color:var(--light-grey); font-size:13px; font-weight:300; margin-top:8px;">Detroit Fight LLC doing business as Detroit Fight Company</p>
+    </div>
+    <div>
+      <p style="color:var(--light-grey); font-size:14px; font-weight:300; line-height:1.8;">
+        <a href="tel:4076966969" style="color:var(--grey);">407-696-6969</a><br>
+        <a href="mailto:sean@detroitfight.com" style="color:var(--grey);">sean@detroitfight.com</a><br>
+        <a href="https://detroitfight.com">detroitfight.com</a>
+      </p>
+      <p style="margin-top:12px;">
+        <a href="privacy-policy.html" style="color:var(--light-grey); font-size:13px; font-weight:300;">Privacy Policy</a>
+        &nbsp;·&nbsp;
+        <a href="terms.html" style="color:var(--light-grey); font-size:13px; font-weight:300;">Terms &amp; Conditions</a>
+      </p>
+    </div>
+    <div class="footer-right">
+      <div style="display:flex; gap:20px; align-items:center; justify-content:flex-end;">
+        <a href="https://instagram.com/detroitfightcompany_" target="_blank" rel="noopener" aria-label="Instagram" style="color:var(--white); display:flex; align-items:center; opacity:.85; transition:opacity .2s;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=.85">
+          <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </a>
+        <a href="https://tiktok.com/@detroit.fight.co" target="_blank" rel="noopener" aria-label="TikTok" style="color:var(--white); display:flex; align-items:center; opacity:.85; transition:opacity .2s;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=.85">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.76a4.85 4.85 0 0 1-1.01-.07z"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    &copy; 2026 Detroit Fight Company. All rights reserved.
+  </div>
 </footer>
 
+<script>
+document.querySelectorAll('.nav-links a').forEach(function (link) {
+  link.addEventListener('click', function () {
+    document.getElementById('navLinks').classList.remove('open');
+    document.querySelector('.nav-toggle').classList.remove('open');
+  });
+});
+</script>
 </body>
 </html>
