@@ -107,42 +107,10 @@ img { max-width: 100%; display: block; }
 a { color: var(--green); text-decoration: none; transition: color .2s; }
 a:hover { color: #a3c49a; }
 
-/* ===== ANNOUNCEMENT BAR ===== */
-.announcement-bar {
-  background: var(--green);
-  color: var(--deep-black);
-  text-align: center;
-  padding: 10px 20px;
-  font-family: var(--font-heading);
-  font-size: 15px;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1001;
-}
-.announcement-bar a {
-  color: var(--deep-black);
-  text-decoration: underline;
-  white-space: nowrap;
-}
-@media (max-width: 600px) {
-  .announcement-bar {
-    font-size: 11px;
-    letter-spacing: 1px;
-    padding: 8px 12px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-}
-
 /* ===== NAVIGATION ===== */
 .nav {
   position: fixed;
-  top: 38px;
+  top: 0;
   left: 0;
   right: 0;
   z-index: 1000;
@@ -461,24 +429,6 @@ h4 { font-size: 24px; letter-spacing: 2px; }
   background: var(--green);
 }
 
-/* ===== GRAND OPENING BANNER ===== */
-.grand-opening {
-  background: var(--green);
-  color: var(--deep-black);
-  text-align: center;
-  padding: 80px 30px;
-}
-.grand-opening .section-tag { color: var(--deep-black); opacity: .7; }
-.grand-opening h2 { color: var(--deep-black); margin-bottom: 12px; }
-.grand-opening .body-text { color: rgba(10,10,10,.7); margin: 0 auto 32px; text-align: center; }
-.grand-opening .btn {
-  background: var(--deep-black);
-  color: var(--white);
-}
-.grand-opening .btn:hover {
-  background: var(--black);
-}
-
 /* ===== FINAL CTA ===== */
 .final-cta {
   text-align: center;
@@ -586,6 +536,19 @@ h4 { font-size: 24px; letter-spacing: 2px; }
   border: 1px solid rgba(125,155,118,.12);
   padding: 60px 40px;
   text-align: center;
+}
+/* Gymdesk schedule iframe (explicit embed — widgets.js also needs jQuery from CDN) */
+.schedule-embed .gymdesk-schedule {
+  text-align: left;
+  width: 100%;
+  min-height: 400px;
+}
+.schedule-embed .gymdesk-schedule iframe {
+  width: 100%;
+  min-height: 420px;
+  border: 0;
+  display: block;
+  background: var(--black);
 }
 .schedule-embed .placeholder-msg {
   color: var(--light-grey);
@@ -789,39 +752,128 @@ h4 { font-size: 24px; letter-spacing: 2px; }
   margin: 0 auto;
 }
 .booking-widget {
-  max-width: 700px;
+  max-width: 720px;
   margin: 0 auto;
+  padding: 0;
+  background: transparent;
+  border: none;
+}
+#dfc-form-wrap {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 48px 32px 64px;
   background: var(--black);
-  border: 1px solid rgba(125,155,118,.15);
-  padding: 48px;
+  font-family: var(--font-body);
 }
-.booking-widget .placeholder-msg {
-  text-align: center;
-  color: var(--light-grey);
-  font-size: 16px;
-  font-weight: 300;
-  padding: 30px;
-  border: 1px dashed rgba(125,155,118,.25);
-  margin-bottom: 24px;
-}
-/* Temp contact form styling */
-.temp-form { display: flex; flex-direction: column; gap: 16px; }
-.temp-form input, .temp-form select {
-  background: var(--deep-black);
-  border: 1px solid rgba(125,155,118,.2);
+#dfc-form-heading {
+  font-family: var(--font-heading);
+  font-size: 42px;
   color: var(--white);
-  padding: 14px 16px;
+  letter-spacing: 2px;
+  margin: 0 0 6px;
+  line-height: 1;
+}
+.dfc-sub {
+  font-size: 13px;
+  color: var(--green);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin: 0 0 8px;
+  font-weight: 600;
+}
+.dfc-divider {
+  border: none;
+  border-top: 1px solid #333;
+  margin: 24px 0 32px;
+}
+.dfc-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 0;
+}
+.dfc-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 20px;
+}
+.dfc-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--green);
+}
+.dfc-input {
+  background: #2a2a2a;
+  border: 1px solid #333;
+  color: var(--white);
   font-family: var(--font-body);
   font-size: 16px;
-  font-weight: 300;
+  padding: 12px 16px;
   outline: none;
   transition: border-color .2s;
+  width: 100%;
+  box-sizing: border-box;
 }
-.temp-form input:focus, .temp-form select:focus {
+.dfc-input:focus {
   border-color: var(--green);
 }
-.temp-form select option { background: var(--black); }
-
+.dfc-input::placeholder {
+  color: #555;
+}
+.dfc-select {
+  appearance: none;
+  background-color: #2a2a2a;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%237D9B76' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  padding-right: 40px;
+  cursor: pointer;
+}
+.dfc-textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+.dfc-btn {
+  background: var(--green);
+  color: var(--black);
+  border: none;
+  font-family: var(--font-heading);
+  font-size: 20px;
+  letter-spacing: 2px;
+  padding: 16px 48px;
+  cursor: pointer;
+  margin-top: 8px;
+  transition: background .2s;
+  width: 100%;
+  display: block;
+}
+.dfc-btn:hover {
+  background: #8faf88;
+}
+.dfc-notice {
+  font-size: 12px;
+  color: #555;
+  letter-spacing: 0.5px;
+  margin-top: 16px;
+  text-align: center;
+}
+.booking-widget .sms-consent {
+  margin-bottom: 8px;
+}
+@media (max-width: 600px) {
+  .dfc-row {
+    grid-template-columns: 1fr;
+  }
+  #dfc-form-wrap {
+    padding: 32px 20px 48px;
+  }
+  #dfc-form-heading {
+    font-size: 32px;
+  }
+}
 /* SMS Consent Checkboxes — A2P 10DLC */
 .sms-consent {
   display: flex;
@@ -1004,21 +1056,14 @@ h4 { font-size: 24px; letter-spacing: 2px; }
   .hero-buttons .btn { width: 100%; }
   .pricing-grid { gap: 40px; }
   .price-card.featured { margin-top: 20px; }
-  .grand-opening { padding: 60px 20px; }
   .final-cta { padding: 80px 20px; }
-  .booking-widget { padding: 32px 20px; }
+  .booking-widget { padding: 0; }
   .map-container { height: 300px; margin-left: 20px; margin-right: 20px; }
   .footer-right { text-align: left; }
 }
 </style>
-<script src="https://app.gymdesk.com/js/widgets.js"></script>
 </head>
 <body>
-
-<!-- ===== ANNOUNCEMENT BAR ===== -->
-<div class="announcement-bar">
-  Grand Opening April 25 — <a href="#pricing">Lock in $149/mo All-Inclusive</a>
-</div>
 
 <!-- ===== NAVIGATION ===== -->
 <nav class="nav">
@@ -1103,14 +1148,6 @@ h4 { font-size: 24px; letter-spacing: 2px; }
       </ul>
     </div>
   </div>
-</section>
-
-<!-- Grand Opening Banner -->
-<section class="grand-opening fade-in">
-  <p class="section-tag">Grand Opening — April 25, 2026</p>
-  <h2>All-Inclusive Membership — $149/mo</h2>
-  <p class="body-text">Normally $179/mo — Grand opening members lock in this rate</p>
-  <a href="#pricing" class="btn">Claim Your Spot</a>
 </section>
 
 <!-- Final CTA -->
@@ -1419,14 +1456,24 @@ h4 { font-size: 24px; letter-spacing: 2px; }
 <!-- ═══════════════════════════════════════════════════
      PAGE 6: SCHEDULE
      ═══════════════════════════════════════════════════ -->
-<section id="schedule" class="sub-hero fade-in">
+<section id="schedule" class="sub-hero">
   <h1>Class Schedule</h1>
   <p class="body-text">Boxing & Conditioning · Muay Thai · Jiu-Jitsu</p>
 </section>
 
-<section class="section fade-in">
+<section class="section">
   <div class="schedule-embed">
-    <div class="gymdesk-schedule" attr-gym="6zgd3"></div>
+    <div class="gymdesk-schedule gymdesk-frame-container" attr-gym="6zgd3">
+      <iframe
+        src="https://app.gymdesk.com/widgets/schedule/render/gym/6zgd3"
+        title="Detroit Fight Company class schedule"
+        frameborder="0"
+        scrolling="no"
+        loading="eager"
+        referrerpolicy="no-referrer-when-downgrade"
+        style="min-height:400px;"
+      ></iframe>
+    </div>
     <div class="hours-grid" style="margin-top: 48px;">
       <div class="hours-item">
         <h4>Mon – Fri</h4>
@@ -1499,14 +1546,6 @@ h4 { font-size: 24px; letter-spacing: 2px; }
   </div>
 </section>
 
-<!-- Grand Opening on Pricing -->
-<section class="grand-opening fade-in">
-  <p class="section-tag">Grand Opening Special — $149/mo All-Inclusive</p>
-  <h2 style="font-size: clamp(28px, 4vw, 44px); margin-bottom: 12px;">Lock In $149/mo Before It's Gone</h2>
-  <p class="body-text">Lock in the All-Inclusive membership at $149/mo (normally $179) when you sign up before or during our grand opening. Every class. Every discipline. Every open mat.</p>
-  <a href="#free-trial" class="btn">Claim Your Spot</a>
-</section>
-
 <!-- FAQ -->
 <section class="section fade-in">
   <div style="text-align: center; margin-bottom: 48px;">
@@ -1544,7 +1583,7 @@ h4 { font-size: 24px; letter-spacing: 2px; }
     </div>
     <div class="faq-item">
       <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">How do I cancel my membership?</button>
-      <div class="faq-answer"><div class="faq-answer-inner">No long-term contracts. You can cancel your membership at any time through your member portal or by contacting us directly.</div></div>
+      <div class="faq-answer"><div class="faq-answer-inner">No long-term contracts. To cancel, email sean@detroitfight.com at least 15 days before your next billing date.</div></div>
     </div>
   </div>
 </section>
@@ -1636,52 +1675,81 @@ h4 { font-size: 24px; letter-spacing: 2px; }
   </div>
 
   <div class="booking-widget">
-    <div class="placeholder-msg">
-      <!-- =====================================================
-           GYMDESK TRIAL BOOKING WIDGET
-           Paste embed code from Gymdesk dashboard here:
-           Settings → Integrations → Website Widget
-           This is the conversion point of the entire site.
-           ===================================================== -->
-      Gymdesk trial booking widget goes here.<br>
-      Paste the embed code from Gymdesk dashboard.
-    </div>
+    <div id="dfc-booking-root">
+      <div class="content-full">
+        <div id="dfc-form-wrap">
+          <p class="dfc-sub">Detroit Fight Company — Winter Springs, FL</p>
+          <h2 id="dfc-form-heading">Book Your Free Class</h2>
+          <hr class="dfc-divider"/>
+          <form id="dfc-booking-form" method="POST" action="#">
+            <div class="dfc-row">
+              <div class="dfc-field">
+                <label for="fname" class="dfc-label">First Name *</label>
+                <input type="text" id="fname" name="first_name" placeholder="First name" required class="dfc-input" autocomplete="given-name"/>
+              </div>
+              <div class="dfc-field">
+                <label for="lname" class="dfc-label">Last Name *</label>
+                <input type="text" id="lname" name="last_name" placeholder="Last name" required class="dfc-input" autocomplete="family-name"/>
+              </div>
+            </div>
+            <div class="dfc-row">
+              <div class="dfc-field">
+                <label for="email" class="dfc-label">Email *</label>
+                <input type="email" id="email" name="email" placeholder="your@email.com" required class="dfc-input" autocomplete="email"/>
+              </div>
+              <div class="dfc-field">
+                <label for="phone" class="dfc-label">Phone *</label>
+                <input type="tel" id="phone" name="phone" placeholder="(407) 000-0000" required class="dfc-input" autocomplete="tel"/>
+              </div>
+            </div>
+            <div class="dfc-field">
+              <label for="program" class="dfc-label">Class Interest *</label>
+              <select id="program" name="program" required class="dfc-input dfc-select">
+                <option value="" disabled selected>Select a program</option>
+                <option value="boxing">Boxing &amp; Conditioning</option>
+                <option value="muay_thai">Muay Thai</option>
+                <option value="bjj_gi">Brazilian Jiu-Jitsu (Gi)</option>
+                <option value="bjj_nogi">Brazilian Jiu-Jitsu (No-Gi)</option>
+                <option value="womens_bjj">Women's Only Gi Jiu-Jitsu</option>
+                <option value="unsure">All Programs — Not Sure Yet</option>
+              </select>
+            </div>
+            <div class="dfc-field">
+              <label for="level" class="dfc-label">Experience Level *</label>
+              <select id="level" name="experience" required class="dfc-input dfc-select">
+                <option value="" disabled selected>Select your level</option>
+                <option value="beginner">Complete Beginner</option>
+                <option value="some">Some Experience</option>
+                <option value="intermediate">Intermediate</option>
+                <option value="advanced">Advanced / Competitor</option>
+              </select>
+            </div>
+            <div class="dfc-field">
+              <label for="notes" class="dfc-label">Anything else we should know?</label>
+              <textarea id="notes" name="notes" placeholder="Questions, injuries, scheduling preferences..." class="dfc-input dfc-textarea"></textarea>
+            </div>
 
-    <!-- Fallback form — feeds leads into GoHighLevel (GHL A2P compliant) -->
-    <p style="text-align: center; color: var(--green); font-family: var(--font-heading); font-size: 14px; letter-spacing: 2px; margin-bottom: 20px;">OR FILL OUT THE FORM BELOW</p>
-    <div class="temp-form">
-      <input type="text" placeholder="Your Name" aria-label="Your Name">
-      <input type="email" placeholder="Email Address" aria-label="Email Address">
-      <input type="tel" placeholder="Phone Number" aria-label="Phone Number">
-      <select aria-label="Which class are you interested in?">
-        <option value="">Which class are you interested in?</option>
-        <option value="boxing">Boxing & Conditioning</option>
-        <option value="muay-thai">Muay Thai</option>
-        <option value="jj">Jiu-Jitsu</option>
-        <option value="kids">Kids Jiu-Jitsu</option>
-        <option value="womens">Women's Only Jiu-Jitsu</option>
-      </select>
+            <!-- SMS Consent — A2P 10DLC (GHL). Optional checkboxes; do not pre-check. -->
+            <div class="sms-consent">
+              <label class="consent-label">
+                <input type="checkbox" name="sms_marketing" value="1">
+                <span>I consent to receive marketing text messages, about special offers, discounts, and service updates, from Detroit Fight Company at the phone number provided. Message frequency may vary. Message &amp; data rates may apply. Text HELP for assistance, reply STOP to opt out.</span>
+              </label>
+              <label class="consent-label">
+                <input type="checkbox" name="sms_nonmarketing" value="1">
+                <span>I consent to receive non-marketing text messages from Detroit Fight Company about class schedules, booking confirmations, and training updates. Message frequency may vary, message &amp; data rates may apply. Text HELP for assistance, reply STOP to opt out.</span>
+              </label>
+            </div>
 
-      <!-- SMS Consent — A2P 10DLC Compliance (GHL). Neither box may be pre-checked. Both are optional. -->
-      <div class="sms-consent">
-        <label class="consent-label">
-          <input type="checkbox" name="sms_marketing" value="1">
-          <span>I consent to receive marketing text messages, about special offers, discounts, and service updates, from Detroit Fight Company at the phone number provided. Message frequency may vary. Message &amp; data rates may apply. Text HELP for assistance, reply STOP to opt out.</span>
-        </label>
-        <label class="consent-label">
-          <input type="checkbox" name="sms_nonmarketing" value="1">
-          <span>I consent to receive non-marketing text messages from Detroit Fight Company about class schedules, booking confirmations, and training updates. Message frequency may vary, message &amp; data rates may apply. Text HELP for assistance, reply STOP to opt out.</span>
-        </label>
+            <button type="submit" class="dfc-btn">Request My Free Class</button>
+            <p class="dfc-notice">By submitting this form you agree to be contacted by Detroit Fight Company. We never share your information.</p>
+            <p class="form-policy-links">
+              See also our <a href="/privacy-policy">Privacy Policy</a> and
+              <a href="/terms">Terms &amp; Conditions</a>.
+            </p>
+          </form>
+        </div>
       </div>
-
-      <button class="btn btn-primary" style="width: 100%;" type="button" onclick="alert('Form submitted! Someone from DFC will reach out shortly.');">Book My Free Class</button>
-
-      <!-- Required policy links — must be visible below the form -->
-      <p class="form-policy-links">
-        By submitting this form you agree to our
-        <a href="/privacy-policy">Privacy Policy</a> and
-        <a href="/terms">Terms &amp; Conditions</a>.
-      </p>
     </div>
   </div>
 
@@ -1737,6 +1805,7 @@ h4 { font-size: 24px; letter-spacing: 2px; }
 
 
 <!-- ===== SCRIPTS ===== -->
+<script src="https://app.gymdesk.com/js/widgets.js"></script>
 <script>
 // Scroll animations
 const observer = new IntersectionObserver((entries) => {
@@ -1773,6 +1842,11 @@ window.addEventListener('scroll', () => {
       a.classList.add('active');
     }
   });
+});
+
+document.getElementById('dfc-booking-form')?.addEventListener('submit', function (e) {
+  e.preventDefault();
+  alert('Thanks — someone from DFC will reach out shortly.');
 });
 </script>
 
