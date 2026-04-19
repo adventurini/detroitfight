@@ -21,7 +21,7 @@ gtag('config', 'G-KYCVH9837V');
 <!-- ===== OPEN GRAPH ===== -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://detroitfight.com/">
-<meta property="og:title" content="Detroit Fight Company — Built for the Fight">
+<meta property="og:title" content="Detroit Fight Company — Boxing, Muay Thai & Jiu-Jitsu in Winter Springs, FL">
 <meta property="og:description" content="Boxing. Muay Thai. Jiu-Jitsu. World-class coaching in Winter Springs, FL.">
 <meta property="og:image" content="https://detroitfight.com/images/og-image.jpg">
 <meta property="og:image:width" content="1200">
@@ -32,7 +32,7 @@ gtag('config', 'G-KYCVH9837V');
 
 <!-- ===== TWITTER CARD ===== -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Detroit Fight Company — Built for the Fight">
+<meta name="twitter:title" content="Detroit Fight Company — Boxing, Muay Thai & Jiu-Jitsu in Winter Springs, FL">
 <meta name="twitter:description" content="Boxing. Muay Thai. Jiu-Jitsu. World-class coaching in Winter Springs, FL.">
 <meta name="twitter:image" content="https://detroitfight.com/images/og-image.jpg">
 <meta name="twitter:image:alt" content="Detroit Fight Company — Boxing, Muay Thai, and Jiu-Jitsu in Winter Springs, FL">
@@ -296,6 +296,16 @@ h4 { font-size: 24px; letter-spacing: 2px; }
 .hero .body-text {
   font-size: 22px;
   margin-bottom: 40px;
+}
+.hero-eyebrow {
+  font-family: var(--font-heading);
+  font-size: clamp(18px, 2.5vw, 28px);
+  letter-spacing: 4px;
+  color: var(--green);
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  line-height: 1.2;
+  font-weight: 400;
 }
 .hero-buttons {
   display: flex;
@@ -1057,6 +1067,230 @@ h4 { font-size: 24px; letter-spacing: 2px; }
   .footer-right { text-align: left; }
 }
 </style>
+<!-- ===== STRUCTURED DATA (Schema.org) ===== -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": ["LocalBusiness", "HealthClub", "SportsActivityLocation"],
+      "@id": "https://detroitfight.com/#business",
+      "name": "Detroit Fight Company",
+      "legalName": "Detroit Fight LLC",
+      "alternateName": ["Detroit Fight Company Winter Springs", "DFC Winter Springs"],
+      "url": "https://detroitfight.com/",
+      "logo": "https://detroitfight.com/images/DFC_Logo.png",
+      "image": "https://detroitfight.com/images/og-image.jpg",
+      "description": "Boxing, Muay Thai, and Brazilian Jiu-Jitsu (BJJ) training in Winter Springs, Florida. Coached by internationally ranked competitors. Serving Winter Springs, Oviedo, Casselberry, Winter Park, and greater Seminole County.",
+      "telephone": "+14076966969",
+      "email": "sean@detroitfight.com",
+      "priceRange": "$99-$179",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "1425 Tuskawilla Road, Suite 209",
+        "addressLocality": "Winter Springs",
+        "addressRegion": "FL",
+        "postalCode": "32708",
+        "addressCountry": "US"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 28.6767,
+        "longitude": -81.2812
+      },
+      "areaServed": [
+        { "@type": "City", "name": "Winter Springs" },
+        { "@type": "City", "name": "Oviedo" },
+        { "@type": "City", "name": "Casselberry" },
+        { "@type": "City", "name": "Winter Park" },
+        { "@type": "City", "name": "Lake Mary" },
+        { "@type": "AdministrativeArea", "name": "Seminole County" }
+      ],
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+          "opens": "06:00",
+          "closes": "20:30"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "Saturday",
+          "opens": "09:30",
+          "closes": "13:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "Sunday",
+          "opens": "10:00",
+          "closes": "12:00"
+        }
+      ],
+      "sameAs": [
+        "https://www.instagram.com/detroitfightcompany/"
+      ],
+      "makesOffer": [
+        {
+          "@type": "Offer",
+          "name": "Boxing & Muay Thai Membership",
+          "price": "99.00",
+          "priceCurrency": "USD",
+          "priceSpecification": {
+            "@type": "UnitPriceSpecification",
+            "price": "99.00",
+            "priceCurrency": "USD",
+            "unitText": "MONTH"
+          }
+        },
+        {
+          "@type": "Offer",
+          "name": "Jiu-Jitsu Membership",
+          "price": "149.00",
+          "priceCurrency": "USD",
+          "priceSpecification": {
+            "@type": "UnitPriceSpecification",
+            "price": "149.00",
+            "priceCurrency": "USD",
+            "unitText": "MONTH"
+          }
+        },
+        {
+          "@type": "Offer",
+          "name": "All-Inclusive Membership",
+          "price": "179.00",
+          "priceCurrency": "USD",
+          "priceSpecification": {
+            "@type": "UnitPriceSpecification",
+            "price": "179.00",
+            "priceCurrency": "USD",
+            "unitText": "MONTH"
+          }
+        }
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Programs",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Brazilian Jiu-Jitsu (BJJ)",
+              "description": "Gi, No-Gi, Kids, Women's-Only, and Open Mat classes led by IBJJF black belt competitors."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Boxing & Conditioning",
+              "description": "Technical boxing instruction and combat-sport conditioning for all levels."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Muay Thai",
+              "description": "Complete striking system — punches, kicks, elbows, knees, and clinch work — for beginners through competitors."
+            }
+          }
+        ]
+      },
+      "founder": { "@id": "https://detroitfight.com/#sean" },
+      "employee": { "@id": "https://detroitfight.com/#sean" }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://detroitfight.com/#sean",
+      "name": "Sean Goolsby",
+      "jobTitle": "Head Coach & Co-Owner",
+      "worksFor": { "@id": "https://detroitfight.com/#business" },
+      "image": "https://detroitfight.com/images/Sean_profile_IBJJF_BW.jpeg",
+      "description": "IBJJF Black Belt, 2022 European IBJJF No-Gi Champion at Black Belt Ultra Heavy, AJP Tour No-Gi #1 in the World and #4 Overall, Pan American IBJJF Champion, ADCC American Trials competitor.",
+      "award": [
+        "European IBJJF No-Gi Champion (2022, Black Belt Ultra Heavy)",
+        "Pan American IBJJF Champion",
+        "AJP Tour — Ranked #1 No-Gi in the World",
+        "AJP Tour — Ranked #4 Overall",
+        "Multiple IBJJF International Gold Medals",
+        "Abu Dhabi Pro Competitor",
+        "ADCC American Trials Competitor"
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://detroitfight.com/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Do I need experience to start?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "None at all. Every class is structured to accommodate beginners alongside experienced athletes. Your coaches will scale the instruction to your level from your very first session."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What should I bring to my first class?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Comfortable workout clothes, a water bottle, and a towel. For Jiu-Jitsu, a rashguard or fitted athletic top works best. We have loaner gear available while you get started."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I try a class before committing?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Absolutely. Book a free trial class and experience the coaching and facility firsthand. No obligation, no pressure."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What's included in each membership?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Every membership includes open gym access. Boxing members get all striking and conditioning classes. Jiu-Jitsu members get all Gi and No-Gi sessions plus open mat. All-Inclusive gives you every class, every discipline, every open mat, and every open gym session."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are there classes for kids?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Kids No-Gi Jiu-Jitsu is designed for young athletes to build discipline, coordination, and confidence in a safe, supervised environment."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you offer women's-only classes?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Women's-only Gi Jiu-Jitsu sessions are on the schedule so you can train in a focused, welcoming environment with experienced coaching."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Where are you located?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "1425 Tuskawilla Road, Suite 209, Winter Springs, FL 32708 — in the Promenade at Tuskawilla. Easy access from Oviedo, Casselberry, and greater Seminole County."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I cancel my membership?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No long-term contracts. To cancel, email sean@detroitfight.com at least 15 days before your next billing date."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
@@ -1089,7 +1323,8 @@ h4 { font-size: 24px; letter-spacing: 2px; }
      ═══════════════════════════════════════════════════ -->
 <section id="home" class="hero">
   <div class="hero-content fade-in">
-    <h1>Built for the Fight.<br>Not the Followers.</h1>
+    <p class="hero-eyebrow">Built for the Fight. Not the Followers.</p>
+    <h1>Boxing, Muay Thai &amp; Jiu-Jitsu in Winter Springs, FL</h1>
     <p class="body-text">Boxing. Muay Thai. Jiu-Jitsu. Real training with real coaches in Winter Springs, Florida.</p>
     <div class="hero-buttons">
       <a href="#free-trial" class="btn btn-primary">Book Your Free Trial Class</a>
