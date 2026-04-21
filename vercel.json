@@ -1,3 +1,15 @@
 {
-  "cleanUrls": true
+  "cleanUrls": true,
+  "redirects": [
+    {
+      "source": "/camp",
+      "destination": "https://app.gohighlevel.com/v2/preview/aPeeoWzlRqPJgzNJWgHs?notrack=true",
+      "permanent": false
+    },
+    {
+      "source": "/kids-camp",
+      "destination": "https://app.gohighlevel.com/v2/preview/aPeeoWzlRqPJgzNJWgHs?notrack=true",
+      "permanent": false
+    }
+  ]
 }
