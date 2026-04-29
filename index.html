@@ -1953,7 +1953,7 @@ h4 { font-size: 24px; letter-spacing: 2px; }
             </div>
             <div class="dfc-field">
               <label for="program" class="dfc-label">Class Interest *</label>
-              <select id="program" name="program" required class="dfc-input dfc-select">
+              <select id="program" name="class_interest" required class="dfc-input dfc-select">
                 <option value="" disabled selected>Select a program</option>
                 <option value="boxing">Boxing &amp; Conditioning</option>
                 <option value="muay_thai">Muay Thai</option>
@@ -1965,7 +1965,7 @@ h4 { font-size: 24px; letter-spacing: 2px; }
             </div>
             <div class="dfc-field">
               <label for="level" class="dfc-label">Experience Level *</label>
-              <select id="level" name="experience" required class="dfc-input dfc-select">
+              <select id="level" name="experience_level" required class="dfc-input dfc-select">
                 <option value="" disabled selected>Select your level</option>
                 <option value="beginner">Complete Beginner</option>
                 <option value="some">Some Experience</option>
@@ -1981,11 +1981,11 @@ h4 { font-size: 24px; letter-spacing: 2px; }
             <!-- SMS Consent — A2P 10DLC (GHL). Optional checkboxes; do not pre-check. -->
             <div class="sms-consent">
               <label class="consent-label">
-                <input type="checkbox" name="sms_marketing" value="1">
+                <input type="checkbox" name="sms_marketing_consent" value="1">
                 <span>I consent to receive marketing text messages, about special offers, discounts, and service updates, from Detroit Fight Company at the phone number provided. Message frequency may vary. Message &amp; data rates may apply. Text HELP for assistance, reply STOP to opt out.</span>
               </label>
               <label class="consent-label">
-                <input type="checkbox" name="sms_nonmarketing" value="1">
+                <input type="checkbox" name="sms_transactional_consent" value="1">
                 <span>I consent to receive non-marketing text messages from Detroit Fight Company about class schedules, booking confirmations, and training updates. Message frequency may vary, message &amp; data rates may apply. Text HELP for assistance, reply STOP to opt out.</span>
               </label>
             </div>
@@ -1996,6 +1996,12 @@ h4 { font-size: 24px; letter-spacing: 2px; }
               See also our <a href="/privacy-policy.html">Privacy Policy</a> and
               <a href="/terms.html">Terms &amp; Conditions</a>.
             </p>
+
+            <!-- Honeypot anti-spam field -->
+            <div style="position:absolute; left:-9999px; height:0; overflow:hidden;" aria-hidden="true">
+              <label for="website_url_hp">Website</label>
+              <input type="text" id="website_url_hp" name="website_url_hp" tabindex="-1" autocomplete="off">
+            </div>
           </form>
         </div>
       </div>
@@ -2093,9 +2099,79 @@ window.addEventListener('scroll', () => {
   });
 });
 
-document.getElementById('dfc-booking-form')?.addEventListener('submit', function (e) {
+document.getElementById('dfc-booking-form')?.addEventListener('submit', async function (e) {
   e.preventDefault();
-  alert('Thanks — someone from DFC will reach out shortly.');
+  const form = e.currentTarget;
+  const submitBtn = form.querySelector('button[type="submit"]');
+  const originalBtnText = submitBtn ? submitBtn.textContent : '';
+
+  // Honeypot anti-spam check
+  const honeypot = form.querySelector('input[name="website_url_hp"]');
+  if (honeypot && honeypot.value.trim() !== '') {
+    if (submitBtn) submitBtn.textContent = 'Submitted ✓';
+    return;
+  }
+
+  if (submitBtn) {
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending...';
+  }
+
+  const fd = new FormData(form);
+  const payload = {
+    firstName: (fd.get('first_name') || '').toString().trim(),
+    lastName: (fd.get('last_name') || '').toString().trim(),
+    email: (fd.get('email') || '').toString().trim(),
+    phone: (fd.get('phone') || '').toString().trim(),
+    classInterest: (fd.get('class_interest') || '').toString().trim(),
+    experienceLevel: (fd.get('experience_level') || '').toString().trim(),
+    notes: (fd.get('notes') || '').toString().trim(),
+    smsMarketingConsent: form.querySelector('input[name="sms_marketing_consent"]')?.checked || false,
+    smsTransactionalConsent: form.querySelector('input[name="sms_transactional_consent"]')?.checked || false,
+    source: 'detroitfight.com',
+    sourcePage: window.location.pathname,
+    submittedAt: new Date().toISOString()
+  };
+
+  try {
+    const res = await fetch('https://services.leadconnectorhq.com/hooks/qM3XWaXveOrsj5NCi8gD/webhook-trigger/bb416dfe-a0a3-4ceb-8098-12459034cd95', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+      mode: 'cors'
+    });
+
+    if (!res.ok) throw new Error('Webhook returned status ' + res.status);
+
+    if (typeof gtag === 'function') {
+      gtag('event', 'generate_lead', {
+        event_category: 'form',
+        event_label: 'free_trial_request',
+        value: 1
+      });
+    }
+
+    const wrap = document.getElementById('dfc-form-wrap');
+    if (wrap) {
+      wrap.innerHTML = '<h2 id="dfc-form-heading" style="text-align:center;">You\'re In.</h2>' +
+        '<p class="dfc-sub" style="text-align:center;">We\'ll be in touch shortly.</p>' +
+        '<hr class="dfc-divider">' +
+        '<p style="text-align:center; color:#999; font-size:15px; line-height:1.6; max-width:480px; margin:0 auto;">' +
+        'Someone from Detroit Fight Company will reach out to confirm your free trial class. ' +
+        'In the meantime, you can find us at 1425 Tuskawilla Rd #209, Winter Springs, FL — or call us at ' +
+        '<a href="tel:4076966969" style="color:#7D9B76;">(407) 696-6969</a>.' +
+        '</p>';
+    } else {
+      alert('Thanks — someone from DFC will reach out shortly.');
+    }
+  } catch (err) {
+    console.error('Form submission failed:', err);
+    if (submitBtn) {
+      submitBtn.disabled = false;
+      submitBtn.textContent = originalBtnText;
+    }
+    alert('Something went wrong sending your request. Please call (407) 696-6969 or email sean@detroitfight.com so we can get you booked. Sorry for the trouble.');
+  }
 });
 </script>
 
