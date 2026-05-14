@@ -533,6 +533,31 @@ h4 { font-size: 24px; letter-spacing: 2px; }
 .coach-placeholder h4 { margin-bottom: 4px; font-size: 20px; }
 .coach-placeholder .body-text { font-size: 15px; margin: 0; }
 
+/* === Coach photo grayscale treatment === */
+.coach-card .coach-photo img,
+.coach-placeholder .coach-photo img {
+  filter: grayscale(100%);
+  -webkit-filter: grayscale(100%);
+  transition: filter 0.4s ease, -webkit-filter 0.4s ease;
+}
+.coach-card:hover .coach-photo img,
+.coach-placeholder:hover .coach-photo img,
+.coach-card .coach-photo:hover img,
+.coach-placeholder .coach-photo:hover img {
+  filter: grayscale(0%);
+  -webkit-filter: grayscale(0%);
+}
+section.section.fade-in[style*="text-align: center"] > img {
+  filter: grayscale(100%);
+  -webkit-filter: grayscale(100%);
+  transition: filter 0.4s ease, -webkit-filter 0.4s ease;
+}
+section.section.fade-in[style*="text-align: center"]:hover > img,
+section.section.fade-in[style*="text-align: center"] > img:hover {
+  filter: grayscale(0%);
+  -webkit-filter: grayscale(0%);
+}
+
 /* ===== SCHEDULE ===== */
 .schedule-embed {
   max-width: 1000px;
