@@ -63,6 +63,8 @@
     .form-review-badge{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:14px;padding:12px 0 0;border-top:1px solid var(--border)}
     .stars{color:#f4b400;font-size:1rem;letter-spacing:2px}
     .rating-text{font-size:.82rem;color:var(--gray);font-weight:500}
+    .ghl-form-embed{width:100%;min-height:600px;border-radius:8px;overflow:visible}
+    .ghl-form-embed iframe{display:block;width:100%;min-height:600px;height:600px;border:none;border-radius:8px}
 
     /* PROOF BAR */
     .proof-bar{background:var(--bg-card);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:22px 24px}
@@ -165,12 +167,6 @@
     .sticky-cta .spots-text{font-size:.72rem;color:#7D9B76;font-weight:600;text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px}
     .sticky-cta .cta-btn{width:100%;padding:14px;font-size:.95rem}
 
-    /* SUCCESS */
-    .form-success{display:none;text-align:center;padding:40px 20px}
-    .form-success.show{display:block}
-    .form-success h3{font-family:'Bebas Neue',sans-serif;font-size:1.4rem;color:var(--green);text-transform:uppercase;margin-bottom:10px}
-    .form-success p{font-size:.92rem;color:var(--gray);line-height:1.6}
-
     /* RESPONSIVE */
     @media(max-width:860px){
       .hero-inner{grid-template-columns:1fr;padding:36px 20px 40px;gap:32px}
@@ -220,29 +216,26 @@
           <p>Limited availability — claim yours before they're gone</p>
         </div>
         <div class="spots-note">Only <span id="spots-form">7</span> passes remaining this week</div>
-        <form class="lp-form" id="lead-form">
-          <div class="form-row">
-            <div><label for="firstName">First Name *</label><input type="text" id="firstName" name="firstName" placeholder="Your first name" required></div>
-            <div><label for="lastName">Last Name *</label><input type="text" id="lastName" name="lastName" placeholder="Your last name" required></div>
-          </div>
-          <div><label for="email">Email *</label><input type="email" id="email" name="email" placeholder="you@email.com" required></div>
-          <div><label for="phone">Phone *</label><input type="tel" id="phone" name="phone" placeholder="(555) 123-4567" required></div>
-          <div>
-            <label for="classInterest">What interests you? *</label>
-            <select id="classInterest" name="classInterest" required>
-              <option value="" disabled selected>Select a program</option>
-              <option value="Adult BJJ (Gi)">Adult BJJ (Gi)</option>
-              <option value="Adult BJJ (No-Gi)">Adult BJJ (No-Gi)</option>
-              <option value="Kids Jiu-Jitsu">Kids Jiu-Jitsu</option>
-              <option value="Women's Only Jiu-Jitsu">Women's Only Jiu-Jitsu</option>
-              <option value="Boxing & Conditioning">Boxing &amp; Conditioning</option>
-              <option value="All Programs — Not Sure Yet">All Programs — Not Sure Yet</option>
-            </select>
-          </div>
-          <button type="submit" class="form-submit">Claim My Free 7-Day Pass →</button>
-          <p class="form-fine">No credit card required. No obligation. Just show up and train.</p>
-        </form>
-        <div class="form-success" id="form-success"><h3>You're In!</h3><p>Your FREE 7-Day Pass is confirmed. Check your phone — we'll text you to pick your first class.</p></div>
+        <div class="ghl-form-embed">
+          <iframe
+            src="https://api.leadconnectorhq.com/widget/form/npKsq7mUkXVSFyhuLF69"
+            style="width:100%;height:100%;border:none;border-radius:8px"
+            id="inline-npKsq7mUkXVSFyhuLF69"
+            data-layout="{'id':'INLINE'}"
+            data-trigger-type="alwaysShow"
+            data-trigger-value=""
+            data-activation-type="alwaysActivated"
+            data-activation-value=""
+            data-deactivation-type="neverDeactivate"
+            data-deactivation-value=""
+            data-form-name="Google Ads Funnel Form"
+            data-height="589"
+            data-layout-iframe-id="inline-npKsq7mUkXVSFyhuLF69"
+            data-form-id="npKsq7mUkXVSFyhuLF69"
+            title="Google Ads Funnel Form"
+          >
+          </iframe>
+        </div>
         <div class="form-review-badge"><span class="stars">★★★★★</span><span class="rating-text">5.0 from Google Reviews</span></div>
       </div>
     </div>
@@ -390,15 +383,9 @@
   <script>
     function initCountdown(){const n=new Date,e=new Date(n);e.setDate(e.getDate()+3),e.setHours(23,59,59,0);function u(){const d=e-new Date;if(d<=0)return;const a=Math.floor(d/864e5),b=Math.floor(d%864e5/36e5),c=Math.floor(d%36e5/6e4),s=Math.floor(d%6e4/1e3);document.getElementById("cd-days").textContent=a,document.getElementById("cd-hours").textContent=b,document.getElementById("cd-mins").textContent=String(c).padStart(2,"0"),document.getElementById("cd-secs").textContent=String(s).padStart(2,"0")}u(),setInterval(u,1e3)}initCountdown();
     function toggleFaq(b){const a=b.nextElementSibling,o=a.classList.contains("show");document.querySelectorAll(".faq-a").forEach(x=>x.classList.remove("show")),document.querySelectorAll(".faq-q").forEach(x=>x.classList.remove("open")),o||(a.classList.add("show"),b.classList.add("open"))}
-    /* ============================================================
-   FORM SUBMISSION — PLACEHOLDER FOR MARKETING AGENCY
-   Wire this handler to the GoHighLevel form or webhook endpoint.
-   Keep the lead-form markup and field names unchanged.
-   Example payload fields: firstName, lastName, email, phone, classInterest
-   ============================================================ */
-document.getElementById("lead-form").addEventListener("submit",function(e){e.preventDefault();/* TODO: agency — connect GHL form/webhook here */});
     if(window.innerWidth<=860){const s=document.getElementById("sticky-cta");window.addEventListener("scroll",function(){s.style.display=window.scrollY>600?"block":"none"})}
     (function(){const s=Math.floor(4*Math.random())+4;document.querySelectorAll("#spots-count,#spots-form,#spots-final,#spots-sticky").forEach(e=>{e.textContent=s});const f=document.querySelector(".scarcity-fill");f&&(f.style.width=(10-s)/10*100+"%")})();
   </script>
+  <script src="https://link.msgsndr.com/js/form_embed.js"></script>
 </body>
 </html>
