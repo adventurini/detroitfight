@@ -596,9 +596,9 @@ section.section.fade-in[style*="text-align: center"] > img:hover {
 /* ===== PRICING ===== */
 .pricing-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: 1fr;
   gap: 24px;
-  max-width: 1400px;
+  max-width: 480px;
   margin: 0 auto;
 }
 .price-card {
@@ -617,7 +617,7 @@ section.section.fade-in[style*="text-align: center"] > img:hover {
   background: rgba(125,155,118,.04);
 }
 .price-card.featured::before {
-  content: 'BEST VALUE';
+  content: 'ALL ACCESS';
   position: absolute;
   top: 0;
   left: 50%;
@@ -628,25 +628,6 @@ section.section.fade-in[style*="text-align: center"] > img:hover {
   font-size: 12px;
   letter-spacing: 3px;
   padding: 6px 20px;
-}
-.price-card.founding-member {
-  border: 2px solid var(--green);
-  background: rgba(125,155,118,.04);
-  position: relative;
-}
-.price-card.founding-member::before {
-  content: 'FOUNDING MEMBER';
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: var(--green);
-  color: var(--deep-black);
-  font-family: var(--font-heading);
-  font-size: 12px;
-  letter-spacing: 3px;
-  padding: 6px 20px;
-  white-space: nowrap;
 }
 .price-card h3 { margin-bottom: 8px; font-size: 28px; }
 .price-amount {
@@ -1124,7 +1105,7 @@ section.section.fade-in[style*="text-align: center"] > img:hover {
       "description": "Boxing, Muay Thai, and Brazilian Jiu-Jitsu (BJJ) training in Winter Springs, Florida. Coached by internationally ranked competitors. Serving Winter Springs, Oviedo, Casselberry, Winter Park, and greater Seminole County.",
       "telephone": "+14076966969",
       "email": "sean@detroitfight.com",
-      "priceRange": "$149-$199",
+      "priceRange": "$199",
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "1425 Tuskawilla Road, Suite 209",
@@ -1175,31 +1156,8 @@ section.section.fade-in[style*="text-align: center"] > img:hover {
       "makesOffer": [
         {
           "@type": "Offer",
-          "name": "Boxing & Muay Thai Membership",
-          "price": "149.00",
-          "priceCurrency": "USD",
-          "priceSpecification": {
-            "@type": "UnitPriceSpecification",
-            "price": "149.00",
-            "priceCurrency": "USD",
-            "unitText": "MONTH"
-          }
-        },
-        {
-          "@type": "Offer",
-          "name": "Jiu-Jitsu Membership",
-          "price": "149.00",
-          "priceCurrency": "USD",
-          "priceSpecification": {
-            "@type": "UnitPriceSpecification",
-            "price": "149.00",
-            "priceCurrency": "USD",
-            "unitText": "MONTH"
-          }
-        },
-        {
-          "@type": "Offer",
-          "name": "All-Inclusive Membership",
+          "name": "All Access Membership",
+          "description": "Full access to all programs — Gi and No-Gi Jiu-Jitsu, boxing, and Muay Thai, plus open gym.",
           "price": "199.00",
           "priceCurrency": "USD",
           "priceSpecification": {
@@ -1207,23 +1165,6 @@ section.section.fade-in[style*="text-align: center"] > img:hover {
             "price": "199.00",
             "priceCurrency": "USD",
             "unitText": "MONTH"
-          }
-        },
-        {
-          "@type": "Offer",
-          "name": "Founding Member — All-Inclusive",
-          "description": "Limited to the first 50 members. Locked rate for the duration of continuous enrollment.",
-          "price": "149.00",
-          "priceCurrency": "USD",
-          "priceSpecification": {
-            "@type": "UnitPriceSpecification",
-            "price": "149.00",
-            "priceCurrency": "USD",
-            "unitText": "MONTH"
-          },
-          "eligibleQuantity": {
-            "@type": "QuantitativeValue",
-            "maxValue": 50
           }
         }
       ],
@@ -1308,10 +1249,10 @@ section.section.fade-in[style*="text-align: center"] > img:hover {
         },
         {
           "@type": "Question",
-          "name": "What's included in each membership?",
+          "name": "What's included in the membership?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Every membership includes open gym access. Boxing members get all striking and conditioning classes. Jiu-Jitsu members get all Gi and No-Gi sessions plus open mat. All-Inclusive gives you every class, every discipline, every open mat, and every open gym session."
+            "text": "The All Access Membership includes every class Detroit Fight Company offers — Gi and No-Gi Jiu-Jitsu, boxing, Muay Thai, kids and women's programs where applicable, plus unlimited open mat and open gym access."
           }
         },
         {
@@ -1820,62 +1761,22 @@ section.section.fade-in[style*="text-align: center"] > img:hover {
 <section id="pricing" class="sub-hero fade-in">
   <p class="section-tag">Membership</p>
   <h1>Simple Pricing.<br>No Contracts.</h1>
-  <p class="body-text">Pick your discipline or train them all. Every membership includes open gym access.</p>
+  <p class="body-text">One membership. Every program. Full access to Detroit Fight Company — no contracts, no tiers.</p>
 </section>
 
 <section class="section-full" style="background: var(--black); padding-top: 60px; padding-bottom: 80px;">
   <div class="pricing-grid fade-in">
-    <!-- Boxing & Muay Thai -->
-    <div class="price-card">
-      <h3>Boxing &amp; Muay Thai</h3>
-      <div class="price-amount">$149<span>/mo</span></div>
-      <ul class="price-features">
-        <li>All Boxing &amp; Conditioning classes</li>
-        <li>All Muay Thai classes</li>
-        <li>Open gym access</li>
-        <li>Heavy bags, speed bags, ring time</li>
-      </ul>
-      <a href="/free-trial" class="btn btn-outline-green" style="width: 100%;">Get Started</a>
-    </div>
-    <!-- Jiu-Jitsu -->
-    <div class="price-card">
-      <h3>Jiu-Jitsu</h3>
-      <div class="price-amount">$149<span>/mo</span></div>
-      <ul class="price-features">
-        <li>All Gi & No-Gi Jiu-Jitsu classes</li>
-        <li>Open mat sessions</li>
-        <li>Open gym access</li>
-      </ul>
-      <a href="/free-trial" class="btn btn-outline-green" style="width: 100%;">Get Started</a>
-    </div>
-    <!-- All-Inclusive -->
     <div class="price-card featured">
-      <h3>All-Inclusive</h3>
+      <h3>All Access Membership</h3>
       <div class="price-amount">$199<span>/mo</span></div>
       <ul class="price-features">
-        <li>Every class — Boxing, Muay Thai, Jiu-Jitsu</li>
-        <li>Gi & No-Gi included</li>
-        <li>Unlimited open mat & open gym</li>
-        <li>Priority event registration</li>
+        <li>Full access to all programs</li>
+        <li>Gi &amp; No-Gi Jiu-Jitsu</li>
+        <li>Boxing &amp; Muay Thai</li>
+        <li>Kids, women's, and open mat sessions</li>
+        <li>Unlimited open gym access</li>
       </ul>
-      <p style="font-size:13px; color:#7D9B76; margin: 0 0 16px; font-weight:500; text-align:center;">Founding Member rate available — see below</p>
       <a href="/free-trial" class="btn btn-primary" style="width: 100%;">Get Started</a>
-    </div>
-    <div class="price-card founding-member">
-      <h3>Founding Member</h3>
-      <div class="price-amount">
-        <span style="text-decoration:line-through; color:#666; font-size:24px; display:block; line-height:1;">$199</span>
-        $149<span>/mo</span>
-      </div>
-      <ul class="price-features">
-        <li>All-Inclusive — every class, every discipline</li>
-        <li>Gi & No-Gi Jiu-Jitsu included</li>
-        <li>Unlimited open mat & open gym</li>
-        <li>Priority event registration</li>
-        <li>Founding Member status — locked rate as long as you stay enrolled</li>
-      </ul>
-      <p style="font-size:12px; color:#999; font-weight:300; line-height:1.5; margin: 0 0 20px;">Limited to the first 50 members. Cancellation forfeits the locked rate permanently.</p>
-      <a href="/free-trial" class="btn btn-primary" style="width:100%;">Claim Founding Member Rate</a>
     </div>
   </div>
 </section>
@@ -1900,8 +1801,8 @@ section.section.fade-in[style*="text-align: center"] > img:hover {
       <div class="faq-answer"><div class="faq-answer-inner">Absolutely. Book a free trial class and experience the coaching and facility firsthand. No obligation, no pressure.</div></div>
     </div>
     <div class="faq-item">
-      <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">What's included in each membership?</button>
-      <div class="faq-answer"><div class="faq-answer-inner">Every membership includes open gym access. Boxing members get all striking and conditioning classes. Jiu-Jitsu members get all Gi and No-Gi sessions plus open mat. All-Inclusive gives you everything — every class, every discipline, every open mat and open gym session.</div></div>
+      <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">What's included in the membership?</button>
+      <div class="faq-answer"><div class="faq-answer-inner">The All Access Membership includes every class Detroit Fight Company offers — Gi and No-Gi Jiu-Jitsu, boxing, Muay Thai, kids and women's programs where applicable, plus unlimited open mat and open gym access.</div></div>
     </div>
     <div class="faq-item">
       <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">Are there classes for kids?</button>

@@ -14,13 +14,13 @@ gtag('config', 'G-KYCVH9837V');
 
 <!-- ===== SEO ===== -->
 <title>Membership Pricing | Detroit Fight Company — Winter Springs, FL</title>
-<meta name="description" content="Simple pricing, no contracts. Boxing &amp; Muay Thai $149/mo, Jiu-Jitsu $149/mo, All-Inclusive $199/mo, Founding Member $149/mo (first 50). Free trial class. Winter Springs, FL.">
+<meta name="description" content="Simple pricing, no contracts. All Access Membership $199/mo — full access to every program at Detroit Fight Company. Free trial class. Winter Springs, FL.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://detroitfight.com/pricing">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://detroitfight.com/pricing">
 <meta property="og:title" content="Pricing — Detroit Fight Company">
-<meta property="og:description" content="$149 · $149 · $199 · Founding $149 (50 spots). No contracts. Free trial.">
+<meta property="og:description" content="$199/mo All Access Membership. Every program included. No contracts. Free trial.">
 <meta property="og:image" content="https://detroitfight.com/images/og-image.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -29,7 +29,7 @@ gtag('config', 'G-KYCVH9837V');
 <meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Pricing — Detroit Fight Company">
-<meta name="twitter:description" content="$149 · $149 · $199 · Founding $149 (50 spots). No contracts. Free trial.">
+<meta name="twitter:description" content="$199/mo All Access Membership. Every program included. No contracts. Free trial.">
 <meta name="twitter:image" content="https://detroitfight.com/images/og-image.jpg">
 <meta name="twitter:image:alt" content="Detroit Fight Company pricing">
 <!-- ===== FAVICONS & ICONS ===== -->
@@ -95,31 +95,8 @@ fbq('track', 'PageView');
       "makesOffer": [
         {
           "@type": "Offer",
-          "name": "Boxing & Muay Thai Membership",
-          "price": "149.00",
-          "priceCurrency": "USD",
-          "priceSpecification": {
-            "@type": "UnitPriceSpecification",
-            "price": "149.00",
-            "priceCurrency": "USD",
-            "unitText": "MONTH"
-          }
-        },
-        {
-          "@type": "Offer",
-          "name": "Jiu-Jitsu Membership",
-          "price": "149.00",
-          "priceCurrency": "USD",
-          "priceSpecification": {
-            "@type": "UnitPriceSpecification",
-            "price": "149.00",
-            "priceCurrency": "USD",
-            "unitText": "MONTH"
-          }
-        },
-        {
-          "@type": "Offer",
-          "name": "All-Inclusive Membership",
+          "name": "All Access Membership",
+          "description": "Full access to all programs — Gi and No-Gi Jiu-Jitsu, boxing, and Muay Thai, plus open gym.",
           "price": "199.00",
           "priceCurrency": "USD",
           "priceSpecification": {
@@ -127,23 +104,6 @@ fbq('track', 'PageView');
             "price": "199.00",
             "priceCurrency": "USD",
             "unitText": "MONTH"
-          }
-        },
-        {
-          "@type": "Offer",
-          "name": "Founding Member — All-Inclusive",
-          "description": "Limited to the first 50 members. Locked rate for the duration of continuous enrollment.",
-          "price": "149.00",
-          "priceCurrency": "USD",
-          "priceSpecification": {
-            "@type": "UnitPriceSpecification",
-            "price": "149.00",
-            "priceCurrency": "USD",
-            "unitText": "MONTH"
-          },
-          "eligibleQuantity": {
-            "@type": "QuantitativeValue",
-            "maxValue": 50
           }
         }
       ]
@@ -656,9 +616,9 @@ h4 { font-size: 24px; letter-spacing: 2px; }
 /* ===== PRICING ===== */
 .pricing-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: 1fr;
   gap: 24px;
-  max-width: 1400px;
+  max-width: 480px;
   margin: 0 auto;
 }
 .price-card {
@@ -677,7 +637,7 @@ h4 { font-size: 24px; letter-spacing: 2px; }
   background: rgba(125,155,118,.04);
 }
 .price-card.featured::before {
-  content: 'BEST VALUE';
+  content: 'ALL ACCESS';
   position: absolute;
   top: 0;
   left: 50%;
@@ -688,25 +648,6 @@ h4 { font-size: 24px; letter-spacing: 2px; }
   font-size: 12px;
   letter-spacing: 3px;
   padding: 6px 20px;
-}
-.price-card.founding-member {
-  border: 2px solid var(--green);
-  background: rgba(125,155,118,.04);
-  position: relative;
-}
-.price-card.founding-member::before {
-  content: 'FOUNDING MEMBER';
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: var(--green);
-  color: var(--deep-black);
-  font-family: var(--font-heading);
-  font-size: 12px;
-  letter-spacing: 3px;
-  padding: 6px 20px;
-  white-space: nowrap;
 }
 .price-card h3 { margin-bottom: 8px; font-size: 28px; }
 .price-amount {
@@ -1197,62 +1138,22 @@ h4 { font-size: 24px; letter-spacing: 2px; }
 <section class="sub-hero fade-in">
   <p class="hero-eyebrow">Simple Pricing. No Contracts.</p>
   <h1>Membership Pricing</h1>
-  <p class="body-text">Pick your discipline or train them all. Every membership includes open gym access.</p>
+  <p class="body-text">One membership. Every program. Full access to Detroit Fight Company — no contracts, no tiers.</p>
 </section>
 
 <section class="section-full" style="background: var(--black); padding-top: 60px; padding-bottom: 80px;">
   <div class="pricing-grid fade-in">
-    <!-- Boxing & Muay Thai -->
-    <div class="price-card">
-      <h3>Boxing &amp; Muay Thai</h3>
-      <div class="price-amount">$149<span>/mo</span></div>
-      <ul class="price-features">
-        <li>All Boxing &amp; Conditioning classes</li>
-        <li>All Muay Thai classes</li>
-        <li>Open gym access</li>
-        <li>Heavy bags, speed bags, ring time</li>
-      </ul>
-      <a href="/free-trial" class="btn btn-outline-green" style="width: 100%;">Get Started</a>
-    </div>
-    <!-- Jiu-Jitsu -->
-    <div class="price-card">
-      <h3>Jiu-Jitsu</h3>
-      <div class="price-amount">$149<span>/mo</span></div>
-      <ul class="price-features">
-        <li>All Gi & No-Gi Jiu-Jitsu classes</li>
-        <li>Open mat sessions</li>
-        <li>Open gym access</li>
-      </ul>
-      <a href="/free-trial" class="btn btn-outline-green" style="width: 100%;">Get Started</a>
-    </div>
-    <!-- All-Inclusive -->
     <div class="price-card featured">
-      <h3>All-Inclusive</h3>
+      <h3>All Access Membership</h3>
       <div class="price-amount">$199<span>/mo</span></div>
       <ul class="price-features">
-        <li>Every class — Boxing, Muay Thai, Jiu-Jitsu</li>
-        <li>Gi & No-Gi included</li>
-        <li>Unlimited open mat & open gym</li>
-        <li>Priority event registration</li>
+        <li>Full access to all programs</li>
+        <li>Gi &amp; No-Gi Jiu-Jitsu</li>
+        <li>Boxing &amp; Muay Thai</li>
+        <li>Kids, women's, and open mat sessions</li>
+        <li>Unlimited open gym access</li>
       </ul>
-      <p style="font-size:13px; color:#7D9B76; margin: 0 0 16px; font-weight:500; text-align:center;">Founding Member rate available — see below</p>
       <a href="/free-trial" class="btn btn-primary" style="width: 100%;">Get Started</a>
-    </div>
-    <div class="price-card founding-member">
-      <h3>Founding Member</h3>
-      <div class="price-amount">
-        <span style="text-decoration:line-through; color:#666; font-size:24px; display:block; line-height:1;">$199</span>
-        $149<span>/mo</span>
-      </div>
-      <ul class="price-features">
-        <li>All-Inclusive — every class, every discipline</li>
-        <li>Gi & No-Gi Jiu-Jitsu included</li>
-        <li>Unlimited open mat & open gym</li>
-        <li>Priority event registration</li>
-        <li>Founding Member status — locked rate as long as you stay enrolled</li>
-      </ul>
-      <p style="font-size:12px; color:#999; font-weight:300; line-height:1.5; margin: 0 0 20px;">Limited to the first 50 members. Cancellation forfeits the locked rate permanently.</p>
-      <a href="/free-trial" class="btn btn-primary" style="width:100%;">Claim Founding Member Rate</a>
     </div>
   </div>
 </section>
@@ -1261,9 +1162,9 @@ h4 { font-size: 24px; letter-spacing: 2px; }
   <p class="section-tag">Quick answers</p>
   <h2 style="margin-bottom: 28px;">Pricing FAQs</h2>
   <p class="body-text" style="margin-bottom: 16px;"><strong>No contracts.</strong> Memberships are month-to-month — we earn your business every month.</p>
-  <p class="body-text" style="margin-bottom: 16px;"><strong>What&apos;s included?</strong> Every tier includes open gym access. Boxing &amp; Muay Thai covers all striking classes; Jiu-Jitsu covers Gi, No-Gi, kids (where applicable), women&apos;s-only, and open mat; All-Inclusive is every class we offer.</p>
+  <p class="body-text" style="margin-bottom: 16px;"><strong>What&apos;s included?</strong> The All Access Membership covers every class Detroit Fight Company offers — Gi and No-Gi Jiu-Jitsu, boxing, Muay Thai, kids and women&apos;s programs where applicable, plus unlimited open mat and open gym access.</p>
   <p class="body-text" style="margin-bottom: 16px;"><strong>How do I cancel?</strong> Email sean@detroitfight.com at least 15 days before your next billing date — no long-term lock-in.</p>
-  <p class="body-text">Questions before you start? Browse <a href="/schedule">the schedule</a>, read about <a href="/the-gym">the gym</a>, meet the <a href="/coaches">coaches</a>, or book a <a href="/free-trial">free trial class</a>. Cross-training <a href="/jiu-jitsu">Jiu-Jitsu</a> with <a href="/boxing">boxing</a> or <a href="/muay-thai">Muay Thai</a> is simple with an All-Inclusive membership.</p>
+  <p class="body-text">Questions before you start? Browse <a href="/schedule">the schedule</a>, read about <a href="/the-gym">the gym</a>, meet the <a href="/coaches">coaches</a>, or book a <a href="/free-trial">free trial class</a>. Cross-training <a href="/jiu-jitsu">Jiu-Jitsu</a> with <a href="/boxing">boxing</a> or <a href="/muay-thai">Muay Thai</a> is included with your membership.</p>
 </section>
 
 <div class="page-spacer"></div>
