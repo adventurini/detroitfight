@@ -3,13 +3,13 @@
   "redirects": [
     {
       "source": "/camp",
-      "destination": "https://app.gohighlevel.com/v2/preview/aPeeoWzlRqPJgzNJWgHs?notrack=true",
-      "permanent": false
+      "destination": "/",
+      "permanent": true
     },
     {
       "source": "/kids-camp",
-      "destination": "https://app.gohighlevel.com/v2/preview/aPeeoWzlRqPJgzNJWgHs?notrack=true",
-      "permanent": false
+      "destination": "/",
+      "permanent": true
     }
   ]
 }
