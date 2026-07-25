@@ -30,7 +30,7 @@ Design tokens live in a per-page `:root`: `--deep-black #0A0A0A` (page bg), `--b
 
 - **Content pages** (`index`, `jiu-jitsu`, `boxing`, `muay-thai`, `coaches`, `schedule`, `pricing`, `the-gym`, `free-trial`) — full site chrome, in the nav and sitemap.
 - **`lp.html`** — standalone Google Ads landing page. Deliberately minimal: no nav, no footer, no site CSS, system font stack for the body, a daily-resetting countdown, and a GoHighLevel form iframe. Not in the nav or sitemap. Optimized for load speed; keep it that way when editing.
-- **`thank-you.html`** — post-conversion page, `noindex, nofollow`, and the only page carrying the Google Ads tag. Contains an intentional `[PLACEHOLDER: ...]` block for follow-up timing copy awaiting agency input.
+- **`thank-you.html`** — post-conversion page, `noindex, nofollow`, and the only page carrying the Google Ads tag. Its "What Happens Next" copy deliberately promises no specific response time; if the gym commits to an SLA (e.g. "text within 15 minutes"), that's the line to change.
 - **`privacy-policy.html`, `terms.html`** — legal, minimal chrome.
 - **`googled018ab236e6d501f.html`** — Google Search Console verification. Leave alone.
 
