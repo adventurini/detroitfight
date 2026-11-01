@@ -1168,7 +1168,7 @@ h4 { font-size: 24px; letter-spacing: 2px; }
           <p class="dfc-sub">Detroit Fight Company — Winter Springs, FL</p>
           <h2 id="dfc-form-heading">Book Your Free Jiu-Jitsu Class</h2>
           <hr class="dfc-divider"/>
-          <form id="dfc-booking-form" method="POST" action="#" data-program="bjj_gi">
+          <form id="dfc-booking-form" method="POST" action="#">
             <div class="dfc-row">
               <div class="dfc-field">
                 <label for="fname" class="dfc-label">First Name *</label>
@@ -1197,9 +1197,6 @@ h4 { font-size: 24px; letter-spacing: 2px; }
                 <option value="muay_thai">Muay Thai</option>
                 <option value="bjj_gi">Brazilian Jiu-Jitsu (Gi)</option>
                 <option value="bjj_nogi">Brazilian Jiu-Jitsu (No-Gi)</option>
-                <option value="mma">MMA</option>
-                <option value="kids_bjj">Kids Jiu-Jitsu</option>
-                <option value="kids_boxing">Kids Boxing</option>
                 <option value="unsure">All Programs — Not Sure Yet</option>
               </select>
             </div>
@@ -1211,21 +1208,6 @@ h4 { font-size: 24px; letter-spacing: 2px; }
                 <option value="some">Some Experience</option>
                 <option value="intermediate">Intermediate</option>
                 <option value="advanced">Advanced / Competitor</option>
-              </select>
-            </div>
-            <div class="dfc-field">
-              <label for="heard" class="dfc-label">How did you hear about us? *</label>
-              <select id="heard" name="lead_source" required class="dfc-input dfc-select">
-                <option value="" disabled selected>Choose one</option>
-                <option value="Google search">Google search</option>
-                <option value="Google Ads">Google ad</option>
-                <option value="Google profile">Google Maps or our Google profile</option>
-                <option value="Instagram">Instagram</option>
-                <option value="Facebook">Facebook</option>
-                <option value="Referral">A friend or member</option>
-                <option value="Walk in">Walked by the gym</option>
-                <option value="Step Up">Step Up For Students</option>
-                <option value="Other">Other</option>
               </select>
             </div>
             <div class="dfc-field">
@@ -1252,8 +1234,6 @@ h4 { font-size: 24px; letter-spacing: 2px; }
               <a href="/terms">Terms &amp; Conditions</a>.
             </p>
 
-            <!-- Ad tracking, filled from the page address -->
-            <input type="hidden" name="utm_source"><input type="hidden" name="utm_medium"><input type="hidden" name="utm_campaign"><input type="hidden" name="utm_term"><input type="hidden" name="utm_content"><input type="hidden" name="gclid">
             <!-- Honeypot anti-spam field -->
             <div style="position:absolute; left:-9999px; height:0; overflow:hidden;" aria-hidden="true">
               <label for="website_url_hp">Website</label>
@@ -1370,26 +1350,6 @@ window.addEventListener('scroll', () => {
   });
 });
 
-// Keep ad tracking (utm and gclid) for the visit, and pick the class from ?program=
-(function () {
-  const keys = ['utm_source','utm_medium','utm_campaign','utm_term','utm_content','gclid'];
-  const q = new URLSearchParams(window.location.search);
-  let saved = {};
-  try { saved = JSON.parse(sessionStorage.getItem('dfc_track') || '{}'); } catch (e) {}
-  keys.forEach(k => { if (q.get(k)) saved[k] = q.get(k); });
-  try { sessionStorage.setItem('dfc_track', JSON.stringify(saved)); } catch (e) {}
-  const form = document.getElementById('dfc-booking-form');
-  if (!form) return;
-  keys.forEach(k => { const el = form.querySelector('input[name="' + k + '"]'); if (el && saved[k]) el.value = saved[k]; });
-  const alias = { 'jiu-jitsu': 'bjj_gi', 'bjj': 'bjj_gi', 'no-gi': 'bjj_nogi', 'boxing': 'boxing', 'muay-thai': 'muay_thai', 'mma': 'mma', 'kids-bjj': 'kids_bjj', 'kids-jiu-jitsu': 'kids_bjj', 'kids-boxing': 'kids_boxing' };
-  const want = q.get('program') || form.dataset.program;
-  const sel = form.querySelector('select[name="class_interest"]');
-  if (want && sel) {
-    const v = alias[want] || want;
-    if ([...sel.options].some(o => o.value === v)) sel.value = v;
-  }
-  if (saved.gclid) { const h = form.querySelector('select[name="lead_source"]'); if (h && !h.value) h.value = 'Google Ads'; }
-})();
 
 document.getElementById('dfc-booking-form')?.addEventListener('submit', async function (e) {
   e.preventDefault();
@@ -1418,13 +1378,6 @@ document.getElementById('dfc-booking-form')?.addEventListener('submit', async fu
     classInterest: (fd.get('class_interest') || '').toString().trim(),
     experienceLevel: (fd.get('experience_level') || '').toString().trim(),
     notes: (fd.get('notes') || '').toString().trim(),
-    leadSource: (fd.get('lead_source') || '').toString().trim(),
-    utmSource: (fd.get('utm_source') || '').toString(),
-    utmMedium: (fd.get('utm_medium') || '').toString(),
-    utmCampaign: (fd.get('utm_campaign') || '').toString(),
-    utmTerm: (fd.get('utm_term') || '').toString(),
-    utmContent: (fd.get('utm_content') || '').toString(),
-    gclid: (fd.get('gclid') || '').toString(),
     smsMarketingConsent: form.querySelector('input[name="sms_marketing_consent"]')?.checked || false,
     smsTransactionalConsent: form.querySelector('input[name="sms_transactional_consent"]')?.checked || false,
     source: 'detroitfight.com',
