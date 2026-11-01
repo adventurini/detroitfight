@@ -98,12 +98,6 @@ fbq('track', 'PageView');
           "dayOfWeek": "Saturday",
           "opens": "09:30",
           "closes": "13:00"
-        },
-        {
-          "@type": "OpeningHoursSpecification",
-          "dayOfWeek": "Sunday",
-          "opens": "10:00",
-          "closes": "12:00"
         }
       ],
       "sameAs": [
@@ -1113,6 +1107,33 @@ h4 { font-size: 24px; letter-spacing: 2px; }
   .footer-right { text-align: left; }
 }
 </style>
+<style>
+/* ===== Kids / Homeschool / Weekly schedule additions ===== */
+.week-table-wrap { max-width: 1000px; margin: 48px auto 0; overflow-x: auto; }
+.week-table { width: 100%; border-collapse: collapse; font-size: 16px; }
+.week-table caption { font-family: var(--font-heading); letter-spacing: 2px; font-size: 22px; color: var(--white); text-align: left; padding-bottom: 16px; }
+.week-table th, .week-table td { text-align: left; padding: 12px 14px; border-bottom: 1px solid rgba(255,255,255,.08); vertical-align: top; }
+.week-table th { font-family: var(--font-heading); letter-spacing: 1.5px; font-weight: 400; color: var(--green); }
+.week-table td { color: var(--grey); font-weight: 300; }
+.week-table td.cls { color: var(--white); font-weight: 500; }
+.week-table tr.youth td.cls { color: var(--green); }
+.check-list { list-style: none; max-width: 760px; margin: 0 auto; padding: 0; }
+.check-list li { position: relative; padding: 10px 0 10px 28px; color: var(--grey); font-size: 17px; font-weight: 300; line-height: 1.6; border-bottom: 1px solid rgba(255,255,255,.06); }
+.check-list li::before { content: ''; position: absolute; left: 4px; top: 20px; width: 10px; height: 10px; background: var(--green); }
+.check-list li strong { color: var(--white); font-weight: 600; }
+.class-times { margin-top: 18px; color: var(--white); font-size: 16px; font-weight: 500; line-height: 1.7; }
+.class-times span { color: var(--green); font-family: var(--font-heading); letter-spacing: 1.5px; font-weight: 400; }
+.note-band { max-width: 900px; margin: 0 auto; background: var(--black); border-left: 3px solid var(--green); padding: 32px 36px; }
+@media (max-width: 1200px) and (min-width: 769px) {
+  .nav-links { gap: 16px; }
+  .nav-links a { font-size: 13px; letter-spacing: 1.2px; }
+  .nav-cta { padding: 7px 12px !important; }
+}
+@media (max-width: 600px) {
+  .week-table th, .week-table td { padding: 10px 8px; font-size: 15px; }
+  .note-band { padding: 24px 20px; }
+}
+</style>
 </head>
 <body>
 
@@ -1130,6 +1151,8 @@ h4 { font-size: 24px; letter-spacing: 2px; }
       <li><a href="/jiu-jitsu">Jiu-Jitsu</a></li>
       <li><a href="/boxing">Boxing</a></li>
       <li><a href="/muay-thai">Muay Thai</a></li>
+      <li><a href="/kids">Kids</a></li>
+      <li><a href="/homeschool">Homeschool</a></li>
       <li><a href="/coaches">Coaches</a></li>
       <li><a href="/schedule">Schedule</a></li>
       <li><a href="/pricing">Pricing</a></li>
@@ -1158,7 +1181,7 @@ h4 { font-size: 24px; letter-spacing: 2px; }
         style="min-height:400px;"
       ></iframe>
     </div>
-    <div class="hours-grid" style="margin-top: 48px;">
+    <div class="hours-grid" style="margin-top: 48px; grid-template-columns: repeat(2, 1fr); max-width: 560px;">
       <div class="hours-item">
         <h4>Mon – Fri</h4>
         <p>6:00 AM – 8:30 PM</p>
@@ -1167,12 +1190,57 @@ h4 { font-size: 24px; letter-spacing: 2px; }
         <h4>Saturday</h4>
         <p>9:30 AM – 1:00 PM</p>
       </div>
-      <div class="hours-item">
-        <h4>Sunday</h4>
-        <p>10:00 AM – 12:00 PM</p>
-      </div>
+      <!-- CONFIRM: Sunday. Gymdesk lists no Sunday classes, so Sunday 10:00 AM to 12:00 PM was removed here and from openingHours. index.html and the-gym.html still list Sunday. -->
     </div>
   </div>
+  <div class="week-table-wrap">
+    <table class="week-table">
+      <caption>Weekly Class Schedule</caption>
+      <thead><tr><th scope="col">Day</th><th scope="col">Time</th><th scope="col">Class</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Monday</th><td>6:00 AM to 7:00 AM</td><td class="cls">BJJ</td></tr>
+        <tr><th scope="row"></th><td>10:00 AM to 11:00 AM</td><td class="cls">Boxing</td></tr>
+        <tr class="youth"><th scope="row"></th><td>4:30 PM to 5:30 PM</td><td class="cls">Youth Boxing</td></tr>
+        <tr class="youth"><th scope="row"></th><td>4:45 PM to 5:45 PM</td><td class="cls">Youth Jiu-Jitsu</td></tr>
+        <tr><th scope="row"></th><td>5:30 PM to 6:30 PM</td><td class="cls">Boxing</td></tr>
+        <tr><th scope="row"></th><td>6:00 PM to 7:30 PM</td><td class="cls">BJJ</td></tr>
+        <tr><th scope="row"></th><td>6:45 PM to 7:45 PM</td><td class="cls">Boxing</td></tr>
+        <tr><th scope="row"></th><td>7:30 PM to 8:30 PM</td><td class="cls">Muay Thai</td></tr>
+        <tr><th scope="row">Tuesday</th><td>10:00 AM to 11:00 AM</td><td class="cls">Boxing</td></tr>
+        <tr class="youth"><th scope="row"></th><td>4:45 PM to 5:45 PM</td><td class="cls">Youth Jiu-Jitsu</td></tr>
+        <tr><th scope="row"></th><td>5:30 PM to 6:30 PM</td><td class="cls">Boxing</td></tr>
+        <tr><th scope="row"></th><td>6:00 PM to 7:30 PM</td><td class="cls">BJJ</td></tr>
+        <tr><th scope="row"></th><td>6:45 PM to 7:45 PM</td><td class="cls">Boxing</td></tr>
+        <tr><th scope="row"></th><td>7:30 PM to 8:30 PM</td><td class="cls">MMA</td></tr>
+        <tr><th scope="row">Wednesday</th><td>6:00 AM to 7:00 AM</td><td class="cls">BJJ</td></tr>
+        <tr><th scope="row"></th><td>10:00 AM to 11:00 AM</td><td class="cls">Boxing</td></tr>
+        <tr class="youth"><th scope="row"></th><td>4:30 PM to 5:30 PM</td><td class="cls">Youth Boxing</td></tr>
+        <tr class="youth"><th scope="row"></th><td>4:45 PM to 5:45 PM</td><td class="cls">Youth Jiu-Jitsu</td></tr>
+        <tr><th scope="row"></th><td>5:30 PM to 6:30 PM</td><td class="cls">Boxing</td></tr>
+        <tr><th scope="row"></th><td>6:00 PM to 7:30 PM</td><td class="cls">BJJ</td></tr>
+        <tr><th scope="row"></th><td>6:45 PM to 7:45 PM</td><td class="cls">Boxing</td></tr>
+        <tr><th scope="row"></th><td>7:30 PM to 8:30 PM</td><td class="cls">Muay Thai</td></tr>
+        <tr><th scope="row">Thursday</th><td>10:00 AM to 11:00 AM</td><td class="cls">Boxing</td></tr>
+        <tr class="youth"><th scope="row"></th><td>4:45 PM to 5:45 PM</td><td class="cls">Youth Jiu-Jitsu</td></tr>
+        <tr><th scope="row"></th><td>5:30 PM to 6:30 PM</td><td class="cls">Boxing</td></tr>
+        <tr><th scope="row"></th><td>6:00 PM to 7:30 PM</td><td class="cls">BJJ</td></tr>
+        <tr><th scope="row"></th><td>6:45 PM to 7:45 PM</td><td class="cls">Boxing</td></tr>
+        <tr><th scope="row"></th><td>7:30 PM to 8:30 PM</td><td class="cls">MMA</td></tr>
+        <tr><th scope="row">Friday</th><td>10:00 AM to 11:00 AM</td><td class="cls">Boxing</td></tr>
+        <tr class="youth"><th scope="row"></th><td>4:30 PM to 5:30 PM</td><td class="cls">Youth Boxing</td></tr>
+        <tr class="youth"><th scope="row"></th><td>4:45 PM to 5:45 PM</td><td class="cls">Youth Jiu-Jitsu</td></tr>
+        <tr><th scope="row"></th><td>5:30 PM to 6:30 PM</td><td class="cls">Boxing</td></tr>
+        <tr><th scope="row"></th><td>6:00 PM to 7:30 PM</td><td class="cls">BJJ</td></tr>
+        <tr><th scope="row"></th><td>6:45 PM to 7:45 PM</td><td class="cls">Boxing</td></tr>
+        <tr><th scope="row"></th><td>7:00 PM to 8:30 PM</td><td class="cls">Sparring</td></tr>
+        <tr><th scope="row">Saturday</th><td>10:00 AM to 11:00 AM</td><td class="cls">Boxing</td></tr>
+        <tr class="youth"><th scope="row"></th><td>10:00 AM to 11:00 AM</td><td class="cls">Youth Jiu-Jitsu</td></tr>
+        <tr><th scope="row"></th><td>11:00 AM to 12:30 PM</td><td class="cls">BJJ</td></tr>
+      </tbody>
+    </table>
+    <p class="body-text" style="margin-top:16px; font-size:15px;">Times can change around holidays and events. The live schedule above is always current.</p>
+  </div>
+  <p class="body-text" style="max-width: 1000px; margin: 24px auto 0;">Youth classes are marked in green. Parents: see <a href="/kids">kids classes</a> and <a href="/homeschool">homeschool training</a>.</p>
   <div style="text-align: center; margin-top: 48px;">
     <a href="/free-trial" class="btn btn-primary">Book Your Free Trial Class</a>
   </div>
