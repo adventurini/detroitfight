@@ -180,6 +180,22 @@ a:hover { color: #a3c49a; }
 .nav-toggle.open span:nth-child(2) { opacity: 0; }
 .nav-toggle.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -6px); }
 
+/* Nav stays on one line between tablet and desktop widths */
+.nav-links a { white-space: nowrap; }
+@media (max-width: 1100px) and (min-width: 769px) {
+  .nav-inner { padding: 0 20px; }
+  .nav-links { gap: 14px; }
+  .nav-links a { font-size: 14px; letter-spacing: 1.2px; }
+  .nav-cta { padding: 8px 12px !important; }
+}
+@media (max-width: 920px) and (min-width: 769px) {
+  .nav-logo { flex-shrink: 0; }
+  .nav-logo img { height: 26px; }
+  .nav-links { gap: 9px; }
+  .nav-links a { font-size: 12.5px; letter-spacing: .6px; }
+  .nav-cta { padding: 7px 10px !important; }
+}
+
 /* ===== SHARED STYLES ===== */
 .section {
   padding: 100px 30px;
@@ -1115,8 +1131,7 @@ section.section.fade-in[style*="text-align: center"] > img:hover {
   "areaServed": ["Winter Springs", "Oviedo", "Casselberry", "Seminole County", "Orlando"],
   "openingHoursSpecification": [
     { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "06:00", "closes": "20:30" },
-    { "@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "09:30", "closes": "13:00" },
-    { "@type": "OpeningHoursSpecification", "dayOfWeek": "Sunday", "opens": "10:00", "closes": "12:00" }
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "09:30", "closes": "13:00" }
   ],
   "sameAs": [
     "https://www.instagram.com/detroitfightco/",
@@ -1198,7 +1213,7 @@ section.section.fade-in[style*="text-align: center"] > img:hover {
 </script>
 <style>
 /* Nav fits 11 links between tablet and desktop widths */
-@media (max-width: 1200px) and (min-width: 769px) {
+@media (max-width: 1200px) and (min-width: 1101px) {
   .nav-links { gap: 16px; }
   .nav-links a { font-size: 13px; letter-spacing: 1.2px; }
   .nav-cta { padding: 7px 12px !important; }
@@ -1225,6 +1240,7 @@ section.section.fade-in[style*="text-align: center"] > img:hover {
       <li><a href="/coaches">Coaches</a></li>
       <li><a href="/schedule">Schedule</a></li>
       <li><a href="/pricing">Pricing</a></li>
+      <li><a href="/private-lessons">Privates</a></li>
       <li><a href="/the-gym">The Gym</a></li>
       <li><a href="/free-trial" class="nav-cta">Free Trial</a></li>
     </ul>
@@ -1640,7 +1656,7 @@ section.section.fade-in[style*="text-align: center"] > img:hover {
         style="min-height:400px;"
       ></iframe>
     </div>
-    <div class="hours-grid" style="margin-top: 48px;">
+    <div class="hours-grid" style="margin-top: 48px; grid-template-columns: repeat(2, 1fr); max-width: 560px;">
       <div class="hours-item">
         <h4>Mon – Fri</h4>
         <p>6:00 AM – 8:30 PM</p>
@@ -1648,10 +1664,6 @@ section.section.fade-in[style*="text-align: center"] > img:hover {
       <div class="hours-item">
         <h4>Saturday</h4>
         <p>9:30 AM – 1:00 PM</p>
-      </div>
-      <div class="hours-item">
-        <h4>Sunday</h4>
-        <p>10:00 AM – 12:00 PM</p>
       </div>
     </div>
   </div>
@@ -1754,7 +1766,7 @@ section.section.fade-in[style*="text-align: center"] > img:hover {
     </div>
     <div class="gym-info-item">
       <h4>Hours</h4>
-      <p class="body-text">Monday–Friday: 6:00 AM – 8:30 PM<br>Saturday: 9:30 AM – 1:00 PM<br>Sunday: 10:00 AM – 12:00 PM</p>
+      <p class="body-text">Monday–Friday: 6:00 AM – 8:30 PM<br>Saturday: 9:30 AM – 1:00 PM</p>
     </div>
   </div>
 

@@ -154,7 +154,7 @@ fbq('track', 'PageView');
           "name": "How much do kids classes cost?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Kids train on the same plans at the same price as adults, month to month with no contract. Each additional family member gets 10 percent off the monthly rate. See detroitfight.com/pricing."
+            "text": "Kids join on the same membership plans: Month to Month with no contract, or the 3 Month Commit. Each additional member of your household gets 10% off the monthly rate. See detroitfight.com/pricing."
           }
         },
         {
@@ -320,6 +320,22 @@ a:hover { color: #a3c49a; }
 .nav-toggle.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 6px); }
 .nav-toggle.open span:nth-child(2) { opacity: 0; }
 .nav-toggle.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -6px); }
+
+/* Nav stays on one line between tablet and desktop widths */
+.nav-links a { white-space: nowrap; }
+@media (max-width: 1100px) and (min-width: 769px) {
+  .nav-inner { padding: 0 20px; }
+  .nav-links { gap: 14px; }
+  .nav-links a { font-size: 14px; letter-spacing: 1.2px; }
+  .nav-cta { padding: 8px 12px !important; }
+}
+@media (max-width: 920px) and (min-width: 769px) {
+  .nav-logo { flex-shrink: 0; }
+  .nav-logo img { height: 26px; }
+  .nav-links { gap: 9px; }
+  .nav-links a { font-size: 12.5px; letter-spacing: .6px; }
+  .nav-cta { padding: 7px 10px !important; }
+}
 
 /* ===== SHARED STYLES ===== */
 .section {
@@ -1246,7 +1262,7 @@ section.section.fade-in[style*="text-align: center"] > img:hover {
 .class-times { margin-top: 18px; color: var(--white); font-size: 16px; font-weight: 500; line-height: 1.7; }
 .class-times span { color: var(--green); font-family: var(--font-heading); letter-spacing: 1.5px; font-weight: 400; }
 .note-band { max-width: 900px; margin: 0 auto; background: var(--black); border-left: 3px solid var(--green); padding: 32px 36px; }
-@media (max-width: 1200px) and (min-width: 769px) {
+@media (max-width: 1200px) and (min-width: 1101px) {
   .nav-links { gap: 16px; }
   .nav-links a { font-size: 13px; letter-spacing: 1.2px; }
   .nav-cta { padding: 7px 12px !important; }
@@ -1277,6 +1293,7 @@ section.section.fade-in[style*="text-align: center"] > img:hover {
       <li><a href="/coaches">Coaches</a></li>
       <li><a href="/schedule">Schedule</a></li>
       <li><a href="/pricing">Pricing</a></li>
+      <li><a href="/private-lessons">Privates</a></li>
       <li><a href="/the-gym">The Gym</a></li>
       <li><a href="/free-trial" class="nav-cta">Free Trial</a></li>
     </ul>
@@ -1364,7 +1381,7 @@ section.section.fade-in[style*="text-align: center"] > img:hover {
     </div>
     <div class="faq-item">
       <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">How much do kids classes cost?</button>
-      <div class="faq-answer"><div class="faq-answer-inner">Kids train on the same plans at the same price as adults, month to month with no contract. Each additional family member gets 10 percent off the monthly rate. See <a href="/pricing">pricing</a>.</div></div>
+      <div class="faq-answer"><div class="faq-answer-inner">Kids join on the same membership plans: Month to Month with no contract, or the 3 Month Commit. Each additional member of your household gets 10% off the monthly rate. See <a href="/pricing">pricing</a>.</div></div>
     </div>
     <div class="faq-item">
       <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">What should my child bring?</button>
