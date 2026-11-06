@@ -1239,6 +1239,20 @@ h4, .as-h4 { font-size: 24px; letter-spacing: 2px; }
 @media (max-width: 768px) { .gym-gallery-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 480px) { .gym-gallery-grid { grid-template-columns: 1fr; } .gym-gallery-grid .lead img { aspect-ratio: 3 / 2; } }
 
+/* ===== THE SPACE, AREAS, FIND US ===== */
+.gym-space { max-width: 1000px; margin: 56px auto 0; }
+.gym-space h2 { color: var(--green); margin-bottom: 12px; }
+.gym-space .body-text { max-width: none; }
+.areas-list { max-width: 1000px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px 40px; }
+.areas-list .area { font-size: 17px; }
+.areas-list .area strong { color: var(--white); font-weight: 600; }
+.gym-find .map-container { height: 320px; margin: 28px auto 0; }
+.find-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+@media (max-width: 768px) {
+  .areas-list { grid-template-columns: 1fr; }
+  .find-actions .btn { width: 100%; }
+}
+
 /* ===== Accessibility (section 5) ===== */
 main p a:not(.btn):not(.nav-cta), main li a:not(.btn), .faq-answer-inner a { text-decoration: underline; text-underline-offset: 3px; }
 .faq-answer { max-height: none; overflow: visible; transition: none; }
@@ -1391,18 +1405,43 @@ picture source { display: none; }
     </div>
   </div>
 
-  <!-- Google Maps Embed -->
+  <div class="gym-space">
+    <h2 class="as-h4" id="space-heading">The Space</h2>
+    <p class="body-text">Detroit Fight Company is 5,000 square feet built for one purpose: combat sports. The Jiu-Jitsu room has six inch elevated Zebra Athletics floating mats and full wall padding, and every Jiu-Jitsu class, kids included, trains on it. A separate Muay Thai and boxing floor carries cage wall fencing and heavy bags, and there is an 18 foot boxing ring. Men's and women's changing rooms and bathrooms are inside the gym, and parking is free in the Promenade at Tuskawilla lot directly in front of the door. The gym began as Head Coach and owner Sean Goolsby's academy in Jacareí, São Paulo, Brazil. In March 2026 he moved it to Winter Springs, Florida, into the former UFC Gym Winter Springs space. Every program, Gi and No Gi Jiu-Jitsu, boxing, Muay Thai, MMA, kids classes, sparring and open mat, runs under this one roof, six days a week.</p>
+  </div>
+</section>
+
+<section class="section fade-in gym-areas" aria-labelledby="areas-heading">
+  <p class="section-tag">Nearby</p>
+  <h2 id="areas-heading">Areas We Serve</h2>
+  <p class="body-text" style="margin-bottom: 24px;">The gym is in Winter Springs. Members also drive in from across Seminole County and north Orlando.</p>
+  <div class="areas-list">
+    <p class="body-text area"><strong>Oviedo:</strong> members from Oviedo come down Tuskawilla Road or SR 434 for the evening Jiu-Jitsu and boxing classes.</p>
+    <p class="body-text area"><strong>Casselberry:</strong> a short drive east along Red Bug Lake Road.</p>
+    <p class="body-text area"><strong>Winter Park:</strong> families and adults from Winter Park train with us for Jiu-Jitsu, boxing and Muay Thai.</p>
+    <p class="body-text area"><strong>Lake Mary:</strong> competitors from Lake Mary come for the Jiu-Jitsu program and private lessons with Sean.</p>
+    <p class="body-text area"><strong>Longwood:</strong> Longwood members fill the 10:00 AM boxing class and the evening sessions.</p>
+    <p class="body-text area"><strong>Sanford:</strong> worth the drive for a competition focused Jiu-Jitsu room.</p>
+    <p class="body-text area"><strong>Altamonte Springs:</strong> boxing, Muay Thai and Jiu-Jitsu under one roof, a few exits from Altamonte Springs.</p>
+  </div>
+</section>
+
+<section class="section fade-in gym-find" aria-labelledby="find-us-heading">
+  <p class="section-tag">Directions</p>
+  <h2 id="find-us-heading">Find Us</h2>
+  <p class="body-text" style="margin-bottom: 8px;">1425 Tuskawilla Rd #209, Winter Springs, FL 32708, in the Promenade at Tuskawilla.</p>
+  <p class="body-text">Free parking directly in front of the gym.</p>
   <div class="map-container">
     <iframe
       src="https://maps.google.com/maps?q=1425+Tuskawilla+Rd+%23209,+Winter+Springs,+FL+32708&output=embed"
       allowfullscreen=""
       loading="lazy"
       referrerpolicy="no-referrer-when-downgrade"
-      title="Detroit Fight Company location map"
+      title="Map to Detroit Fight Company"
     ></iframe>
   </div>
-
-  <div style="text-align: center; margin-top: 48px;">
+  <div class="find-actions">
+    <a href="https://www.google.com/maps/dir/?api=1&destination=Detroit+Fight+Company&destination_place_id=ChIJ-QiCsMdu54gRm_zyZoDN1Pg" class="btn btn-secondary" target="_blank" rel="noopener">Get directions</a>
     <a href="/free-trial" class="btn btn-primary">Book Your Free Trial Class</a>
   </div>
 </section>
