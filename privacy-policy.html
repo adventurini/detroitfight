@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script>document.documentElement.classList.add('js');</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Privacy Policy | Detroit Fight Company</title>
@@ -263,6 +264,12 @@ h3 { font-size: clamp(18px, 2.5vw, 22px); margin: 28px 0 10px; }
   .nav-links a { font-size: 13px; letter-spacing: 1.2px; }
   .nav-cta { padding: 7px 12px !important; }
 }
+
+/* ===== Accessibility (section 5) ===== */
+main p a:not(.btn):not(.nav-cta), main li a:not(.btn), .faq-answer-inner a { text-decoration: underline; text-underline-offset: 3px; }
+.faq-answer { max-height: none; overflow: visible; transition: none; }
+.faq-answer[hidden] { display: none; }
+.nav-toggle:focus-visible, .faq-question:focus-visible, .btn:focus-visible, a:focus-visible { outline: 2px solid var(--green); outline-offset: 3px; }
 </style>
 </head>
 <body>
@@ -272,7 +279,7 @@ h3 { font-size: clamp(18px, 2.5vw, 22px); margin: 28px 0 10px; }
     <a href="index.html#home" class="nav-logo">
       <img src="images/DFC_Logo.png" alt="Detroit Fight Company logo">
     </a>
-    <button class="nav-toggle" onclick="this.classList.toggle('open'); document.getElementById('navLinks').classList.toggle('open');" aria-label="Menu">
+    <button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="navLinks">
       <span></span><span></span><span></span>
     </button>
     <ul class="nav-links" id="navLinks">
@@ -406,6 +413,33 @@ document.querySelectorAll('.nav-links a').forEach(function (link) {
     document.querySelector('.nav-toggle').classList.remove('open');
   });
 });
+
+// ===== Menu and FAQ controls (section 5) =====
+(function () {
+  const btn = document.querySelector('.nav-toggle');
+  const menu = document.getElementById('navLinks');
+  if (btn && menu) {
+    const setMenu = (open) => {
+      btn.classList.toggle('open', open);
+      menu.classList.toggle('open', open);
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    };
+    btn.addEventListener('click', () => setMenu(!menu.classList.contains('open')));
+    menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenu(false)));
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && menu.classList.contains('open')) { setMenu(false); btn.focus(); }
+    });
+  }
+  document.querySelectorAll('.faq-question[aria-controls]').forEach(q => {
+    q.addEventListener('click', () => {
+      const panel = document.getElementById(q.getAttribute('aria-controls'));
+      const open = q.getAttribute('aria-expanded') !== 'true';
+      q.setAttribute('aria-expanded', open ? 'true' : 'false');
+      q.parentElement.classList.toggle('open', open);
+      panel.hidden = !open;
+    });
+  });
+})();
 </script>
 </body>
 </html>

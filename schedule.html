@@ -1,6 +1,7 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
+<script>document.documentElement.classList.add('js');</script>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-KYCVH9837V"></script>
 <script>
@@ -257,7 +258,7 @@ a:hover { color: #a3c49a; }
   text-transform: uppercase;
   margin-bottom: 12px;
 }
-h1, h2, h3, h4 {
+h1, h2, h3, h4, .as-h4 {
   font-family: var(--font-heading);
   font-weight: 400;
   line-height: 1.05;
@@ -266,7 +267,7 @@ h1, h2, h3, h4 {
 h1 { font-size: clamp(48px, 8vw, 96px); }
 h2 { font-size: clamp(36px, 5vw, 60px); }
 h3 { font-size: clamp(28px, 3.5vw, 40px); }
-h4 { font-size: 24px; letter-spacing: 2px; }
+h4, .as-h4 { font-size: 24px; letter-spacing: 2px; }
 
 .body-text {
   color: var(--grey);
@@ -467,7 +468,7 @@ h4 { font-size: 24px; letter-spacing: 2px; }
   border-left: 3px solid var(--green);
   padding: 36px 30px;
 }
-.credential-card h4 {
+.credential-card h4, .credential-card .as-h4 {
   margin-bottom: 20px;
   font-size: 20px;
   letter-spacing: 2px;
@@ -530,7 +531,7 @@ h4 { font-size: 24px; letter-spacing: 2px; }
   border-color: rgba(125,155,118,.3);
 }
 .sub-program-card .section-tag { margin-bottom: 8px; }
-.sub-program-card h4 { margin-bottom: 14px; }
+.sub-program-card h4, .sub-program-card .as-h4 { margin-bottom: 14px; }
 .sub-program-card .body-text { font-size: 16px; margin-bottom: 14px; }
 
 /* ===== COACH CARDS ===== */
@@ -583,7 +584,7 @@ h4 { font-size: 24px; letter-spacing: 2px; }
   flex-shrink: 0;
   font-size: 11px;
 }
-.coach-placeholder h4 { margin-bottom: 4px; font-size: 20px; }
+.coach-placeholder h4, .coach-placeholder .as-h4 { margin-bottom: 4px; font-size: 20px; }
 .coach-placeholder .body-text { font-size: 15px; margin: 0; }
 
 /* ===== SCHEDULE ===== */
@@ -625,7 +626,7 @@ h4 { font-size: 24px; letter-spacing: 2px; }
 .hours-item {
   text-align: center;
 }
-.hours-item h4 { font-size: 16px; margin-bottom: 6px; letter-spacing: 2px; }
+.hours-item h4, .hours-item .as-h4 { font-size: 16px; margin-bottom: 6px; letter-spacing: 2px; }
 .hours-item p { color: var(--grey); font-size: 15px; font-weight: 300; }
 
 /* ===== PRICING ===== */
@@ -773,7 +774,7 @@ h4 { font-size: 24px; letter-spacing: 2px; }
   max-width: 1000px;
   margin: 0 auto;
 }
-.gym-info-item h4 { margin-bottom: 12px; color: var(--green); }
+.gym-info-item h4, .gym-info-item .as-h4 { margin-bottom: 12px; color: var(--green); }
 .gym-info-item .body-text { font-size: 16px; }
 
 /* ===== MAP EMBED ===== */
@@ -801,7 +802,7 @@ h4 { font-size: 24px; letter-spacing: 2px; }
   margin: 0 auto 60px;
   text-align: center;
 }
-.trial-prop h4 {
+.trial-prop h4, .trial-prop .as-h4 {
   margin-bottom: 10px;
   font-size: 22px;
 }
@@ -1038,14 +1039,18 @@ h4 { font-size: 24px; letter-spacing: 2px; }
 }
 
 /* ===== ANIMATIONS ===== */
-.fade-in {
+.js .fade-in {
   opacity: 0;
-  transform: translateY(30px);
-  transition: opacity .8s ease, transform .8s ease;
+  transform: translateY(16px);
+  transition: opacity .3s ease, transform .3s ease;
 }
-.fade-in.visible {
+.js .fade-in.visible {
   opacity: 1;
   transform: translateY(0);
+}
+@media (prefers-reduced-motion: reduce) {
+  .js .fade-in { opacity: 1; transform: none; transition: none; }
+  html { scroll-behavior: auto; }
 }
 
 /* ===== PAGE SPACER ===== */
@@ -1149,6 +1154,13 @@ h4 { font-size: 24px; letter-spacing: 2px; }
   .week-table th, .week-table td { padding: 10px 8px; font-size: 15px; }
   .note-band { padding: 24px 20px; }
 }
+
+/* ===== Accessibility (section 5) ===== */
+main p a:not(.btn):not(.nav-cta), main li a:not(.btn), .faq-answer-inner a { text-decoration: underline; text-underline-offset: 3px; }
+.faq-answer { max-height: none; overflow: visible; transition: none; }
+.faq-answer[hidden] { display: none; }
+.nav-toggle:focus-visible, .faq-question:focus-visible, .btn:focus-visible, a:focus-visible { outline: 2px solid var(--green); outline-offset: 3px; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
 </style>
 </head>
 <body>
@@ -1159,7 +1171,7 @@ h4 { font-size: 24px; letter-spacing: 2px; }
     <a href="/" class="nav-logo">
       <img src="/images/DFC_Logo.png" alt="Detroit Fight Company logo">
     </a>
-    <button class="nav-toggle" onclick="this.classList.toggle('open'); document.getElementById('navLinks').classList.toggle('open');" aria-label="Menu">
+    <button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="navLinks">
       <span></span><span></span><span></span>
     </button>
     <ul class="nav-links" id="navLinks">
@@ -1177,6 +1189,7 @@ h4 { font-size: 24px; letter-spacing: 2px; }
     </ul>
   </div>
 </nav>
+<main id="main">
 
 <section class="sub-hero">
   <p class="hero-eyebrow">Boxing · Muay Thai · Jiu-Jitsu</p>
@@ -1192,65 +1205,65 @@ h4 { font-size: 24px; letter-spacing: 2px; }
         title="Detroit Fight Company class schedule"
         frameborder="0"
         scrolling="no"
-        loading="eager"
+        loading="lazy"
         referrerpolicy="no-referrer-when-downgrade"
         style="min-height:400px;"
       ></iframe>
     </div>
     <div class="hours-grid" style="margin-top: 48px; grid-template-columns: repeat(2, 1fr); max-width: 560px;">
       <div class="hours-item">
-        <h4>Mon to Fri</h4>
+        <h2 class="as-h4">Mon to Fri</h2>
         <p>6:00 AM to 8:30 PM</p>
       </div>
       <div class="hours-item">
-        <h4>Saturday</h4>
+        <h2 class="as-h4">Saturday</h2>
         <p>9:30 AM to 1:00 PM</p>
       </div>
     </div>
   </div>
+  <h2 id="weekly-schedule" style="margin: 64px 0 24px;">Weekly Class Schedule</h2>
   <div class="week-table-wrap">
-    <table class="week-table">
-      <caption>Weekly Class Schedule</caption>
+    <table class="week-table" aria-labelledby="weekly-schedule">
       <thead><tr><th scope="col">Day</th><th scope="col">Time</th><th scope="col">Class</th></tr></thead>
       <tbody>
         <tr><th scope="row">Monday</th><td>6:00 AM to 7:00 AM</td><td class="cls">BJJ</td></tr>
-        <tr><th scope="row"></th><td>10:00 AM to 11:00 AM</td><td class="cls">Boxing</td></tr>
-        <tr class="youth"><th scope="row"></th><td>4:30 PM to 5:30 PM</td><td class="cls">Youth Boxing</td></tr>
-        <tr class="youth"><th scope="row"></th><td>4:45 PM to 5:45 PM</td><td class="cls">Youth Jiu-Jitsu</td></tr>
-        <tr><th scope="row"></th><td>5:30 PM to 6:30 PM</td><td class="cls">Boxing</td></tr>
-        <tr><th scope="row"></th><td>6:00 PM to 7:30 PM</td><td class="cls">BJJ</td></tr>
-        <tr><th scope="row"></th><td>6:45 PM to 7:45 PM</td><td class="cls">Boxing</td></tr>
-        <tr><th scope="row"></th><td>7:30 PM to 8:30 PM</td><td class="cls">Muay Thai</td></tr>
+        <tr><th scope="row"><span class="sr-only">Monday</span></th><td>10:00 AM to 11:00 AM</td><td class="cls">Boxing</td></tr>
+        <tr class="youth"><th scope="row"><span class="sr-only">Monday</span></th><td>4:30 PM to 5:30 PM</td><td class="cls">Youth Boxing</td></tr>
+        <tr class="youth"><th scope="row"><span class="sr-only">Monday</span></th><td>4:45 PM to 5:45 PM</td><td class="cls">Youth Jiu-Jitsu</td></tr>
+        <tr><th scope="row"><span class="sr-only">Monday</span></th><td>5:30 PM to 6:30 PM</td><td class="cls">Boxing</td></tr>
+        <tr><th scope="row"><span class="sr-only">Monday</span></th><td>6:00 PM to 7:30 PM</td><td class="cls">BJJ</td></tr>
+        <tr><th scope="row"><span class="sr-only">Monday</span></th><td>6:45 PM to 7:45 PM</td><td class="cls">Boxing</td></tr>
+        <tr><th scope="row"><span class="sr-only">Monday</span></th><td>7:30 PM to 8:30 PM</td><td class="cls">Muay Thai</td></tr>
         <tr><th scope="row">Tuesday</th><td>10:00 AM to 11:00 AM</td><td class="cls">Boxing</td></tr>
-        <tr class="youth"><th scope="row"></th><td>4:45 PM to 5:45 PM</td><td class="cls">Youth Jiu-Jitsu</td></tr>
-        <tr><th scope="row"></th><td>5:30 PM to 6:30 PM</td><td class="cls">Boxing</td></tr>
-        <tr><th scope="row"></th><td>6:00 PM to 7:30 PM</td><td class="cls">BJJ</td></tr>
-        <tr><th scope="row"></th><td>6:45 PM to 7:45 PM</td><td class="cls">Boxing</td></tr>
-        <tr><th scope="row"></th><td>7:30 PM to 8:30 PM</td><td class="cls">MMA</td></tr>
+        <tr class="youth"><th scope="row"><span class="sr-only">Tuesday</span></th><td>4:45 PM to 5:45 PM</td><td class="cls">Youth Jiu-Jitsu</td></tr>
+        <tr><th scope="row"><span class="sr-only">Tuesday</span></th><td>5:30 PM to 6:30 PM</td><td class="cls">Boxing</td></tr>
+        <tr><th scope="row"><span class="sr-only">Tuesday</span></th><td>6:00 PM to 7:30 PM</td><td class="cls">BJJ</td></tr>
+        <tr><th scope="row"><span class="sr-only">Tuesday</span></th><td>6:45 PM to 7:45 PM</td><td class="cls">Boxing</td></tr>
+        <tr><th scope="row"><span class="sr-only">Tuesday</span></th><td>7:30 PM to 8:30 PM</td><td class="cls">MMA</td></tr>
         <tr><th scope="row">Wednesday</th><td>6:00 AM to 7:00 AM</td><td class="cls">BJJ</td></tr>
-        <tr><th scope="row"></th><td>10:00 AM to 11:00 AM</td><td class="cls">Boxing</td></tr>
-        <tr class="youth"><th scope="row"></th><td>4:30 PM to 5:30 PM</td><td class="cls">Youth Boxing</td></tr>
-        <tr class="youth"><th scope="row"></th><td>4:45 PM to 5:45 PM</td><td class="cls">Youth Jiu-Jitsu</td></tr>
-        <tr><th scope="row"></th><td>5:30 PM to 6:30 PM</td><td class="cls">Boxing</td></tr>
-        <tr><th scope="row"></th><td>6:00 PM to 7:30 PM</td><td class="cls">BJJ</td></tr>
-        <tr><th scope="row"></th><td>6:45 PM to 7:45 PM</td><td class="cls">Boxing</td></tr>
-        <tr><th scope="row"></th><td>7:30 PM to 8:30 PM</td><td class="cls">Muay Thai</td></tr>
+        <tr><th scope="row"><span class="sr-only">Wednesday</span></th><td>10:00 AM to 11:00 AM</td><td class="cls">Boxing</td></tr>
+        <tr class="youth"><th scope="row"><span class="sr-only">Wednesday</span></th><td>4:30 PM to 5:30 PM</td><td class="cls">Youth Boxing</td></tr>
+        <tr class="youth"><th scope="row"><span class="sr-only">Wednesday</span></th><td>4:45 PM to 5:45 PM</td><td class="cls">Youth Jiu-Jitsu</td></tr>
+        <tr><th scope="row"><span class="sr-only">Wednesday</span></th><td>5:30 PM to 6:30 PM</td><td class="cls">Boxing</td></tr>
+        <tr><th scope="row"><span class="sr-only">Wednesday</span></th><td>6:00 PM to 7:30 PM</td><td class="cls">BJJ</td></tr>
+        <tr><th scope="row"><span class="sr-only">Wednesday</span></th><td>6:45 PM to 7:45 PM</td><td class="cls">Boxing</td></tr>
+        <tr><th scope="row"><span class="sr-only">Wednesday</span></th><td>7:30 PM to 8:30 PM</td><td class="cls">Muay Thai</td></tr>
         <tr><th scope="row">Thursday</th><td>10:00 AM to 11:00 AM</td><td class="cls">Boxing</td></tr>
-        <tr class="youth"><th scope="row"></th><td>4:45 PM to 5:45 PM</td><td class="cls">Youth Jiu-Jitsu</td></tr>
-        <tr><th scope="row"></th><td>5:30 PM to 6:30 PM</td><td class="cls">Boxing</td></tr>
-        <tr><th scope="row"></th><td>6:00 PM to 7:30 PM</td><td class="cls">BJJ</td></tr>
-        <tr><th scope="row"></th><td>6:45 PM to 7:45 PM</td><td class="cls">Boxing</td></tr>
-        <tr><th scope="row"></th><td>7:30 PM to 8:30 PM</td><td class="cls">MMA</td></tr>
+        <tr class="youth"><th scope="row"><span class="sr-only">Thursday</span></th><td>4:45 PM to 5:45 PM</td><td class="cls">Youth Jiu-Jitsu</td></tr>
+        <tr><th scope="row"><span class="sr-only">Thursday</span></th><td>5:30 PM to 6:30 PM</td><td class="cls">Boxing</td></tr>
+        <tr><th scope="row"><span class="sr-only">Thursday</span></th><td>6:00 PM to 7:30 PM</td><td class="cls">BJJ</td></tr>
+        <tr><th scope="row"><span class="sr-only">Thursday</span></th><td>6:45 PM to 7:45 PM</td><td class="cls">Boxing</td></tr>
+        <tr><th scope="row"><span class="sr-only">Thursday</span></th><td>7:30 PM to 8:30 PM</td><td class="cls">MMA</td></tr>
         <tr><th scope="row">Friday</th><td>10:00 AM to 11:00 AM</td><td class="cls">Boxing</td></tr>
-        <tr class="youth"><th scope="row"></th><td>4:30 PM to 5:30 PM</td><td class="cls">Youth Boxing</td></tr>
-        <tr class="youth"><th scope="row"></th><td>4:45 PM to 5:45 PM</td><td class="cls">Youth Jiu-Jitsu</td></tr>
-        <tr><th scope="row"></th><td>5:30 PM to 6:30 PM</td><td class="cls">Boxing</td></tr>
-        <tr><th scope="row"></th><td>6:00 PM to 7:30 PM</td><td class="cls">BJJ</td></tr>
-        <tr><th scope="row"></th><td>6:45 PM to 7:45 PM</td><td class="cls">Boxing</td></tr>
-        <tr><th scope="row"></th><td>7:00 PM to 8:30 PM</td><td class="cls">Sparring</td></tr>
+        <tr class="youth"><th scope="row"><span class="sr-only">Friday</span></th><td>4:30 PM to 5:30 PM</td><td class="cls">Youth Boxing</td></tr>
+        <tr class="youth"><th scope="row"><span class="sr-only">Friday</span></th><td>4:45 PM to 5:45 PM</td><td class="cls">Youth Jiu-Jitsu</td></tr>
+        <tr><th scope="row"><span class="sr-only">Friday</span></th><td>5:30 PM to 6:30 PM</td><td class="cls">Boxing</td></tr>
+        <tr><th scope="row"><span class="sr-only">Friday</span></th><td>6:00 PM to 7:30 PM</td><td class="cls">BJJ</td></tr>
+        <tr><th scope="row"><span class="sr-only">Friday</span></th><td>6:45 PM to 7:45 PM</td><td class="cls">Boxing</td></tr>
+        <tr><th scope="row"><span class="sr-only">Friday</span></th><td>7:00 PM to 8:30 PM</td><td class="cls">Sparring</td></tr>
         <tr><th scope="row">Saturday</th><td>10:00 AM to 11:00 AM</td><td class="cls">Boxing</td></tr>
-        <tr class="youth"><th scope="row"></th><td>10:00 AM to 11:00 AM</td><td class="cls">Youth Jiu-Jitsu</td></tr>
-        <tr><th scope="row"></th><td>11:00 AM to 12:30 PM</td><td class="cls">BJJ</td></tr>
+        <tr class="youth"><th scope="row"><span class="sr-only">Saturday</span></th><td>10:00 AM to 11:00 AM</td><td class="cls">Youth Jiu-Jitsu</td></tr>
+        <tr><th scope="row"><span class="sr-only">Saturday</span></th><td>11:00 AM to 12:30 PM</td><td class="cls">BJJ</td></tr>
       </tbody>
     </table>
     <p class="body-text" style="margin-top:16px; font-size:15px;">Times can change around holidays and events. The live schedule above is always current.</p>
@@ -1267,6 +1280,8 @@ h4 { font-size: 24px; letter-spacing: 2px; }
 <!-- ═══════════════════════════════════════════════════
 <div class="page-spacer"></div>
 
+
+</main>
 
 <!-- ===== FOOTER ===== -->
 <footer class="footer">
@@ -1333,13 +1348,6 @@ const observer = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-// Close mobile nav on link click
-document.querySelectorAll('.nav-links a').forEach(link => {
-  link.addEventListener('click', () => {
-    document.getElementById('navLinks').classList.remove('open');
-    document.querySelector('.nav-toggle').classList.remove('open');
-  });
-});
 
 // Active nav highlighting
 const sections = document.querySelectorAll('section[id]');
@@ -1363,6 +1371,33 @@ document.getElementById('dfc-booking-form')?.addEventListener('submit', function
   e.preventDefault();
   alert('Thanks. We text or call within one business day to set your class time.');
 });
+
+// ===== Menu and FAQ controls (section 5) =====
+(function () {
+  const btn = document.querySelector('.nav-toggle');
+  const menu = document.getElementById('navLinks');
+  if (btn && menu) {
+    const setMenu = (open) => {
+      btn.classList.toggle('open', open);
+      menu.classList.toggle('open', open);
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    };
+    btn.addEventListener('click', () => setMenu(!menu.classList.contains('open')));
+    menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenu(false)));
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && menu.classList.contains('open')) { setMenu(false); btn.focus(); }
+    });
+  }
+  document.querySelectorAll('.faq-question[aria-controls]').forEach(q => {
+    q.addEventListener('click', () => {
+      const panel = document.getElementById(q.getAttribute('aria-controls'));
+      const open = q.getAttribute('aria-expanded') !== 'true';
+      q.setAttribute('aria-expanded', open ? 'true' : 'false');
+      q.parentElement.classList.toggle('open', open);
+      panel.hidden = !open;
+    });
+  });
+})();
 </script>
 </body>
 </html>

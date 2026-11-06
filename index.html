@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script>document.documentElement.classList.add('js');</script>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-KYCVH9837V"></script>
 <script>
@@ -553,14 +554,18 @@ h3 { font-size: clamp(28px, 3.5vw, 40px); }
   font-size: 12px;
   font-weight: 300;
 }
-.fade-in {
+.js .fade-in {
   opacity: 0;
-  transform: translateY(30px);
-  transition: opacity .8s ease, transform .8s ease;
+  transform: translateY(16px);
+  transition: opacity .3s ease, transform .3s ease;
 }
-.fade-in.visible {
+.js .fade-in.visible {
   opacity: 1;
   transform: translateY(0);
+}
+@media (prefers-reduced-motion: reduce) {
+  .js .fade-in { opacity: 1; transform: none; transition: none; }
+  html { scroll-behavior: auto; }
 }
 @media (max-width: 960px) {
 .programs-grid,
@@ -748,6 +753,12 @@ h3 { font-size: clamp(28px, 3.5vw, 40px); }
 .nav-links a { font-size: 13px; letter-spacing: 1.2px; }
 .nav-cta { padding: 7px 12px !important; }
 }
+
+/* ===== Accessibility (section 5) ===== */
+main p a:not(.btn):not(.nav-cta), main li a:not(.btn), .faq-answer-inner a { text-decoration: underline; text-underline-offset: 3px; }
+.faq-answer { max-height: none; overflow: visible; transition: none; }
+.faq-answer[hidden] { display: none; }
+.nav-toggle:focus-visible, .faq-question:focus-visible, .btn:focus-visible, a:focus-visible { outline: 2px solid var(--green); outline-offset: 3px; }
 </style>
 </head>
 <body>
@@ -758,7 +769,7 @@ h3 { font-size: clamp(28px, 3.5vw, 40px); }
     <a href="#home" class="nav-logo">
       <img src="images/DFC_Logo.png" alt="Detroit Fight Company logo">
     </a>
-    <button class="nav-toggle" onclick="this.classList.toggle('open'); document.getElementById('navLinks').classList.toggle('open');" aria-label="Menu">
+    <button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="navLinks">
       <span></span><span></span><span></span>
     </button>
     <ul class="nav-links" id="navLinks">
@@ -776,6 +787,7 @@ h3 { font-size: clamp(28px, 3.5vw, 40px); }
     </ul>
   </div>
 </nav>
+<main id="main">
 
 
 <section id="home" class="hero">
@@ -957,28 +969,28 @@ h3 { font-size: clamp(28px, 3.5vw, 40px); }
   </div>
   <div class="faq-section">
     <div class="faq-item">
-      <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">Do I need experience to start?</button>
-      <div class="faq-answer"><div class="faq-answer-inner">None at all. Every class is structured to accommodate beginners alongside experienced athletes. Your coaches will scale the instruction to your level from your very first session.</div></div>
+      <button class="faq-question" type="button" id="faq-q-1" aria-expanded="false" aria-controls="faq-a-1">Do I need experience to start?</button>
+      <div class="faq-answer" id="faq-a-1" role="region" aria-labelledby="faq-q-1" hidden><div class="faq-answer-inner">None at all. Every class is structured to accommodate beginners alongside experienced athletes. Your coaches will scale the instruction to your level from your very first session.</div></div>
     </div>
     <div class="faq-item">
-      <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">What should I bring to my first class?</button>
-      <div class="faq-answer"><div class="faq-answer-inner">Comfortable workout clothes, a water bottle and a towel. For Jiu-Jitsu, a rash guard or fitted athletic top works best. We have loaner gear available while you get started.</div></div>
+      <button class="faq-question" type="button" id="faq-q-2" aria-expanded="false" aria-controls="faq-a-2">What should I bring to my first class?</button>
+      <div class="faq-answer" id="faq-a-2" role="region" aria-labelledby="faq-q-2" hidden><div class="faq-answer-inner">Comfortable workout clothes, a water bottle and a towel. For Jiu-Jitsu, a rash guard or fitted athletic top works best. We have loaner gear available while you get started.</div></div>
     </div>
     <div class="faq-item">
-      <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">What's included in the membership?</button>
-      <div class="faq-answer"><div class="faq-answer-inner">Every class Detroit Fight Company offers: Gi and No Gi Jiu-Jitsu, boxing, Muay Thai, MMA, kids classes and open mat. New members on Month to Month receive the Enrollment Kit, a Detroit Fight Company gi and rash guard, for a one time $150. The kit is included with the 3 Month Commit.</div></div>
+      <button class="faq-question" type="button" id="faq-q-3" aria-expanded="false" aria-controls="faq-a-3">What's included in the membership?</button>
+      <div class="faq-answer" id="faq-a-3" role="region" aria-labelledby="faq-q-3" hidden><div class="faq-answer-inner">Every class Detroit Fight Company offers: Gi and No Gi Jiu-Jitsu, boxing, Muay Thai, MMA, kids classes and open mat. New members on Month to Month receive the Enrollment Kit, a Detroit Fight Company gi and rash guard, for a one time $150. The kit is included with the 3 Month Commit.</div></div>
     </div>
     <div class="faq-item">
-      <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">Are there classes for kids?</button>
-      <div class="faq-answer"><div class="faq-answer-inner">Yes. Kids No Gi Jiu-Jitsu and Youth Boxing are for ages 5 to 14. See kids classes and homeschool training on their own pages.</div></div>
+      <button class="faq-question" type="button" id="faq-q-4" aria-expanded="false" aria-controls="faq-a-4">Are there classes for kids?</button>
+      <div class="faq-answer" id="faq-a-4" role="region" aria-labelledby="faq-q-4" hidden><div class="faq-answer-inner">Yes. Kids No Gi Jiu-Jitsu and Youth Boxing are for ages 5 to 14. See kids classes and homeschool training on their own pages.</div></div>
     </div>
     <div class="faq-item">
-      <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">Where are you located?</button>
-      <div class="faq-answer"><div class="faq-answer-inner">1425 Tuskawilla Road, Suite 209, Winter Springs, FL 32708, in the Promenade at Tuskawilla. Easy access from Oviedo, Casselberry and greater Seminole County.</div></div>
+      <button class="faq-question" type="button" id="faq-q-5" aria-expanded="false" aria-controls="faq-a-5">Where are you located?</button>
+      <div class="faq-answer" id="faq-a-5" role="region" aria-labelledby="faq-q-5" hidden><div class="faq-answer-inner">1425 Tuskawilla Road, Suite 209, Winter Springs, FL 32708, in the Promenade at Tuskawilla. Easy access from Oviedo, Casselberry and greater Seminole County.</div></div>
     </div>
     <div class="faq-item">
-      <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">How do I cancel my membership?</button>
-      <div class="faq-answer"><div class="faq-answer-inner">Month to Month has no contract. Email sean@detroitfight.com with 30 days written notice before your next billing date. The 3 Month Commit is paid in full at signup, covers three months, and then continues month to month until you cancel with the same 30 days notice.</div></div>
+      <button class="faq-question" type="button" id="faq-q-6" aria-expanded="false" aria-controls="faq-a-6">How do I cancel my membership?</button>
+      <div class="faq-answer" id="faq-a-6" role="region" aria-labelledby="faq-q-6" hidden><div class="faq-answer-inner">Month to Month has no contract. Email sean@detroitfight.com with 30 days written notice before your next billing date. The 3 Month Commit is paid in full at signup, covers three months, and then continues month to month until you cancel with the same 30 days notice.</div></div>
     </div>
   </div>
   <p class="body-text" style="text-align: center; margin: 32px auto 0;"><a href="/kids">Kids classes</a> &nbsp;·&nbsp; <a href="/homeschool">Homeschool training</a> &nbsp;·&nbsp; <a href="/the-gym">Visit the gym</a></p>
@@ -991,6 +1003,8 @@ h3 { font-size: clamp(28px, 3.5vw, 40px); }
   <a href="/free-trial" class="btn btn-primary">Book Your Free Trial Class</a>
 </section>
 
+
+</main>
 
 <!-- ===== FOOTER ===== -->
 <footer class="footer">
@@ -1054,14 +1068,34 @@ const observer = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-// Close mobile nav on link click
-document.querySelectorAll('.nav-links a').forEach(link => {
-  link.addEventListener('click', () => {
-    document.getElementById('navLinks').classList.remove('open');
-    document.querySelector('.nav-toggle').classList.remove('open');
-  });
-});
 
+
+// ===== Menu and FAQ controls (section 5) =====
+(function () {
+  const btn = document.querySelector('.nav-toggle');
+  const menu = document.getElementById('navLinks');
+  if (btn && menu) {
+    const setMenu = (open) => {
+      btn.classList.toggle('open', open);
+      menu.classList.toggle('open', open);
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    };
+    btn.addEventListener('click', () => setMenu(!menu.classList.contains('open')));
+    menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenu(false)));
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && menu.classList.contains('open')) { setMenu(false); btn.focus(); }
+    });
+  }
+  document.querySelectorAll('.faq-question[aria-controls]').forEach(q => {
+    q.addEventListener('click', () => {
+      const panel = document.getElementById(q.getAttribute('aria-controls'));
+      const open = q.getAttribute('aria-expanded') !== 'true';
+      q.setAttribute('aria-expanded', open ? 'true' : 'false');
+      q.parentElement.classList.toggle('open', open);
+      panel.hidden = !open;
+    });
+  });
+})();
 </script>
 
 </body>

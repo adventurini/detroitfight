@@ -1,6 +1,7 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
+<script>document.documentElement.classList.add('js');</script>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-KYCVH9837V"></script>
 <script>
@@ -1063,14 +1064,18 @@ section.section.fade-in[style*="text-align: center"] > img:hover {
 }
 
 /* ===== ANIMATIONS ===== */
-.fade-in {
+.js .fade-in {
   opacity: 0;
-  transform: translateY(30px);
-  transition: opacity .8s ease, transform .8s ease;
+  transform: translateY(16px);
+  transition: opacity .3s ease, transform .3s ease;
 }
-.fade-in.visible {
+.js .fade-in.visible {
   opacity: 1;
   transform: translateY(0);
+}
+@media (prefers-reduced-motion: reduce) {
+  .js .fade-in { opacity: 1; transform: none; transition: none; }
+  html { scroll-behavior: auto; }
 }
 
 /* ===== PAGE SPACER ===== */
@@ -1155,6 +1160,12 @@ section.section.fade-in[style*="text-align: center"] > img:hover {
   .nav-links a { font-size: 13px; letter-spacing: 1.2px; }
   .nav-cta { padding: 7px 12px !important; }
 }
+
+/* ===== Accessibility (section 5) ===== */
+main p a:not(.btn):not(.nav-cta), main li a:not(.btn), .faq-answer-inner a { text-decoration: underline; text-underline-offset: 3px; }
+.faq-answer { max-height: none; overflow: visible; transition: none; }
+.faq-answer[hidden] { display: none; }
+.nav-toggle:focus-visible, .faq-question:focus-visible, .btn:focus-visible, a:focus-visible { outline: 2px solid var(--green); outline-offset: 3px; }
 </style>
 </head>
 <body>
@@ -1165,7 +1176,7 @@ section.section.fade-in[style*="text-align: center"] > img:hover {
     <a href="/" class="nav-logo">
       <img src="/images/DFC_Logo.png" alt="Detroit Fight Company logo">
     </a>
-    <button class="nav-toggle" onclick="this.classList.toggle('open'); document.getElementById('navLinks').classList.toggle('open');" aria-label="Menu">
+    <button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="navLinks">
       <span></span><span></span><span></span>
     </button>
     <ul class="nav-links" id="navLinks">
@@ -1183,6 +1194,7 @@ section.section.fade-in[style*="text-align: center"] > img:hover {
     </ul>
   </div>
 </nav>
+<main id="main">
 
 <section class="sub-hero fade-in">
   <p class="hero-eyebrow">The Art of Eight Limbs.</p>
@@ -1243,6 +1255,8 @@ section.section.fade-in[style*="text-align: center"] > img:hover {
 <div class="page-spacer"></div>
 
 
+</main>
+
 <!-- ===== FOOTER ===== -->
 <footer class="footer">
   <div class="footer-inner">
@@ -1295,7 +1309,6 @@ section.section.fade-in[style*="text-align: center"] > img:hover {
 
 
 <!-- ===== SCRIPTS ===== -->
-<script src="https://app.gymdesk.com/js/widgets.js"></script>
 <script>
 // Scroll animations
 const observer = new IntersectionObserver((entries) => {
@@ -1308,13 +1321,6 @@ const observer = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-// Close mobile nav on link click
-document.querySelectorAll('.nav-links a').forEach(link => {
-  link.addEventListener('click', () => {
-    document.getElementById('navLinks').classList.remove('open');
-    document.querySelector('.nav-toggle').classList.remove('open');
-  });
-});
 
 // Active nav highlighting
 const sections = document.querySelectorAll('section[id]');
@@ -1338,6 +1344,33 @@ document.getElementById('dfc-booking-form')?.addEventListener('submit', function
   e.preventDefault();
   alert('Thanks. We text or call within one business day to set your class time.');
 });
+
+// ===== Menu and FAQ controls (section 5) =====
+(function () {
+  const btn = document.querySelector('.nav-toggle');
+  const menu = document.getElementById('navLinks');
+  if (btn && menu) {
+    const setMenu = (open) => {
+      btn.classList.toggle('open', open);
+      menu.classList.toggle('open', open);
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    };
+    btn.addEventListener('click', () => setMenu(!menu.classList.contains('open')));
+    menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenu(false)));
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && menu.classList.contains('open')) { setMenu(false); btn.focus(); }
+    });
+  }
+  document.querySelectorAll('.faq-question[aria-controls]').forEach(q => {
+    q.addEventListener('click', () => {
+      const panel = document.getElementById(q.getAttribute('aria-controls'));
+      const open = q.getAttribute('aria-expanded') !== 'true';
+      q.setAttribute('aria-expanded', open ? 'true' : 'false');
+      q.parentElement.classList.toggle('open', open);
+      panel.hidden = !open;
+    });
+  });
+})();
 </script>
 </body>
 </html>

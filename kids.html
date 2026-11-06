@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script>document.documentElement.classList.add('js');</script>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-KYCVH9837V"></script>
 <script>
@@ -354,7 +355,7 @@ a:hover { color: #a3c49a; }
   text-transform: uppercase;
   margin-bottom: 12px;
 }
-h1, h2, h3, h4 {
+h1, h2, h3, h4, .as-h4 {
   font-family: var(--font-heading);
   font-weight: 400;
   line-height: 1.05;
@@ -363,7 +364,7 @@ h1, h2, h3, h4 {
 h1 { font-size: clamp(48px, 8vw, 96px); }
 h2 { font-size: clamp(36px, 5vw, 60px); }
 h3 { font-size: clamp(28px, 3.5vw, 40px); }
-h4 { font-size: 24px; letter-spacing: 2px; }
+h4, .as-h4 { font-size: 24px; letter-spacing: 2px; }
 
 .body-text {
   color: var(--grey);
@@ -564,7 +565,7 @@ h4 { font-size: 24px; letter-spacing: 2px; }
   border-left: 3px solid var(--green);
   padding: 36px 30px;
 }
-.credential-card h4 {
+.credential-card h4, .credential-card .as-h4 {
   margin-bottom: 20px;
   font-size: 20px;
   letter-spacing: 2px;
@@ -627,7 +628,7 @@ h4 { font-size: 24px; letter-spacing: 2px; }
   border-color: rgba(125,155,118,.3);
 }
 .sub-program-card .section-tag { margin-bottom: 8px; }
-.sub-program-card h4 { margin-bottom: 14px; }
+.sub-program-card h4, .sub-program-card .as-h4 { margin-bottom: 14px; }
 .sub-program-card .body-text { font-size: 16px; margin-bottom: 14px; }
 
 /* ===== COACH CARDS ===== */
@@ -680,7 +681,7 @@ h4 { font-size: 24px; letter-spacing: 2px; }
   flex-shrink: 0;
   font-size: 11px;
 }
-.coach-placeholder h4 { margin-bottom: 4px; font-size: 20px; }
+.coach-placeholder h4, .coach-placeholder .as-h4 { margin-bottom: 4px; font-size: 20px; }
 .coach-placeholder .body-text { font-size: 15px; margin: 0; }
 
 /* === Coach photo grayscale treatment === */
@@ -747,7 +748,7 @@ section.section.fade-in[style*="text-align: center"] > img:hover {
 .hours-item {
   text-align: center;
 }
-.hours-item h4 { font-size: 16px; margin-bottom: 6px; letter-spacing: 2px; }
+.hours-item h4, .hours-item .as-h4 { font-size: 16px; margin-bottom: 6px; letter-spacing: 2px; }
 .hours-item p { color: var(--grey); font-size: 15px; font-weight: 300; }
 
 /* ===== PRICING ===== */
@@ -895,7 +896,7 @@ section.section.fade-in[style*="text-align: center"] > img:hover {
   max-width: 1000px;
   margin: 0 auto;
 }
-.gym-info-item h4 { margin-bottom: 12px; color: var(--green); }
+.gym-info-item h4, .gym-info-item .as-h4 { margin-bottom: 12px; color: var(--green); }
 .gym-info-item .body-text { font-size: 16px; }
 
 /* ===== MAP EMBED ===== */
@@ -923,7 +924,7 @@ section.section.fade-in[style*="text-align: center"] > img:hover {
   margin: 0 auto 60px;
   text-align: center;
 }
-.trial-prop h4 {
+.trial-prop h4, .trial-prop .as-h4 {
   margin-bottom: 10px;
   font-size: 22px;
 }
@@ -1160,14 +1161,18 @@ section.section.fade-in[style*="text-align: center"] > img:hover {
 }
 
 /* ===== ANIMATIONS ===== */
-.fade-in {
+.js .fade-in {
   opacity: 0;
-  transform: translateY(30px);
-  transition: opacity .8s ease, transform .8s ease;
+  transform: translateY(16px);
+  transition: opacity .3s ease, transform .3s ease;
 }
-.fade-in.visible {
+.js .fade-in.visible {
   opacity: 1;
   transform: translateY(0);
+}
+@media (prefers-reduced-motion: reduce) {
+  .js .fade-in { opacity: 1; transform: none; transition: none; }
+  html { scroll-behavior: auto; }
 }
 
 /* ===== PAGE SPACER ===== */
@@ -1271,6 +1276,12 @@ section.section.fade-in[style*="text-align: center"] > img:hover {
   .week-table th, .week-table td { padding: 10px 8px; font-size: 15px; }
   .note-band { padding: 24px 20px; }
 }
+
+/* ===== Accessibility (section 5) ===== */
+main p a:not(.btn):not(.nav-cta), main li a:not(.btn), .faq-answer-inner a { text-decoration: underline; text-underline-offset: 3px; }
+.faq-answer { max-height: none; overflow: visible; transition: none; }
+.faq-answer[hidden] { display: none; }
+.nav-toggle:focus-visible, .faq-question:focus-visible, .btn:focus-visible, a:focus-visible { outline: 2px solid var(--green); outline-offset: 3px; }
 </style>
 </head>
 <body>
@@ -1281,7 +1292,7 @@ section.section.fade-in[style*="text-align: center"] > img:hover {
     <a href="/" class="nav-logo">
       <img src="/images/DFC_Logo.png" alt="Detroit Fight Company logo">
     </a>
-    <button class="nav-toggle" onclick="this.classList.toggle('open'); document.getElementById('navLinks').classList.toggle('open');" aria-label="Menu">
+    <button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="navLinks">
       <span></span><span></span><span></span>
     </button>
     <ul class="nav-links" id="navLinks">
@@ -1299,6 +1310,7 @@ section.section.fade-in[style*="text-align: center"] > img:hover {
     </ul>
   </div>
 </nav>
+<main id="main">
 
 <section class="sub-hero fade-in">
   <p class="hero-eyebrow">Youth Jiu-Jitsu &amp; Youth Boxing</p>
@@ -1319,14 +1331,14 @@ section.section.fade-in[style*="text-align: center"] > img:hover {
   <div class="sub-programs fade-in">
     <div class="sub-program-card">
       <p class="section-tag">Youth Jiu-Jitsu</p>
-      <h4>Kids No Gi Jiu-Jitsu</h4>
+      <h3 class="as-h4">Kids No Gi Jiu-Jitsu</h3>
       <p class="body-text">Grappling without the kimono. Kids learn how to escape bad positions, control a partner without striking, and stay calm under pressure. Structured, age appropriate instruction with a real curriculum.</p>
       <p class="class-times"><span>Ages</span> 5 to 14<br><span>Mon to Fri</span> 4:45 PM to 5:45 PM<br><span>Saturday</span> 10:00 AM to 11:00 AM</p>
       <p style="margin-top: 20px;"><a href="/free-trial?program=kids">Book a free Kids Jiu-Jitsu class</a></p>
     </div>
     <div class="sub-program-card">
       <p class="section-tag">Youth Boxing</p>
-      <h4>Youth Boxing</h4>
+      <h3 class="as-h4">Youth Boxing</h3>
       <p class="body-text">Stance, footwork, defense, and clean combinations on pads and bags, wrapped in conditioning. Kids burn energy, sharpen focus, and learn the fundamentals the right way.</p>
       <p class="class-times"><span>Ages</span> 5 to 14<br><span>Mon, Wed, Fri</span> 4:30 PM to 5:30 PM</p>
       <p style="margin-top: 20px;"><a href="/free-trial?program=youth-boxing">Book a free Youth Boxing class</a></p>
@@ -1353,12 +1365,12 @@ section.section.fade-in[style*="text-align: center"] > img:hover {
   <div class="sub-programs fade-in">
     <div class="sub-program-card">
       <p class="section-tag">Safety</p>
-      <h4>Coached Start to Finish</h4>
+      <h3 class="as-h4">Coached Start to Finish</h3>
       <p class="body-text">Coaches run every round and match drills to each kid&apos;s age, size, and experience. Training happens on Zebra Athletics mats in our 5,000 sq ft facility, with free parking at the Promenade at Tuskawilla.</p>
     </div>
     <div class="sub-program-card">
       <p class="section-tag">First Class</p>
-      <h4>What to Bring</h4>
+      <h3 class="as-h4">What to Bring</h3>
       <p class="body-text">Comfortable athletic clothes with no zippers or buttons, a water bottle, and sandals for walking off the mat. Trimmed nails help everyone. We have loaner gear available while your child gets started.</p>
     </div>
   </div>
@@ -1369,40 +1381,40 @@ section.section.fade-in[style*="text-align: center"] > img:hover {
   <h2 style="margin-bottom: 28px; text-align:center;">Questions Parents Ask</h2>
   <div class="faq-section">
     <div class="faq-item">
-      <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">How old does my child need to be?</button>
-      <div class="faq-answer"><div class="faq-answer-inner">Kids No Gi Jiu-Jitsu and Youth Boxing are for ages 5 to 14. Not sure your child is ready? Call or text 407-696-6969 and ask.</div></div>
+      <button class="faq-question" type="button" id="faq-q-1" aria-expanded="false" aria-controls="faq-a-1">How old does my child need to be?</button>
+      <div class="faq-answer" id="faq-a-1" role="region" aria-labelledby="faq-q-1" hidden><div class="faq-answer-inner">Kids No Gi Jiu-Jitsu and Youth Boxing are for ages 5 to 14. Not sure your child is ready? Call or text 407-696-6969 and ask.</div></div>
     </div>
     <div class="faq-item">
-      <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">Does my child need any experience?</button>
-      <div class="faq-answer"><div class="faq-answer-inner">No. Most kids start with zero experience. Every class is coached, so beginners learn the basics step by step alongside kids who have been training longer.</div></div>
+      <button class="faq-question" type="button" id="faq-q-2" aria-expanded="false" aria-controls="faq-a-2">Does my child need any experience?</button>
+      <div class="faq-answer" id="faq-a-2" role="region" aria-labelledby="faq-q-2" hidden><div class="faq-answer-inner">No. Most kids start with zero experience. Every class is coached, so beginners learn the basics step by step alongside kids who have been training longer.</div></div>
     </div>
     <div class="faq-item">
-      <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">Is the first class free?</button>
-      <div class="faq-answer"><div class="faq-answer-inner">Yes. Your child&apos;s first class is free. Book it on our <a href="/free-trial?program=kids">free trial page</a>, show up a few minutes early, and we will take it from there.</div></div>
+      <button class="faq-question" type="button" id="faq-q-3" aria-expanded="false" aria-controls="faq-a-3">Is the first class free?</button>
+      <div class="faq-answer" id="faq-a-3" role="region" aria-labelledby="faq-q-3" hidden><div class="faq-answer-inner">Yes. Your child&apos;s first class is free. Book it on our <a href="/free-trial?program=kids">free trial page</a>, show up a few minutes early, and we will take it from there.</div></div>
     </div>
     <div class="faq-item">
-      <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">How much do kids classes cost?</button>
-      <div class="faq-answer"><div class="faq-answer-inner">Kids join on the same membership plans. See <a href="/pricing">pricing</a>.</div></div>
+      <button class="faq-question" type="button" id="faq-q-4" aria-expanded="false" aria-controls="faq-a-4">How much do kids classes cost?</button>
+      <div class="faq-answer" id="faq-a-4" role="region" aria-labelledby="faq-q-4" hidden><div class="faq-answer-inner">Kids join on the same membership plans. See <a href="/pricing">pricing</a>.</div></div>
     </div>
     <div class="faq-item">
-      <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">Do kids spar?</button>
-      <div class="faq-answer"><div class="faq-answer-inner">Yes. Every student at Detroit Fight Company spars, including kids. Coaches run every round and match partners by age, size and experience.</div></div>
+      <button class="faq-question" type="button" id="faq-q-5" aria-expanded="false" aria-controls="faq-a-5">Do kids spar?</button>
+      <div class="faq-answer" id="faq-a-5" role="region" aria-labelledby="faq-q-5" hidden><div class="faq-answer-inner">Yes. Every student at Detroit Fight Company spars, including kids. Coaches run every round and match partners by age, size and experience.</div></div>
     </div>
     <div class="faq-item">
-      <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">How do kids earn belts?</button>
-      <div class="faq-answer"><div class="faq-answer-inner">Promotions are performance based. Kids earn the next belt by what they can do on the mat, not by attendance.</div></div>
+      <button class="faq-question" type="button" id="faq-q-6" aria-expanded="false" aria-controls="faq-a-6">How do kids earn belts?</button>
+      <div class="faq-answer" id="faq-a-6" role="region" aria-labelledby="faq-q-6" hidden><div class="faq-answer-inner">Promotions are performance based. Kids earn the next belt by what they can do on the mat, not by attendance.</div></div>
     </div>
     <div class="faq-item">
-      <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">What should my child bring?</button>
-      <div class="faq-answer"><div class="faq-answer-inner">Comfortable athletic clothes with no zippers or buttons, a water bottle, and sandals for walking off the mat. We have loaner gear available while they get started.</div></div>
+      <button class="faq-question" type="button" id="faq-q-7" aria-expanded="false" aria-controls="faq-a-7">What should my child bring?</button>
+      <div class="faq-answer" id="faq-a-7" role="region" aria-labelledby="faq-q-7" hidden><div class="faq-answer-inner">Comfortable athletic clothes with no zippers or buttons, a water bottle, and sandals for walking off the mat. We have loaner gear available while they get started.</div></div>
     </div>
     <div class="faq-item">
-      <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">Can my child do both jiu-jitsu and boxing?</button>
-      <div class="faq-answer"><div class="faq-answer-inner">Yes. The two youth classes overlap on Monday, Wednesday, and Friday, so a child can box one day and train jiu-jitsu on another. Ask us when you book.</div></div>
+      <button class="faq-question" type="button" id="faq-q-8" aria-expanded="false" aria-controls="faq-a-8">Can my child do both jiu-jitsu and boxing?</button>
+      <div class="faq-answer" id="faq-a-8" role="region" aria-labelledby="faq-q-8" hidden><div class="faq-answer-inner">Yes. The two youth classes overlap on Monday, Wednesday, and Friday, so a child can box one day and train jiu-jitsu on another. Ask us when you book.</div></div>
     </div>
     <div class="faq-item">
-      <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">Do you have options for homeschool families?</button>
-      <div class="faq-answer"><div class="faq-answer-inner">Yes. See our <a href="/homeschool">homeschool page</a> for daytime training and group visits.</div></div>
+      <button class="faq-question" type="button" id="faq-q-9" aria-expanded="false" aria-controls="faq-a-9">Do you have options for homeschool families?</button>
+      <div class="faq-answer" id="faq-a-9" role="region" aria-labelledby="faq-q-9" hidden><div class="faq-answer-inner">Yes. See our <a href="/homeschool">homeschool page</a> for daytime training and group visits.</div></div>
     </div>
   </div>
   <div style="text-align: center; margin-top: 48px;">
@@ -1411,6 +1423,8 @@ section.section.fade-in[style*="text-align: center"] > img:hover {
 </section>
 
 <div class="page-spacer"></div>
+
+</main>
 
 <!-- ===== FOOTER ===== -->
 <footer class="footer">
@@ -1464,7 +1478,6 @@ section.section.fade-in[style*="text-align: center"] > img:hover {
 
 
 <!-- ===== SCRIPTS ===== -->
-<script src="https://app.gymdesk.com/js/widgets.js"></script>
 <script>
 // Scroll animations
 const observer = new IntersectionObserver((entries) => {
@@ -1477,13 +1490,6 @@ const observer = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-// Close mobile nav on link click
-document.querySelectorAll('.nav-links a').forEach(link => {
-  link.addEventListener('click', () => {
-    document.getElementById('navLinks').classList.remove('open');
-    document.querySelector('.nav-toggle').classList.remove('open');
-  });
-});
 
 // Active nav highlighting
 const sections = document.querySelectorAll('section[id]');
@@ -1507,6 +1513,33 @@ document.getElementById('dfc-booking-form')?.addEventListener('submit', function
   e.preventDefault();
   alert('Thanks. We text or call within one business day to set your class time.');
 });
+
+// ===== Menu and FAQ controls (section 5) =====
+(function () {
+  const btn = document.querySelector('.nav-toggle');
+  const menu = document.getElementById('navLinks');
+  if (btn && menu) {
+    const setMenu = (open) => {
+      btn.classList.toggle('open', open);
+      menu.classList.toggle('open', open);
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    };
+    btn.addEventListener('click', () => setMenu(!menu.classList.contains('open')));
+    menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenu(false)));
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && menu.classList.contains('open')) { setMenu(false); btn.focus(); }
+    });
+  }
+  document.querySelectorAll('.faq-question[aria-controls]').forEach(q => {
+    q.addEventListener('click', () => {
+      const panel = document.getElementById(q.getAttribute('aria-controls'));
+      const open = q.getAttribute('aria-expanded') !== 'true';
+      q.setAttribute('aria-expanded', open ? 'true' : 'false');
+      q.parentElement.classList.toggle('open', open);
+      panel.hidden = !open;
+    });
+  });
+})();
 </script>
 </body>
 </html>

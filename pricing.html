@@ -1,6 +1,7 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
+<script>document.documentElement.classList.add('js');</script>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-KYCVH9837V"></script>
 <script>
@@ -315,7 +316,7 @@ a:hover { color: #a3c49a; }
   text-transform: uppercase;
   margin-bottom: 12px;
 }
-h1, h2, h3, h4 {
+h1, h2, h3, h4, .as-h3 {
   font-family: var(--font-heading);
   font-weight: 400;
   line-height: 1.05;
@@ -323,7 +324,7 @@ h1, h2, h3, h4 {
 }
 h1 { font-size: clamp(48px, 8vw, 96px); }
 h2 { font-size: clamp(36px, 5vw, 60px); }
-h3 { font-size: clamp(28px, 3.5vw, 40px); }
+h3, .as-h3 { font-size: clamp(28px, 3.5vw, 40px); }
 h4 { font-size: 24px; letter-spacing: 2px; }
 
 .body-text {
@@ -490,7 +491,7 @@ h4 { font-size: 24px; letter-spacing: 2px; }
 .program-card:hover::before {
   transform: scaleX(1);
 }
-.program-card h3 {
+.program-card h3, .program-card .as-h3 {
   margin-bottom: 16px;
   font-size: 28px;
 }
@@ -615,7 +616,7 @@ h4 { font-size: 24px; letter-spacing: 2px; }
   font-weight: 300;
   border: 1px solid rgba(125,155,118,.15);
 }
-.coach-info h3 { margin-bottom: 8px; }
+.coach-info h3, .coach-info .as-h3 { margin-bottom: 8px; }
 .coach-info .discipline-tag {
   font-family: var(--font-heading);
   font-size: 13px;
@@ -722,7 +723,7 @@ h4 { font-size: 24px; letter-spacing: 2px; }
   letter-spacing: 3px;
   padding: 6px 20px;
 }
-.price-card h3 { margin-bottom: 8px; font-size: 28px; }
+.price-card h3, .price-card .as-h3 { margin-bottom: 8px; font-size: 28px; }
 .price-amount {
   font-family: var(--font-heading);
   font-size: 56px;
@@ -911,14 +912,18 @@ h4 { font-size: 24px; letter-spacing: 2px; }
 }
 
 /* ===== ANIMATIONS ===== */
-.fade-in {
+.js .fade-in {
   opacity: 0;
-  transform: translateY(30px);
-  transition: opacity .8s ease, transform .8s ease;
+  transform: translateY(16px);
+  transition: opacity .3s ease, transform .3s ease;
 }
-.fade-in.visible {
+.js .fade-in.visible {
   opacity: 1;
   transform: translateY(0);
+}
+@media (prefers-reduced-motion: reduce) {
+  .js .fade-in { opacity: 1; transform: none; transition: none; }
+  html { scroll-behavior: auto; }
 }
 
 /* ===== PAGE SPACER ===== */
@@ -1040,7 +1045,7 @@ h4 { font-size: 24px; letter-spacing: 2px; }
   text-transform: uppercase;
   margin-bottom: 6px;
 }
-.card h3 { font-size: 36px; margin-bottom: 18px; }
+.card h3, .card .as-h3 { font-size: 36px; margin-bottom: 18px; }
 .card .btn { width: 100%; }
 .narrow { max-width: 900px; margin: 0 auto; }
 .fine-print {
@@ -1096,10 +1101,10 @@ h4 { font-size: 24px; letter-spacing: 2px; }
   border-top: 2px solid var(--green);
   padding: 28px 36px;
 }
-.family h3 { font-size: 32px; margin-bottom: 6px; }
+.family h3, .family .as-h3 { font-size: 32px; margin-bottom: 6px; }
 .family .body-text { max-width: none; }
 .plans-note { max-width: 900px; margin: 32px auto 0; text-align: center; }
-.faq-plain h3 { font-size: 28px; margin-bottom: 8px; }
+.faq-plain h3, .faq-plain .as-h3 { font-size: 28px; margin-bottom: 8px; }
 .faq-plain .body-text { margin-bottom: 36px; max-width: none; }
 .faq-plain .fine-print { margin-top: 16px; }
 
@@ -1112,6 +1117,12 @@ h4 { font-size: 24px; letter-spacing: 2px; }
   .family { padding: 24px; }
 }
 .plan-first { color: var(--grey); font-size: 15px; line-height: 1.5; margin: -8px 0 20px; }
+
+/* ===== Accessibility (section 5) ===== */
+main p a:not(.btn):not(.nav-cta), main li a:not(.btn), .faq-answer-inner a { text-decoration: underline; text-underline-offset: 3px; }
+.faq-answer { max-height: none; overflow: visible; transition: none; }
+.faq-answer[hidden] { display: none; }
+.nav-toggle:focus-visible, .faq-question:focus-visible, .btn:focus-visible, a:focus-visible { outline: 2px solid var(--green); outline-offset: 3px; }
 </style>
 </head>
 <body>
@@ -1122,7 +1133,7 @@ h4 { font-size: 24px; letter-spacing: 2px; }
     <a href="/" class="nav-logo">
       <img src="/images/DFC_Logo.png" alt="Detroit Fight Company logo">
     </a>
-    <button class="nav-toggle" onclick="this.classList.toggle('open'); document.getElementById('navLinks').classList.toggle('open');" aria-label="Menu">
+    <button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="navLinks">
       <span></span><span></span><span></span>
     </button>
     <ul class="nav-links" id="navLinks">
@@ -1140,6 +1151,7 @@ h4 { font-size: 24px; letter-spacing: 2px; }
     </ul>
   </div>
 </nav>
+<main id="main">
 
 <section class="sub-hero fade-in">
   <p class="hero-eyebrow">Simple pricing. Every program.</p>
@@ -1151,7 +1163,7 @@ h4 { font-size: 24px; letter-spacing: 2px; }
   <div class="plans fade-in">
     <div class="card">
       <p class="card-tag">All Access</p>
-      <h3>Month to Month</h3>
+      <h2 class="as-h3">Month to Month</h2>
       <div class="plan-price"><span class="cur">$</span>199</div>
       <p class="plan-per">per month</p>
       <ul class="plan-list">
@@ -1167,7 +1179,7 @@ h4 { font-size: 24px; letter-spacing: 2px; }
     <div class="card featured">
       <span class="card-ribbon">Best Value</span>
       <p class="card-tag">All Access</p>
-      <h3>3 Month Commit</h3>
+      <h2 class="as-h3">3 Month Commit</h2>
       <div class="plan-price"><span class="cur">$</span>599</div>
       <p class="plan-per">three months, paid at signup</p>
       <ul class="plan-list">
@@ -1180,7 +1192,7 @@ h4 { font-size: 24px; letter-spacing: 2px; }
     </div>
   </div>
   <div class="family fade-in">
-    <h3>Family</h3>
+    <h2 class="as-h3">Family</h2>
     <p class="body-text">10% off the monthly rate for each additional member of your household, on any plan.</p>
   </div>
   <p class="body-text plans-note">Want one on one time with the Head Coach? <a href="/private-lessons">See private lesson rates</a>.</p>
@@ -1217,6 +1229,8 @@ h4 { font-size: 24px; letter-spacing: 2px; }
 
 <div class="page-spacer"></div>
 
+
+</main>
 
 <!-- ===== FOOTER ===== -->
 <footer class="footer">
@@ -1267,7 +1281,6 @@ h4 { font-size: 24px; letter-spacing: 2px; }
 </footer>
 
 <!-- ===== SCRIPTS ===== -->
-<script src="https://app.gymdesk.com/js/widgets.js"></script>
 <script>
 // Scroll animations
 const observer = new IntersectionObserver((entries) => {
@@ -1280,13 +1293,6 @@ const observer = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-// Close mobile nav on link click
-document.querySelectorAll('.nav-links a').forEach(link => {
-  link.addEventListener('click', () => {
-    document.getElementById('navLinks').classList.remove('open');
-    document.querySelector('.nav-toggle').classList.remove('open');
-  });
-});
 
 // Active nav highlighting
 const sections = document.querySelectorAll('section[id]');
@@ -1306,6 +1312,33 @@ window.addEventListener('scroll', () => {
   });
 });
 
+
+// ===== Menu and FAQ controls (section 5) =====
+(function () {
+  const btn = document.querySelector('.nav-toggle');
+  const menu = document.getElementById('navLinks');
+  if (btn && menu) {
+    const setMenu = (open) => {
+      btn.classList.toggle('open', open);
+      menu.classList.toggle('open', open);
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    };
+    btn.addEventListener('click', () => setMenu(!menu.classList.contains('open')));
+    menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenu(false)));
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && menu.classList.contains('open')) { setMenu(false); btn.focus(); }
+    });
+  }
+  document.querySelectorAll('.faq-question[aria-controls]').forEach(q => {
+    q.addEventListener('click', () => {
+      const panel = document.getElementById(q.getAttribute('aria-controls'));
+      const open = q.getAttribute('aria-expanded') !== 'true';
+      q.setAttribute('aria-expanded', open ? 'true' : 'false');
+      q.parentElement.classList.toggle('open', open);
+      panel.hidden = !open;
+    });
+  });
+})();
 </script>
 </body>
 </html>
