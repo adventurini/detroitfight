@@ -865,7 +865,7 @@ h4 { font-size: 24px; letter-spacing: 2px; }
   border-color: var(--green);
 }
 .dfc-input::placeholder {
-  color: #555;
+  color: #A3A3A3;
 }
 .dfc-select {
   appearance: none;
@@ -898,8 +898,9 @@ h4 { font-size: 24px; letter-spacing: 2px; }
   background: #8faf88;
 }
 .dfc-notice {
-  font-size: 12px;
-  color: #555;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--grey);
   letter-spacing: 0.5px;
   margin-top: 16px;
   text-align: center;
@@ -1116,6 +1117,8 @@ h4 { font-size: 24px; letter-spacing: 2px; }
   .nav-links a { font-size: 13px; letter-spacing: 1.2px; }
   .nav-cta { padding: 7px 12px !important; }
 }
+.dfc-notice a { color: var(--grey); text-decoration: underline; }
+#youth-fields[hidden] { display: none; }
 </style>
 </head>
 <body>
@@ -1203,13 +1206,27 @@ h4 { font-size: 24px; letter-spacing: 2px; }
               <label for="program" class="dfc-label">Class Interest *</label>
               <select id="program" name="class_interest" required class="dfc-input dfc-select">
                 <option value="" disabled selected>Select a program</option>
-                <option value="boxing">Boxing &amp; Conditioning</option>
-                <option value="muay_thai">Muay Thai</option>
-                <option value="bjj_gi">Brazilian Jiu-Jitsu (Gi)</option>
-                <option value="bjj_nogi">Brazilian Jiu-Jitsu (No-Gi)</option>
-                <option value="unsure">All Programs — Not Sure Yet</option>
+                <option value="boxing" data-param="boxing">Boxing &amp; Conditioning</option>
+                <option value="muay_thai" data-param="muay-thai">Muay Thai</option>
+                <option value="bjj_gi" data-param="gi">Jiu-Jitsu (Gi)</option>
+                <option value="bjj_nogi" data-param="no-gi">Jiu-Jitsu (No Gi)</option>
+                <option value="kids_bjj" data-param="kids" data-youth="1">Kids Jiu-Jitsu</option>
+                <option value="youth_boxing" data-param="youth-boxing" data-youth="1">Youth Boxing</option>
+                <option value="homeschool" data-param="homeschool" data-youth="1">Homeschool or Daytime</option>
+                <option value="unsure">Not Sure Yet</option>
               </select>
             </div>
+            <div class="dfc-row" id="youth-fields" hidden>
+              <div class="dfc-field">
+                <label for="guardian" class="dfc-label">Parent or guardian name *</label>
+                <input type="text" id="guardian" name="guardian_name" placeholder="Parent or guardian name" class="dfc-input" autocomplete="name"/>
+              </div>
+              <div class="dfc-field">
+                <label for="student-age" class="dfc-label">Student age *</label>
+                <input type="number" id="student-age" name="student_age" min="3" max="18" inputmode="numeric" placeholder="Age" class="dfc-input"/>
+              </div>
+            </div>
+            <input type="hidden" name="source_page" id="source-page" value="direct">
             <div class="dfc-field">
               <label for="level" class="dfc-label">Experience Level *</label>
               <select id="level" name="experience_level" required class="dfc-input dfc-select">
@@ -1217,12 +1234,12 @@ h4 { font-size: 24px; letter-spacing: 2px; }
                 <option value="beginner">Complete Beginner</option>
                 <option value="some">Some Experience</option>
                 <option value="intermediate">Intermediate</option>
-                <option value="advanced">Advanced / Competitor</option>
+                <option value="advanced">Advanced or Competitor</option>
               </select>
             </div>
             <div class="dfc-field">
               <label for="notes" class="dfc-label">Anything else we should know?</label>
-              <textarea id="notes" name="notes" placeholder="Questions, injuries, scheduling preferences..." class="dfc-input dfc-textarea"></textarea>
+              <textarea id="notes" name="notes" placeholder="Questions, injuries, scheduling preferences" class="dfc-input dfc-textarea"></textarea>
             </div>
 
             <!-- SMS Consent — A2P 10DLC (GHL). Optional checkboxes; do not pre-check. -->
@@ -1238,7 +1255,8 @@ h4 { font-size: 24px; letter-spacing: 2px; }
             </div>
 
             <button type="submit" class="dfc-btn">Request My Free Class</button>
-            <p class="dfc-notice">By submitting this form you agree to be contacted by Detroit Fight Company. We never share your information.</p>
+            <p class="dfc-notice">Requesting a class is not a confirmed booking yet. We text or call within one business day to set your class time.</p>
+            <p class="dfc-notice">By submitting this form you agree to be contacted by Detroit Fight Company about your request. We use your information only to respond to you and to run the gym, as described in our <a href="/privacy-policy">Privacy Policy</a>.</p>
             <p class="form-policy-links">
               See also our <a href="/privacy-policy">Privacy Policy</a> and
               <a href="/terms">Terms &amp; Conditions</a>.
@@ -1361,6 +1379,67 @@ window.addEventListener('scroll', () => {
 });
 
 
+
+// ===== Trial form: program context =====
+// Builds the webhook payload. Kept as a plain function so it can be tested without submitting.
+function buildPayload(form) {
+  const fd = new FormData(form);
+  const val = (k) => (fd.get(k) || '').toString().trim();
+  const sel = form.querySelector('select[name="class_interest"]');
+  const opt = sel && sel.selectedIndex > 0 ? sel.options[sel.selectedIndex] : null;
+  const youth = !!(opt && opt.dataset.youth);
+  return {
+    firstName: val('first_name'),
+    lastName: val('last_name'),
+    email: val('email'),
+    phone: val('phone'),
+    classInterest: val('class_interest'),
+    program: opt ? opt.textContent.trim() : '',
+    experienceLevel: val('experience_level'),
+    notes: val('notes'),
+    guardian_name: youth ? val('guardian_name') : '',
+    student_age: youth ? val('student_age') : '',
+    smsMarketingConsent: form.querySelector('input[name="sms_marketing_consent"]')?.checked || false,
+    smsTransactionalConsent: form.querySelector('input[name="sms_transactional_consent"]')?.checked || false,
+    source: 'detroitfight.com',
+    source_page: val('source_page') || 'direct',
+    sourcePage: window.location.pathname,
+    submittedAt: new Date().toISOString()
+  };
+}
+
+(function () {
+  const form = document.getElementById('dfc-booking-form');
+  if (!form) return;
+  const sel = form.querySelector('select[name="class_interest"]');
+  const box = document.getElementById('youth-fields');
+  const guardian = document.getElementById('guardian');
+  const age = document.getElementById('student-age');
+  function syncYouth() {
+    const opt = sel.selectedIndex > 0 ? sel.options[sel.selectedIndex] : null;
+    const on = !!(opt && opt.dataset.youth);
+    box.hidden = !on;
+    guardian.required = on;
+    age.required = on;
+    if (!on) { guardian.value = ''; age.value = ''; }
+  }
+  sel.addEventListener('change', syncYouth);
+  const param = new URLSearchParams(window.location.search).get('program');
+  if (param) {
+    const match = [...sel.options].find(o => o.dataset.param === param);
+    if (match) sel.value = match.value;
+  }
+  // source_page: referrer path on this domain, else the program parameter, else direct
+  let source = 'direct';
+  try {
+    const ref = document.referrer ? new URL(document.referrer) : null;
+    if (ref && ref.hostname.replace(/^www\./, '') === window.location.hostname.replace(/^www\./, '')) source = ref.pathname;
+    else if (param) source = param;
+  } catch (e) { if (param) source = param; }
+  document.getElementById('source-page').value = source;
+  syncYouth();
+})();
+
 document.getElementById('dfc-booking-form')?.addEventListener('submit', async function (e) {
   e.preventDefault();
   const form = e.currentTarget;
@@ -1379,21 +1458,7 @@ document.getElementById('dfc-booking-form')?.addEventListener('submit', async fu
     submitBtn.textContent = 'Sending...';
   }
 
-  const fd = new FormData(form);
-  const payload = {
-    firstName: (fd.get('first_name') || '').toString().trim(),
-    lastName: (fd.get('last_name') || '').toString().trim(),
-    email: (fd.get('email') || '').toString().trim(),
-    phone: (fd.get('phone') || '').toString().trim(),
-    classInterest: (fd.get('class_interest') || '').toString().trim(),
-    experienceLevel: (fd.get('experience_level') || '').toString().trim(),
-    notes: (fd.get('notes') || '').toString().trim(),
-    smsMarketingConsent: form.querySelector('input[name="sms_marketing_consent"]')?.checked || false,
-    smsTransactionalConsent: form.querySelector('input[name="sms_transactional_consent"]')?.checked || false,
-    source: 'detroitfight.com',
-    sourcePage: window.location.pathname,
-    submittedAt: new Date().toISOString()
-  };
+  const payload = buildPayload(form);
 
   try {
     const res = await fetch('https://services.leadconnectorhq.com/hooks/5UfUHR9jXCKSbSjObvIS/webhook-trigger/3cc0ca60-ed9c-4e19-8b26-0d70e3ef6a5f', {
@@ -1409,22 +1474,24 @@ document.getElementById('dfc-booking-form')?.addEventListener('submit', async fu
       gtag('event', 'generate_lead', {
         event_category: 'form',
         event_label: 'free_trial_request',
-        value: 1
+        value: 1,
+        program: payload.program,
+        source_page: payload.source_page
       });
     }
 
     const wrap = document.getElementById('dfc-form-wrap');
     if (wrap) {
       wrap.innerHTML = '<h2 id="dfc-form-heading" style="text-align:center;">You\'re In.</h2>' +
-        '<p class="dfc-sub" style="text-align:center;">We\'ll be in touch shortly.</p>' +
+        '<p class="dfc-sub" style="text-align:center;">We text or call within one business day.</p>' +
         '<hr class="dfc-divider">' +
         '<p style="text-align:center; color:#999; font-size:15px; line-height:1.6; max-width:480px; margin:0 auto;">' +
-        'Someone from Detroit Fight Company will reach out to confirm your free trial class. ' +
-        'In the meantime, you can find us at 1425 Tuskawilla Rd #209, Winter Springs, FL — or call us at ' +
+        'Requesting a class is not a confirmed booking yet. We text or call within one business day to set your class time. ' +
+        'You can find us at 1425 Tuskawilla Rd #209, Winter Springs, FL, or call us at ' +
         '<a href="tel:4076966969" style="color:#7D9B76;">(407) 696-6969</a>.' +
         '</p>';
     } else {
-      alert('Thanks — someone from DFC will reach out shortly.');
+      alert('Thanks. We text or call within one business day to set your class time.');
     }
   } catch (err) {
     console.error('Form submission failed:', err);
