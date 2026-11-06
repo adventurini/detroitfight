@@ -1,6 +1,7 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
+<script>document.documentElement.classList.add('js');</script>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-KYCVH9837V"></script>
 <script>
@@ -43,7 +44,7 @@ gtag('config', 'G-KYCVH9837V');
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;700&display=swap" rel="stylesheet">
 
 <!-- =====================================================
      META PIXEL — Replace YOUR_PIXEL_ID with actual ID
@@ -98,9 +99,35 @@ fbq('track', 'PageView');
         "addressCountry": "US"
       },
       "sameAs": [
-        "https://www.instagram.com/detroitfightco/",
         "https://www.facebook.com/DFCwintersprings/",
-        "https://www.tiktok.com/@detroit.fight.co"
+        "https://www.tiktok.com/@detroit.fight.co",
+        "https://www.instagram.com/detroitfightco/",
+        "https://www.instagram.com/detroitfightcompany/"
+      ],
+      "image": [
+        "https://detroitfight.com/images/gym/boxing-ring-01.jpg",
+        "https://detroitfight.com/images/gym/zebra-mat-area-01.jpg",
+        "https://detroitfight.com/images/gym/hero-shadow-boxing-01.jpg"
+      ],
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday"
+          ],
+          "opens": "06:00",
+          "closes": "20:30"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "Saturday",
+          "opens": "09:30",
+          "closes": "13:00"
+        }
       ]
     },
     {
@@ -308,7 +335,7 @@ a:hover { color: #a3c49a; }
   text-transform: uppercase;
   margin-bottom: 12px;
 }
-h1, h2, h3, h4 {
+h1, h2, h3, h4, .as-h3 {
   font-family: var(--font-heading);
   font-weight: 400;
   line-height: 1.05;
@@ -316,7 +343,7 @@ h1, h2, h3, h4 {
 }
 h1 { font-size: clamp(48px, 8vw, 96px); }
 h2 { font-size: clamp(36px, 5vw, 60px); }
-h3 { font-size: clamp(28px, 3.5vw, 40px); }
+h3, .as-h3 { font-size: clamp(28px, 3.5vw, 40px); }
 h4 { font-size: 24px; letter-spacing: 2px; }
 
 .body-text {
@@ -483,7 +510,7 @@ h4 { font-size: 24px; letter-spacing: 2px; }
 .program-card:hover::before {
   transform: scaleX(1);
 }
-.program-card h3 {
+.program-card h3, .program-card .as-h3 {
   margin-bottom: 16px;
   font-size: 28px;
 }
@@ -608,7 +635,7 @@ h4 { font-size: 24px; letter-spacing: 2px; }
   font-weight: 300;
   border: 1px solid rgba(125,155,118,.15);
 }
-.coach-info h3 { margin-bottom: 8px; }
+.coach-info h3, .coach-info .as-h3 { margin-bottom: 8px; }
 .coach-info .discipline-tag {
   font-family: var(--font-heading);
   font-size: 13px;
@@ -715,7 +742,7 @@ h4 { font-size: 24px; letter-spacing: 2px; }
   letter-spacing: 3px;
   padding: 6px 20px;
 }
-.price-card h3 { margin-bottom: 8px; font-size: 28px; }
+.price-card h3, .price-card .as-h3 { margin-bottom: 8px; font-size: 28px; }
 .price-amount {
   font-family: var(--font-heading);
   font-size: 56px;
@@ -904,14 +931,18 @@ h4 { font-size: 24px; letter-spacing: 2px; }
 }
 
 /* ===== ANIMATIONS ===== */
-.fade-in {
+.js .fade-in {
   opacity: 0;
-  transform: translateY(30px);
-  transition: opacity .8s ease, transform .8s ease;
+  transform: translateY(16px);
+  transition: opacity .3s ease, transform .3s ease;
 }
-.fade-in.visible {
+.js .fade-in.visible {
   opacity: 1;
   transform: translateY(0);
+}
+@media (prefers-reduced-motion: reduce) {
+  .js .fade-in { opacity: 1; transform: none; transition: none; }
+  html { scroll-behavior: auto; }
 }
 
 /* ===== PAGE SPACER ===== */
@@ -1033,7 +1064,7 @@ h4 { font-size: 24px; letter-spacing: 2px; }
   text-transform: uppercase;
   margin-bottom: 6px;
 }
-.card h3 { font-size: 36px; margin-bottom: 18px; }
+.card h3, .card .as-h3 { font-size: 36px; margin-bottom: 18px; }
 .card .btn { width: 100%; }
 .narrow { max-width: 900px; margin: 0 auto; }
 .fine-print {
@@ -1089,7 +1120,7 @@ h4 { font-size: 24px; letter-spacing: 2px; }
   gap: 24px;
   align-items: stretch;
 }
-.card h3 { margin-bottom: 4px; }
+.card h3, .card .as-h3 { margin-bottom: 4px; }
 .rate-sub { color: var(--light-grey); font-size: 15px; font-weight: 300; margin-bottom: 20px; }
 .rate-row {
   display: flex;
@@ -1111,7 +1142,7 @@ h4 { font-size: 24px; letter-spacing: 2px; }
   margin-top: 48px;
 }
 .use { border-top: 2px solid var(--green); padding-top: 24px; }
-.use h3 { font-size: 28px; margin-bottom: 10px; }
+.use h3, .use .as-h3 { font-size: 28px; margin-bottom: 10px; }
 .use p { color: var(--grey); font-weight: 300; }
 .booking-wrap { padding: 0 30px 100px; }
 .booking-box {
@@ -1145,6 +1176,14 @@ h4 { font-size: 24px; letter-spacing: 2px; }
   .booking-box { padding: 32px 24px; }
   .rate-price { font-size: 38px; }
 }
+
+/* ===== Accessibility (section 5) ===== */
+main p a:not(.btn):not(.nav-cta), main li a:not(.btn), .faq-answer-inner a { text-decoration: underline; text-underline-offset: 3px; }
+.faq-answer { max-height: none; overflow: visible; transition: none; }
+.faq-answer[hidden] { display: none; }
+.nav-toggle:focus-visible, .faq-question:focus-visible, .btn:focus-visible, a:focus-visible { outline: 2px solid var(--green); outline-offset: 3px; }
+picture:not([class]) { display: contents; }
+picture source { display: none; }
 </style>
 </head>
 <body>
@@ -1153,9 +1192,9 @@ h4 { font-size: 24px; letter-spacing: 2px; }
 <nav class="nav">
   <div class="nav-inner">
     <a href="/" class="nav-logo">
-      <img src="/images/DFC_Logo.png" alt="Detroit Fight Company logo">
+      <img width="1024" height="212" src="/images/DFC_Logo.png" alt="Detroit Fight Company logo">
     </a>
-    <button class="nav-toggle" onclick="this.classList.toggle('open'); document.getElementById('navLinks').classList.toggle('open');" aria-label="Menu">
+    <button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="navLinks">
       <span></span><span></span><span></span>
     </button>
     <ul class="nav-links" id="navLinks">
@@ -1173,6 +1212,7 @@ h4 { font-size: 24px; letter-spacing: 2px; }
     </ul>
   </div>
 </nav>
+<main id="main">
 
 <section class="pl-hero">
   <div class="pl-hero-inner fade-in">
@@ -1187,7 +1227,7 @@ h4 { font-size: 24px; letter-spacing: 2px; }
       </div>
     </div>
     <div class="pl-photo">
-      <img src="/images/Sean_profile_IBJJF_BW.jpeg" alt="Sean Goolsby at IBJJF competition" width="1600" height="1068">
+      <picture><source type="image/webp" sizes="(max-width: 768px) 100vw, 420px" srcset="/images/Sean_profile_IBJJF_BW-480.webp 480w, /images/Sean_profile_IBJJF_BW-960.webp 960w, /images/Sean_profile_IBJJF_BW-1440.webp 1440w"><img decoding="async" loading="lazy" src="/images/Sean_profile_IBJJF_BW.jpeg" alt="Sean Goolsby at IBJJF competition" width="1600" height="1068"></picture>
     </div>
   </div>
 </section>
@@ -1196,7 +1236,7 @@ h4 { font-size: 24px; letter-spacing: 2px; }
   <div class="rates fade-in">
     <div class="card featured">
       <span class="card-ribbon left">Member Rate</span>
-      <h3>Members</h3>
+      <h2 class="as-h3">Members</h2>
       <p class="rate-sub">Active Detroit Fight Company membership</p>
       <div class="rate-rows">
         <div class="rate-row">
@@ -1212,11 +1252,12 @@ h4 { font-size: 24px; letter-spacing: 2px; }
           <div class="rate-price green">$1,000</div>
         </div>
       </div>
+      <p class="rate-note"><strong>Each session is 60 minutes.</strong></p>
       <p class="rate-note">Packs are paid in full when you buy them and scheduled one session at a time with Sean.</p>
       <a href="sms:+15866016551" class="btn btn-primary">Text Sean to Book</a>
     </div>
     <div class="card">
-      <h3>Guests</h3>
+      <h2 class="as-h3">Guests</h2>
       <p class="rate-sub">Not a member yet</p>
       <div class="rate-rows">
         <div class="rate-row">
@@ -1232,6 +1273,7 @@ h4 { font-size: 24px; letter-spacing: 2px; }
           <div class="rate-price">$1,250</div>
         </div>
       </div>
+      <p class="rate-note"><strong>Each session is 60 minutes.</strong></p>
       <p class="rate-note">No membership required. <a href="/pricing">Join on any plan</a> and your rate drops to the member rate from your next session, up to $250 less on a 10 pack.</p>
       <a href="sms:+15866016551" class="btn btn-secondary">Text Sean to Book</a>
     </div>
@@ -1272,11 +1314,13 @@ h4 { font-size: 24px; letter-spacing: 2px; }
       <a href="/free-trial" class="btn btn-outline-green">Try a Class First</a>
     </div>
   </div>
-  <p class="fine-print pl-terms"><strong>Terms.</strong> The member rate requires an active Detroit Fight Company membership in good standing. Session packs are paid in full at purchase, are for one named student, and are not redeemable for cash. Sessions are scheduled directly with Sean and are subject to his coaching, competition and travel calendar.</p>
+  <p class="fine-print pl-terms"><strong>Terms.</strong> The member rate requires an active Detroit Fight Company membership in good standing. Session packs are paid in full at purchase, are for one named student, and are not redeemable for cash. Sessions are scheduled directly with Sean and are subject to his coaching, competition and travel calendar. Packs are valid six months from purchase. 24 hours notice to reschedule, otherwise the session counts as used.</p>
 </section>
 
 <div class="page-spacer"></div>
 
+
+</main>
 
 <!-- ===== FOOTER ===== -->
 <footer class="footer">
@@ -1301,8 +1345,15 @@ h4 { font-size: 24px; letter-spacing: 2px; }
     </div>
     <div class="footer-right">
       <div class="footer-social" style="display:flex; gap:20px; align-items:center; margin: 16px 0; justify-content:flex-end;">
-        <a href="https://www.instagram.com/detroitfightco/" target="_blank" rel="noopener" aria-label="Follow Detroit Fight Company on Instagram" style="color: var(--green); transition: color 0.2s;">
+        <a href="https://www.instagram.com/detroitfightco/" target="_blank" rel="noopener" aria-label="Follow Detroit Fight Company on Instagram at detroitfightco" style="color: var(--green); transition: color 0.2s;">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+          </svg>
+        </a>
+        <a href="https://www.instagram.com/detroitfightcompany/" target="_blank" rel="noopener" aria-label="Follow Detroit Fight Company on Instagram at detroitfightcompany" style="color: var(--green); transition: color 0.2s;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
             <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
             <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
@@ -1327,7 +1378,6 @@ h4 { font-size: 24px; letter-spacing: 2px; }
 </footer>
 
 <!-- ===== SCRIPTS ===== -->
-<script src="https://app.gymdesk.com/js/widgets.js"></script>
 <script>
 // Scroll animations
 const observer = new IntersectionObserver((entries) => {
@@ -1340,13 +1390,6 @@ const observer = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-// Close mobile nav on link click
-document.querySelectorAll('.nav-links a').forEach(link => {
-  link.addEventListener('click', () => {
-    document.getElementById('navLinks').classList.remove('open');
-    document.querySelector('.nav-toggle').classList.remove('open');
-  });
-});
 
 // Active nav highlighting
 const sections = document.querySelectorAll('section[id]');
@@ -1366,6 +1409,45 @@ window.addEventListener('scroll', () => {
   });
 });
 
+
+// ===== Menu and FAQ controls (section 5) =====
+(function () {
+  const btn = document.querySelector('.nav-toggle');
+  const menu = document.getElementById('navLinks');
+  if (btn && menu) {
+    const setMenu = (open) => {
+      btn.classList.toggle('open', open);
+      menu.classList.toggle('open', open);
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    };
+    btn.addEventListener('click', () => setMenu(!menu.classList.contains('open')));
+    menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenu(false)));
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && menu.classList.contains('open')) { setMenu(false); btn.focus(); }
+    });
+  }
+  document.querySelectorAll('.faq-question[aria-controls]').forEach(q => {
+    q.addEventListener('click', () => {
+      const panel = document.getElementById(q.getAttribute('aria-controls'));
+      const open = q.getAttribute('aria-expanded') !== 'true';
+      q.setAttribute('aria-expanded', open ? 'true' : 'false');
+      q.parentElement.classList.toggle('open', open);
+      panel.hidden = !open;
+    });
+  });
+})();
+
+// ===== GA4 contact and plan events (section 8). No personal data is sent. =====
+document.addEventListener('click', function (e) {
+  if (typeof gtag !== 'function') return;
+  const a = e.target.closest('a');
+  if (!a) return;
+  const href = a.getAttribute('href') || '';
+  if (href.startsWith('tel:')) gtag('event', 'click_call', { link_location: window.location.pathname });
+  else if (href.startsWith('sms:')) gtag('event', 'click_text', { link_location: window.location.pathname });
+  else if (href.startsWith('mailto:')) gtag('event', 'click_email', { link_location: window.location.pathname });
+  if (a.dataset.plan) gtag('event', 'select_plan', { plan: a.dataset.plan });
+});
 </script>
 </body>
 </html>

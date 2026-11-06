@@ -1,6 +1,7 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
+<script>document.documentElement.classList.add('js');</script>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-KYCVH9837V"></script>
 <script>
@@ -13,13 +14,13 @@ gtag('config', 'G-KYCVH9837V');
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- ===== SEO ===== -->
-<title>Free Trial Class | Detroit Fight Company — Winter Springs, FL</title>
+<title>Free Trial Class | Detroit Fight Company | Winter Springs, FL</title>
 <meta name="description" content="Your first Boxing, Muay Thai, or Jiu-Jitsu class is free at Detroit Fight Company in Winter Springs, FL. No credit card. No commitment. Book your trial.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://detroitfight.com/free-trial">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://detroitfight.com/free-trial">
-<meta property="og:title" content="Free Trial Class — Detroit Fight Company">
+<meta property="og:title" content="Free Trial Class | Detroit Fight Company">
 <meta property="og:description" content="Your first class is free. No credit card. No commitment.">
 <meta property="og:image" content="https://detroitfight.com/images/og-image.jpg">
 <meta property="og:image:width" content="1200">
@@ -28,7 +29,7 @@ gtag('config', 'G-KYCVH9837V');
 <meta property="og:site_name" content="Detroit Fight Company">
 <meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Free Trial Class — Detroit Fight Company">
+<meta name="twitter:title" content="Free Trial Class | Detroit Fight Company">
 <meta name="twitter:description" content="Your first class is free. No credit card. No commitment.">
 <meta name="twitter:image" content="https://detroitfight.com/images/og-image.jpg">
 <meta name="twitter:image:alt" content="Book a free trial at Detroit Fight Company">
@@ -43,7 +44,7 @@ gtag('config', 'G-KYCVH9837V');
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;700&display=swap" rel="stylesheet">
 
 <!-- =====================================================
      META PIXEL — Replace YOUR_PIXEL_ID with actual ID
@@ -68,8 +69,18 @@ fbq('track', 'PageView');
     {
       "@type": "BreadcrumbList",
       "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://detroitfight.com/" },
-        { "@type": "ListItem", "position": 2, "name": "Free Trial", "item": "https://detroitfight.com/free-trial" }
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://detroitfight.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Free Trial",
+          "item": "https://detroitfight.com/free-trial"
+        }
       ]
     },
     {
@@ -87,10 +98,36 @@ fbq('track', 'PageView');
         "addressCountry": "US"
       },
       "sameAs": [
-        "https://www.instagram.com/detroitfightco/",
         "https://www.facebook.com/DFCwintersprings/",
-        "https://maps.app.goo.gl/sojazUGgxxwXbr1Y7",
-        "https://www.tiktok.com/@detroit.fight.co"
+        "https://www.tiktok.com/@detroit.fight.co",
+        "https://www.instagram.com/detroitfightco/",
+        "https://www.instagram.com/detroitfightcompany/",
+        "https://maps.app.goo.gl/sojazUGgxxwXbr1Y7"
+      ],
+      "image": [
+        "https://detroitfight.com/images/gym/boxing-ring-01.jpg",
+        "https://detroitfight.com/images/gym/zebra-mat-area-01.jpg",
+        "https://detroitfight.com/images/gym/hero-shadow-boxing-01.jpg"
+      ],
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday"
+          ],
+          "opens": "06:00",
+          "closes": "20:30"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "Saturday",
+          "opens": "09:30",
+          "closes": "13:00"
+        }
       ]
     }
   ]
@@ -243,7 +280,7 @@ a:hover { color: #a3c49a; }
   text-transform: uppercase;
   margin-bottom: 12px;
 }
-h1, h2, h3, h4 {
+h1, h2, h3, h4, .as-h4 {
   font-family: var(--font-heading);
   font-weight: 400;
   line-height: 1.05;
@@ -252,7 +289,7 @@ h1, h2, h3, h4 {
 h1 { font-size: clamp(48px, 8vw, 96px); }
 h2 { font-size: clamp(36px, 5vw, 60px); }
 h3 { font-size: clamp(28px, 3.5vw, 40px); }
-h4 { font-size: 24px; letter-spacing: 2px; }
+h4, .as-h4 { font-size: 24px; letter-spacing: 2px; }
 
 .body-text {
   color: var(--grey);
@@ -453,7 +490,7 @@ h4 { font-size: 24px; letter-spacing: 2px; }
   border-left: 3px solid var(--green);
   padding: 36px 30px;
 }
-.credential-card h4 {
+.credential-card h4, .credential-card .as-h4 {
   margin-bottom: 20px;
   font-size: 20px;
   letter-spacing: 2px;
@@ -516,7 +553,7 @@ h4 { font-size: 24px; letter-spacing: 2px; }
   border-color: rgba(125,155,118,.3);
 }
 .sub-program-card .section-tag { margin-bottom: 8px; }
-.sub-program-card h4 { margin-bottom: 14px; }
+.sub-program-card h4, .sub-program-card .as-h4 { margin-bottom: 14px; }
 .sub-program-card .body-text { font-size: 16px; margin-bottom: 14px; }
 
 /* ===== COACH CARDS ===== */
@@ -569,7 +606,7 @@ h4 { font-size: 24px; letter-spacing: 2px; }
   flex-shrink: 0;
   font-size: 11px;
 }
-.coach-placeholder h4 { margin-bottom: 4px; font-size: 20px; }
+.coach-placeholder h4, .coach-placeholder .as-h4 { margin-bottom: 4px; font-size: 20px; }
 .coach-placeholder .body-text { font-size: 15px; margin: 0; }
 
 /* ===== SCHEDULE ===== */
@@ -611,7 +648,7 @@ h4 { font-size: 24px; letter-spacing: 2px; }
 .hours-item {
   text-align: center;
 }
-.hours-item h4 { font-size: 16px; margin-bottom: 6px; letter-spacing: 2px; }
+.hours-item h4, .hours-item .as-h4 { font-size: 16px; margin-bottom: 6px; letter-spacing: 2px; }
 .hours-item p { color: var(--grey); font-size: 15px; font-weight: 300; }
 
 /* ===== PRICING ===== */
@@ -759,7 +796,7 @@ h4 { font-size: 24px; letter-spacing: 2px; }
   max-width: 1000px;
   margin: 0 auto;
 }
-.gym-info-item h4 { margin-bottom: 12px; color: var(--green); }
+.gym-info-item h4, .gym-info-item .as-h4 { margin-bottom: 12px; color: var(--green); }
 .gym-info-item .body-text { font-size: 16px; }
 
 /* ===== MAP EMBED ===== */
@@ -787,7 +824,7 @@ h4 { font-size: 24px; letter-spacing: 2px; }
   margin: 0 auto 60px;
   text-align: center;
 }
-.trial-prop h4 {
+.trial-prop h4, .trial-prop .as-h4 {
   margin-bottom: 10px;
   font-size: 22px;
 }
@@ -865,7 +902,7 @@ h4 { font-size: 24px; letter-spacing: 2px; }
   border-color: var(--green);
 }
 .dfc-input::placeholder {
-  color: #555;
+  color: #A3A3A3;
 }
 .dfc-select {
   appearance: none;
@@ -898,8 +935,9 @@ h4 { font-size: 24px; letter-spacing: 2px; }
   background: #8faf88;
 }
 .dfc-notice {
-  font-size: 12px;
-  color: #555;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--grey);
   letter-spacing: 0.5px;
   margin-top: 16px;
   text-align: center;
@@ -1024,14 +1062,18 @@ h4 { font-size: 24px; letter-spacing: 2px; }
 }
 
 /* ===== ANIMATIONS ===== */
-.fade-in {
+.js .fade-in {
   opacity: 0;
-  transform: translateY(30px);
-  transition: opacity .8s ease, transform .8s ease;
+  transform: translateY(16px);
+  transition: opacity .3s ease, transform .3s ease;
 }
-.fade-in.visible {
+.js .fade-in.visible {
   opacity: 1;
   transform: translateY(0);
+}
+@media (prefers-reduced-motion: reduce) {
+  .js .fade-in { opacity: 1; transform: none; transition: none; }
+  html { scroll-behavior: auto; }
 }
 
 /* ===== PAGE SPACER ===== */
@@ -1116,6 +1158,14 @@ h4 { font-size: 24px; letter-spacing: 2px; }
   .nav-links a { font-size: 13px; letter-spacing: 1.2px; }
   .nav-cta { padding: 7px 12px !important; }
 }
+.dfc-notice a { color: var(--grey); text-decoration: underline; }
+#youth-fields[hidden] { display: none; }
+
+/* ===== Accessibility (section 5) ===== */
+main p a:not(.btn):not(.nav-cta), main li a:not(.btn), .faq-answer-inner a { text-decoration: underline; text-underline-offset: 3px; }
+.faq-answer { max-height: none; overflow: visible; transition: none; }
+.faq-answer[hidden] { display: none; }
+.nav-toggle:focus-visible, .faq-question:focus-visible, .btn:focus-visible, a:focus-visible { outline: 2px solid var(--green); outline-offset: 3px; }
 </style>
 </head>
 <body>
@@ -1124,9 +1174,9 @@ h4 { font-size: 24px; letter-spacing: 2px; }
 <nav class="nav">
   <div class="nav-inner">
     <a href="/" class="nav-logo">
-      <img src="/images/DFC_Logo.png" alt="Detroit Fight Company logo">
+      <img width="1024" height="212" src="/images/DFC_Logo.png" alt="Detroit Fight Company logo">
     </a>
-    <button class="nav-toggle" onclick="this.classList.toggle('open'); document.getElementById('navLinks').classList.toggle('open');" aria-label="Menu">
+    <button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="navLinks">
       <span></span><span></span><span></span>
     </button>
     <ul class="nav-links" id="navLinks">
@@ -1144,29 +1194,30 @@ h4 { font-size: 24px; letter-spacing: 2px; }
     </ul>
   </div>
 </nav>
+<main id="main">
 
 <section class="sub-hero fade-in">
   <p class="hero-eyebrow">No Pressure. No Credit Card. Just Train.</p>
   <h1>Your First Class Is Free</h1>
-  <p class="body-text">Try Boxing, Muay Thai, or Jiu-Jitsu — no commitment, no pressure. Just show up and train.</p>
+  <p class="body-text">Try Boxing, Muay Thai, or Jiu-Jitsu. No commitment, no pressure. Just show up and train.</p>
 </section>
 
 <section class="section fade-in">
-  <p class="body-text" style="margin-bottom: 20px;">Not sure where to start? Read about <a href="/jiu-jitsu">Jiu-Jitsu</a>, <a href="/boxing">boxing</a>, and <a href="/muay-thai">Muay Thai</a>, browse the <a href="/schedule">schedule</a>, and review <a href="/pricing">pricing</a> — then use the form below.</p>
+  <p class="body-text" style="margin-bottom: 20px;">Not sure where to start? Read about <a href="/jiu-jitsu">Jiu-Jitsu</a>, <a href="/boxing">boxing</a>, and <a href="/muay-thai">Muay Thai</a>, browse the <a href="/schedule">schedule</a>, and review <a href="/pricing">pricing</a>, then use the form below.</p>
 </section>
 
 <section class="section fade-in">
   <div class="trial-value-props">
     <div class="trial-prop">
-      <h4>Real Coaching</h4>
-      <p class="body-text">Every class is led by experienced coaches — not a video on a screen.</p>
+      <h2 class="as-h4">Real Coaching</h2>
+      <p class="body-text">Every class is led by experienced coaches, not a video on a screen.</p>
     </div>
     <div class="trial-prop">
-      <h4>All Levels</h4>
+      <h2 class="as-h4">All Levels</h2>
       <p class="body-text">Never trained before? Perfect. We'll meet you where you are.</p>
     </div>
     <div class="trial-prop">
-      <h4>No Strings</h4>
+      <h2 class="as-h4">No Strings</h2>
       <p class="body-text">One free class. No credit card. No obligation. Just come train.</p>
     </div>
   </div>
@@ -1175,7 +1226,7 @@ h4 { font-size: 24px; letter-spacing: 2px; }
     <div id="dfc-booking-root">
       <div class="content-full">
         <div id="dfc-form-wrap">
-          <p class="dfc-sub">Detroit Fight Company — Winter Springs, FL</p>
+          <p class="dfc-sub">Detroit Fight Company · Winter Springs, FL</p>
           <h2 id="dfc-form-heading">Book Your Free Class</h2>
           <hr class="dfc-divider"/>
           <form id="dfc-booking-form" method="POST" action="#">
@@ -1203,13 +1254,27 @@ h4 { font-size: 24px; letter-spacing: 2px; }
               <label for="program" class="dfc-label">Class Interest *</label>
               <select id="program" name="class_interest" required class="dfc-input dfc-select">
                 <option value="" disabled selected>Select a program</option>
-                <option value="boxing">Boxing &amp; Conditioning</option>
-                <option value="muay_thai">Muay Thai</option>
-                <option value="bjj_gi">Brazilian Jiu-Jitsu (Gi)</option>
-                <option value="bjj_nogi">Brazilian Jiu-Jitsu (No-Gi)</option>
-                <option value="unsure">All Programs — Not Sure Yet</option>
+                <option value="boxing" data-param="boxing">Boxing &amp; Conditioning</option>
+                <option value="muay_thai" data-param="muay-thai">Muay Thai</option>
+                <option value="bjj_gi" data-param="gi">Jiu-Jitsu (Gi)</option>
+                <option value="bjj_nogi" data-param="no-gi">Jiu-Jitsu (No Gi)</option>
+                <option value="kids_bjj" data-param="kids" data-youth="1">Kids Jiu-Jitsu</option>
+                <option value="youth_boxing" data-param="youth-boxing" data-youth="1">Youth Boxing</option>
+                <option value="homeschool" data-param="homeschool" data-youth="1">Homeschool or Daytime</option>
+                <option value="unsure">Not Sure Yet</option>
               </select>
             </div>
+            <div class="dfc-row" id="youth-fields" hidden>
+              <div class="dfc-field">
+                <label for="guardian" class="dfc-label">Parent or guardian name *</label>
+                <input type="text" id="guardian" name="guardian_name" placeholder="Parent or guardian name" class="dfc-input" autocomplete="name"/>
+              </div>
+              <div class="dfc-field">
+                <label for="student-age" class="dfc-label">Student age *</label>
+                <input type="number" id="student-age" name="student_age" min="3" max="18" inputmode="numeric" placeholder="Age" class="dfc-input"/>
+              </div>
+            </div>
+            <input type="hidden" name="source_page" id="source-page" value="direct">
             <div class="dfc-field">
               <label for="level" class="dfc-label">Experience Level *</label>
               <select id="level" name="experience_level" required class="dfc-input dfc-select">
@@ -1217,12 +1282,12 @@ h4 { font-size: 24px; letter-spacing: 2px; }
                 <option value="beginner">Complete Beginner</option>
                 <option value="some">Some Experience</option>
                 <option value="intermediate">Intermediate</option>
-                <option value="advanced">Advanced / Competitor</option>
+                <option value="advanced">Advanced or Competitor</option>
               </select>
             </div>
             <div class="dfc-field">
               <label for="notes" class="dfc-label">Anything else we should know?</label>
-              <textarea id="notes" name="notes" placeholder="Questions, injuries, scheduling preferences..." class="dfc-input dfc-textarea"></textarea>
+              <textarea id="notes" name="notes" placeholder="Questions, injuries, scheduling preferences" class="dfc-input dfc-textarea"></textarea>
             </div>
 
             <!-- SMS Consent — A2P 10DLC (GHL). Optional checkboxes; do not pre-check. -->
@@ -1233,12 +1298,13 @@ h4 { font-size: 24px; letter-spacing: 2px; }
               </label>
               <label class="consent-label">
                 <input type="checkbox" name="sms_transactional_consent" value="1">
-                <span>I consent to receive non-marketing text messages from Detroit Fight Company about class schedules, booking confirmations, and training updates. Message frequency may vary, message &amp; data rates may apply. Text HELP for assistance, reply STOP to opt out.</span>
+                <span>I consent to receive non marketing text messages from Detroit Fight Company about class schedules, booking confirmations, and training updates. Message frequency may vary, message &amp; data rates may apply. Text HELP for assistance, reply STOP to opt out.</span>
               </label>
             </div>
 
             <button type="submit" class="dfc-btn">Request My Free Class</button>
-            <p class="dfc-notice">By submitting this form you agree to be contacted by Detroit Fight Company. We never share your information.</p>
+            <p class="dfc-notice">Requesting a class is not a confirmed booking yet. We text or call within one business day to set your class time.</p>
+            <p class="dfc-notice">By submitting this form you agree to be contacted by Detroit Fight Company about your request. We use your information only to respond to you and to run the gym, as described in our <a href="/privacy-policy">Privacy Policy</a>.</p>
             <p class="form-policy-links">
               See also our <a href="/privacy-policy">Privacy Policy</a> and
               <a href="/terms">Terms &amp; Conditions</a>.
@@ -1269,6 +1335,8 @@ h4 { font-size: 24px; letter-spacing: 2px; }
 <div class="page-spacer"></div>
 
 
+</main>
+
 <!-- ===== FOOTER ===== -->
 <footer class="footer">
   <div class="footer-inner">
@@ -1292,8 +1360,15 @@ h4 { font-size: 24px; letter-spacing: 2px; }
     </div>
     <div class="footer-right">
       <div class="footer-social" style="display:flex; gap:20px; align-items:center; margin: 16px 0; justify-content:flex-end;">
-        <a href="https://www.instagram.com/detroitfightco/" target="_blank" rel="noopener" aria-label="Follow Detroit Fight Company on Instagram" style="color: var(--green); transition: color 0.2s;">
+        <a href="https://www.instagram.com/detroitfightco/" target="_blank" rel="noopener" aria-label="Follow Detroit Fight Company on Instagram at detroitfightco" style="color: var(--green); transition: color 0.2s;">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+          </svg>
+        </a>
+        <a href="https://www.instagram.com/detroitfightcompany/" target="_blank" rel="noopener" aria-label="Follow Detroit Fight Company on Instagram at detroitfightcompany" style="color: var(--green); transition: color 0.2s;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
             <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
             <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
@@ -1321,7 +1396,6 @@ h4 { font-size: 24px; letter-spacing: 2px; }
 
 
 <!-- ===== SCRIPTS ===== -->
-<script src="https://app.gymdesk.com/js/widgets.js"></script>
 <script>
 // Scroll animations
 const observer = new IntersectionObserver((entries) => {
@@ -1334,13 +1408,6 @@ const observer = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-// Close mobile nav on link click
-document.querySelectorAll('.nav-links a').forEach(link => {
-  link.addEventListener('click', () => {
-    document.getElementById('navLinks').classList.remove('open');
-    document.querySelector('.nav-toggle').classList.remove('open');
-  });
-});
 
 // Active nav highlighting
 const sections = document.querySelectorAll('section[id]');
@@ -1361,6 +1428,67 @@ window.addEventListener('scroll', () => {
 });
 
 
+
+// ===== Trial form: program context =====
+// Builds the webhook payload. Kept as a plain function so it can be tested without submitting.
+function buildPayload(form) {
+  const fd = new FormData(form);
+  const val = (k) => (fd.get(k) || '').toString().trim();
+  const sel = form.querySelector('select[name="class_interest"]');
+  const opt = sel && sel.selectedIndex > 0 ? sel.options[sel.selectedIndex] : null;
+  const youth = !!(opt && opt.dataset.youth);
+  return {
+    firstName: val('first_name'),
+    lastName: val('last_name'),
+    email: val('email'),
+    phone: val('phone'),
+    classInterest: val('class_interest'),
+    program: opt ? opt.textContent.trim() : '',
+    experienceLevel: val('experience_level'),
+    notes: val('notes'),
+    guardian_name: youth ? val('guardian_name') : '',
+    student_age: youth ? val('student_age') : '',
+    smsMarketingConsent: form.querySelector('input[name="sms_marketing_consent"]')?.checked || false,
+    smsTransactionalConsent: form.querySelector('input[name="sms_transactional_consent"]')?.checked || false,
+    source: 'detroitfight.com',
+    source_page: val('source_page') || 'direct',
+    sourcePage: window.location.pathname,
+    submittedAt: new Date().toISOString()
+  };
+}
+
+(function () {
+  const form = document.getElementById('dfc-booking-form');
+  if (!form) return;
+  const sel = form.querySelector('select[name="class_interest"]');
+  const box = document.getElementById('youth-fields');
+  const guardian = document.getElementById('guardian');
+  const age = document.getElementById('student-age');
+  function syncYouth() {
+    const opt = sel.selectedIndex > 0 ? sel.options[sel.selectedIndex] : null;
+    const on = !!(opt && opt.dataset.youth);
+    box.hidden = !on;
+    guardian.required = on;
+    age.required = on;
+    if (!on) { guardian.value = ''; age.value = ''; }
+  }
+  sel.addEventListener('change', syncYouth);
+  const param = new URLSearchParams(window.location.search).get('program');
+  if (param) {
+    const match = [...sel.options].find(o => o.dataset.param === param);
+    if (match) sel.value = match.value;
+  }
+  // source_page: referrer path on this domain, else the program parameter, else direct
+  let source = 'direct';
+  try {
+    const ref = document.referrer ? new URL(document.referrer) : null;
+    if (ref && ref.hostname.replace(/^www\./, '') === window.location.hostname.replace(/^www\./, '')) source = ref.pathname;
+    else if (param) source = param;
+  } catch (e) { if (param) source = param; }
+  document.getElementById('source-page').value = source;
+  syncYouth();
+})();
+
 document.getElementById('dfc-booking-form')?.addEventListener('submit', async function (e) {
   e.preventDefault();
   const form = e.currentTarget;
@@ -1379,21 +1507,7 @@ document.getElementById('dfc-booking-form')?.addEventListener('submit', async fu
     submitBtn.textContent = 'Sending...';
   }
 
-  const fd = new FormData(form);
-  const payload = {
-    firstName: (fd.get('first_name') || '').toString().trim(),
-    lastName: (fd.get('last_name') || '').toString().trim(),
-    email: (fd.get('email') || '').toString().trim(),
-    phone: (fd.get('phone') || '').toString().trim(),
-    classInterest: (fd.get('class_interest') || '').toString().trim(),
-    experienceLevel: (fd.get('experience_level') || '').toString().trim(),
-    notes: (fd.get('notes') || '').toString().trim(),
-    smsMarketingConsent: form.querySelector('input[name="sms_marketing_consent"]')?.checked || false,
-    smsTransactionalConsent: form.querySelector('input[name="sms_transactional_consent"]')?.checked || false,
-    source: 'detroitfight.com',
-    sourcePage: window.location.pathname,
-    submittedAt: new Date().toISOString()
-  };
+  const payload = buildPayload(form);
 
   try {
     const res = await fetch('https://services.leadconnectorhq.com/hooks/5UfUHR9jXCKSbSjObvIS/webhook-trigger/3cc0ca60-ed9c-4e19-8b26-0d70e3ef6a5f', {
@@ -1409,22 +1523,24 @@ document.getElementById('dfc-booking-form')?.addEventListener('submit', async fu
       gtag('event', 'generate_lead', {
         event_category: 'form',
         event_label: 'free_trial_request',
-        value: 1
+        value: 1,
+        program: payload.program,
+        source_page: payload.source_page
       });
     }
 
     const wrap = document.getElementById('dfc-form-wrap');
     if (wrap) {
       wrap.innerHTML = '<h2 id="dfc-form-heading" style="text-align:center;">You\'re In.</h2>' +
-        '<p class="dfc-sub" style="text-align:center;">We\'ll be in touch shortly.</p>' +
+        '<p class="dfc-sub" style="text-align:center;">We text or call within one business day.</p>' +
         '<hr class="dfc-divider">' +
         '<p style="text-align:center; color:#999; font-size:15px; line-height:1.6; max-width:480px; margin:0 auto;">' +
-        'Someone from Detroit Fight Company will reach out to confirm your free trial class. ' +
-        'In the meantime, you can find us at 1425 Tuskawilla Rd #209, Winter Springs, FL — or call us at ' +
+        'Requesting a class is not a confirmed booking yet. We text or call within one business day to set your class time. ' +
+        'You can find us at 1425 Tuskawilla Rd #209, Winter Springs, FL, or call us at ' +
         '<a href="tel:4076966969" style="color:#7D9B76;">(407) 696-6969</a>.' +
         '</p>';
     } else {
-      alert('Thanks — someone from DFC will reach out shortly.');
+      alert('Thanks. We text or call within one business day to set your class time.');
     }
   } catch (err) {
     console.error('Form submission failed:', err);
@@ -1434,6 +1550,45 @@ document.getElementById('dfc-booking-form')?.addEventListener('submit', async fu
     }
     alert('Something went wrong sending your request. Please call (407) 696-6969 or email sean@detroitfight.com so we can get you booked. Sorry for the trouble.');
   }
+});
+
+// ===== Menu and FAQ controls (section 5) =====
+(function () {
+  const btn = document.querySelector('.nav-toggle');
+  const menu = document.getElementById('navLinks');
+  if (btn && menu) {
+    const setMenu = (open) => {
+      btn.classList.toggle('open', open);
+      menu.classList.toggle('open', open);
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    };
+    btn.addEventListener('click', () => setMenu(!menu.classList.contains('open')));
+    menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenu(false)));
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && menu.classList.contains('open')) { setMenu(false); btn.focus(); }
+    });
+  }
+  document.querySelectorAll('.faq-question[aria-controls]').forEach(q => {
+    q.addEventListener('click', () => {
+      const panel = document.getElementById(q.getAttribute('aria-controls'));
+      const open = q.getAttribute('aria-expanded') !== 'true';
+      q.setAttribute('aria-expanded', open ? 'true' : 'false');
+      q.parentElement.classList.toggle('open', open);
+      panel.hidden = !open;
+    });
+  });
+})();
+
+// ===== GA4 contact and plan events (section 8). No personal data is sent. =====
+document.addEventListener('click', function (e) {
+  if (typeof gtag !== 'function') return;
+  const a = e.target.closest('a');
+  if (!a) return;
+  const href = a.getAttribute('href') || '';
+  if (href.startsWith('tel:')) gtag('event', 'click_call', { link_location: window.location.pathname });
+  else if (href.startsWith('sms:')) gtag('event', 'click_text', { link_location: window.location.pathname });
+  else if (href.startsWith('mailto:')) gtag('event', 'click_email', { link_location: window.location.pathname });
+  if (a.dataset.plan) gtag('event', 'select_plan', { plan: a.dataset.plan });
 });
 </script>
 </body>

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script>document.documentElement.classList.add('js');</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Terms &amp; Conditions | Detroit Fight Company</title>
@@ -17,7 +18,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;700&display=swap" rel="stylesheet">
 
 <style>
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -263,16 +264,22 @@ h3 { font-size: clamp(18px, 2.5vw, 22px); margin: 28px 0 10px; }
   .nav-links a { font-size: 13px; letter-spacing: 1.2px; }
   .nav-cta { padding: 7px 12px !important; }
 }
+
+/* ===== Accessibility (section 5) ===== */
+main p a:not(.btn):not(.nav-cta), main li a:not(.btn), .faq-answer-inner a { text-decoration: underline; text-underline-offset: 3px; }
+.faq-answer { max-height: none; overflow: visible; transition: none; }
+.faq-answer[hidden] { display: none; }
+.nav-toggle:focus-visible, .faq-question:focus-visible, .btn:focus-visible, a:focus-visible { outline: 2px solid var(--green); outline-offset: 3px; }
 </style>
 </head>
 <body>
 
 <nav class="nav">
   <div class="nav-inner">
-    <a href="index.html#home" class="nav-logo">
-      <img src="images/DFC_Logo.png" alt="Detroit Fight Company logo">
+    <a href="/" class="nav-logo">
+      <img width="1024" height="212" src="images/DFC_Logo.png" alt="Detroit Fight Company logo">
     </a>
-    <button class="nav-toggle" onclick="this.classList.toggle('open'); document.getElementById('navLinks').classList.toggle('open');" aria-label="Menu">
+    <button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="navLinks">
       <span></span><span></span><span></span>
     </button>
     <ul class="nav-links" id="navLinks">
@@ -298,15 +305,18 @@ h3 { font-size: clamp(18px, 2.5vw, 22px); margin: 28px 0 10px; }
 </header>
 
 <main class="legal-prose">
-  <p><strong>Effective date:</strong> April 14, 2026</p>
-  <p>These Terms &amp; Conditions (“Terms”) govern your use of the facilities, programs, and services offered by <strong>Detroit Fight LLC</strong>, doing business as <strong>Detroit Fight Company</strong> (“DFC,” “we,” “us,” or “our”), including at our location at 1425 Tuskawilla Rd #209, Winter Springs, FL 32708. By enrolling, purchasing a membership, or participating in training, you agree to these Terms.</p>
+  <p><strong>Effective date:</strong> November 6, 2026</p>
+  <p>These Terms &amp; Conditions (“Terms”) govern your use of the facilities, programs, and services offered by <strong>Detroit Fight LLC</strong>, doing business as <strong>Detroit Fight Company</strong> (“we,” “us,” or “our”), including at our location at 1425 Tuskawilla Rd #209, Winter Springs, FL 32708. By enrolling, purchasing a membership, or participating in training, you agree to these Terms.</p>
 
   <h2>Membership and billing</h2>
-  <p>Memberships are billed on a recurring basis (typically monthly) according to your membership agreement and enrollment. <strong>There is no long-term contract requirement</strong> beyond the billing cycle and notice provisions described below; however, you are responsible for all fees accrued through the effective cancellation date in accordance with these Terms.</p>
+  <p>Memberships are billed on a recurring basis (typically monthly) according to your membership agreement and enrollment. <strong>There is no long term contract requirement</strong> beyond the billing cycle and notice provisions described below; however, you are responsible for all fees accrued through the effective cancellation date in accordance with these Terms.</p>
   <p>Fees, payment methods, and any promotional rates are subject to change upon reasonable notice as permitted by law and your enrollment agreement. Failed payments may result in suspension or termination of access until the account is brought current.</p>
 
-  <h2>Cancellation</h2>
-  <p>You may cancel your membership in accordance with our cancellation policy. <strong>To cancel, email sean@detroitfight.com at least 15 days before your next billing date.</strong> Cancellations are not effective until confirmed according to our internal processes and the timeline above. You remain responsible for charges that occur before cancellation takes effect.</p>
+  <h2>Membership plans and cancellation</h2>
+  <p>Month to Month memberships have no long term contract. To cancel, email sean@detroitfight.com with at least 30 days written notice before your next billing date. You remain responsible for charges that occur before the cancellation takes effect, and cancellation is effective once we confirm it by email.</p>
+  <p>The 3 Month Commit is paid in full at signup, covers three months of membership, and then continues month to month until cancelled with 30 days written notice. Prepaid amounts are not refundable except as required by Florida law.</p>
+  <p>The Enrollment Kit, a Detroit Fight Company gi and rash guard, is a one time $150 on Month to Month and is included with the 3 Month Commit. It is not refundable once gear is issued. Unworn gear may be exchanged for size.</p>
+  <p>The family discount is 10% off the monthly rate for each additional member of the same household and does not combine with other offers. Prices do not include Florida sales tax.</p>
 
   <h2>Right of rescission</h2>
   <p>If applicable law provides a right to cancel certain transactions within a specified period (for example, a <strong>three (3) day</strong> right of rescission for certain membership sales as may be required in your jurisdiction), you may cancel within that period as described in any notice or agreement provided to you at enrollment. If you believe this applies to your purchase, contact us promptly at <a href="mailto:sean@detroitfight.com">sean@detroitfight.com</a>.</p>
@@ -322,13 +332,13 @@ h3 { font-size: clamp(18px, 2.5vw, 22px); margin: 28px 0 10px; }
   <p>Where minors participate, a parent or legal guardian must complete required authorizations and assumes responsibility for the minor’s compliance with these Terms.</p>
 
   <h2>Intellectual property</h2>
-  <p>DFC names, logos, and branding are protected. You may not use our marks without prior written permission except as reasonably incidental to social sharing of your experience.</p>
+  <p>Detroit Fight Company names, logos, and branding are protected. You may not use our marks without prior written permission except as reasonably incidental to social sharing of your experience.</p>
 
   <h2>Changes to these terms</h2>
   <p>We may update these Terms from time to time. The revised Terms will be posted on this page with an updated effective date. Continued participation after changes constitutes acceptance unless applicable law requires otherwise.</p>
 
   <h2>Governing law</h2>
-  <p>These Terms are governed by the laws of the State of Florida, without regard to conflict-of-law principles, except where preempted by applicable federal law.</p>
+  <p>These Terms are governed by the laws of the State of Florida, without regard to conflict of law principles, except where preempted by applicable federal law.</p>
 
   <h2>Contact</h2>
   <p>
@@ -361,8 +371,15 @@ h3 { font-size: clamp(18px, 2.5vw, 22px); margin: 28px 0 10px; }
     </div>
     <div class="footer-right">
       <div class="footer-social" style="display:flex; gap:20px; align-items:center; margin: 16px 0; justify-content:flex-end;">
-        <a href="https://www.instagram.com/detroitfightco/" target="_blank" rel="noopener" aria-label="Follow Detroit Fight Company on Instagram" style="color: var(--green); transition: color 0.2s;">
+        <a href="https://www.instagram.com/detroitfightco/" target="_blank" rel="noopener" aria-label="Follow Detroit Fight Company on Instagram at detroitfightco" style="color: var(--green); transition: color 0.2s;">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+          </svg>
+        </a>
+        <a href="https://www.instagram.com/detroitfightcompany/" target="_blank" rel="noopener" aria-label="Follow Detroit Fight Company on Instagram at detroitfightcompany" style="color: var(--green); transition: color 0.2s;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
             <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
             <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
@@ -393,6 +410,33 @@ document.querySelectorAll('.nav-links a').forEach(function (link) {
     document.querySelector('.nav-toggle').classList.remove('open');
   });
 });
+
+// ===== Menu and FAQ controls (section 5) =====
+(function () {
+  const btn = document.querySelector('.nav-toggle');
+  const menu = document.getElementById('navLinks');
+  if (btn && menu) {
+    const setMenu = (open) => {
+      btn.classList.toggle('open', open);
+      menu.classList.toggle('open', open);
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    };
+    btn.addEventListener('click', () => setMenu(!menu.classList.contains('open')));
+    menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenu(false)));
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && menu.classList.contains('open')) { setMenu(false); btn.focus(); }
+    });
+  }
+  document.querySelectorAll('.faq-question[aria-controls]').forEach(q => {
+    q.addEventListener('click', () => {
+      const panel = document.getElementById(q.getAttribute('aria-controls'));
+      const open = q.getAttribute('aria-expanded') !== 'true';
+      q.setAttribute('aria-expanded', open ? 'true' : 'false');
+      q.parentElement.classList.toggle('open', open);
+      panel.hidden = !open;
+    });
+  });
+})();
 </script>
 </body>
 </html>
