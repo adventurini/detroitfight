@@ -1156,6 +1156,7 @@ section.section.fade-in[style*="text-align: center"] > img:hover {
   .nav-links a { font-size: 13px; letter-spacing: 1.2px; }
   .nav-cta { padding: 7px 12px !important; }
 }
+.coach-portrait img { display: block; width: 100%; max-width: 400px; height: auto; margin: 0 auto 24px; }
 </style>
 </head>
 <body>
@@ -1242,7 +1243,12 @@ section.section.fade-in[style*="text-align: center"] > img:hover {
 <section class="section fade-in" style="text-align: center;">
   <p class="section-tag">Head Coach</p>
   <h3 style="margin-bottom: 20px;">Sean Goolsby</h3>
-  <img src="/images/Sean_profile_IBJJF_BW.jpeg" alt="Sean Goolsby — Head Coach, IBJJF Black Belt under Claudio Calasans at Detroit Fight Company" style="max-width: 400px; width: 100%; height: auto; margin: 0 auto 24px; display: block;">
+  <picture class="coach-portrait">
+    <source type="image/webp" sizes="(max-width: 440px) 92vw, 400px"
+      srcset="/images/gym/sean-goolsby-01-480.webp 480w, /images/gym/sean-goolsby-01-960.webp 960w">
+    <img src="/images/gym/sean-goolsby-01.jpg" width="1600" height="2134" loading="lazy" decoding="async"
+      alt="Head Coach and owner Sean Goolsby at Detroit Fight Company">
+  </picture>
   <p class="body-text" style="margin: 0 auto 20px;">Head Coach and owner Sean Goolsby grew up in Detroit and built his competitive career on the international stage. IBJJF Black Belt. European No Gi Champion. Pan Am Gi Champion. IBJJF Pan No Gi silver medalist. AJP Tour ranked. Esporte Dez / Instituto Calasans Camargo.</p>
   <p class="body-text" style="margin: 0 auto 40px;">Sean founded Detroit Fight Company to build the academy he wished existed when he was coming up: world-class instruction, a tight community, and zero ego. Every class at DFC reflects that vision.</p>
   <a href="/free-trial" class="btn btn-primary">Start Training Jiu-Jitsu</a>

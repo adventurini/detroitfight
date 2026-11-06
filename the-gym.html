@@ -97,6 +97,17 @@ fbq('track', 'PageView');
         "https://maps.app.goo.gl/sojazUGgxxwXbr1Y7",
         "https://www.tiktok.com/@detroit.fight.co"
       ]
+    },
+    {
+      "@type": "VideoObject",
+      "@id": "https://detroitfight.com/the-gym#gym-video",
+      "name": "Detroit Fight Company in 30 Seconds",
+      "description": "A 30 second look inside Detroit Fight Company in Winter Springs, Florida. The lobby, the mat room, the heavy bags and the boxing ring, with Jiu-Jitsu and boxing classes in progress.",
+      "thumbnailUrl": "https://detroitfight.com/images/gym/gym-promo-poster-01.jpg",
+      "contentUrl": "https://detroitfight.com/video/gym-promo-01.mp4",
+      "uploadDate": "2026-11-06T09:00:00-05:00",
+      "duration": "PT30S",
+      "publisher": { "@id": "https://detroitfight.com/#business" }
     }
   ]
 }
@@ -1121,6 +1132,22 @@ h4 { font-size: 24px; letter-spacing: 2px; }
   .nav-links a { font-size: 13px; letter-spacing: 1.2px; }
   .nav-cta { padding: 7px 12px !important; }
 }
+/* ===== VIDEO AND GALLERY ===== */
+.gym-video-grid { display: grid; grid-template-columns: 320px 1fr; gap: 56px; align-items: center; max-width: 1000px; margin: 0 auto; }
+.gym-video-frame { aspect-ratio: 9 / 16; background: var(--black); border: 1px solid rgba(125,155,118,.12); }
+.gym-video-frame video { display: block; width: 100%; height: 100%; object-fit: cover; }
+@media (max-width: 768px) {
+  .gym-video-grid { grid-template-columns: 1fr; gap: 28px; }
+  .gym-video-frame { width: 100%; max-width: 360px; margin: 0 auto; }
+}
+.gym-gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 28px; }
+.gym-gallery-grid figure { margin: 0; }
+.gym-gallery-grid .lead { grid-column: 1 / -1; }
+.gym-gallery-grid img { width: 100%; height: auto; aspect-ratio: 3 / 2; object-fit: cover; }
+.gym-gallery-grid .lead img { aspect-ratio: 16 / 9; object-position: 50% 45%; }
+.gym-gallery-grid figcaption { padding: 8px 0 14px; font-size: 15px; letter-spacing: .5px; color: var(--grey); }
+@media (max-width: 768px) { .gym-gallery-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 480px) { .gym-gallery-grid { grid-template-columns: 1fr; } .gym-gallery-grid .lead img { aspect-ratio: 3 / 2; } }
 </style>
 </head>
 <body>
@@ -1154,6 +1181,94 @@ h4 { font-size: 24px; letter-spacing: 2px; }
   <p class="hero-eyebrow">5,000 Square Feet. Built for Combat Sports.</p>
   <h1>The Gym — Winter Springs, FL</h1>
   <p class="body-text">5,000 square feet of dedicated training space. Boxing ring. MMA cage walls. Zebra Athletics mats. Built for combat sports — not CrossFit.</p>
+</section>
+
+<section class="section gym-video" id="gym-video" aria-labelledby="gym-video-heading">
+  <div class="gym-video-grid">
+    <div class="gym-video-frame">
+      <video controls playsinline preload="none" width="720" height="1280"
+        poster="/images/gym/gym-promo-poster-01.jpg" aria-describedby="gym-video-desc">
+        <source src="/video/gym-promo-01.mp4" type="video/mp4">
+        <a href="/video/gym-promo-01.mp4">Watch the Detroit Fight Company video</a>
+      </video>
+    </div>
+    <div>
+      <p class="section-tag">Inside the Gym</p>
+      <h2 id="gym-video-heading">See It in 30 Seconds</h2>
+      <p class="body-text" id="gym-video-desc">A 30 second look inside Detroit Fight Company in Winter Springs, Florida. The lobby, the mat room, the heavy bags and the boxing ring, with Jiu-Jitsu and boxing classes in progress. Captions are on screen.</p>
+      <p style="margin-top: 28px;"><a href="/free-trial" class="btn btn-primary">Book Your Free Trial Class</a></p>
+    </div>
+  </div>
+</section>
+
+<section class="section gym-gallery" aria-labelledby="gym-gallery-heading">
+  <p class="section-tag">Photos</p>
+  <h2 id="gym-gallery-heading">Inside Detroit Fight Company</h2>
+  <div class="gym-gallery-grid">
+    <figure class="lead">
+      <picture>
+        <source type="image/webp" sizes="(max-width: 1260px) 100vw, 1140px"
+          srcset="/images/gym/boxing-ring-01-480.webp 480w, /images/gym/boxing-ring-01-960.webp 960w, /images/gym/boxing-ring-01-1440.webp 1440w">
+        <img src="/images/gym/boxing-ring-01.jpg" width="1600" height="1067" loading="lazy" decoding="async"
+          alt="Members working through a conditioning circuit beside the boxing ring at Detroit Fight Company">
+      </picture>
+      <figcaption>Conditioning beside the boxing ring</figcaption>
+    </figure>
+    <figure>
+      <picture>
+        <source type="image/webp" sizes="(max-width: 480px) 100vw, (max-width: 768px) 50vw, 375px"
+          srcset="/images/gym/zebra-mat-area-01-480.webp 480w, /images/gym/zebra-mat-area-01-960.webp 960w">
+        <img src="/images/gym/zebra-mat-area-01.jpg" width="1440" height="960" loading="lazy" decoding="async"
+          alt="Zebra mat room with the wall logo and cage wall at Detroit Fight Company">
+      </picture>
+      <figcaption>Zebra mat room</figcaption>
+    </figure>
+    <figure>
+      <picture>
+        <source type="image/webp" sizes="(max-width: 480px) 100vw, (max-width: 768px) 50vw, 375px"
+          srcset="/images/gym/cage-wall-boxing-01-480.webp 480w, /images/gym/cage-wall-boxing-01-960.webp 960w">
+        <img src="/images/gym/cage-wall-boxing-01.jpg" width="1600" height="1067" loading="lazy" decoding="async"
+          alt="Two boxers working a partner drill beside the cage wall at Detroit Fight Company">
+      </picture>
+      <figcaption>Partner drills at the cage wall</figcaption>
+    </figure>
+    <figure>
+      <picture>
+        <source type="image/webp" sizes="(max-width: 480px) 100vw, (max-width: 768px) 50vw, 375px"
+          srcset="/images/gym/lobby-01-480.webp 480w, /images/gym/lobby-01-960.webp 960w">
+        <img src="/images/gym/lobby-01.jpg" width="1600" height="1066" loading="lazy" decoding="async"
+          alt="Lobby seating with the heavy bag floor behind it at Detroit Fight Company">
+      </picture>
+      <figcaption>Lobby</figcaption>
+    </figure>
+    <figure>
+      <picture>
+        <source type="image/webp" sizes="(max-width: 480px) 100vw, (max-width: 768px) 50vw, 375px"
+          srcset="/images/gym/jiu-jitsu-coach-01-480.webp 480w, /images/gym/jiu-jitsu-coach-01-960.webp 960w">
+        <img src="/images/gym/jiu-jitsu-coach-01.jpg" width="1600" height="1067" loading="lazy" decoding="async"
+          alt="Head Coach and owner Sean Goolsby explaining a Jiu-Jitsu technique to students at Detroit Fight Company">
+      </picture>
+      <figcaption>Jiu-Jitsu class</figcaption>
+    </figure>
+    <figure>
+      <picture>
+        <source type="image/webp" sizes="(max-width: 480px) 100vw, (max-width: 768px) 50vw, 375px"
+          srcset="/images/gym/boxing-coach-student-01-480.webp 480w, /images/gym/boxing-coach-student-01-960.webp 960w">
+        <img src="/images/gym/boxing-coach-student-01.jpg" width="1600" height="1067" loading="lazy" decoding="async"
+          alt="Coach steadying the heavy bag for a boxing student at Detroit Fight Company">
+      </picture>
+      <figcaption>Coaching on the heavy bags</figcaption>
+    </figure>
+    <figure>
+      <picture>
+        <source type="image/webp" sizes="(max-width: 480px) 100vw, (max-width: 768px) 50vw, 375px"
+          srcset="/images/gym/black-belt-certificates-01-480.webp 480w, /images/gym/black-belt-certificates-01-960.webp 960w">
+        <img src="/images/gym/black-belt-certificates-01.jpg" width="1600" height="1067" loading="lazy" decoding="async"
+          alt="IBJJF and CBJJ black belt certificates of Head Coach and owner Sean Goolsby at Detroit Fight Company">
+      </picture>
+      <figcaption>Black belt certificates</figcaption>
+    </figure>
+  </div>
 </section>
 
 <section class="section fade-in">
@@ -1294,6 +1409,10 @@ document.getElementById('dfc-booking-form')?.addEventListener('submit', function
   e.preventDefault();
   alert('Thanks — someone from DFC will reach out shortly.');
 });
+
+document.querySelector('#gym-video video')?.addEventListener('play', function () {
+  if (typeof gtag === 'function') gtag('event', 'video_start', { video_title: 'Detroit Fight Company in 30 Seconds' });
+}, { once: true });
 </script>
 </body>
 </html>
