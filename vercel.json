@@ -2,6 +2,17 @@
   "cleanUrls": true,
   "redirects": [
     {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.detroitfight.com"
+        }
+      ],
+      "destination": "https://detroitfight.com/:path*",
+      "statusCode": 301
+    },
+    {
       "source": "/camp",
       "destination": "/",
       "permanent": true
@@ -26,5 +37,6 @@
       "destination": "/terms",
       "permanent": true
     }
-  ]
+  ],
+  "trailingSlash": false
 }
