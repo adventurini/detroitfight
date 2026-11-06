@@ -46,6 +46,9 @@ gtag('config', 'G-KYCVH9837V');
 <meta name="theme-color" content="#7D9B76">
 <meta name="msapplication-TileColor" content="#7D9B76">
 
+<link rel="preload" as="image" type="image/webp" fetchpriority="high" imagesizes="100vw"
+  href="/images/gym/hero-shadow-boxing-01-960.webp"
+  imagesrcset="/images/gym/hero-shadow-boxing-01-480.webp 480w, /images/gym/hero-shadow-boxing-01-960.webp 960w, /images/gym/hero-shadow-boxing-01-1440.webp 1440w">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -67,9 +70,7 @@ fbq('track', 'PageView');
 -->
 
 <style>
-/* ===== RESET & VARIABLES ===== */
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
 :root {
   --black: #1A1A1A;
   --deep-black: #0A0A0A;
@@ -78,15 +79,13 @@ fbq('track', 'PageView');
   --white: #FFFFFF;
   --grey: #D8D8D8;
   --light-grey: #999;
-  --font-heading: 'Bebas Neue', sans-serif;
-  --font-body: 'Barlow Condensed', sans-serif;
+  --font-heading: "Bebas Neue", sans-serif;
+  --font-body: "Barlow Condensed", sans-serif;
 }
-
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 80px;
 }
-
 body {
   font-family: var(--font-body);
   background: var(--deep-black);
@@ -97,12 +96,9 @@ body {
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
 }
-
 img { max-width: 100%; display: block; }
 a { color: var(--green); text-decoration: none; transition: color .2s; }
 a:hover { color: #a3c49a; }
-
-/* ===== NAVIGATION ===== */
 .nav {
   position: fixed;
   top: 0;
@@ -159,8 +155,6 @@ a:hover { color: #a3c49a; }
   background: #a3c49a !important;
   color: var(--deep-black) !important;
 }
-
-/* Mobile Nav */
 .nav-toggle {
   display: none;
   background: none;
@@ -179,24 +173,20 @@ a:hover { color: #a3c49a; }
 .nav-toggle.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 6px); }
 .nav-toggle.open span:nth-child(2) { opacity: 0; }
 .nav-toggle.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -6px); }
-
-/* Nav stays on one line between tablet and desktop widths */
 .nav-links a { white-space: nowrap; }
 @media (max-width: 1100px) and (min-width: 769px) {
-  .nav-inner { padding: 0 20px; }
-  .nav-links { gap: 14px; }
-  .nav-links a { font-size: 14px; letter-spacing: 1.2px; }
-  .nav-cta { padding: 8px 12px !important; }
+.nav-inner { padding: 0 20px; }
+.nav-links { gap: 14px; }
+.nav-links a { font-size: 14px; letter-spacing: 1.2px; }
+.nav-cta { padding: 8px 12px !important; }
 }
 @media (max-width: 920px) and (min-width: 769px) {
-  .nav-logo { flex-shrink: 0; }
-  .nav-logo img { height: 26px; }
-  .nav-links { gap: 9px; }
-  .nav-links a { font-size: 12.5px; letter-spacing: .6px; }
-  .nav-cta { padding: 7px 10px !important; }
+.nav-logo { flex-shrink: 0; }
+.nav-logo img { height: 26px; }
+.nav-links { gap: 9px; }
+.nav-links a { font-size: 12.5px; letter-spacing: .6px; }
+.nav-cta { padding: 7px 10px !important; }
 }
-
-/* ===== SHARED STYLES ===== */
 .section {
   padding: 100px 30px;
   max-width: 1200px;
@@ -222,8 +212,6 @@ h1, h2, h3, h4 {
 h1 { font-size: clamp(48px, 8vw, 96px); }
 h2 { font-size: clamp(36px, 5vw, 60px); }
 h3 { font-size: clamp(28px, 3.5vw, 40px); }
-h4 { font-size: 24px; letter-spacing: 2px; }
-
 .body-text {
   color: var(--grey);
   font-size: 18px;
@@ -232,8 +220,6 @@ h4 { font-size: 24px; letter-spacing: 2px; }
   font-weight: 300;
 }
 .body-text strong { color: var(--white); font-weight: 600; }
-
-/* Buttons */
 .btn {
   display: inline-block;
   font-family: var(--font-heading);
@@ -263,24 +249,6 @@ h4 { font-size: 24px; letter-spacing: 2px; }
   border-color: var(--white);
   color: var(--white);
 }
-.btn-outline-green {
-  background: transparent;
-  color: var(--green);
-  border: 1px solid var(--green);
-}
-.btn-outline-green:hover {
-  background: var(--green);
-  color: var(--deep-black);
-}
-
-/* ===== PAGE DIVIDER ===== */
-.page-divider {
-  width: 100%;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(125,155,118,.3), transparent);
-}
-
-/* ===== HERO SECTIONS ===== */
 .hero {
   min-height: 100vh;
   display: flex;
@@ -292,19 +260,18 @@ h4 { font-size: 24px; letter-spacing: 2px; }
   background: var(--deep-black);
 }
 .hero::before {
-  content: '';
+  content: "";
   position: absolute;
   inset: 0;
-  background:
-    radial-gradient(ellipse at 20% 80%, rgba(125,155,118,.08) 0%, transparent 60%),
-    radial-gradient(ellipse at 80% 20%, rgba(125,155,118,.04) 0%, transparent 50%);
+  background: rgba(10,10,10,.68);
+  z-index: 1;
   pointer-events: none;
 }
 .hero-content {
   max-width: 900px;
   margin: 0 auto;
   position: relative;
-  z-index: 1;
+  z-index: 2;
 }
 .hero h1 {
   margin-bottom: 24px;
@@ -328,33 +295,6 @@ h4 { font-size: 24px; letter-spacing: 2px; }
   gap: 16px;
   flex-wrap: wrap;
 }
-
-/* Sub-page hero */
-.sub-hero {
-  padding: 180px 30px 80px;
-  background: var(--deep-black);
-  text-align: center;
-  position: relative;
-}
-.sub-hero::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(ellipse at 50% 100%, rgba(125,155,118,.06) 0%, transparent 60%);
-  pointer-events: none;
-}
-.sub-hero h1 {
-  font-size: clamp(36px, 6vw, 72px);
-  margin-bottom: 20px;
-  position: relative;
-}
-.sub-hero .body-text {
-  margin: 0 auto 32px;
-  text-align: center;
-  font-size: 20px;
-}
-
-/* ===== PROGRAMS GRID ===== */
 .programs-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -375,7 +315,7 @@ h4 { font-size: 24px; letter-spacing: 2px; }
   transform: translateY(-4px);
 }
 .program-card::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -387,10 +327,6 @@ h4 { font-size: 24px; letter-spacing: 2px; }
 }
 .program-card:hover::before {
   transform: scaleX(1);
-}
-.program-card h3 {
-  margin-bottom: 16px;
-  font-size: 28px;
 }
 .program-card .body-text {
   font-size: 16px;
@@ -408,8 +344,6 @@ h4 { font-size: 24px; letter-spacing: 2px; }
   inset: 0;
   z-index: 1;
 }
-
-/* ===== ABOUT SECTION ===== */
 .about-grid {
   display: grid;
   grid-template-columns: 1fr 380px;
@@ -422,11 +356,6 @@ h4 { font-size: 24px; letter-spacing: 2px; }
   background: var(--black);
   border-left: 3px solid var(--green);
   padding: 36px 30px;
-}
-.credential-card h4 {
-  margin-bottom: 20px;
-  font-size: 20px;
-  letter-spacing: 2px;
 }
 .credential-card ul {
   list-style: none;
@@ -441,7 +370,7 @@ h4 { font-size: 24px; letter-spacing: 2px; }
   font-weight: 300;
 }
 .credential-card li::before {
-  content: '';
+  content: "";
   position: absolute;
   left: 0;
   top: 13px;
@@ -449,8 +378,6 @@ h4 { font-size: 24px; letter-spacing: 2px; }
   height: 6px;
   background: var(--green);
 }
-
-/* ===== FINAL CTA ===== */
 .final-cta {
   text-align: center;
   padding: 120px 30px;
@@ -458,7 +385,7 @@ h4 { font-size: 24px; letter-spacing: 2px; }
   position: relative;
 }
 .final-cta::before {
-  content: '';
+  content: "";
   position: absolute;
   inset: 0;
   background: radial-gradient(ellipse at 50% 50%, rgba(125,155,118,.06) 0%, transparent 60%);
@@ -467,135 +394,6 @@ h4 { font-size: 24px; letter-spacing: 2px; }
 .final-cta h2 { margin-bottom: 16px; position: relative; }
 .final-cta .body-text { margin: 0 auto 40px; text-align: center; position: relative; }
 .final-cta .btn { position: relative; }
-
-/* ===== SUB-PROGRAM CARDS ===== */
-.sub-programs {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 24px;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-.sub-program-card {
-  background: var(--black);
-  border: 1px solid rgba(125,155,118,.1);
-  padding: 40px 32px;
-  transition: border-color .3s;
-}
-.sub-program-card:hover {
-  border-color: rgba(125,155,118,.3);
-}
-.sub-program-card .section-tag { margin-bottom: 8px; }
-.sub-program-card h4 { margin-bottom: 14px; }
-.sub-program-card .body-text { font-size: 16px; margin-bottom: 14px; }
-
-/* ===== COACH CARDS ===== */
-.coach-card {
-  display: grid;
-  grid-template-columns: 300px 1fr;
-  gap: 48px;
-  align-items: start;
-  max-width: 1000px;
-  margin: 0 auto 60px;
-  padding: 48px;
-  background: var(--black);
-  border: 1px solid rgba(125,155,118,.1);
-}
-.coach-photo {
-  width: 100%;
-  aspect-ratio: 3/4;
-  background: rgba(125,155,118,.08);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--light-grey);
-  font-size: 14px;
-  font-weight: 300;
-  border: 1px solid rgba(125,155,118,.15);
-}
-.coach-info h3 { margin-bottom: 8px; }
-.coach-info .discipline-tag {
-  font-family: var(--font-heading);
-  font-size: 13px;
-  letter-spacing: 3px;
-  color: var(--green);
-  text-transform: uppercase;
-  margin-bottom: 20px;
-}
-.coach-placeholder {
-  max-width: 1000px;
-  margin: 0 auto 24px;
-  padding: 32px 40px;
-  background: var(--black);
-  border: 1px solid rgba(125,155,118,.08);
-  display: flex;
-  align-items: center;
-  gap: 24px;
-}
-.coach-placeholder .coach-photo {
-  width: 80px;
-  height: 80px;
-  aspect-ratio: 1;
-  flex-shrink: 0;
-  font-size: 11px;
-}
-.coach-placeholder h4 { margin-bottom: 4px; font-size: 20px; }
-.coach-placeholder .body-text { font-size: 15px; margin: 0; }
-
-/* === Coach photo grayscale treatment === */
-.coach-card .coach-photo img,
-.coach-placeholder .coach-photo img {
-  filter: grayscale(100%);
-  -webkit-filter: grayscale(100%);
-  transition: filter 0.4s ease, -webkit-filter 0.4s ease;
-}
-.coach-card:hover .coach-photo img,
-.coach-placeholder:hover .coach-photo img,
-.coach-card .coach-photo:hover img,
-.coach-placeholder .coach-photo:hover img {
-  filter: grayscale(0%);
-  -webkit-filter: grayscale(0%);
-}
-section.section.fade-in[style*="text-align: center"] > img {
-  filter: grayscale(100%);
-  -webkit-filter: grayscale(100%);
-  transition: filter 0.4s ease, -webkit-filter 0.4s ease;
-}
-section.section.fade-in[style*="text-align: center"]:hover > img,
-section.section.fade-in[style*="text-align: center"] > img:hover {
-  filter: grayscale(0%);
-  -webkit-filter: grayscale(0%);
-}
-
-/* ===== SCHEDULE ===== */
-.schedule-embed {
-  max-width: 1000px;
-  margin: 0 auto;
-  background: var(--black);
-  border: 1px solid rgba(125,155,118,.12);
-  padding: 60px 40px;
-  text-align: center;
-}
-/* Gymdesk schedule iframe (explicit embed — widgets.js also needs jQuery from CDN) */
-.schedule-embed .gymdesk-schedule {
-  text-align: left;
-  width: 100%;
-  min-height: 400px;
-}
-.schedule-embed .gymdesk-schedule iframe {
-  width: 100%;
-  min-height: 420px;
-  border: 0;
-  display: block;
-  background: var(--black);
-}
-.schedule-embed .placeholder-msg {
-  color: var(--light-grey);
-  font-size: 16px;
-  font-weight: 300;
-  padding: 40px;
-  border: 1px dashed rgba(125,155,118,.25);
-}
 .hours-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -606,10 +404,7 @@ section.section.fade-in[style*="text-align: center"] > img:hover {
 .hours-item {
   text-align: center;
 }
-.hours-item h4 { font-size: 16px; margin-bottom: 6px; letter-spacing: 2px; }
 .hours-item p { color: var(--grey); font-size: 15px; font-weight: 300; }
-
-/* ===== PRICING ===== */
 .pricing-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -633,7 +428,7 @@ section.section.fade-in[style*="text-align: center"] > img:hover {
   background: rgba(125,155,118,.04);
 }
 .price-card.featured::before {
-  content: 'ALL ACCESS';
+  content: "ALL ACCESS";
   position: absolute;
   top: 0;
   left: 50%;
@@ -645,7 +440,6 @@ section.section.fade-in[style*="text-align: center"] > img:hover {
   letter-spacing: 3px;
   padding: 6px 20px;
 }
-.price-card h3 { margin-bottom: 8px; font-size: 28px; }
 .price-amount {
   font-family: var(--font-heading);
   font-size: 56px;
@@ -669,14 +463,12 @@ section.section.fade-in[style*="text-align: center"] > img:hover {
   position: relative;
 }
 .price-features li::before {
-  content: '✓';
+  content: "✓";
   position: absolute;
   left: 0;
   color: var(--green);
   font-weight: 600;
 }
-
-/* ===== FAQ ACCORDION ===== */
 .faq-section {
   max-width: 800px;
   margin: 0 auto;
@@ -700,7 +492,7 @@ section.section.fade-in[style*="text-align: center"] > img:hover {
 }
 .faq-question:hover { color: var(--green); }
 .faq-question::after {
-  content: '+';
+  content: "+";
   position: absolute;
   right: 0;
   top: 50%;
@@ -710,7 +502,7 @@ section.section.fade-in[style*="text-align: center"] > img:hover {
   transition: transform .3s;
 }
 .faq-item.open .faq-question::after {
-  content: '−';
+  content: "−";
 }
 .faq-answer {
   max-height: 0;
@@ -727,238 +519,6 @@ section.section.fade-in[style*="text-align: center"] > img:hover {
   font-weight: 300;
   line-height: 1.7;
 }
-
-/* ===== THE GYM ===== */
-.facility-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 8px;
-  max-width: 1200px;
-  margin: 0 auto 60px;
-}
-.facility-photo {
-  aspect-ratio: 4/3;
-  background: rgba(125,155,118,.06);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--light-grey);
-  font-size: 13px;
-  font-weight: 300;
-  border: 1px solid rgba(125,155,118,.08);
-}
-.gym-info-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 40px;
-  max-width: 1000px;
-  margin: 0 auto;
-}
-.gym-info-item h4 { margin-bottom: 12px; color: var(--green); }
-.gym-info-item .body-text { font-size: 16px; }
-
-/* ===== MAP EMBED ===== */
-.map-container {
-  max-width: 1200px;
-  margin: 60px auto 0;
-  height: 400px;
-  background: var(--black);
-  border: 1px solid rgba(125,155,118,.12);
-  overflow: hidden;
-}
-.map-container iframe {
-  width: 100%;
-  height: 100%;
-  border: 0;
-  filter: grayscale(80%) invert(92%) contrast(90%);
-}
-
-/* ===== FREE TRIAL ===== */
-.trial-value-props {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 40px;
-  max-width: 900px;
-  margin: 0 auto 60px;
-  text-align: center;
-}
-.trial-prop h4 {
-  margin-bottom: 10px;
-  font-size: 22px;
-}
-.trial-prop .body-text {
-  font-size: 15px;
-  margin: 0 auto;
-}
-.booking-widget {
-  max-width: 720px;
-  margin: 0 auto;
-  padding: 0;
-  background: transparent;
-  border: none;
-}
-#dfc-form-wrap {
-  max-width: 680px;
-  margin: 0 auto;
-  padding: 48px 32px 64px;
-  background: var(--black);
-  font-family: var(--font-body);
-}
-#dfc-form-heading {
-  font-family: var(--font-heading);
-  font-size: 42px;
-  color: var(--white);
-  letter-spacing: 2px;
-  margin: 0 0 6px;
-  line-height: 1;
-}
-.dfc-sub {
-  font-size: 13px;
-  color: var(--green);
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  margin: 0 0 8px;
-  font-weight: 600;
-}
-.dfc-divider {
-  border: none;
-  border-top: 1px solid #333;
-  margin: 24px 0 32px;
-}
-.dfc-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
-  margin-bottom: 0;
-}
-.dfc-field {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  margin-bottom: 20px;
-}
-.dfc-label {
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  color: var(--green);
-}
-.dfc-input {
-  background: #2a2a2a;
-  border: 1px solid #333;
-  color: var(--white);
-  font-family: var(--font-body);
-  font-size: 16px;
-  padding: 12px 16px;
-  outline: none;
-  transition: border-color .2s;
-  width: 100%;
-  box-sizing: border-box;
-}
-.dfc-input:focus {
-  border-color: var(--green);
-}
-.dfc-input::placeholder {
-  color: #555;
-}
-.dfc-select {
-  appearance: none;
-  background-color: #2a2a2a;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%237D9B76' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right 16px center;
-  padding-right: 40px;
-  cursor: pointer;
-}
-.dfc-textarea {
-  resize: vertical;
-  min-height: 100px;
-}
-.dfc-btn {
-  background: var(--green);
-  color: var(--black);
-  border: none;
-  font-family: var(--font-heading);
-  font-size: 20px;
-  letter-spacing: 2px;
-  padding: 16px 48px;
-  cursor: pointer;
-  margin-top: 8px;
-  transition: background .2s;
-  width: 100%;
-  display: block;
-}
-.dfc-btn:hover {
-  background: #8faf88;
-}
-.dfc-notice {
-  font-size: 12px;
-  color: #555;
-  letter-spacing: 0.5px;
-  margin-top: 16px;
-  text-align: center;
-}
-.booking-widget .sms-consent {
-  margin-bottom: 8px;
-}
-@media (max-width: 600px) {
-  .dfc-row {
-    grid-template-columns: 1fr;
-  }
-  #dfc-form-wrap {
-    padding: 32px 20px 48px;
-  }
-  #dfc-form-heading {
-    font-size: 32px;
-  }
-}
-/* SMS Consent Checkboxes — A2P 10DLC */
-.sms-consent {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  border-top: 1px solid rgba(125,155,118,.12);
-  padding-top: 16px;
-}
-.consent-label {
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  cursor: pointer;
-}
-.consent-label input[type="checkbox"] {
-  flex-shrink: 0;
-  width: 16px;
-  height: 16px;
-  margin-top: 3px;
-  accent-color: var(--green);
-  cursor: pointer;
-  padding: 0;
-  background: var(--deep-black);
-  border: 1px solid rgba(125,155,118,.4);
-}
-.consent-label span {
-  color: var(--light-grey);
-  font-size: 13px;
-  font-weight: 300;
-  line-height: 1.5;
-}
-
-/* Form policy links */
-.form-policy-links {
-  text-align: center;
-  font-size: 12px;
-  color: var(--light-grey);
-  font-weight: 300;
-  margin-top: 4px;
-}
-.form-policy-links a {
-  color: var(--green);
-  text-decoration: underline;
-}
-
-/* ===== FOOTER ===== */
 .footer {
   background: var(--deep-black);
   border-top: 1px solid rgba(125,155,118,.12);
@@ -993,32 +553,6 @@ section.section.fade-in[style*="text-align: center"] > img:hover {
   font-size: 12px;
   font-weight: 300;
 }
-
-/* ===== LEARN LIST (for boxing/muay thai) ===== */
-.learn-list {
-  list-style: none;
-  max-width: 700px;
-  margin-bottom: 40px;
-}
-.learn-list li {
-  padding: 10px 0 10px 24px;
-  color: var(--grey);
-  font-weight: 300;
-  font-size: 16px;
-  position: relative;
-  border-bottom: 1px solid rgba(255,255,255,.04);
-}
-.learn-list li::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 17px;
-  width: 8px;
-  height: 2px;
-  background: var(--green);
-}
-
-/* ===== ANIMATIONS ===== */
 .fade-in {
   opacity: 0;
   transform: translateY(30px);
@@ -1028,41 +562,20 @@ section.section.fade-in[style*="text-align: center"] > img:hover {
   opacity: 1;
   transform: translateY(0);
 }
-
-/* ===== PAGE SPACER ===== */
-.page-spacer {
-  height: 1px;
-  background: linear-gradient(90deg, transparent 5%, rgba(125,155,118,.15) 50%, transparent 95%);
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-/* ===== RESPONSIVE ===== */
 @media (max-width: 960px) {
-  .programs-grid,
+.programs-grid,
   .pricing-grid,
   .facility-grid,
   .hours-grid {
     grid-template-columns: 1fr;
     max-width: 500px;
   }
-  .about-grid {
+.about-grid {
     grid-template-columns: 1fr;
   }
-  .sub-programs {
-    grid-template-columns: 1fr;
-  }
-  .coach-card {
-    grid-template-columns: 1fr;
-  }
-  .coach-photo { max-width: 250px; }
-  .gym-info-grid { grid-template-columns: 1fr; }
-  .trial-value-props { grid-template-columns: 1fr; max-width: 400px; }
-  .coach-placeholder { flex-direction: column; text-align: center; }
 }
-
 @media (max-width: 768px) {
-  .nav-links {
+.nav-links {
     display: none;
     position: absolute;
     top: 70px;
@@ -1076,32 +589,58 @@ section.section.fade-in[style*="text-align: center"] > img:hover {
     gap: 0;
     overflow-y: auto;
   }
-  .nav-links.open { display: flex; }
-  .nav-links li { width: 100%; text-align: center; }
-  .nav-links a {
+.nav-links.open { display: flex; }
+.nav-links li { width: 100%; text-align: center; }
+.nav-links a {
     display: block;
     padding: 18px 30px;
     font-size: 18px;
     border-bottom: 1px solid rgba(255,255,255,.05);
   }
-  .nav-cta {
+.nav-cta {
     margin: 20px 30px;
     display: block;
     text-align: center;
   }
-  .nav-toggle { display: block; }
-
-  .hero { min-height: 90vh; padding-top: 140px; }
-  .section, .section-full { padding: 60px 20px; }
-  .sub-hero { padding: 150px 20px 60px; }
-  .hero-buttons { flex-direction: column; }
-  .hero-buttons .btn { width: 100%; }
-  .pricing-grid { gap: 40px; }
-  .price-card.featured { margin-top: 20px; }
-  .final-cta { padding: 80px 20px; }
-  .booking-widget { padding: 0; }
-  .map-container { height: 300px; margin-left: 20px; margin-right: 20px; }
-  .footer-right { text-align: left; }
+.nav-toggle { display: block; }
+.hero { min-height: 90vh; padding-top: 140px; }
+.section, .section-full { padding: 60px 20px; }
+.hero-buttons { flex-direction: column; }
+.hero-buttons .btn { width: 100%; }
+.pricing-grid { gap: 40px; }
+.price-card.featured { margin-top: 20px; }
+.final-cta { padding: 80px 20px; }
+.footer-right { text-align: left; }
+}
+.hero-media { position: absolute; inset: 0; z-index: 0; }
+.hero-media img { width: 100%; height: 100%; object-fit: cover; object-position: 44% 50%; }
+.hero h1 { text-wrap: balance; }
+.hero .hero-eyebrow { color: var(--white); }
+.hero .hero-eyebrow::before { content: ""; display: block; width: 48px; height: 3px; margin-bottom: 14px; background: var(--green); }
+@media (min-width: 769px) {
+.hero-media img { object-position: 50% 30%; }
+}
+.proof-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin: 28px 0 24px; }
+.proof-strip img { width: 100%; height: auto; aspect-ratio: 3 / 2; object-fit: cover; }
+.proof-links { display: flex; flex-wrap: wrap; gap: 12px 32px; font-size: 18px; }
+.proof-links a { text-decoration: underline; text-underline-offset: 4px; }
+@media (max-width: 768px) {
+.proof-strip { grid-template-columns: repeat(2, 1fr); }
+}
+.program-card .card-title { margin-bottom: 16px; font-size: 28px; }
+.credential-card .credential-title { font-size: 20px; letter-spacing: 2px; margin-bottom: 20px; color: var(--green); }
+.credential-card a { color: var(--white); text-decoration: underline; text-underline-offset: 3px; }
+.hours-item h3 { font-size: 16px; margin-bottom: 6px; letter-spacing: 2px; }
+.price-card .price-title { font-size: 36px; margin-bottom: 12px; }
+.price-buttons { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+.teaser-inner { max-width: 1200px; margin: 0 auto; }
+.coach-teaser-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 32px; }
+.coach-teaser img { width: 100%; height: auto; aspect-ratio: 1 / 1; object-fit: cover; object-position: 50% 20%; margin-bottom: 16px; }
+.coach-teaser h3 { font-size: 28px; margin-bottom: 4px; }
+.coach-teaser-title { color: var(--green); font-size: 16px; letter-spacing: 1px; margin-bottom: 8px; }
+.coach-teaser .body-text { font-size: 16px; }
+@media (max-width: 768px) {
+.coach-teaser-grid { grid-template-columns: 1fr; }
 }
 </style>
 <!-- ===== STRUCTURED DATA (Schema.org) ===== -->
@@ -1165,15 +704,7 @@ section.section.fade-in[style*="text-align: center"] > img:hover {
       "name": "What should I bring to my first class?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Comfortable workout clothes, a water bottle, and a towel. For Jiu-Jitsu, a rashguard or fitted athletic top works best. We have loaner gear available while you get started."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Can I try a class before committing?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Absolutely. Book a free trial class and experience the coaching and facility firsthand. No obligation, no pressure."
+        "text": "Comfortable workout clothes, a water bottle and a towel. For Jiu-Jitsu, a rash guard or fitted athletic top works best. We have loaner gear available while you get started."
       }
     },
     {
@@ -1181,7 +712,7 @@ section.section.fade-in[style*="text-align: center"] > img:hover {
       "name": "What's included in the membership?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "The All Access Membership includes every class Detroit Fight Company offers — Gi and No-Gi Jiu-Jitsu, boxing, Muay Thai, kids programs, plus unlimited open mat and open gym access."
+        "text": "Every class Detroit Fight Company offers: Gi and No Gi Jiu-Jitsu, boxing, Muay Thai, MMA, kids classes and open mat. New members on Month to Month receive the Enrollment Kit, a Detroit Fight Company gi and rash guard, for a one time $150. The kit is included with the 3 Month Commit."
       }
     },
     {
@@ -1189,7 +720,7 @@ section.section.fade-in[style*="text-align: center"] > img:hover {
       "name": "Are there classes for kids?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes. We offer Kids No-Gi Jiu-Jitsu classes designed for young athletes to build discipline, coordination, and confidence in a safe, supervised environment."
+        "text": "Yes. Kids No Gi Jiu-Jitsu and Youth Boxing are for ages 5 to 14. See kids classes and homeschool training on their own pages."
       }
     },
     {
@@ -1197,7 +728,7 @@ section.section.fade-in[style*="text-align: center"] > img:hover {
       "name": "Where are you located?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "1425 Tuskawilla Road, Suite 209, Winter Springs, FL 32708 — in the Promenade at Tuskawilla. Easy access from Oviedo, Casselberry, and greater Seminole County."
+        "text": "1425 Tuskawilla Road, Suite 209, Winter Springs, FL 32708, in the Promenade at Tuskawilla. Easy access from Oviedo, Casselberry and greater Seminole County."
       }
     },
     {
@@ -1205,18 +736,17 @@ section.section.fade-in[style*="text-align: center"] > img:hover {
       "name": "How do I cancel my membership?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "No long-term contracts. To cancel, email sean@detroitfight.com at least 15 days before your next billing date."
+        "text": "Month to Month has no contract. Email sean@detroitfight.com with 30 days written notice before your next billing date. The 3 Month Commit is paid in full at signup, covers three months, and then continues month to month until you cancel with the same 30 days notice."
       }
     }
   ]
 }
 </script>
 <style>
-/* Nav fits 11 links between tablet and desktop widths */
 @media (max-width: 1200px) and (min-width: 1101px) {
-  .nav-links { gap: 16px; }
-  .nav-links a { font-size: 13px; letter-spacing: 1.2px; }
-  .nav-cta { padding: 7px 12px !important; }
+.nav-links { gap: 16px; }
+.nav-links a { font-size: 13px; letter-spacing: 1.2px; }
+.nav-cta { padding: 7px 12px !important; }
 }
 </style>
 </head>
@@ -1248,13 +778,16 @@ section.section.fade-in[style*="text-align: center"] > img:hover {
 </nav>
 
 
-<!-- ═══════════════════════════════════════════════════
-     PAGE 1: HOME
-     ═══════════════════════════════════════════════════ -->
 <section id="home" class="hero">
+  <picture class="hero-media">
+    <source type="image/webp" sizes="100vw"
+      srcset="/images/gym/hero-shadow-boxing-01-480.webp 480w, /images/gym/hero-shadow-boxing-01-960.webp 960w, /images/gym/hero-shadow-boxing-01-1440.webp 1440w">
+    <img src="/images/gym/hero-shadow-boxing-01.jpg" width="1600" height="1067" fetchpriority="high" decoding="async"
+      alt="Boxer shadow boxing with hand weights in front of the cage at Detroit Fight Company">
+  </picture>
   <div class="hero-content fade-in">
     <p class="hero-eyebrow">Built for the Fight. Not the Followers.</p>
-    <h1>Boxing, Muay Thai &amp; Jiu-Jitsu in Winter Springs, FL</h1>
+    <h1>Boxing, Muay Thai &amp; <span style="white-space: nowrap;">Jiu-Jitsu</span> in Winter Springs, FL</h1>
     <p class="body-text">Boxing. Muay Thai. Jiu-Jitsu. Real training with real coaches in Winter Springs, Florida.</p>
     <div class="hero-buttons">
       <a href="/free-trial" class="btn btn-primary">Book Your Free Trial Class</a>
@@ -1264,439 +797,154 @@ section.section.fade-in[style*="text-align: center"] > img:hover {
 </section>
 
 <!-- Programs Overview -->
-<section class="section-full" style="background: var(--black);">
+<section class="section-full" style="background: var(--black);" aria-label="Programs">
   <div class="programs-grid fade-in">
     <div class="program-card">
-      <a href="/boxing" class="card-link" aria-label="Boxing & Conditioning"></a>
-      <h3>Boxing &<br>Conditioning</h3>
-      <p class="body-text">Fundamentals that work in the ring and in life. Footwork, combinations, head movement, and heavy bag work — wrapped in conditioning that changes your body faster than any treadmill.</p>
+      <a href="/boxing" class="card-link" aria-label="Boxing &amp; Conditioning"></a>
+      <h2 class="card-title">Boxing &amp;<br>Conditioning</h2>
+      <p class="body-text">Footwork, combinations, head movement and heavy bag work, wrapped in conditioning built for fighters. Fundamentals that work in the ring and in life.</p>
       <span class="card-tag">All Levels Welcome</span>
     </div>
     <div class="program-card">
       <a href="/muay-thai" class="card-link" aria-label="Muay Thai"></a>
-      <h3>Muay Thai</h3>
-      <p class="body-text">The art of eight limbs. Learn to strike with fists, elbows, knees, and kicks in a structured curriculum that builds power, timing, and fight IQ every session.</p>
+      <h2 class="card-title">Muay Thai</h2>
+      <p class="body-text">The art of eight limbs: fists, elbows, knees and kicks. A structured curriculum that builds power, timing and fight IQ every session.</p>
       <span class="card-tag">All Levels Welcome</span>
     </div>
     <div class="program-card">
       <a href="/jiu-jitsu" class="card-link" aria-label="Jiu-Jitsu"></a>
-      <h3>Brazilian<br>Jiu-Jitsu</h3>
-      <p class="body-text">Gi and No-Gi classes led by internationally ranked coaches. Kids and open mat sessions available. From fundamentals to competition-level game plans.</p>
-      <span class="card-tag">Gi · No-Gi · Kids · Open Mat</span>
+      <h2 class="card-title">Brazilian<br>Jiu-Jitsu</h2>
+      <p class="body-text">Gi and No Gi classes led by black belt competitors, plus kids classes and open mat. From fundamentals to competition game plans.</p>
+      <span class="card-tag">Gi · No Gi · Kids · Open Mat</span>
     </div>
   </div>
 </section>
 
-<!-- About / Why DFC -->
+<!-- Our Story -->
 <section class="section fade-in">
   <div class="about-grid">
     <div>
       <p class="section-tag">Our Story</p>
       <h2 style="margin-bottom: 28px;">Detroit Grit.<br>Florida Ground.</h2>
       <p class="body-text" style="margin-bottom: 20px;">Detroit Fight Company was born from a simple idea: combat sports should be taught by people who actually compete. Not fitness influencers. Not franchise operators. Fighters.</p>
-      <p class="body-text" style="margin-bottom: 20px;">Founded by <strong>Sean Goolsby</strong> — an IBJJF black belt who grew up in Detroit and built his career on the international stage — DFC is the gym he envisioned when he was coming up. World-class instruction, a tight community, zero ego.</p>
+      <p class="body-text" style="margin-bottom: 20px;"><strong>Sean Goolsby</strong>, Head Coach and owner, is an IBJJF black belt who grew up in Detroit and built his career on the international stage. Detroit Fight Company is the gym he envisioned when he was coming up. World class instruction, a tight community, zero ego.</p>
       <p class="body-text">Whether you've never thrown a punch or you're training for your next competition, you belong here.</p>
     </div>
     <div class="credential-card">
-      <h4>Head Coach and Owner: Sean Goolsby</h4>
+      <h3 class="credential-title">Head Coach and Owner: Sean Goolsby</h3>
       <ul>
-        <li>IBJJF Black Belt</li>
+        <li><a href="https://ibjjf.com/athletes/sean-goolsby" target="_blank" rel="noopener">IBJJF Black Belt</a></li>
         <li>European No Gi Champion</li>
         <li>Pan Am Gi Champion</li>
         <li>IBJJF Pan No Gi silver medalist</li>
-        <li>AJP Tour ranked</li>
+        <li><a href="https://ajptour.com/en/profile/131910" target="_blank" rel="noopener">AJP Tour ranked</a></li>
         <li>Esporte Dez / Instituto Calasans Camargo</li>
       </ul>
     </div>
   </div>
 </section>
 
-<!-- Final CTA -->
-<section class="final-cta fade-in">
-  <h2>Your First Class Is On Us.</h2>
-  <p class="body-text">Book a free trial, show up, and find out what training at DFC feels like. No pitch, no hard sell.</p>
-  <a href="/free-trial" class="btn btn-primary">Book Your Free Trial Class</a>
-</section>
-
-<div class="page-spacer"></div>
-
-
-<!-- ═══════════════════════════════════════════════════
-     PAGE 2: BRAZILIAN JIU-JITSU
-     ═══════════════════════════════════════════════════ -->
-<section id="jiu-jitsu" class="sub-hero fade-in">
-  <h1>Jiu-Jitsu at<br>Detroit Fight Company</h1>
-  <p class="body-text">Gi. No-Gi. Kids. Open Mat. Led by internationally ranked black belt competitors — not hobbyists with a YouTube channel.</p>
-  <a href="/free-trial" class="btn btn-primary">Book Your Free Trial Class</a>
-</section>
-
-<section class="section fade-in">
-  <p class="section-tag">Program Overview</p>
-  <h2 style="margin-bottom: 28px;">The Deepest Jiu-Jitsu Program<br>in Seminole County</h2>
-  <p class="body-text" style="margin-bottom: 20px;">DFC's Jiu-Jitsu program is built for the mat, not the lecture hall. Whether you're stepping on the mats for the first time or preparing for your next IBJJF tournament, our structured curriculum meets you where you are and pushes you further than you thought possible.</p>
-  <p class="body-text">Every class is coached — not just supervised. You'll drill technique, work live positions, and build a game that's yours. Our coaches don't just teach Jiu-Jitsu. They compete in it, at the highest levels.</p>
-</section>
-
-<section class="section-full" style="background: var(--black); padding-top: 60px; padding-bottom: 80px;">
-  <div class="sub-programs fade-in">
-    <div class="sub-program-card">
-      <p class="section-tag">No-Gi Jiu-Jitsu</p>
-      <h4>No-Gi Jiu-Jitsu</h4>
-      <p class="body-text">Submission grappling without the kimono. Fast-paced, technique-driven, and focused on the positions and attacks that dominate modern competition. Classes available mornings, evenings, and weekends.</p>
-    </div>
-    <div class="sub-program-card">
-      <p class="section-tag">Gi Jiu-Jitsu</p>
-      <h4>Gi Jiu-Jitsu</h4>
-      <p class="body-text">Traditional Jiu-Jitsu in the kimono. Grip fighting, guard work, sweeps, and submissions that build a complete technical foundation.</p>
-    </div>
-    <div class="sub-program-card">
-      <p class="section-tag">Open Mat</p>
-      <h4>Open Mat</h4>
-      <p class="body-text">Free rolling and drilling for all members regardless of program enrollment. Open mat follows every evening class and weekend session. Bring your game, test your techniques, and train with partners at every level.</p>
-    </div>
-    <div class="sub-program-card">
-      <p class="section-tag">Kids Jiu-Jitsu</p>
-      <h4>Kids No-Gi Jiu-Jitsu</h4>
-      <p class="body-text">Designed for young athletes to build discipline, coordination, confidence, and real self-defense skills in a safe, supervised environment. Age-appropriate instruction with a structured curriculum.</p>
-    </div>
-    <div class="sub-program-card">
-      <p class="section-tag">Early Morning</p>
-      <h4>Early Morning Jiu-Jitsu</h4>
-      <p class="body-text">Get your training in before the day starts. Early morning Jiu-Jitsu sessions for members who want mat time before work.</p>
-    </div>
+<!-- Proof -->
+<section class="section proof" aria-labelledby="proof-heading">
+  <p class="section-tag">Inside the Gym</p>
+  <h2 id="proof-heading">Where You Train</h2>
+  <div class="proof-strip">
+    <picture>
+      <source type="image/webp" sizes="(max-width: 768px) 50vw, 285px"
+        srcset="/images/gym/boxing-ring-01-480.webp 480w, /images/gym/boxing-ring-01-960.webp 960w">
+      <img src="/images/gym/boxing-ring-01.jpg" width="1600" height="1067" loading="lazy" decoding="async"
+        alt="Members working through a conditioning circuit beside the boxing ring at Detroit Fight Company">
+    </picture>
+    <picture>
+      <source type="image/webp" sizes="(max-width: 768px) 50vw, 285px"
+        srcset="/images/gym/jiu-jitsu-coach-01-480.webp 480w, /images/gym/jiu-jitsu-coach-01-960.webp 960w">
+      <img src="/images/gym/jiu-jitsu-coach-01.jpg" width="1600" height="1067" loading="lazy" decoding="async"
+        alt="Head Coach and owner Sean Goolsby explaining a Jiu-Jitsu technique to students at Detroit Fight Company">
+    </picture>
+    <picture>
+      <source type="image/webp" sizes="(max-width: 768px) 50vw, 285px"
+        srcset="/images/gym/cage-wall-boxing-01-480.webp 480w, /images/gym/cage-wall-boxing-01-960.webp 960w">
+      <img src="/images/gym/cage-wall-boxing-01.jpg" width="1600" height="1067" loading="lazy" decoding="async"
+        alt="Two boxers working a partner drill beside the cage wall at Detroit Fight Company">
+    </picture>
+    <picture>
+      <source type="image/webp" sizes="(max-width: 768px) 50vw, 285px"
+        srcset="/images/gym/boxing-coach-student-01-480.webp 480w, /images/gym/boxing-coach-student-01-960.webp 960w">
+      <img src="/images/gym/boxing-coach-student-01.jpg" width="1600" height="1067" loading="lazy" decoding="async"
+        alt="Coach steadying the heavy bag for a boxing student at Detroit Fight Company">
+    </picture>
   </div>
-  <p style="text-align: center; margin-top: 40px;">
-    <a href="/schedule" class="btn btn-primary">View the Live Class Schedule</a>
+  <p class="proof-links">
+    <a href="/the-gym">See the gym</a>
+    <a href="/the-gym#gym-video">Watch the 30 second video</a>
+    <a href="https://maps.app.goo.gl/sojazUGgxxwXbr1Y7" target="_blank" rel="noopener">Read our Google reviews</a>
   </p>
 </section>
 
-<!-- JJ Head Coach Section -->
-<section class="section fade-in" style="text-align: center;">
-  <p class="section-tag">Head Coach</p>
-  <h3 style="margin-bottom: 20px;">Sean Goolsby</h3>
-  <p class="body-text" style="margin: 0 auto 20px;">Head Coach and owner Sean Goolsby grew up in Detroit and built his competitive career on the international stage. IBJJF Black Belt. European No Gi Champion. Pan Am Gi Champion. IBJJF Pan No Gi silver medalist. AJP Tour ranked. Esporte Dez / Instituto Calasans Camargo.</p>
-  <p class="body-text" style="margin: 0 auto 40px;">Sean founded Detroit Fight Company to build the academy he wished existed when he was coming up: world-class instruction, a tight community, and zero ego. Every class at DFC reflects that vision.</p>
-  <a href="/free-trial" class="btn btn-primary">Start Training Jiu-Jitsu</a>
-</section>
-
-<div class="page-spacer"></div>
-
-
-<!-- ═══════════════════════════════════════════════════
-     PAGE 3: BOXING & CONDITIONING
-     ═══════════════════════════════════════════════════ -->
-<section id="boxing" class="sub-hero fade-in">
-  <h1>Boxing & Conditioning at<br>Detroit Fight Company</h1>
-  <p class="body-text">Learn to fight. Get in the best shape of your life. Both happen here.</p>
-  <a href="/free-trial" class="btn btn-primary">Book Your Free Trial Class</a>
-</section>
-
-<section class="section fade-in">
-  <p class="section-tag">Program Overview</p>
-  <h2 style="margin-bottom: 28px;">Real Boxing.<br>Not Cardio Kickboxing.</h2>
-  <p class="body-text" style="margin-bottom: 20px;">DFC's Boxing & Conditioning program teaches actual boxing fundamentals — footwork, combinations, head movement, defensive technique, and ring IQ — wrapped in conditioning that will change your body composition faster than any treadmill or spin class.</p>
-  <p class="body-text" style="margin-bottom: 20px;">Every session includes structured technical instruction followed by heavy bag work, mitt work, and conditioning circuits. You'll learn how to throw a proper jab, move your feet, and build the kind of functional fitness that combat athletes rely on.</p>
-  <p class="body-text">No experience required. Whether you're training for fitness, self-defense, or competition, the program scales to your level from day one.</p>
-</section>
-
-<section class="section-full" style="background: var(--black); padding-top: 60px; padding-bottom: 80px;">
-  <div style="max-width: 1200px; margin: 0 auto;" class="fade-in">
-    <p class="section-tag">What You'll Learn</p>
-    <h3 style="margin-bottom: 28px;">Skills Breakdown</h3>
-    <ul class="learn-list">
-      <li>Stance, footwork, and ring movement</li>
-      <li>Jab, cross, hook, uppercut — proper form and power generation</li>
-      <li>Defensive skills — slips, rolls, parries, and head movement</li>
-      <li>Heavy bag technique and combinations</li>
-      <li>Mitt work with coaches</li>
-      <li>Conditioning circuits designed for fighters</li>
-    </ul>
-    <div style="margin-top: 32px;">
-      <p class="body-text" style="margin-bottom: 8px;"><strong>All Levels Welcome</strong> — No prior experience needed. Every class is coached and scaled to your ability.</p>
-      <p class="body-text" style="margin-bottom: 32px;"><strong>What to Bring:</strong> Comfortable workout clothes, a water bottle, and a towel. Hand wraps recommended (available for purchase at the gym). Loaner gloves available while you get started.</p>
-      <a href="/free-trial" class="btn btn-primary">Try a Free Boxing Class</a>
-    </div>
-  </div>
-</section>
-
-<div class="page-spacer"></div>
-
-
-<!-- ═══════════════════════════════════════════════════
-     PAGE 4: MUAY THAI
-     ═══════════════════════════════════════════════════ -->
-<section id="muay-thai" class="sub-hero fade-in">
-  <h1>Muay Thai at<br>Detroit Fight Company</h1>
-  <p class="body-text">The art of eight limbs. Fists, elbows, knees, and kicks — all in one striking system.</p>
-  <a href="/free-trial" class="btn btn-primary">Book Your Free Trial Class</a>
-</section>
-
-<section class="section fade-in">
-  <p class="section-tag">Program Overview</p>
-  <h2 style="margin-bottom: 28px;">Complete Striking.<br>Not Just Kickboxing.</h2>
-  <p class="body-text" style="margin-bottom: 20px;">Muay Thai is the most versatile striking art in combat sports. At DFC, you'll learn the full system — punches, kicks, elbows, knees, and clinch work — in a structured curriculum that builds power, timing, and fight IQ from session one.</p>
-  <p class="body-text" style="margin-bottom: 20px;">Every class combines technical instruction with pad work, partner drills, and live application. Your coaches don't just demonstrate technique — they break down the timing, distance, and setups that make it work against a resisting partner.</p>
-  <p class="body-text">Whether you're looking for a complete striking foundation, cross-training for Jiu-Jitsu, or preparing to compete, the Muay Thai program has you covered.</p>
-</section>
-
-<section class="section-full" style="background: var(--black); padding-top: 60px; padding-bottom: 80px;">
-  <div style="max-width: 1200px; margin: 0 auto;" class="fade-in">
-    <p class="section-tag">What You'll Learn</p>
-    <h3 style="margin-bottom: 28px;">Skills Breakdown</h3>
-    <ul class="learn-list">
-      <li>Full striking arsenal — punches, kicks, elbows, knees</li>
-      <li>Thai pad work and partner drills</li>
-      <li>Clinch technique — sweeps, knees, off-balancing</li>
-      <li>Defensive footwork and timing</li>
-      <li>Fight IQ — reading opponents, setting up attacks</li>
-      <li>Conditioning built into every session</li>
-    </ul>
-    <div style="margin-top: 32px;">
-      <p class="body-text" style="margin-bottom: 8px;"><strong>All Levels Welcome</strong> — Beginners train alongside experienced students. Coaches scale instruction to your level.</p>
-      <p class="body-text" style="margin-bottom: 32px;"><strong>What to Bring:</strong> Comfortable workout clothes, a water bottle, and a towel. Shin guards recommended for partner drills (available for purchase at the gym). Loaner gear available while you get started.</p>
-      <a href="/free-trial" class="btn btn-primary">Try a Free Muay Thai Class</a>
-    </div>
-  </div>
-</section>
-
-<div class="page-spacer"></div>
-
-
-<!-- ═══════════════════════════════════════════════════
-     PAGE 5: COACHES
-     ═══════════════════════════════════════════════════ -->
-<section id="coaches" class="sub-hero fade-in">
-  <h1>Our Coaches</h1>
-  <p class="body-text">Every coach at DFC is an active practitioner. They don't just teach — they train, they compete, and they lead by example.</p>
-</section>
-
-<section class="section">
-
-  <!-- Sean Goolsby -->
-  <div class="coach-card">
-    <div class="coach-photo">
-      <img src="images/Sean_profile_IBJJF_BW.jpeg" alt="Sean Goolsby at IBJJF competition" style="width:100%;height:100%;object-fit:cover;">
-    </div>
-    <div class="coach-info">
-      <h3>Sean Goolsby</h3>
-      <p style="color: var(--grey); font-size: 16px; font-weight: 300; margin-bottom: 4px;">Head Coach &amp; Co-Owner</p>
-      <p class="discipline-tag">Jiu-Jitsu</p>
-      <p class="body-text" style="margin-bottom: 16px;">Sean didn't learn Jiu-Jitsu in Michigan. He learned it in Manaus, Brazil — training under brothers Cristiano and Angelo Carioca, competing within his first three months, and earning his blue and purple belts in one of the most serious training environments in the Amazon.</p>
-      <p class="body-text" style="margin-bottom: 16px;">The path led to São Paulo and nearly seven years under Claudio Calasans, a multiple-time World Champion and one of the most complete grapplers alive. That's where Sean earned his brown and black belts. That's where he became a professional.</p>
-      <p class="body-text" style="margin-bottom: 16px;">From São Paulo to Hungary, training under Max Carvalho and winning the 2022 European IBJJF No-Gi Championship at black belt Ultra Heavy in his international debut. Then to the UAE — competing for Baniyas Club, teaching under Palm Sports, and competing across the AJP Tour through Europe and North Africa. By season's end he was ranked #1 No-Gi in the World and #4 Overall on the AJP Tour.</p>
-      <p class="body-text" style="margin-bottom: 16px;">Back in Michigan in late 2023, he connected with David Garmo and Assembly Jiu-Jitsu — a partnership that sharpened his no-gi game to another level.</p>
-      <p class="body-text" style="margin-bottom: 8px;"><strong style="color: var(--white);">His Record</strong></p>
-      <p class="body-text" style="margin-bottom: 16px;">Head Coach and owner Sean Goolsby. IBJJF Black Belt. European No Gi Champion. Pan Am Gi Champion. IBJJF Pan No Gi silver medalist. AJP Tour ranked. Esporte Dez / Instituto Calasans Camargo.</p>
-      <p class="body-text" style="margin-bottom: 8px;"><strong style="color: var(--white);">Why Detroit Fight Company</strong></p>
-      <p class="body-text" style="margin-bottom: 16px;">Jiu-Jitsu gave Sean direction when he needed it, discipline when it was hard, and a community that spanned the world. Detroit Fight Company exists to do the same for others — not just to teach technique, but to change lives. That's been the mission from day one.</p>
-      <p class="body-text" style="margin-bottom: 16px;">DFC Winter Springs is an official affiliate of Esporte Dez / Instituto Calasans Camargo. The lineage is real. The door is open.</p>
-      <p class="body-text"><em>From Detroit to the world. Now rooted in Orlando.</em></p>
-    </div>
-  </div>
-
-  <!-- Pat Washington -->
-  <div class="coach-card">
-    <div class="coach-photo">
-      <img src="images/Pat_profile_belt.jpg" alt="Pat Washington with WBF Championship belt" style="width:100%;height:100%;object-fit:cover;">
-    </div>
-    <div class="coach-info">
-      <h3>Pat Washington</h3>
-      <p style="color: var(--grey); font-size: 16px; font-weight: 300; margin-bottom: 4px;">Head Boxing Coach</p>
-      <p class="discipline-tag">Boxing</p>
-      <p class="body-text" style="margin-bottom: 20px;">Pat Washington is the heart and soul of Detroit Fight Company's boxing program. A former professional boxer with a 20-1 record and 15 knockouts, Pat captured the WBF Intercontinental Light Welterweight Championship in just his ninth professional fight — displaying the technical skill and two-handed power that had observers calling him one of the best-kept secrets in American boxing.</p>
-      <p class="body-text" style="margin-bottom: 20px;">Before turning pro, Pat served as a paratrooper in the U.S. Army's 82nd Airborne Division at Fort Bragg, where he represented the base as a competitive boxer. His professional career took him from the small-show circuit through the Carolinas to a main-event title fight, where he earned a clear unanimous decision for the belt.</p>
-      <p class="body-text">But Pat's legacy extends far beyond his own career in the ring. He has dedicated decades to developing young boxers — not just as fighters, but as people. At DFC, Pat brings a lifetime of experience, discipline, and genuine care for every athlete who steps through the door.</p>
-    </div>
-  </div>
-
-  <!-- Paulo Games -->
-  <div class="coach-card">
-    <div class="coach-photo">
-      <img src="images/Paulo_profile.png" alt="Paulo Games — Head Muay Thai Coach at Detroit Fight Company" style="width:100%;height:100%;object-fit:cover;">
-    </div>
-    <div class="coach-info">
-      <h3>Paulo Games</h3>
-      <p style="color: var(--grey); font-size: 16px; font-weight: 300; margin-bottom: 4px;">Head Muay Thai Coach</p>
-      <p class="discipline-tag">Muay Thai</p>
-      <p class="body-text" style="margin-bottom: 20px;">Paulo Games is a professional MMA and Bare Knuckle fighter and a black belt in Muay Thai, Jiu-Jitsu, and Kickboxing — with deep experience in Wrestling and Boxing. Before relocating to Florida, he owned and operated his own martial arts academy in Brazil, developing students from beginners to competitors. His most recent professional wins include a decision victory at the Gamebred Bareknuckle MMA event promoted by Jorge Masvidal, plus two consecutive BKFC victories. Paulo brings that fighter's edge — and the patient hand of a long-time instructor — to DFC's Muay Thai program.</p>
-    </div>
-  </div>
-
-  <!-- Karl -->
-  <div class="coach-card">
-    <div class="coach-photo">
-      <img src="images/Karl_profile.jpg" alt="Karl hitting heavy bag" style="width:100%;height:100%;object-fit:cover;">
-    </div>
-    <div class="coach-info">
-      <h3>Karl</h3>
-      <p style="color: var(--grey); font-size: 16px; font-weight: 300; margin-bottom: 4px;">Boxing Coach</p>
-      <p class="discipline-tag">Boxing</p>
-      <p class="body-text" style="margin-bottom: 20px;">Karl discovered combat sports at the age of nine, introduced by his father, and it didn't take long for him to fall in love with boxing. With over 11 years in the sport and 15 fights under his belt — both as a competitor and a corner coach — boxing has become a fundamental part of his life.</p>
-      <p class="body-text">Karl's passion is sharing the sport with others. Whether you're lacing up gloves for the first time or sharpening your skills for competition, his coaching is built on the belief that boxing transforms people from the inside out.</p>
-    </div>
-  </div>
-
-  <!-- John Andrews -->
-  <div class="coach-card">
-    <div class="coach-photo">
-      <img src="images/JohnAndrews_profile_NPC.jpeg" alt="John Apollo Andrews at NPC Nationals" style="width:100%;height:100%;object-fit:cover;">
-    </div>
-    <div class="coach-info">
-      <h3>John "Apollo" Andrews</h3>
-      <p style="color: var(--grey); font-size: 16px; font-weight: 300; margin-bottom: 4px;">Coach</p>
-      <p class="discipline-tag">Boxing &amp; Conditioning</p>
-      <p class="body-text" style="margin-bottom: 20px;">John "Apollo" Andrews brings an eclectic journey through combat sports and bodybuilding to the DFC coaching staff. A former MMA fighter and current IFBB professional bodybuilder, John's greatest asset is the depth of knowledge he's built across disciplines — and his ability to pass it on.</p>
-      <p class="body-text">Whether he's running conditioning circuits, coaching striking fundamentals, or helping members dial in their training, John combines competitive intensity with a coach's eye for development.</p>
-    </div>
-  </div>
-
-  <!-- Hana Radi -->
-  <div class="coach-card">
-    <div class="coach-photo">
-      <img src="images/Hana_profile.jpeg" alt="Hana Radi in DFC gi, brown belt" style="width:100%;height:100%;object-fit:cover;">
-    </div>
-    <div class="coach-info">
-      <h3>Hana Radi</h3>
-      <p style="color: var(--grey); font-size: 16px; font-weight: 300; margin-bottom: 4px;">Coach</p>
-      <p class="discipline-tag">Jiu-Jitsu</p>
-      <p class="body-text" style="margin-bottom: 20px;">Hana Radi began her Jiu-Jitsu journey in 2020, initially looking for a way to break up the routine of weight training. It didn't take long to realize she had found something much deeper. Jiu-Jitsu challenged her mentally and physically in ways she had never experienced, and she quickly understood that growth in this sport comes down to one thing: consistency.</p>
-      <p class="body-text">Through training, Hana has learned to face discomfort head-on — whether that means stepping onto the competition mats or pushing through tough sessions. She is a brown belt competitor who coaches with a simple belief: iron sharpens iron. Her classes are challenging and supportive for students at every level.</p>
-    </div>
-  </div>
-
-  <!-- John Venturini -->
-  <div class="coach-card">
-    <div class="coach-photo">
-      <img src="images/JohnVenturini_profile_IBJJF.jpg" alt="John Venturini hand raised at IBJJF competition" style="width:100%;height:100%;object-fit:cover;">
-    </div>
-    <div class="coach-info">
-      <h3>John Venturini</h3>
-      <p style="color: var(--grey); font-size: 16px; font-weight: 300; margin-bottom: 4px;">Jiu-Jitsu Coach</p>
-      <p class="discipline-tag">No-Gi Jiu-Jitsu</p>
-      <p class="body-text" style="margin-bottom: 20px;">In 2021, John stepped onto the mats for the first time at 290 lbs with a simple conviction: if he was going to ask his kids to compete in combat sports, he had to be willing to do it himself.</p>
-      <p class="body-text" style="margin-bottom: 20px;">What started as leading by example became a complete transformation. Over 100 lbs lost, a competition purple belt earned, and a growing collection of IBJJF hardware — including gold at No-Gi American Nationals, silver at the Pan-American No-Gi Championships, and two bronze medals at the No-Gi World Championships.</p>
-      <p class="body-text">But the medals aren't the point. John's real passion is coaching kids. In a world of endless screens and manufactured comfort, he believes combat sports offer something irreplaceable — real challenge, real consequence, real growth. The kind of resilience that can't be downloaded. He started this journey to show his own children what was possible. Now he's Detroit Fight Company's biggest cheerleader — and the guy making sure every kid who walks through the door gets that same opportunity.</p>
-    </div>
-  </div>
-
-  <!-- Luis -->
-  <div class="coach-card">
-    <div class="coach-photo">
-      <img src="images/Luis_profile.jpg" alt="Luis with young student holding championship belt" style="width:100%;height:100%;object-fit:cover;">
-    </div>
-    <div class="coach-info">
-      <h3>Luis</h3>
-      <p style="color: var(--grey); font-size: 16px; font-weight: 300; margin-bottom: 4px;">Kids Jiu-Jitsu Coach</p>
-      <p class="discipline-tag">Jiu-Jitsu</p>
-      <p class="body-text" style="margin-bottom: 20px;">Wrestling took over Luis's life at 15 years old. After graduating high school with college wrestling scholarships in hand, he chose a different path — four years of service in the United States Marines, where he became a shooting instructor and rose to the rank of Sergeant.</p>
-      <p class="body-text" style="margin-bottom: 20px;">After the military, Luis found Jiu-Jitsu and earned his blue belt while competing across multiple organizations — winning an IBJJF Open, two NAGAs, and a New Breed tournament, with additional podium finishes along the way. He's also spent the past year sharpening his boxing alongside the DFC coaching staff.</p>
-      <p class="body-text">Luis brings a wrestler's work ethic and a Marine's discipline to coaching the next generation. He also serves as a high school wrestling coach, and at DFC he channels that experience into developing young athletes through the kids Jiu-Jitsu program.</p>
-    </div>
-  </div>
-
-  <div class="coach-card">
-    <div class="coach-photo">
-      <img src="/images/Zack_profile_v2.jpg" alt="Zack Quinn" style="width:100%;height:100%;object-fit:cover;">
-    </div>
-    <div class="coach-info">
-      <h3>Zack Quinn</h3>
-      <p style="color: var(--grey); font-size: 16px; font-weight: 300; margin-bottom: 4px;">Coach</p>
-      <p class="discipline-tag">Jiu-Jitsu</p>
-      <p class="body-text">Zack Quinn was ten years old when he walked into American Top Team Winter Springs and found his calling. Fourteen years later, that early introduction to Jiu-Jitsu has grown into a complete martial arts background spanning BJJ, boxing, Muay Thai, wrestling, and MMA. Now a purple belt competitor at 24, Zack brings the perspective of someone who grew up in the sport — technically sharp, endlessly curious, and genuinely invested in the athletes he coaches.</p>
-    </div>
-  </div>
-
-  <div class="coach-card">
-    <div class="coach-photo">
-      <img src="/images/Johny_profile_v2.jpg" alt="Johny Desir" style="width:100%;height:100%;object-fit:cover;">
-    </div>
-    <div class="coach-info">
-      <h3>Johny Desir</h3>
-      <p style="color: var(--grey); font-size: 16px; font-weight: 300; margin-bottom: 4px;">Coach</p>
-      <p class="discipline-tag">Jiu-Jitsu</p>
-      <p class="body-text">Johny Desir's martial arts journey began on the wrestling mat in high school, where he discovered a passion for combat sports that never let go. From wrestling he moved into boxing, then MMA, before finding his foundation in Brazilian Jiu-Jitsu in 2014. After a decade of dedication, he earned his black belt in 2024. Johny brings a complete grappler's perspective to the DFC coaching staff — grounded in wrestling, sharpened by competition, and built on the kind of consistency that turns passion into mastery.</p>
-    </div>
-  </div>
-
-  <div class="coach-card">
-    <div class="coach-photo">
-      <img src="/images/Meleah_profile.jpg" alt="Meleah in the boxing ring at Detroit Fight Company" style="width:100%;height:100%;object-fit:cover;">
-    </div>
-    <div class="coach-info">
-      <h3>Meleah</h3>
-      <p style="color: var(--grey); font-size: 16px; font-weight: 300; margin-bottom: 4px;">Sales &amp; Social Media</p>
-      <p class="discipline-tag">Boxing</p>
-      <p class="body-text">Meleah grew up glued to UFC cards and somewhere along the way realized watching wasn't enough — she needed to be in it. Boxing became the entry point, and the gym became home. At Detroit Fight Company, Meleah runs sales and social media, building the community one conversation and one post at a time. She's the reason new members find DFC before they even walk through the door.</p>
-    </div>
-  </div>
-
-</section>
-
-<div class="page-spacer"></div>
-
-
-<!-- ═══════════════════════════════════════════════════
-     PAGE 6: SCHEDULE
-     ═══════════════════════════════════════════════════ -->
-<section id="schedule" class="sub-hero">
-  <h1>Class Schedule</h1>
-  <p class="body-text">Boxing & Conditioning · Muay Thai · Jiu-Jitsu</p>
-</section>
-
-<section class="section">
-  <div class="schedule-embed">
-    <div class="gymdesk-schedule gymdesk-frame-container" attr-gym="6zgd3">
-      <iframe
-        src="https://app.gymdesk.com/widgets/schedule/render/gym/6zgd3"
-        title="Detroit Fight Company class schedule"
-        frameborder="0"
-        scrolling="no"
-        loading="eager"
-        referrerpolicy="no-referrer-when-downgrade"
-        style="min-height:400px;"
-      ></iframe>
-    </div>
-    <div class="hours-grid" style="margin-top: 48px; grid-template-columns: repeat(2, 1fr); max-width: 560px;">
-      <div class="hours-item">
-        <h4>Mon – Fri</h4>
-        <p>6:00 AM – 8:30 PM</p>
+<!-- Coaches teaser -->
+<section class="section-full" style="background: var(--black);" aria-labelledby="coaches-heading">
+  <div class="teaser-inner">
+    <p class="section-tag">Coaches</p>
+    <h2 id="coaches-heading">Coached by Competitors</h2>
+    <div class="coach-teaser-grid">
+      <div class="coach-teaser">
+        <img src="images/Sean_profile_IBJJF_BW.jpeg" width="1600" height="1068" loading="lazy" decoding="async" alt="Sean Goolsby competing at an IBJJF event">
+        <h3>Sean Goolsby</h3>
+        <p class="coach-teaser-title">Head Coach and owner</p>
+        <p class="body-text">IBJJF black belt, European No Gi Champion and Pan Am Gi Champion. Leads the Jiu-Jitsu program.</p>
       </div>
-      <div class="hours-item">
-        <h4>Saturday</h4>
-        <p>9:30 AM – 1:00 PM</p>
+      <div class="coach-teaser">
+        <img src="images/Pat_profile_belt.jpg" width="1080" height="983" loading="lazy" decoding="async" alt="Pat Washington with his WBF championship belt">
+        <h3>Pat Washington</h3>
+        <p class="coach-teaser-title">Head Boxing Coach</p>
+        <p class="body-text">Former professional boxer, 20 and 1 with 15 knockouts and a WBF Intercontinental title.</p>
+      </div>
+      <div class="coach-teaser">
+        <img src="images/Paulo_profile.png" width="400" height="533" loading="lazy" decoding="async" alt="Paulo Games, Head Muay Thai Coach at Detroit Fight Company">
+        <h3>Paulo Games</h3>
+        <p class="coach-teaser-title">Head Muay Thai Coach</p>
+        <p class="body-text">Professional MMA and bare knuckle fighter, black belt in Muay Thai, Jiu-Jitsu and Kickboxing.</p>
       </div>
     </div>
-  </div>
-  <div style="text-align: center; margin-top: 48px;">
-    <a href="/free-trial" class="btn btn-primary">Book Your Free Trial Class</a>
+    <p style="margin-top: 36px;"><a href="/coaches" class="btn btn-secondary">Meet all the coaches</a></p>
   </div>
 </section>
 
-<div class="page-spacer"></div>
-
-
-<!-- ═══════════════════════════════════════════════════
-     PAGE 7: PRICING
-     ═══════════════════════════════════════════════════ -->
-<section id="pricing" class="sub-hero fade-in">
-  <p class="section-tag">Membership</p>
-  <h1>Simple Pricing.<br>No Contracts.</h1>
-  <p class="body-text">One membership. Every program. Full access to Detroit Fight Company — no contracts, no tiers.</p>
+<!-- Schedule teaser -->
+<section class="section fade-in" aria-labelledby="hours-heading">
+  <p class="section-tag">Schedule</p>
+  <h2 id="hours-heading">Open Six Days a Week</h2>
+  <div class="hours-grid" style="margin-top: 32px; grid-template-columns: repeat(2, 1fr); max-width: 560px;">
+    <div class="hours-item">
+      <h3>Monday to Friday</h3>
+      <p>6:00 AM to 8:30 PM</p>
+    </div>
+    <div class="hours-item">
+      <h3>Saturday</h3>
+      <p>9:30 AM to 1:00 PM</p>
+    </div>
+  </div>
+  <p class="body-text" style="margin-top: 28px;"><a href="/schedule">See the live class schedule</a></p>
 </section>
 
-<section class="section-full" style="background: var(--black); padding-top: 60px; padding-bottom: 80px;">
+<!-- Pricing summary -->
+<section class="section-full" style="background: var(--black); padding-top: 60px; padding-bottom: 80px;" aria-labelledby="pricing-heading">
   <div class="pricing-grid fade-in">
     <div class="price-card featured">
-      <h3>All Access Membership</h3>
-      <div class="price-amount">$199<span>/mo</span></div>
+      <p class="section-tag">Membership</p>
+      <h2 id="pricing-heading" class="price-title">Simple Pricing. One Plan.</h2>
+      <p class="body-text" style="margin-bottom: 8px;">All Access Membership</p>
+      <div class="price-amount">$199<span> per month</span></div>
       <ul class="price-features">
-        <li>Full access to all programs</li>
-        <li>Gi &amp; No-Gi Jiu-Jitsu</li>
-        <li>Boxing &amp; Muay Thai</li>
-        <li>Kids and open mat sessions</li>
-        <li>Unlimited open gym access</li>
+        <li>Every program, every class: Gi and No Gi Jiu-Jitsu, boxing, Muay Thai, MMA, kids classes and open mat</li>
+        <li>One time $150 Enrollment Kit: a Detroit Fight Company gi and rash guard</li>
+        <li>No contract. 30 days written notice to cancel</li>
+        <li>Prefer to prepay? 3 Month Commit, $599 at signup, Enrollment Kit included</li>
       </ul>
-      <a href="/free-trial" class="btn btn-primary" style="width: 100%;">Get Started</a>
+      <div class="price-buttons">
+        <a href="/pricing" class="btn btn-secondary">See Full Pricing</a>
+        <a href="/free-trial" class="btn btn-primary">Book Your Free Trial Class</a>
+      </div>
     </div>
   </div>
 </section>
@@ -1714,199 +962,33 @@ section.section.fade-in[style*="text-align: center"] > img:hover {
     </div>
     <div class="faq-item">
       <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">What should I bring to my first class?</button>
-      <div class="faq-answer"><div class="faq-answer-inner">Comfortable workout clothes, a water bottle, and a towel. For Jiu-Jitsu, a rashguard or fitted athletic top works best. We have loaner gear available while you get started.</div></div>
-    </div>
-    <div class="faq-item">
-      <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">Can I try a class before committing?</button>
-      <div class="faq-answer"><div class="faq-answer-inner">Absolutely. Book a free trial class and experience the coaching and facility firsthand. No obligation, no pressure.</div></div>
+      <div class="faq-answer"><div class="faq-answer-inner">Comfortable workout clothes, a water bottle and a towel. For Jiu-Jitsu, a rash guard or fitted athletic top works best. We have loaner gear available while you get started.</div></div>
     </div>
     <div class="faq-item">
       <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">What's included in the membership?</button>
-      <div class="faq-answer"><div class="faq-answer-inner">The All Access Membership includes every class Detroit Fight Company offers — Gi and No-Gi Jiu-Jitsu, boxing, Muay Thai, kids programs, plus unlimited open mat and open gym access.</div></div>
+      <div class="faq-answer"><div class="faq-answer-inner">Every class Detroit Fight Company offers: Gi and No Gi Jiu-Jitsu, boxing, Muay Thai, MMA, kids classes and open mat. New members on Month to Month receive the Enrollment Kit, a Detroit Fight Company gi and rash guard, for a one time $150. The kit is included with the 3 Month Commit.</div></div>
     </div>
     <div class="faq-item">
       <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">Are there classes for kids?</button>
-      <div class="faq-answer"><div class="faq-answer-inner">Yes. We offer Kids No-Gi Jiu-Jitsu classes designed for young athletes to build discipline, coordination, and confidence in a safe, supervised environment. We also run Youth Boxing. See <a href="/kids">kids classes</a> and <a href="/homeschool">homeschool training</a>.</div></div>
+      <div class="faq-answer"><div class="faq-answer-inner">Yes. Kids No Gi Jiu-Jitsu and Youth Boxing are for ages 5 to 14. See kids classes and homeschool training on their own pages.</div></div>
     </div>
     <div class="faq-item">
       <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">Where are you located?</button>
-      <div class="faq-answer"><div class="faq-answer-inner">1425 Tuskawilla Road, Suite 209, Winter Springs, FL 32708 — in the Promenade at Tuskawilla. Easy access from Oviedo, Casselberry, and greater Seminole County.</div></div>
+      <div class="faq-answer"><div class="faq-answer-inner">1425 Tuskawilla Road, Suite 209, Winter Springs, FL 32708, in the Promenade at Tuskawilla. Easy access from Oviedo, Casselberry and greater Seminole County.</div></div>
     </div>
     <div class="faq-item">
       <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">How do I cancel my membership?</button>
-      <div class="faq-answer"><div class="faq-answer-inner">No long-term contracts. To cancel, email sean@detroitfight.com at least 15 days before your next billing date.</div></div>
+      <div class="faq-answer"><div class="faq-answer-inner">Month to Month has no contract. Email sean@detroitfight.com with 30 days written notice before your next billing date. The 3 Month Commit is paid in full at signup, covers three months, and then continues month to month until you cancel with the same 30 days notice.</div></div>
     </div>
   </div>
+  <p class="body-text" style="text-align: center; margin: 32px auto 0;"><a href="/kids">Kids classes</a> &nbsp;·&nbsp; <a href="/homeschool">Homeschool training</a> &nbsp;·&nbsp; <a href="/the-gym">Visit the gym</a></p>
 </section>
 
-<div class="page-spacer"></div>
-
-
-<!-- ═══════════════════════════════════════════════════
-     PAGE 8: THE GYM
-     ═══════════════════════════════════════════════════ -->
-<section id="the-gym" class="sub-hero fade-in">
-  <h1>The Gym</h1>
-  <p class="body-text">5,000 square feet of dedicated training space. Boxing ring. MMA cage walls. Zebra Athletics mats. Built for combat sports — not CrossFit.</p>
-</section>
-
-<section class="section fade-in">
-  <div class="gym-info-grid">
-    <div class="gym-info-item">
-      <h4>Facility</h4>
-      <p class="body-text">Dedicated Jiu-Jitsu mat area with 6-inch elevated Zebra Athletics floating mats (green border, black center) and full wall padding. Separate Muay Thai and boxing training floor with cage wall fencing and heavy bags. 18-foot boxing ring. Men's and women's changing rooms and bathrooms.</p>
-    </div>
-    <div class="gym-info-item">
-      <h4>What to Bring</h4>
-      <p class="body-text">Comfortable workout clothes, a water bottle, and a towel. For Jiu-Jitsu, a rashguard or fitted athletic top. We have loaner gear available while you get started — no need to buy anything upfront.</p>
-    </div>
-    <div class="gym-info-item">
-      <h4>Parking</h4>
-      <p class="body-text">Free parking in the Promenade at Tuskawilla shopping center lot directly in front of the gym.</p>
-    </div>
-    <div class="gym-info-item">
-      <h4>Hours</h4>
-      <p class="body-text">Monday–Friday: 6:00 AM – 8:30 PM<br>Saturday: 9:30 AM – 1:00 PM</p>
-    </div>
-  </div>
-
-  <!-- Google Maps Embed -->
-  <div class="map-container">
-    <iframe
-      src="https://maps.google.com/maps?q=1425+Tuskawilla+Rd+%23209,+Winter+Springs,+FL+32708&output=embed"
-      allowfullscreen=""
-      loading="lazy"
-      referrerpolicy="no-referrer-when-downgrade"
-      title="Detroit Fight Company location map"
-    ></iframe>
-  </div>
-
-  <div style="text-align: center; margin-top: 48px;">
-    <a href="/free-trial" class="btn btn-primary">Book Your Free Trial Class</a>
-  </div>
-</section>
-
-<div class="page-spacer"></div>
-
-
-<!-- ═══════════════════════════════════════════════════
-     PAGE 9: FREE TRIAL
-     ═══════════════════════════════════════════════════ -->
-<section id="free-trial" class="sub-hero fade-in">
-  <h1>Your First Class<br>Is Free.</h1>
-  <p class="body-text">Try Boxing, Muay Thai, or Jiu-Jitsu — no commitment, no pressure. Just show up and train.</p>
-</section>
-
-<section class="section fade-in">
-  <div class="trial-value-props">
-    <div class="trial-prop">
-      <h4>Real Coaching</h4>
-      <p class="body-text">Every class is led by experienced coaches — not a video on a screen.</p>
-    </div>
-    <div class="trial-prop">
-      <h4>All Levels</h4>
-      <p class="body-text">Never trained before? Perfect. We'll meet you where you are.</p>
-    </div>
-    <div class="trial-prop">
-      <h4>No Strings</h4>
-      <p class="body-text">One free class. No credit card. No obligation. Just come train.</p>
-    </div>
-  </div>
-
-  <div class="booking-widget">
-    <div id="dfc-booking-root">
-      <div class="content-full">
-        <div id="dfc-form-wrap">
-          <p class="dfc-sub">Detroit Fight Company — Winter Springs, FL</p>
-          <h2 id="dfc-form-heading">Book Your Free Class</h2>
-          <hr class="dfc-divider"/>
-          <form id="dfc-booking-form" method="POST" action="#">
-            <div class="dfc-row">
-              <div class="dfc-field">
-                <label for="fname" class="dfc-label">First Name *</label>
-                <input type="text" id="fname" name="first_name" placeholder="First name" required class="dfc-input" autocomplete="given-name"/>
-              </div>
-              <div class="dfc-field">
-                <label for="lname" class="dfc-label">Last Name *</label>
-                <input type="text" id="lname" name="last_name" placeholder="Last name" required class="dfc-input" autocomplete="family-name"/>
-              </div>
-            </div>
-            <div class="dfc-row">
-              <div class="dfc-field">
-                <label for="email" class="dfc-label">Email *</label>
-                <input type="email" id="email" name="email" placeholder="your@email.com" required class="dfc-input" autocomplete="email"/>
-              </div>
-              <div class="dfc-field">
-                <label for="phone" class="dfc-label">Phone *</label>
-                <input type="tel" id="phone" name="phone" placeholder="(407) 000-0000" required class="dfc-input" autocomplete="tel"/>
-              </div>
-            </div>
-            <div class="dfc-field">
-              <label for="program" class="dfc-label">Class Interest *</label>
-              <select id="program" name="class_interest" required class="dfc-input dfc-select">
-                <option value="" disabled selected>Select a program</option>
-                <option value="boxing">Boxing &amp; Conditioning</option>
-                <option value="muay_thai">Muay Thai</option>
-                <option value="bjj_gi">Brazilian Jiu-Jitsu (Gi)</option>
-                <option value="bjj_nogi">Brazilian Jiu-Jitsu (No-Gi)</option>
-                <option value="unsure">All Programs — Not Sure Yet</option>
-              </select>
-            </div>
-            <div class="dfc-field">
-              <label for="level" class="dfc-label">Experience Level *</label>
-              <select id="level" name="experience_level" required class="dfc-input dfc-select">
-                <option value="" disabled selected>Select your level</option>
-                <option value="beginner">Complete Beginner</option>
-                <option value="some">Some Experience</option>
-                <option value="intermediate">Intermediate</option>
-                <option value="advanced">Advanced / Competitor</option>
-              </select>
-            </div>
-            <div class="dfc-field">
-              <label for="notes" class="dfc-label">Anything else we should know?</label>
-              <textarea id="notes" name="notes" placeholder="Questions, injuries, scheduling preferences..." class="dfc-input dfc-textarea"></textarea>
-            </div>
-
-            <!-- SMS Consent — A2P 10DLC (GHL). Optional checkboxes; do not pre-check. -->
-            <div class="sms-consent">
-              <label class="consent-label">
-                <input type="checkbox" name="sms_marketing_consent" value="1">
-                <span>I consent to receive marketing text messages, about special offers, discounts, and service updates, from Detroit Fight Company at the phone number provided. Message frequency may vary. Message &amp; data rates may apply. Text HELP for assistance, reply STOP to opt out.</span>
-              </label>
-              <label class="consent-label">
-                <input type="checkbox" name="sms_transactional_consent" value="1">
-                <span>I consent to receive non-marketing text messages from Detroit Fight Company about class schedules, booking confirmations, and training updates. Message frequency may vary, message &amp; data rates may apply. Text HELP for assistance, reply STOP to opt out.</span>
-              </label>
-            </div>
-
-            <button type="submit" class="dfc-btn">Request My Free Class</button>
-            <p class="dfc-notice">By submitting this form you agree to be contacted by Detroit Fight Company. We never share your information.</p>
-            <p class="form-policy-links">
-              See also our <a href="/privacy-policy">Privacy Policy</a> and
-              <a href="/terms">Terms &amp; Conditions</a>.
-            </p>
-
-            <!-- Honeypot anti-spam field -->
-            <div style="position:absolute; left:-9999px; height:0; overflow:hidden;" aria-hidden="true">
-              <label for="website_url_hp">Website</label>
-              <input type="text" id="website_url_hp" name="website_url_hp" tabindex="-1" autocomplete="off">
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div style="text-align: center; margin-top: 48px;">
-    <p class="body-text" style="margin: 0 auto;">
-      <strong>Detroit Fight Company</strong><br>
-      1425 Tuskawilla Rd #209<br>
-      Winter Springs, FL 32708
-    </p>
-    <p class="body-text" style="margin: 16px auto 0;">
-      <strong>What to Bring:</strong> Comfortable workout clothes, a water bottle, and a towel. We've got everything else.
-    </p>
-  </div>
+<!-- Final CTA -->
+<section class="final-cta fade-in">
+  <h2>Your First Class Is On Us.</h2>
+  <p class="body-text">Book a free trial, show up, and find out what training at Detroit Fight Company feels like. No pitch, no hard sell.</p>
+  <a href="/free-trial" class="btn btn-primary">Book Your Free Trial Class</a>
 </section>
 
 
@@ -1960,7 +1042,6 @@ section.section.fade-in[style*="text-align: center"] > img:hover {
 
 
 <!-- ===== SCRIPTS ===== -->
-<script src="https://app.gymdesk.com/js/widgets.js"></script>
 <script>
 // Scroll animations
 const observer = new IntersectionObserver((entries) => {
@@ -1981,99 +1062,6 @@ document.querySelectorAll('.nav-links a').forEach(link => {
   });
 });
 
-// Active nav highlighting
-const sections = document.querySelectorAll('section[id]');
-window.addEventListener('scroll', () => {
-  let current = '';
-  sections.forEach(section => {
-    const top = section.offsetTop - 150;
-    if (window.scrollY >= top) {
-      current = section.getAttribute('id');
-    }
-  });
-  document.querySelectorAll('.nav-links a').forEach(a => {
-    a.classList.remove('active');
-    if (a.getAttribute('href') === '#' + current) {
-      a.classList.add('active');
-    }
-  });
-});
-
-
-document.getElementById('dfc-booking-form')?.addEventListener('submit', async function (e) {
-  e.preventDefault();
-  const form = e.currentTarget;
-  const submitBtn = form.querySelector('button[type="submit"]');
-  const originalBtnText = submitBtn ? submitBtn.textContent : '';
-
-  // Honeypot anti-spam check
-  const honeypot = form.querySelector('input[name="website_url_hp"]');
-  if (honeypot && honeypot.value.trim() !== '') {
-    if (submitBtn) submitBtn.textContent = 'Submitted ✓';
-    return;
-  }
-
-  if (submitBtn) {
-    submitBtn.disabled = true;
-    submitBtn.textContent = 'Sending...';
-  }
-
-  const fd = new FormData(form);
-  const payload = {
-    firstName: (fd.get('first_name') || '').toString().trim(),
-    lastName: (fd.get('last_name') || '').toString().trim(),
-    email: (fd.get('email') || '').toString().trim(),
-    phone: (fd.get('phone') || '').toString().trim(),
-    classInterest: (fd.get('class_interest') || '').toString().trim(),
-    experienceLevel: (fd.get('experience_level') || '').toString().trim(),
-    notes: (fd.get('notes') || '').toString().trim(),
-    smsMarketingConsent: form.querySelector('input[name="sms_marketing_consent"]')?.checked || false,
-    smsTransactionalConsent: form.querySelector('input[name="sms_transactional_consent"]')?.checked || false,
-    source: 'detroitfight.com',
-    sourcePage: window.location.pathname,
-    submittedAt: new Date().toISOString()
-  };
-
-  try {
-    const res = await fetch('https://services.leadconnectorhq.com/hooks/5UfUHR9jXCKSbSjObvIS/webhook-trigger/3cc0ca60-ed9c-4e19-8b26-0d70e3ef6a5f', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload),
-      mode: 'cors'
-    });
-
-    if (!res.ok) throw new Error('Webhook returned status ' + res.status);
-
-    if (typeof gtag === 'function') {
-      gtag('event', 'generate_lead', {
-        event_category: 'form',
-        event_label: 'free_trial_request',
-        value: 1
-      });
-    }
-
-    const wrap = document.getElementById('dfc-form-wrap');
-    if (wrap) {
-      wrap.innerHTML = '<h2 id="dfc-form-heading" style="text-align:center;">You\'re In.</h2>' +
-        '<p class="dfc-sub" style="text-align:center;">We\'ll be in touch shortly.</p>' +
-        '<hr class="dfc-divider">' +
-        '<p style="text-align:center; color:#999; font-size:15px; line-height:1.6; max-width:480px; margin:0 auto;">' +
-        'Someone from Detroit Fight Company will reach out to confirm your free trial class. ' +
-        'In the meantime, you can find us at 1425 Tuskawilla Rd #209, Winter Springs, FL — or call us at ' +
-        '<a href="tel:4076966969" style="color:#7D9B76;">(407) 696-6969</a>.' +
-        '</p>';
-    } else {
-      alert('Thanks — someone from DFC will reach out shortly.');
-    }
-  } catch (err) {
-    console.error('Form submission failed:', err);
-    if (submitBtn) {
-      submitBtn.disabled = false;
-      submitBtn.textContent = originalBtnText;
-    }
-    alert('Something went wrong sending your request. Please call (407) 696-6969 or email sean@detroitfight.com so we can get you booked. Sorry for the trouble.');
-  }
-});
 </script>
 
 </body>
