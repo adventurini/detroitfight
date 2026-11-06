@@ -23,7 +23,7 @@ gtag('config', 'AW-18094262765');
 <meta name="theme-color" content="#7D9B76">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;700&display=swap" rel="stylesheet">
 
 <!-- =====================================================
      META PIXEL — Replace YOUR_PIXEL_ID with actual ID
@@ -149,5 +149,18 @@ fbq('track', 'PageView');
   <div class="addr">1425 Tuskawilla Rd #209, Winter Springs, FL 32708</div>
 </div>
 
+<script>
+// ===== GA4 contact and plan events (section 8). No personal data is sent. =====
+document.addEventListener('click', function (e) {
+  if (typeof gtag !== 'function') return;
+  const a = e.target.closest('a');
+  if (!a) return;
+  const href = a.getAttribute('href') || '';
+  if (href.startsWith('tel:')) gtag('event', 'click_call', { link_location: window.location.pathname });
+  else if (href.startsWith('sms:')) gtag('event', 'click_text', { link_location: window.location.pathname });
+  else if (href.startsWith('mailto:')) gtag('event', 'click_email', { link_location: window.location.pathname });
+  if (a.dataset.plan) gtag('event', 'select_plan', { plan: a.dataset.plan });
+});
+</script>
 </body>
 </html>

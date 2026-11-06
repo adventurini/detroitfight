@@ -44,7 +44,7 @@ gtag('config', 'G-KYCVH9837V');
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;700&display=swap" rel="stylesheet">
 
 <!-- =====================================================
      META PIXEL — Replace YOUR_PIXEL_ID with actual ID
@@ -70,21 +70,48 @@ fbq('track', 'PageView');
       "@type": "Service",
       "name": "Boxing Classes",
       "serviceType": "Martial Arts Training",
-      "provider": { "@id": "https://detroitfight.com/#business" },
+      "provider": {
+        "@id": "https://detroitfight.com/#business"
+      },
       "areaServed": [
-        { "@type": "City", "name": "Winter Springs" },
-        { "@type": "City", "name": "Oviedo" },
-        { "@type": "City", "name": "Casselberry" },
-        { "@type": "City", "name": "Winter Park" },
-        { "@type": "AdministrativeArea", "name": "Seminole County" }
+        {
+          "@type": "City",
+          "name": "Winter Springs"
+        },
+        {
+          "@type": "City",
+          "name": "Oviedo"
+        },
+        {
+          "@type": "City",
+          "name": "Casselberry"
+        },
+        {
+          "@type": "City",
+          "name": "Winter Park"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "Seminole County"
+        }
       ],
       "description": "Technical boxing instruction, heavy bag work, mitt work, and fight style conditioning for beginners through competitors. Coached by former professional boxer Pat Washington."
     },
     {
       "@type": "BreadcrumbList",
       "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://detroitfight.com/" },
-        { "@type": "ListItem", "position": 2, "name": "Boxing", "item": "https://detroitfight.com/boxing" }
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://detroitfight.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Boxing",
+          "item": "https://detroitfight.com/boxing"
+        }
       ]
     },
     {
@@ -102,10 +129,36 @@ fbq('track', 'PageView');
         "addressCountry": "US"
       },
       "sameAs": [
-        "https://www.instagram.com/detroitfightco/",
         "https://www.facebook.com/DFCwintersprings/",
-        "https://maps.app.goo.gl/sojazUGgxxwXbr1Y7",
-        "https://www.tiktok.com/@detroit.fight.co"
+        "https://www.tiktok.com/@detroit.fight.co",
+        "https://www.instagram.com/detroitfightco/",
+        "https://www.instagram.com/detroitfightcompany/",
+        "https://maps.app.goo.gl/sojazUGgxxwXbr1Y7"
+      ],
+      "image": [
+        "https://detroitfight.com/images/gym/boxing-ring-01.jpg",
+        "https://detroitfight.com/images/gym/zebra-mat-area-01.jpg",
+        "https://detroitfight.com/images/gym/hero-shadow-boxing-01.jpg"
+      ],
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday"
+          ],
+          "opens": "06:00",
+          "closes": "20:30"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "Saturday",
+          "opens": "09:30",
+          "closes": "13:00"
+        }
       ]
     }
   ]
@@ -1166,6 +1219,7 @@ main p a:not(.btn):not(.nav-cta), main li a:not(.btn), .faq-answer-inner a { tex
 .faq-answer { max-height: none; overflow: visible; transition: none; }
 .faq-answer[hidden] { display: none; }
 .nav-toggle:focus-visible, .faq-question:focus-visible, .btn:focus-visible, a:focus-visible { outline: 2px solid var(--green); outline-offset: 3px; }
+picture:not([class]) { display: contents; }
 </style>
 </head>
 <body>
@@ -1174,7 +1228,7 @@ main p a:not(.btn):not(.nav-cta), main li a:not(.btn), .faq-answer-inner a { tex
 <nav class="nav">
   <div class="nav-inner">
     <a href="/" class="nav-logo">
-      <img src="/images/DFC_Logo.png" alt="Detroit Fight Company logo">
+      <img width="1024" height="212" src="/images/DFC_Logo.png" alt="Detroit Fight Company logo">
     </a>
     <button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="navLinks">
       <span></span><span></span><span></span>
@@ -1244,7 +1298,7 @@ main p a:not(.btn):not(.nav-cta), main li a:not(.btn), .faq-answer-inner a { tex
 <!-- Pat Washington -->
   <div class="coach-card">
     <div class="coach-photo">
-      <img src="images/Pat_profile_belt.jpg" alt="Pat Washington with WBF Championship belt" style="width:100%;height:100%;object-fit:cover;">
+      <picture><source type="image/webp" sizes="(max-width: 768px) 100vw, 420px" srcset="/images/Pat_profile_belt-480.webp 480w, /images/Pat_profile_belt-960.webp 960w"><img decoding="async" loading="lazy" width="1080" height="983" src="/images/Pat_profile_belt.jpg" alt="Pat Washington with WBF Championship belt" style="width:100%;height:100%;object-fit:cover;"></picture>
     </div>
     <div class="coach-info">
       <h3>Pat Washington</h3>
@@ -1259,7 +1313,7 @@ main p a:not(.btn):not(.nav-cta), main li a:not(.btn), .faq-answer-inner a { tex
   <!-- Karl -->
   <div class="coach-card">
     <div class="coach-photo">
-      <img src="images/Karl_profile.jpg" alt="Karl hitting heavy bag" style="width:100%;height:100%;object-fit:cover;">
+      <picture><source type="image/webp" sizes="(max-width: 768px) 100vw, 420px" srcset="/images/Karl_profile-480.webp 480w, /images/Karl_profile-960.webp 960w"><img decoding="async" loading="lazy" width="1000" height="1134" src="/images/Karl_profile.jpg" alt="Karl hitting heavy bag" style="width:100%;height:100%;object-fit:cover;"></picture>
     </div>
     <div class="coach-info">
       <h3>Karl</h3>
@@ -1298,8 +1352,15 @@ main p a:not(.btn):not(.nav-cta), main li a:not(.btn), .faq-answer-inner a { tex
     </div>
     <div class="footer-right">
       <div class="footer-social" style="display:flex; gap:20px; align-items:center; margin: 16px 0; justify-content:flex-end;">
-        <a href="https://www.instagram.com/detroitfightco/" target="_blank" rel="noopener" aria-label="Follow Detroit Fight Company on Instagram" style="color: var(--green); transition: color 0.2s;">
+        <a href="https://www.instagram.com/detroitfightco/" target="_blank" rel="noopener" aria-label="Follow Detroit Fight Company on Instagram at detroitfightco" style="color: var(--green); transition: color 0.2s;">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+          </svg>
+        </a>
+        <a href="https://www.instagram.com/detroitfightcompany/" target="_blank" rel="noopener" aria-label="Follow Detroit Fight Company on Instagram at detroitfightcompany" style="color: var(--green); transition: color 0.2s;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
             <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
             <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
@@ -1389,6 +1450,18 @@ document.getElementById('dfc-booking-form')?.addEventListener('submit', function
     });
   });
 })();
+
+// ===== GA4 contact and plan events (section 8). No personal data is sent. =====
+document.addEventListener('click', function (e) {
+  if (typeof gtag !== 'function') return;
+  const a = e.target.closest('a');
+  if (!a) return;
+  const href = a.getAttribute('href') || '';
+  if (href.startsWith('tel:')) gtag('event', 'click_call', { link_location: window.location.pathname });
+  else if (href.startsWith('sms:')) gtag('event', 'click_text', { link_location: window.location.pathname });
+  else if (href.startsWith('mailto:')) gtag('event', 'click_email', { link_location: window.location.pathname });
+  if (a.dataset.plan) gtag('event', 'select_plan', { plan: a.dataset.plan });
+});
 </script>
 </body>
 </html>
