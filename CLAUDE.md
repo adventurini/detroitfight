@@ -60,6 +60,10 @@ This site was built to be read by search engines and AI crawlers, and several fi
 - Per-page `<head>`: canonical, Open Graph, and Twitter card tags.
 - Per-page inline JSON-LD: `LocalBusiness` + `Service` + `BreadcrumbList` on program pages, `FAQPage` on `index`, `Person` on `coaches`, `Offer`/`UnitPriceSpecification` on `pricing`.
 
+## IndexNow (automatic, Bing side)
+
+`.github/workflows/indexnow.yml` runs after every successful Vercel production deploy and submits the changed page URLs to IndexNow (Bing, which feeds ChatGPT and Copilot search) via `.github/scripts/indexnow.py`. The key file `<32 hex>.txt` at the repo root is the public IndexNow key; leave it alone, and keep `.vercelignore` excluding `.github`. Google ignores IndexNow and reads `sitemap.xml` on its own schedule, so sitemap `lastmod` still has to be bumped by hand for every changed page; Search Console "Request indexing" stays manual (Google offers no API for it).
+
 ## Business facts repeated across files
 
 Changing any of these means grepping the whole repo, including `llms.txt`, JSON-LD blocks, and meta descriptions:

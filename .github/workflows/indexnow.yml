@@ -1,0 +1,28 @@
+# After every successful production deploy on Vercel, tell IndexNow (Bing,
+# which feeds ChatGPT and Copilot search) which pages changed. No one has to
+# do anything by hand. Google ignores IndexNow and reads sitemap.xml instead.
+#
+# Vercel's GitHub integration posts a deployment_status event for each deploy;
+# this runs only for the production one and only when it succeeded.
+name: IndexNow
+
+on:
+  deployment_status:
+
+permissions:
+  contents: read
+
+jobs:
+  submit:
+    if: >-
+      github.event.deployment_status.state == 'success' &&
+      startsWith(github.event.deployment.environment, 'Production')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.deployment.sha }}
+          fetch-depth: 2
+
+      - name: Submit changed pages to IndexNow
+        run: python3 .github/scripts/indexnow.py "${{ github.event.deployment.sha }}"
