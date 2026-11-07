@@ -15,7 +15,7 @@ gtag('config', 'G-KYCVH9837V');
 
 <!-- ===== SEO ===== -->
 <title>The Gym | Detroit Fight Company | Winter Springs, FL Combat Sports Facility</title>
-<meta name="description" content="5,000 sq ft combat sports facility in Winter Springs, FL. Boxing ring, MMA cage walls, Zebra Athletics mats. Free parking at Promenade at Tuskawilla.">
+<meta name="description" content="5,000 sq ft combat sports gym in Winter Springs, FL. Boxing ring, cage walls, Zebra mats. Opened March 2026 in the former UFC Gym Winter Springs space.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://detroitfight.com/the-gym">
 <meta property="og:type" content="website">
@@ -86,29 +86,69 @@ fbq('track', 'PageView');
     {
       "@type": "LocalBusiness",
       "@id": "https://detroitfight.com/#business",
-      "name": "Detroit Fight Company",
-      "url": "https://detroitfight.com/",
-      "telephone": "+14076966969",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "1425 Tuskawilla Road, Suite 209",
-        "addressLocality": "Winter Springs",
-        "addressRegion": "FL",
-        "postalCode": "32708",
-        "addressCountry": "US"
+      "disambiguatingDescription": "Detroit Fight Company is a combat sports gym in Winter Springs, Florida, in the Orlando area. Founded by Sean Goolsby in Jacareí, São Paulo, Brazil, it relocated to Winter Springs in March 2026. It is named for Sean's hometown, is not located in Detroit, Michigan, and is unrelated to Detroit Fight Club.",
+      "foundingLocation": {
+        "@type": "Place",
+        "name": "Jacareí, São Paulo, Brazil"
       },
+      "hasMap": "https://www.google.com/maps/search/?api=1&query=Detroit+Fight+Company&query_place_id=ChIJ-QiCsMdu54gRm_zyZoDN1Pg",
       "geo": {
         "@type": "GeoCoordinates",
-        "latitude": 28.6767,
-        "longitude": -81.2812
+        "latitude": 28.6453588,
+        "longitude": -81.2648724
       },
+      "areaServed": [
+        {
+          "@type": "City",
+          "name": "Winter Springs"
+        },
+        {
+          "@type": "City",
+          "name": "Oviedo"
+        },
+        {
+          "@type": "City",
+          "name": "Casselberry"
+        },
+        {
+          "@type": "City",
+          "name": "Winter Park"
+        },
+        {
+          "@type": "City",
+          "name": "Lake Mary"
+        },
+        {
+          "@type": "City",
+          "name": "Longwood"
+        },
+        {
+          "@type": "City",
+          "name": "Sanford"
+        },
+        {
+          "@type": "City",
+          "name": "Altamonte Springs"
+        }
+      ],
       "sameAs": [
         "https://www.facebook.com/DFCwintersprings/",
         "https://www.tiktok.com/@detroit.fight.co",
         "https://www.instagram.com/detroitfightco/",
         "https://www.instagram.com/detroitfightcompany/",
-        "https://maps.app.goo.gl/sojazUGgxxwXbr1Y7"
+        "https://www.google.com/maps/search/?api=1&query=Detroit+Fight+Company&query_place_id=ChIJ-QiCsMdu54gRm_zyZoDN1Pg"
       ],
+      "name": "Detroit Fight Company",
+      "url": "https://detroitfight.com/",
+      "telephone": "+14076966969",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "1425 Tuskawilla Rd #209",
+        "addressLocality": "Winter Springs",
+        "addressRegion": "FL",
+        "postalCode": "32708",
+        "addressCountry": "US"
+      },
       "image": [
         "https://detroitfight.com/images/gym/boxing-ring-01.jpg",
         "https://detroitfight.com/images/gym/zebra-mat-area-01.jpg",
@@ -119,19 +159,26 @@ fbq('track', 'PageView');
           "@type": "OpeningHoursSpecification",
           "dayOfWeek": [
             "Monday",
-            "Tuesday",
-            "Wednesday",
-            "Thursday",
-            "Friday"
+            "Wednesday"
           ],
           "opens": "06:00",
           "closes": "20:30"
         },
         {
           "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Tuesday",
+            "Thursday",
+            "Friday"
+          ],
+          "opens": "10:00",
+          "closes": "20:30"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
           "dayOfWeek": "Saturday",
-          "opens": "09:30",
-          "closes": "13:00"
+          "opens": "10:00",
+          "closes": "12:30"
         }
       ]
     },
@@ -1192,6 +1239,20 @@ h4, .as-h4 { font-size: 24px; letter-spacing: 2px; }
 @media (max-width: 768px) { .gym-gallery-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 480px) { .gym-gallery-grid { grid-template-columns: 1fr; } .gym-gallery-grid .lead img { aspect-ratio: 3 / 2; } }
 
+/* ===== THE SPACE, AREAS, FIND US ===== */
+.gym-space { max-width: 1000px; margin: 56px auto 0; }
+.gym-space h2 { color: var(--green); margin-bottom: 12px; }
+.gym-space .body-text { max-width: none; }
+.areas-list { max-width: 1000px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px 40px; }
+.areas-list .area { font-size: 17px; }
+.areas-list .area strong { color: var(--white); font-weight: 600; }
+.gym-find .map-container { height: 320px; margin: 28px auto 0; }
+.find-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+@media (max-width: 768px) {
+  .areas-list { grid-template-columns: 1fr; }
+  .find-actions .btn { width: 100%; }
+}
+
 /* ===== Accessibility (section 5) ===== */
 main p a:not(.btn):not(.nav-cta), main li a:not(.btn), .faq-answer-inner a { text-decoration: underline; text-underline-offset: 3px; }
 .faq-answer { max-height: none; overflow: visible; transition: none; }
@@ -1233,6 +1294,7 @@ picture source { display: none; }
   <p class="hero-eyebrow">5,000 Square Feet. Built for Combat Sports.</p>
   <h1>The Gym in Winter Springs, FL</h1>
   <p class="body-text">5,000 square feet of dedicated training space. Boxing ring. MMA cage walls. Zebra Athletics mats. Built for combat sports.</p>
+  <p class="body-text" style="font-size: 17px;">Detroit Fight Company began as Head Coach and owner Sean Goolsby's academy in Jacareí, São Paulo, Brazil. In March 2026 he moved it to Winter Springs, Florida, into the former UFC Gym Winter Springs space at the Promenade at Tuskawilla.</p>
 </section>
 
 <section class="section gym-video" id="gym-video" aria-labelledby="gym-video-heading">
@@ -1339,30 +1401,51 @@ picture source { display: none; }
     </div>
     <div class="gym-info-item">
       <h3 class="as-h4">Hours</h3>
-      <p class="body-text">Monday to Friday: 6:00 AM to 8:30 PM<br>Saturday: 9:30 AM to 1:00 PM</p>
+      <p class="body-text">Monday and Wednesday: 6:00 AM to 8:30 PM<br>Tuesday, Thursday and Friday: 10:00 AM to 8:30 PM<br>Saturday: 10:00 AM to 12:30 PM<br>Sunday: Closed</p>
     </div>
   </div>
 
-  <!-- Google Maps Embed -->
+  <div class="gym-space">
+    <h2 class="as-h4" id="space-heading">The Space</h2>
+    <p class="body-text">Detroit Fight Company is 5,000 square feet built for one purpose: combat sports. The Jiu-Jitsu room has six inch elevated Zebra Athletics floating mats and full wall padding, and every Jiu-Jitsu class, kids included, trains on it. A separate Muay Thai and boxing floor carries cage wall fencing and heavy bags, and there is an 18 foot boxing ring. Men's and women's changing rooms and bathrooms are inside the gym, and parking is free in the Promenade at Tuskawilla lot directly in front of the door. The gym began as Head Coach and owner Sean Goolsby's academy in Jacareí, São Paulo, Brazil. In March 2026 he moved it to Winter Springs, Florida, into the former UFC Gym Winter Springs space. Every program, Gi and No Gi Jiu-Jitsu, boxing, Muay Thai, MMA, kids classes, sparring and open mat, runs under this one roof, six days a week.</p>
+  </div>
+</section>
+
+<section class="section fade-in gym-areas" aria-labelledby="areas-heading">
+  <p class="section-tag">Nearby</p>
+  <h2 id="areas-heading">Areas We Serve</h2>
+  <p class="body-text" style="margin-bottom: 24px;">The gym is in Winter Springs. Members also drive in from across Seminole County and north Orlando.</p>
+  <div class="areas-list">
+    <p class="body-text area"><strong>Oviedo:</strong> members from Oviedo come down Tuskawilla Road or SR 434 for the evening Jiu-Jitsu and boxing classes.</p>
+    <p class="body-text area"><strong>Casselberry:</strong> a short drive east along Red Bug Lake Road.</p>
+    <p class="body-text area"><strong>Winter Park:</strong> families and adults from Winter Park train with us for Jiu-Jitsu, boxing and Muay Thai.</p>
+    <p class="body-text area"><strong>Lake Mary:</strong> competitors from Lake Mary come for the Jiu-Jitsu program and private lessons with Sean.</p>
+    <p class="body-text area"><strong>Longwood:</strong> Longwood members fill the 10:00 AM boxing class and the evening sessions.</p>
+    <p class="body-text area"><strong>Sanford:</strong> worth the drive for a competition focused Jiu-Jitsu room.</p>
+    <p class="body-text area"><strong>Altamonte Springs:</strong> boxing, Muay Thai and Jiu-Jitsu under one roof, a few exits from Altamonte Springs.</p>
+  </div>
+</section>
+
+<section class="section fade-in gym-find" aria-labelledby="find-us-heading">
+  <p class="section-tag">Directions</p>
+  <h2 id="find-us-heading">Find Us</h2>
+  <p class="body-text" style="margin-bottom: 8px;">1425 Tuskawilla Rd #209, Winter Springs, FL 32708, in the Promenade at Tuskawilla.</p>
+  <p class="body-text">Free parking directly in front of the gym.</p>
   <div class="map-container">
     <iframe
       src="https://maps.google.com/maps?q=1425+Tuskawilla+Rd+%23209,+Winter+Springs,+FL+32708&output=embed"
       allowfullscreen=""
       loading="lazy"
       referrerpolicy="no-referrer-when-downgrade"
-      title="Detroit Fight Company location map"
+      title="Map to Detroit Fight Company"
     ></iframe>
   </div>
-
-  <div style="text-align: center; margin-top: 48px;">
+  <div class="find-actions">
+    <a href="https://www.google.com/maps/dir/?api=1&destination=Detroit+Fight+Company&destination_place_id=ChIJ-QiCsMdu54gRm_zyZoDN1Pg" class="btn btn-secondary" target="_blank" rel="noopener">Get directions</a>
     <a href="/free-trial" class="btn btn-primary">Book Your Free Trial Class</a>
   </div>
 </section>
 
-<div class="page-spacer"></div>
-
-
-<!-- ═══════════════════════════════════════════════════
 <div class="page-spacer"></div>
 
 
@@ -1387,6 +1470,8 @@ picture source { display: none; }
         <a href="/privacy-policy" style="color:var(--light-grey); font-size:13px; font-weight:300;">Privacy Policy</a>
         &nbsp;·&nbsp;
         <a href="/terms" style="color:var(--light-grey); font-size:13px; font-weight:300;">Terms &amp; Conditions</a>
+        &nbsp;·&nbsp;
+        <a href="/competition-team" style="color:var(--light-grey); font-size:13px; font-weight:300;">Competition Team</a>
       </p>
     </div>
     <div class="footer-right">

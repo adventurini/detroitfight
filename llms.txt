@@ -1,9 +1,16 @@
 # Detroit Fight Company
 
 > Combat sports academy in Winter Springs, Florida, offering Brazilian Jiu-Jitsu (gi and no gi), boxing, Muay Thai, MMA, and sparring for adults, plus Youth Jiu-Jitsu and Youth Boxing for kids. Head Coach and owner: IBJJF black belt Sean Goolsby. Free trial class available.
+> His IBJJF results are listed at https://detroitfight.com/competition-team.
 
 ## Location
 1425 Tuskawilla Rd #209, Winter Springs, FL 32708. Serves Winter Springs, Oviedo, Casselberry, Winter Park, Seminole County, and greater Orlando.
+
+## Hours
+- Monday and Wednesday: 6:00 AM to 8:30 PM
+- Tuesday, Thursday and Friday: 10:00 AM to 8:30 PM
+- Saturday: 10:00 AM to 12:30 PM
+- Sunday: Closed
 
 ## Programs
 - Brazilian Jiu-Jitsu: gi, no gi, open mat, early morning
@@ -42,6 +49,7 @@
 - Private lessons: https://detroitfight.com/private-lessons
 - Coaches: https://detroitfight.com/coaches
 - The gym, photos and a 30 second video: https://detroitfight.com/the-gym
+- Competition results: https://detroitfight.com/competition-team
 
 ## Contact
 Phone: 407-696-6969. Email: sean@detroitfight.com.
