@@ -24,7 +24,7 @@ Each page independently repeats the CSS reset, `:root` design tokens, nav markup
 
 **Any change to shared chrome must be applied to every page by hand.** That includes: nav links, footer, design tokens, GA snippet, and the scroll/mobile-menu scripts. Grep for the pattern across `*.html` and edit each hit — there is no partial/include mechanism to reach for, and introducing a build step is a much larger change than the site currently warrants.
 
-Design tokens live in a per-page `:root`: `--deep-black #0A0A0A` (page bg), `--black #1A1A1A` (cards), `--green #7D9B76` (accent/CTA), `--white`, `--grey #D8D8D8`. Type is Bebas Neue (headings, uppercase, letter-spaced) and Barlow Condensed (body), loaded from Google Fonts on every page. Note `thank-you.html` uses stale variable *names* from an earlier red palette (`--red`, `--gold`) that are now assigned green values — don't "fix" the values to match the names.
+Design tokens live in a per-page `:root`: `--deep-black #0A0A0A` (page bg), `--black #1A1A1A` (cards), `--green #7D9B76` (accent/CTA), `--white`, `--grey #D8D8D8`. Type is Bebas Neue (headings, uppercase, letter-spaced) and Barlow Condensed (body, 400 and 700), self hosted: three latin subset `woff2` files in `/fonts`, declared by inline `@font-face` rules and two `preload` links repeated in every page's `<head>`. Nothing loads from Google Fonts. `vercel.json` caches `/fonts/*` for a year as immutable, so a changed font needs a new file name. Note `thank-you.html` uses stale variable *names* from an earlier red palette (`--red`, `--gold`) that are now assigned green values — don't "fix" the values to match the names.
 
 ## Page roles
 
