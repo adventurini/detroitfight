@@ -75,3 +75,4 @@ Changing any of these means grepping the whole repo, including `llms.txt`, JSON-
 - Phone: (407) 696-6969 · Email: sean@detroitfight.com
 - Pricing: a single $199/mo All Access Membership, no contracts
 - Offer: free trial class (the current site-wide CTA language)
+- Kids classes: Kids Jiu-Jitsu and Youth Boxing, ages 5 to 14. Owner's rule: the kids class is never labeled Gi or No Gi. Only the adult program is.
