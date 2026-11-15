@@ -24,11 +24,14 @@ Each page independently repeats the CSS reset, `:root` design tokens, nav markup
 
 **Any change to shared chrome must be applied to every page by hand.** That includes: nav links, footer, design tokens, GA snippet, and the scroll/mobile-menu scripts. Grep for the pattern across `*.html` and edit each hit — there is no partial/include mechanism to reach for, and introducing a build step is a much larger change than the site currently warrants.
 
-Design tokens live in a per-page `:root`: `--deep-black #0A0A0A` (page bg), `--black #1A1A1A` (cards), `--green #7D9B76` (accent/CTA), `--white`, `--grey #D8D8D8`. Type is Bebas Neue (headings, uppercase, letter-spaced) and Barlow Condensed (body), loaded from Google Fonts on every page. Note `thank-you.html` uses stale variable *names* from an earlier red palette (`--red`, `--gold`) that are now assigned green values — don't "fix" the values to match the names.
+Design tokens live in a per-page `:root`: `--deep-black #0A0A0A` (page bg), `--black #1A1A1A` (cards), `--green #7D9B76` (accent/CTA), `--white`, `--grey #D8D8D8`. Type is Bebas Neue (headings, uppercase, letter-spaced) and Barlow Condensed (body, 400 and 700), self hosted: three latin subset `woff2` files in `/fonts`, declared by inline `@font-face` rules and two `preload` links repeated in every page's `<head>`. Nothing loads from Google Fonts. `vercel.json` caches `/fonts/*` for a year as immutable, so a changed font needs a new file name. Note `thank-you.html` uses stale variable *names* from an earlier red palette (`--red`, `--gold`) that are now assigned green values — don't "fix" the values to match the names.
 
 ## Page roles
 
-- **Content pages** (`index`, `jiu-jitsu`, `boxing`, `muay-thai`, `coaches`, `schedule`, `pricing`, `the-gym`, `free-trial`) — full site chrome, in the nav and sitemap.
+- **Content pages** (`index`, `jiu-jitsu`, `boxing`, `muay-thai`, `mma`, `martial-arts`, `kids`, `homeschool`, `coaches`, `schedule`, `pricing`, `private-lessons`, `the-gym`, `competition-team`, `free-trial`) — full site chrome, in the sitemap. The main menu holds eleven links and its CSS is sized for exactly eleven; `mma`, `martial-arts` and `competition-team` are reached from the footer link row and from page copy, not the menu.
+- **`mma.html`** — the MMA class: Tuesday and Thursday 7:30 PM, coached by Paulo Games, combining Jiu-Jitsu, wrestling, judo, kickboxing, Muay Thai and karate. The page states no level and no sparring rule because the owner has not supplied them; do not add either until he does.
+- **`martial-arts.html`** — the hub for the term martial arts: every program with its class times and page, where to start, and the answer that karate, judo and wrestling are taught inside the MMA class. Class times here repeat `schedule.html`; change both together.
+- **`404.html`** — Vercel serves it for any address that matches no file. `noindex, follow`, no canonical, no JSON-LD, not in the sitemap. Keep every asset path root relative, since it renders at any depth.
 - **`lp.html`** — standalone Google Ads landing page. Deliberately minimal: no nav, no footer, no site CSS, system font stack for the body, a daily-resetting countdown, and a GoHighLevel form iframe. Not in the nav or sitemap. Optimized for load speed; keep it that way when editing.
 - **`thank-you.html`** — post-conversion page, `noindex, nofollow`, and the only page carrying the Google Ads tag. Its "What Happens Next" copy deliberately promises no specific response time; if the gym commits to an SLA (e.g. "text within 15 minutes"), that's the line to change.
 - **`privacy-policy.html`, `terms.html`** — legal, minimal chrome.
@@ -58,7 +61,7 @@ This site was built to be read by search engines and AI crawlers, and several fi
 - `robots.txt` — explicitly allows GPTBot, OAI-SearchBot, ChatGPT-User, ClaudeBot, Claude-Web, PerplexityBot, Google-Extended.
 - `llms.txt` — plain-language summary of location, programs, pricing, and key URLs for LLM consumers.
 - Per-page `<head>`: canonical, Open Graph, and Twitter card tags.
-- Per-page inline JSON-LD: `LocalBusiness` + `Service` + `BreadcrumbList` on program pages, `FAQPage` on `index`, `Person` on `coaches`, `Offer`/`UnitPriceSpecification` on `pricing`.
+- Per-page inline JSON-LD: the business as `SportsActivityLocation` with `"@id": "https://detroitfight.com/#business"` on every content page (same type and same `telephone` format everywhere), plus `Service` + `BreadcrumbList` + `FAQPage` on program pages, `FAQPage` on `index`, `Person` on `coaches`. Every visible FAQ answer has a matching `FAQPage` entry; edit both.
 
 ## IndexNow (automatic, Bing side)
 
