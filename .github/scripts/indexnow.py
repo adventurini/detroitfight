@@ -26,7 +26,7 @@ HOST = "detroitfight.com"
 ENDPOINT = "https://api.indexnow.org/indexnow"
 # Pages marked noindex are never submitted. The googled...html file is the
 # Search Console verification file, not a page.
-NEVER = {"thank-you.html", "lp.html"}
+NEVER = {"thank-you.html", "lp.html", "404.html"}
 
 
 def url_for(path):

@@ -1,4 +1,4 @@
-﻿User-agent: GPTBot
+User-agent: GPTBot
 Allow: /
 User-agent: OAI-SearchBot
 Allow: /
