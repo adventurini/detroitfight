@@ -9,6 +9,7 @@ window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-KYCVH9837V');
+gtag('config', 'AW-18500089527');
 </script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -1579,6 +1580,11 @@ document.getElementById('dfc-booking-form')?.addEventListener('submit', async fu
         event_category: 'form',
         event_label: 'free_trial_request',
         value: 1
+      });
+      gtag('event', 'conversion', {
+        send_to: 'AW-18500089527/bn4ECKebxbsdELftw_VE',
+        value: 1.0,
+        currency: 'USD'
       });
     }
 

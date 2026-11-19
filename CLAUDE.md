@@ -51,7 +51,10 @@ Three separate paths, all feeding GoHighLevel — don't assume one covers the ot
 2. **`lp.html`** — GoHighLevel form iframe (`form_embed.js`); redirect-to-thank-you is configured in GHL, not in this repo.
 3. **Schedule/booking embeds** — Gymdesk `widgets.js` with gym id `6zgd3`, embedded on most content pages.
 
-Analytics: GA4 `G-KYCVH9837V` in the `<head>` of every content page; Google Ads `AW-18094262765` **only** on `thank-you.html`. A Meta Pixel block is commented out on `index.html` and `thank-you.html` pending a pixel ID.
+Analytics: GA4 `G-KYCVH9837V` in the `<head>` of every content page. Google Ads has two tags, for two different Ads accounts; do not merge them:
+
+- `AW-18500089527` is the live Ads account (684 798 5141, the Search campaign started November 2026). Its `gtag('config', ...)` line sits right under the GA4 config on every content page and on `go/jiu-jitsu.html`, so the ad click is remembered on whichever page a visitor lands. Both hand-rolled forms (`free-trial.html` and `go/jiu-jitsu.html`) fire `gtag('event', 'conversion', { send_to: 'AW-18500089527/bn4ECKebxbsdELftw_VE' })` next to `generate_lead`, only after the webhook returns OK. That label belongs to the conversion action "Lead form sent". A new page with its own form needs both lines.
+- `AW-18094262765` is an older Ads account and stays **only** on `thank-you.html`, for the `lp.html` flow. A Meta Pixel block is commented out on `index.html` and `thank-you.html` pending a pixel ID.
 
 ## SEO surface
 
