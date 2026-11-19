@@ -76,6 +76,6 @@ Changing any of these means grepping the whole repo, including `llms.txt`, JSON-
 
 - Address: 1425 Tuskawilla Rd #209, Winter Springs, FL 32708
 - Phone: (407) 696-6969 · Email: sean@detroitfight.com
-- Pricing: the $199/mo All Access Membership, no contracts, plus the Homeschool PE Program at $400/mo (Monday to Thursday 10:00 AM to 12:00 PM, starting January 11, 2027; includes All Access; Enrollment Kit not included). Both rates are also the gym's two Step Up EMA service offerings, so the site and EMA must match. Owner's rule: no free gi for scholarship students; the $150 Enrollment Kit applies to everyone.
+- Pricing: the $199/mo All Access Membership, no contracts, plus the Homeschool PE Program at $400/mo (Monday to Thursday 10:00 AM to 12:00 PM, starting January 11, 2027; Jiu-Jitsu only, no Boxing hour; includes All Access; Enrollment Kit not included). The free group PE day for homeschool groups is a separate thing: that one is a Jiu-Jitsu class and a Boxing class back to back. Both rates are also the gym's two Step Up EMA service offerings, so the site and EMA must match. Owner's rule: no free gi for scholarship students; the $150 Enrollment Kit applies to everyone.
 - Offer: free trial class (the current site-wide CTA language)
 - Kids classes: Kids Jiu-Jitsu and Youth Boxing, ages 5 to 14. Owner's rule: the kids class is never labeled Gi or No Gi. Only the adult program is.
