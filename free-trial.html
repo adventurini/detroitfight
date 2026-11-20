@@ -11,6 +11,30 @@ gtag('js', new Date());
 gtag('config', 'G-KYCVH9837V');
 gtag('config', 'AW-18500089527');
 </script>
+<script>
+// Lead source: note once per visit where the visitor came from. The lead forms read it.
+(function(){try{
+  var key='dfc_lead_source';
+  if(sessionStorage.getItem(key))return;
+  var q=new URLSearchParams(location.search),host='';
+  try{host=document.referrer?new URL(document.referrer).hostname.replace(/^www\./,''):'';}catch(e){}
+  if(host===location.hostname.replace(/^www\./,''))host='';
+  var us=(q.get('utm_source')||'').slice(0,60),um=(q.get('utm_medium')||'').slice(0,60),uc=(q.get('utm_campaign')||'').slice(0,80);
+  var adClick=!!(q.get('gclid')||q.get('gbraid')||q.get('wbraid'));
+  var s=us.toLowerCase(),label='Direct';
+  if(s==='yelp')label='Yelp';
+  else if(adClick||(s==='google'&&/cpc|ppc|paid/i.test(um)))label='Google Ads';
+  else if(us)label=us;
+  else if(/(^|\.)yelp\.com$/.test(host))label='Yelp';
+  else if(/(^|\.)google\.[a-z.]+$/.test(host))label='Google search';
+  else if(/(^|\.)bing\.com$/.test(host))label='Bing search';
+  else if(/(^|\.)(facebook|fb)\.com$/.test(host))label='Facebook';
+  else if(/(^|\.)instagram\.com$/.test(host))label='Instagram';
+  else if(/(^|\.)(chatgpt|openai)\.com$/.test(host))label='ChatGPT';
+  else if(host)label=host;
+  sessionStorage.setItem(key,JSON.stringify({lead_source:label,utm_source:us,utm_medium:um,utm_campaign:uc,referrer:host,landing_page:location.pathname}));
+}catch(e){}})();
+</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -1544,6 +1568,13 @@ window.addEventListener('scroll', () => {
 
 
 
+// Reads the visit source saved by the snippet in <head>. Falls back to Direct when storage is unavailable.
+function leadSource() {
+  const fallback = { lead_source: 'Direct', utm_source: '', utm_medium: '', utm_campaign: '', referrer: '', landing_page: window.location.pathname };
+  try { return Object.assign(fallback, JSON.parse(sessionStorage.getItem('dfc_lead_source') || '{}')); }
+  catch (e) { return fallback; }
+}
+
 // ===== Trial form: program context =====
 // Builds the webhook payload. Kept as a plain function so it can be tested without submitting.
 function buildPayload(form) {
@@ -1552,6 +1583,7 @@ function buildPayload(form) {
   const sel = form.querySelector('select[name="class_interest"]');
   const opt = sel && sel.selectedIndex > 0 ? sel.options[sel.selectedIndex] : null;
   const youth = !!(opt && opt.dataset.youth);
+  const src = leadSource();
   return {
     firstName: val('first_name'),
     lastName: val('last_name'),
@@ -1568,6 +1600,12 @@ function buildPayload(form) {
     source: 'detroitfight.com',
     source_page: val('source_page') || 'direct',
     sourcePage: window.location.pathname,
+    lead_source: src.lead_source,
+    utm_source: src.utm_source,
+    utm_medium: src.utm_medium,
+    utm_campaign: src.utm_campaign,
+    referrer: src.referrer,
+    landing_page: src.landing_page,
     submittedAt: new Date().toISOString()
   };
 }
@@ -1640,7 +1678,8 @@ document.getElementById('dfc-booking-form')?.addEventListener('submit', async fu
         event_label: 'free_trial_request',
         value: 1,
         program: payload.program,
-        source_page: payload.source_page
+        source_page: payload.source_page,
+        lead_source: payload.lead_source
       });
       gtag('event', 'conversion', {
         send_to: 'AW-18500089527/bn4ECKebxbsdELftw_VE',

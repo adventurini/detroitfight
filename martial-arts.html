@@ -11,6 +11,30 @@ gtag('js', new Date());
 gtag('config', 'G-KYCVH9837V');
 gtag('config', 'AW-18500089527');
 </script>
+<script>
+// Lead source: note once per visit where the visitor came from. The lead forms read it.
+(function(){try{
+  var key='dfc_lead_source';
+  if(sessionStorage.getItem(key))return;
+  var q=new URLSearchParams(location.search),host='';
+  try{host=document.referrer?new URL(document.referrer).hostname.replace(/^www\./,''):'';}catch(e){}
+  if(host===location.hostname.replace(/^www\./,''))host='';
+  var us=(q.get('utm_source')||'').slice(0,60),um=(q.get('utm_medium')||'').slice(0,60),uc=(q.get('utm_campaign')||'').slice(0,80);
+  var adClick=!!(q.get('gclid')||q.get('gbraid')||q.get('wbraid'));
+  var s=us.toLowerCase(),label='Direct';
+  if(s==='yelp')label='Yelp';
+  else if(adClick||(s==='google'&&/cpc|ppc|paid/i.test(um)))label='Google Ads';
+  else if(us)label=us;
+  else if(/(^|\.)yelp\.com$/.test(host))label='Yelp';
+  else if(/(^|\.)google\.[a-z.]+$/.test(host))label='Google search';
+  else if(/(^|\.)bing\.com$/.test(host))label='Bing search';
+  else if(/(^|\.)(facebook|fb)\.com$/.test(host))label='Facebook';
+  else if(/(^|\.)instagram\.com$/.test(host))label='Instagram';
+  else if(/(^|\.)(chatgpt|openai)\.com$/.test(host))label='ChatGPT';
+  else if(host)label=host;
+  sessionStorage.setItem(key,JSON.stringify({lead_source:label,utm_source:us,utm_medium:um,utm_campaign:uc,referrer:host,landing_page:location.pathname}));
+}catch(e){}})();
+</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
