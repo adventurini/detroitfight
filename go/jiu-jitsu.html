@@ -1593,6 +1593,7 @@ document.getElementById('dfc-booking-form')?.addEventListener('submit', async fu
     classInterest: (fd.get('class_interest') || '').toString().trim(),
     class_label: clsOpt ? (clsOpt.dataset.label || '') : '',
     class_schedule: clsOpt ? (clsOpt.dataset.schedule || '') : '',
+    class_line: clsOpt ? (clsOpt.dataset.label || '') : '',
     experienceLevel: (fd.get('experience_level') || '').toString().trim(),
     notes: (fd.get('notes') || '').toString().trim(),
     smsMarketingConsent: form.querySelector('input[name="sms_marketing_consent"]')?.checked || false,
