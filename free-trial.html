@@ -1364,11 +1364,11 @@ main p a:not(.btn):not(.nav-cta), main li a:not(.btn), .faq-answer-inner a { tex
           <form id="dfc-booking-form" method="POST" action="#">
             <div class="dfc-row">
               <div class="dfc-field">
-                <label for="fname" class="dfc-label">First Name *</label>
+                <label for="fname" id="fname-label" class="dfc-label">First Name *</label>
                 <input type="text" id="fname" name="first_name" placeholder="First name" required class="dfc-input" autocomplete="given-name"/>
               </div>
               <div class="dfc-field">
-                <label for="lname" class="dfc-label">Last Name *</label>
+                <label for="lname" id="lname-label" class="dfc-label">Last Name *</label>
                 <input type="text" id="lname" name="last_name" placeholder="Last name" required class="dfc-input" autocomplete="family-name"/>
               </div>
             </div>
@@ -1397,14 +1397,22 @@ main p a:not(.btn):not(.nav-cta), main li a:not(.btn), .faq-answer-inner a { tex
                 <option value="unsure" data-label="Not sure yet" data-schedule="classes run every weekday and Saturday morning, full schedule at detroitfight.com/schedule">Not Sure Yet</option>
               </select>
             </div>
-            <div class="dfc-row" id="youth-fields" hidden>
-              <div class="dfc-field">
-                <label for="guardian" class="dfc-label">Parent or guardian name *</label>
-                <input type="text" id="guardian" name="guardian_name" placeholder="Parent or guardian name" class="dfc-input" autocomplete="name"/>
+            <div id="youth-fields" hidden>
+              <div class="dfc-row">
+                <div class="dfc-field">
+                  <label for="guardian-first" class="dfc-label">Parent or guardian first name *</label>
+                  <input type="text" id="guardian-first" name="guardian_first_name" placeholder="Parent first name" class="dfc-input" autocomplete="given-name"/>
+                </div>
+                <div class="dfc-field">
+                  <label for="guardian-last" class="dfc-label">Parent or guardian last name *</label>
+                  <input type="text" id="guardian-last" name="guardian_last_name" placeholder="Parent last name" class="dfc-input" autocomplete="family-name"/>
+                </div>
               </div>
-              <div class="dfc-field">
-                <label for="student-age" class="dfc-label">Student age *</label>
-                <input type="number" id="student-age" name="student_age" min="3" max="18" inputmode="numeric" placeholder="Age" class="dfc-input"/>
+              <div class="dfc-row">
+                <div class="dfc-field">
+                  <label for="student-age" class="dfc-label">Student age *</label>
+                  <input type="number" id="student-age" name="student_age" min="3" max="18" inputmode="numeric" placeholder="Age" class="dfc-input"/>
+                </div>
               </div>
             </div>
             <input type="hidden" name="source_page" id="source-page" value="direct">
@@ -1584,9 +1592,15 @@ function buildPayload(form) {
   const opt = sel && sel.selectedIndex > 0 ? sel.options[sel.selectedIndex] : null;
   const youth = !!(opt && opt.dataset.youth);
   const src = leadSource();
+  // Kids classes: the parent is the contact (GoHighLevel texts the contact by first name),
+  // and the child's name and age travel in student_* fields.
+  const gFirst = youth ? val('guardian_first_name') : '';
+  const gLast = youth ? val('guardian_last_name') : '';
+  const sFirst = val('first_name');
+  const sLast = val('last_name');
   return {
-    firstName: val('first_name'),
-    lastName: val('last_name'),
+    firstName: youth ? gFirst : sFirst,
+    lastName: youth ? (gLast || sLast) : sLast,
     email: val('email'),
     phone: val('phone'),
     classInterest: val('class_interest'),
@@ -1595,7 +1609,9 @@ function buildPayload(form) {
     class_schedule: opt ? (opt.dataset.schedule || '') : '',
     experienceLevel: val('experience_level'),
     notes: val('notes'),
-    guardian_name: youth ? val('guardian_name') : '',
+    guardian_name: youth ? [gFirst, gLast].filter(Boolean).join(' ') : '',
+    student_first_name: youth ? sFirst : '',
+    student_name: youth ? [sFirst, sLast].filter(Boolean).join(' ') : '',
     student_age: youth ? val('student_age') : '',
     smsMarketingConsent: form.querySelector('input[name="sms_marketing_consent"]')?.checked || false,
     smsTransactionalConsent: form.querySelector('input[name="sms_transactional_consent"]')?.checked || false,
@@ -1617,15 +1633,28 @@ function buildPayload(form) {
   if (!form) return;
   const sel = form.querySelector('select[name="class_interest"]');
   const box = document.getElementById('youth-fields');
-  const guardian = document.getElementById('guardian');
+  const gFirst = document.getElementById('guardian-first');
+  const gLast = document.getElementById('guardian-last');
   const age = document.getElementById('student-age');
+  const fname = document.getElementById('fname');
+  const lname = document.getElementById('lname');
+  const fLabel = document.getElementById('fname-label');
+  const lLabel = document.getElementById('lname-label');
   function syncYouth() {
     const opt = sel.selectedIndex > 0 ? sel.options[sel.selectedIndex] : null;
     const on = !!(opt && opt.dataset.youth);
     box.hidden = !on;
-    guardian.required = on;
+    gFirst.required = on;
+    gLast.required = on;
     age.required = on;
-    if (!on) { guardian.value = ''; age.value = ''; }
+    // For kids classes the top name fields are the student's; the parent fills the fields below.
+    fLabel.textContent = on ? 'Student first name *' : 'First Name *';
+    lLabel.textContent = on ? 'Student last name *' : 'Last Name *';
+    fname.placeholder = on ? 'Student first name' : 'First name';
+    lname.placeholder = on ? 'Student last name' : 'Last name';
+    fname.autocomplete = on ? 'off' : 'given-name';
+    lname.autocomplete = on ? 'off' : 'family-name';
+    if (!on) { gFirst.value = ''; gLast.value = ''; age.value = ''; }
   }
   sel.addEventListener('change', syncYouth);
   const param = new URLSearchParams(window.location.search).get('program');

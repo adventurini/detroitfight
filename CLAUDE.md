@@ -47,7 +47,7 @@ On `index.html` the logo and Home link point at `#home` (the page has in-page an
 
 Three separate paths, all feeding GoHighLevel — don't assume one covers the others:
 
-1. **`free-trial.html`** — hand-rolled form (`#dfc-booking-form`) that `POST`s JSON directly to a LeadConnector webhook. Has a honeypot input `website_url_hp`, fires `gtag('event','generate_lead')` on success, and swaps the form for an inline confirmation (it does **not** redirect to `/thank-you`). On failure it alerts with the phone number.
+1. **`free-trial.html`** — hand-rolled form (`#dfc-booking-form`) that `POST`s JSON directly to a LeadConnector webhook. Kids options carry `data-youth="1"`: the top name fields relabel to the student's name, required parent first and last name fields and a student age field appear, and the payload sends the **parent** as `firstName`/`lastName` (GoHighLevel texts the contact by first name) with the child in `student_first_name`, `student_name` and `student_age`, plus `guardian_name`. Adult options send the typed name as before. Has a honeypot input `website_url_hp`, fires `gtag('event','generate_lead')` on success, and swaps the form for an inline confirmation (it does **not** redirect to `/thank-you`). On failure it alerts with the phone number.
 2. **`lp.html`** — GoHighLevel form iframe (`form_embed.js`); redirect-to-thank-you is configured in GHL, not in this repo.
 3. **Schedule/booking embeds** — Gymdesk `widgets.js` with gym id `6zgd3`, embedded on most content pages.
 
