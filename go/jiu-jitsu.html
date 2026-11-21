@@ -1389,12 +1389,12 @@ main p a:not(.btn):not(.nav-cta), main li a:not(.btn), .faq-answer-inner a { tex
               <label for="program" class="dfc-label">Class Interest *</label>
               <select id="program" name="class_interest" required class="dfc-input dfc-select">
                 <option value="" disabled selected>Select a program</option>
-                <option value="boxing">Boxing &amp; Conditioning</option>
-                <option value="muay_thai">Muay Thai</option>
-                <option value="mma">MMA</option>
-                <option value="bjj_gi">Brazilian Jiu-Jitsu (Gi)</option>
-                <option value="bjj_nogi">Brazilian Jiu-Jitsu (No Gi)</option>
-                <option value="unsure">Not Sure Yet</option>
+                <option value="boxing" data-label="Boxing" data-schedule="Monday to Friday at 10 AM, 5:30 PM and 6:45 PM, Saturday at 10 AM">Boxing &amp; Conditioning</option>
+                <option value="muay_thai" data-label="Muay Thai" data-schedule="Monday and Wednesday at 7:30 PM">Muay Thai</option>
+                <option value="mma" data-label="MMA" data-schedule="Tuesday and Thursday at 7:30 PM">MMA</option>
+                <option value="bjj_gi" data-label="Jiu-Jitsu (Gi)" data-schedule="Monday to Friday at 6 PM, Monday and Wednesday at 6 AM, Saturday at 11 AM">Brazilian Jiu-Jitsu (Gi)</option>
+                <option value="bjj_nogi" data-label="Jiu-Jitsu (No Gi)" data-schedule="Monday to Friday at 6 PM, Monday and Wednesday at 6 AM, Saturday at 11 AM">Brazilian Jiu-Jitsu (No Gi)</option>
+                <option value="unsure" data-label="Not sure yet" data-schedule="classes run every weekday and Saturday morning, full schedule at detroitfight.com/schedule">Not Sure Yet</option>
               </select>
             </div>
             <div class="dfc-field">
@@ -1583,12 +1583,16 @@ document.getElementById('dfc-booking-form')?.addEventListener('submit', async fu
 
   const fd = new FormData(form);
   const src = leadSource();
+  const clsSel = form.querySelector('select[name="class_interest"]');
+  const clsOpt = clsSel && clsSel.selectedIndex > 0 ? clsSel.options[clsSel.selectedIndex] : null;
   const payload = {
     firstName: (fd.get('first_name') || '').toString().trim(),
     lastName: (fd.get('last_name') || '').toString().trim(),
     email: (fd.get('email') || '').toString().trim(),
     phone: (fd.get('phone') || '').toString().trim(),
     classInterest: (fd.get('class_interest') || '').toString().trim(),
+    class_label: clsOpt ? (clsOpt.dataset.label || '') : '',
+    class_schedule: clsOpt ? (clsOpt.dataset.schedule || '') : '',
     experienceLevel: (fd.get('experience_level') || '').toString().trim(),
     notes: (fd.get('notes') || '').toString().trim(),
     smsMarketingConsent: form.querySelector('input[name="sms_marketing_consent"]')?.checked || false,
