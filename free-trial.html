@@ -1386,15 +1386,15 @@ main p a:not(.btn):not(.nav-cta), main li a:not(.btn), .faq-answer-inner a { tex
               <label for="program" class="dfc-label">Class Interest *</label>
               <select id="program" name="class_interest" required class="dfc-input dfc-select">
                 <option value="" disabled selected>Select a program</option>
-                <option value="boxing" data-param="boxing">Boxing &amp; Conditioning</option>
-                <option value="muay_thai" data-param="muay-thai">Muay Thai</option>
-                <option value="mma" data-param="mma">MMA</option>
-                <option value="bjj_gi" data-param="gi">Jiu-Jitsu (Gi)</option>
-                <option value="bjj_nogi" data-param="no-gi">Jiu-Jitsu (No Gi)</option>
-                <option value="kids_bjj" data-param="kids" data-youth="1">Kids Jiu-Jitsu</option>
-                <option value="youth_boxing" data-param="youth-boxing" data-youth="1">Youth Boxing</option>
-                <option value="homeschool" data-param="homeschool" data-youth="1">Homeschool or Daytime</option>
-                <option value="unsure">Not Sure Yet</option>
+                <option value="boxing" data-label="Boxing" data-schedule="Monday to Friday at 10 AM, 5:30 PM and 6:45 PM, Saturday at 10 AM" data-param="boxing">Boxing &amp; Conditioning</option>
+                <option value="muay_thai" data-label="Muay Thai" data-schedule="Monday and Wednesday at 7:30 PM" data-param="muay-thai">Muay Thai</option>
+                <option value="mma" data-label="MMA" data-schedule="Tuesday and Thursday at 7:30 PM" data-param="mma">MMA</option>
+                <option value="bjj_gi" data-label="Jiu-Jitsu (Gi)" data-schedule="Monday to Friday at 6 PM, Monday and Wednesday at 6 AM, Saturday at 11 AM" data-param="gi">Jiu-Jitsu (Gi)</option>
+                <option value="bjj_nogi" data-label="Jiu-Jitsu (No Gi)" data-schedule="Monday to Friday at 6 PM, Monday and Wednesday at 6 AM, Saturday at 11 AM" data-param="no-gi">Jiu-Jitsu (No Gi)</option>
+                <option value="kids_bjj" data-label="Kids Jiu-Jitsu" data-schedule="Monday to Friday at 4:45 PM, Saturday at 10 AM" data-param="kids" data-youth="1">Kids Jiu-Jitsu</option>
+                <option value="youth_boxing" data-label="Youth Boxing" data-schedule="Monday, Wednesday and Friday at 4:30 PM" data-param="youth-boxing" data-youth="1">Youth Boxing</option>
+                <option value="homeschool" data-label="Homeschool PE" data-schedule="Monday to Thursday, 10 AM to 12 PM, starting January 11" data-param="homeschool" data-youth="1">Homeschool or Daytime</option>
+                <option value="unsure" data-label="Not sure yet" data-schedule="classes run every weekday and Saturday morning, full schedule at detroitfight.com/schedule">Not Sure Yet</option>
               </select>
             </div>
             <div class="dfc-row" id="youth-fields" hidden>
@@ -1591,6 +1591,8 @@ function buildPayload(form) {
     phone: val('phone'),
     classInterest: val('class_interest'),
     program: opt ? opt.textContent.trim() : '',
+    class_label: opt ? (opt.dataset.label || '') : '',
+    class_schedule: opt ? (opt.dataset.schedule || '') : '',
     experienceLevel: val('experience_level'),
     notes: val('notes'),
     guardian_name: youth ? val('guardian_name') : '',
