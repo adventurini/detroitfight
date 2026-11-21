@@ -1241,7 +1241,7 @@ h4, .as-h4 { font-size: 24px; letter-spacing: 2px; }
   .nav-cta { padding: 7px 12px !important; }
 }
 .dfc-notice a { color: var(--grey); text-decoration: underline; }
-#youth-fields[hidden] { display: none; }
+#youth-fields[hidden], #adult-note[hidden] { display: none; }
 
 /* ===== Accessibility (section 5) ===== */
 main p a:not(.btn):not(.nav-cta), main li a:not(.btn), .faq-answer-inner a { text-decoration: underline; text-underline-offset: 3px; }
@@ -1391,8 +1391,8 @@ main p a:not(.btn):not(.nav-cta), main li a:not(.btn), .faq-answer-inner a { tex
                 <option value="mma" data-label="MMA" data-schedule="Tuesday and Thursday at 7:30 PM" data-param="mma">MMA</option>
                 <option value="bjj_gi" data-label="Jiu-Jitsu (Gi)" data-schedule="Monday to Friday at 6 PM, Monday and Wednesday at 6 AM, Saturday at 11 AM" data-param="gi">Jiu-Jitsu (Gi)</option>
                 <option value="bjj_nogi" data-label="Jiu-Jitsu (No Gi)" data-schedule="Monday to Friday at 6 PM, Monday and Wednesday at 6 AM, Saturday at 11 AM" data-param="no-gi">Jiu-Jitsu (No Gi)</option>
-                <option value="kids_bjj" data-label="Kids Jiu-Jitsu" data-schedule="Monday to Friday at 4:45 PM, Saturday at 10 AM" data-param="kids" data-youth="1">Kids Jiu-Jitsu</option>
-                <option value="youth_boxing" data-label="Youth Boxing" data-schedule="Monday, Wednesday and Friday at 4:30 PM" data-param="youth-boxing" data-youth="1">Youth Boxing</option>
+                <option value="kids_bjj" data-label="Kids Jiu-Jitsu" data-schedule="Monday to Friday at 4:45 PM, Saturday at 10 AM" data-param="kids" data-youth="1" data-adult="bjj_gi" data-adult-label="Jiu-Jitsu">Kids Jiu-Jitsu</option>
+                <option value="youth_boxing" data-label="Youth Boxing" data-schedule="Monday, Wednesday and Friday at 4:30 PM" data-param="youth-boxing" data-youth="1" data-adult="boxing" data-adult-label="Boxing">Youth Boxing</option>
                 <option value="homeschool" data-label="Homeschool PE" data-schedule="Monday to Thursday, 10 AM to 12 PM, starting January 11" data-param="homeschool" data-youth="1">Homeschool or Daytime</option>
                 <option value="unsure" data-label="Not sure yet" data-schedule="classes run every weekday and Saturday morning, full schedule at detroitfight.com/schedule">Not Sure Yet</option>
               </select>
@@ -1412,6 +1412,7 @@ main p a:not(.btn):not(.nav-cta), main li a:not(.btn), .faq-answer-inner a { tex
                 <div class="dfc-field">
                   <label for="student-age" class="dfc-label">Student age *</label>
                   <input type="number" id="student-age" name="student_age" min="3" max="18" inputmode="numeric" placeholder="Age" class="dfc-input"/>
+                  <p class="dfc-notice" id="adult-note" hidden>Students 15 and older train in our adult classes. We will send you those class times.</p>
                 </div>
               </div>
             </div>
@@ -1598,6 +1599,15 @@ function buildPayload(form) {
   const gLast = youth ? val('guardian_last_name') : '';
   const sFirst = val('first_name');
   const sLast = val('last_name');
+  // class_line is the phrase the first text quotes: "Kids Jiu-Jitsu for Johnny".
+  // Kids options that name an adult class (data-adult) move a student aged 15 or older
+  // to that class's label and times, since students 15 and older train in the adult classes.
+  const cls = { label: opt ? (opt.dataset.label || '') : '', schedule: opt ? (opt.dataset.schedule || '') : '' };
+  const ageNum = parseInt(val('student_age'), 10);
+  const adultOpt = youth && opt.dataset.adult && ageNum >= 15 ? sel.querySelector('option[value="' + opt.dataset.adult + '"]') : null;
+  if (adultOpt) { cls.label = opt.dataset.adultLabel || adultOpt.dataset.label; cls.schedule = adultOpt.dataset.schedule; }
+  cls.line = youth && sFirst ? cls.label + ' for ' + sFirst : cls.label;
+  if (adultOpt) cls.line += '. Students 15 and older train in our adult classes';
   return {
     firstName: youth ? gFirst : sFirst,
     lastName: youth ? (gLast || sLast) : sLast,
@@ -1605,8 +1615,9 @@ function buildPayload(form) {
     phone: val('phone'),
     classInterest: val('class_interest'),
     program: opt ? opt.textContent.trim() : '',
-    class_label: opt ? (opt.dataset.label || '') : '',
-    class_schedule: opt ? (opt.dataset.schedule || '') : '',
+    class_label: cls.label,
+    class_schedule: cls.schedule,
+    class_line: cls.line,
     experienceLevel: val('experience_level'),
     notes: val('notes'),
     guardian_name: youth ? [gFirst, gLast].filter(Boolean).join(' ') : '',
@@ -1655,7 +1666,14 @@ function buildPayload(form) {
     fname.autocomplete = on ? 'off' : 'given-name';
     lname.autocomplete = on ? 'off' : 'family-name';
     if (!on) { gFirst.value = ''; gLast.value = ''; age.value = ''; }
+    syncAdultNote();
   }
+  const adultNote = document.getElementById('adult-note');
+  function syncAdultNote() {
+    const opt = sel.selectedIndex > 0 ? sel.options[sel.selectedIndex] : null;
+    adultNote.hidden = !(opt && opt.dataset.adult && parseInt(age.value, 10) >= 15);
+  }
+  age.addEventListener('input', syncAdultNote);
   sel.addEventListener('change', syncYouth);
   const param = new URLSearchParams(window.location.search).get('program');
   if (param) {
