@@ -155,6 +155,14 @@ picture source{display:none}
   .nav-call { margin-right: 6px; }
   .nav-text { margin-right: 6px; }
 }
+
+/* Phone only: Book My Free Class bar, always visible. Leaves the bottom right corner free for the chat widget bubble. */
+.sticky-book{display:none}
+@media (max-width: 768px){
+  body{padding-bottom:76px}
+  .sticky-book{display:block;position:fixed;left:0;right:0;bottom:0;z-index:900;padding:10px 88px calc(10px + env(safe-area-inset-bottom)) 16px;background:#0A0A0A;border-top:1px solid #222}
+  .sticky-book a{display:block;text-align:center;background:var(--green);color:#0A0A0A;font-family:var(--font-heading);font-size:20px;letter-spacing:2px;text-transform:uppercase;padding:14px 10px;text-decoration:none}
+}
 </style>
 </head>
 <body>
@@ -468,6 +476,7 @@ alt="Lobby seating with the heavy bag floor behind it at Detroit Fight Company">
 
 
 </main>
+<div class="sticky-book"><a href="/free-trial">Book My Free Class</a></div>
 
 <!-- ===== FOOTER ===== -->
 <footer class="footer">
