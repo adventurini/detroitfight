@@ -1739,8 +1739,8 @@ document.getElementById('dfc-booking-form')?.addEventListener('submit', async fu
   const payload = buildPayload(form);
 
   try {
-    // Lead webhook. Default: the live GoHighLevel account. Test mode: opening this page with ?ghl=new
-    // sends this one submission to the gym's own GoHighLevel account instead, and skips the ad conversions.
+    // Lead webhook. Test mode: opening this page with ?ghl=new posts this one submission
+    // to the test webhook and skips the lead and conversion events.
     const dfcTestHook = new URLSearchParams(window.location.search).get('ghl') === 'new';
     const res = await fetch(dfcTestHook
       ? 'https://services.leadconnectorhq.com/hooks/5bVqPk3IPZiE4m0X8Reo/webhook-trigger/OXYabAykTclLoGx7V5bK'
