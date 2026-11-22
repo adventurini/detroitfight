@@ -13,6 +13,11 @@
       "statusCode": 301
     },
     {
+      "source": "/review",
+      "destination": "https://g.page/r/CZv88maAzdT4EBM/review",
+      "permanent": false
+    },
+    {
       "source": "/camp",
       "destination": "/",
       "permanent": true
