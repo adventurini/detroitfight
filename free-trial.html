@@ -1288,6 +1288,25 @@ main p a:not(.btn):not(.nav-cta), main li a:not(.btn), .faq-answer-inner a { tex
   .nav-call { margin-right: 6px; }
   .nav-text { margin-right: 6px; }
 }
+
+/* Short trial form: form on the first screen, optional fields folded, sticky book bar on phones */
+.dfc-more { margin: 4px 0 18px; }
+.dfc-more > summary { cursor: pointer; color: var(--green); font-size: 17px; padding: 10px 0; list-style: none; }
+.dfc-more > summary::-webkit-details-marker { display: none; }
+.dfc-more > summary::before { content: "+ "; }
+.dfc-more[open] > summary::before { content: "\2212  "; }
+.dfc-more[open] > summary { margin-bottom: 8px; }
+.sticky-book { display: none; }
+@media (max-width: 768px) {
+  .sub-hero.trial-hero { padding: 110px 20px 8px; margin-top: 0; }
+  .section.trial-form-section { padding-top: 16px; }
+  .sticky-book { display: block; position: fixed; left: 0; right: 0; bottom: 0; z-index: 900; padding: 10px 16px calc(10px + env(safe-area-inset-bottom)); background: rgba(10,10,10,.96); border-top: 1px solid #222; transform: translateY(110%); transition: transform .25s ease; }
+  .sticky-book.show { transform: none; }
+  .sticky-book a { display: block; text-align: center; background: var(--green); color: #0A0A0A; font-family: var(--font-heading); font-size: 20px; letter-spacing: 2px; text-transform: uppercase; padding: 14px; text-decoration: none; }
+}
+@media (min-width: 769px) {
+  .sub-hero.trial-hero { padding-bottom: 20px; }
+}
 </style>
 </head>
 <body>
@@ -1328,54 +1347,22 @@ main p a:not(.btn):not(.nav-cta), main li a:not(.btn), .faq-answer-inner a { tex
 </nav>
 <main id="main">
 
-<section class="sub-hero fade-in">
+<section class="sub-hero trial-hero">
   <p class="hero-eyebrow">No Pressure. No Credit Card. Just Train.</p>
   <h1>Your First Class Is Free</h1>
-  <p class="body-text">Try Jiu-Jitsu, Boxing, Muay Thai, or MMA. No commitment, no pressure. Just show up and train.</p>
+  <p class="body-text">Jiu-Jitsu, Boxing, Muay Thai or MMA. Three quick fields and we text you to set your class time.</p>
 </section>
 
-<section class="section fade-in">
-  <p class="body-text" style="margin-bottom: 20px;">Not sure where to start? Read about <a href="/jiu-jitsu">Jiu-Jitsu</a>, <a href="/boxing">boxing</a>, <a href="/muay-thai">Muay Thai</a>, and <a href="/mma">MMA</a>, browse the <a href="/schedule">schedule</a>, and review <a href="/pricing">pricing</a>, then use the form below.</p>
-</section>
-
-<section class="section fade-in">
-  <div class="trial-value-props">
-    <div class="trial-prop">
-      <h2 class="as-h4">Real Coaching</h2>
-      <p class="body-text">Every class is led by experienced coaches, not a video on a screen.</p>
-    </div>
-    <div class="trial-prop">
-      <h2 class="as-h4">All Levels</h2>
-      <p class="body-text">Never trained before? Perfect. We'll meet you where you are.</p>
-    </div>
-    <div class="trial-prop">
-      <h2 class="as-h4">No Strings</h2>
-      <p class="body-text">One free class. No credit card. No obligation. Just come train.</p>
-    </div>
-  </div>
-
+<section class="section trial-form-section">
   <div class="booking-widget">
     <div id="dfc-booking-root">
       <div class="content-full">
         <div id="dfc-form-wrap">
-          <p class="dfc-sub">Detroit Fight Company · Winter Springs, FL</p>
-          <h2 id="dfc-form-heading">Book Your Free Class</h2>
-          <hr class="dfc-divider"/>
           <form id="dfc-booking-form" method="POST" action="#">
             <div class="dfc-row">
               <div class="dfc-field">
                 <label for="fname" id="fname-label" class="dfc-label">First Name *</label>
                 <input type="text" id="fname" name="first_name" placeholder="First name" required class="dfc-input" autocomplete="given-name"/>
-              </div>
-              <div class="dfc-field">
-                <label for="lname" id="lname-label" class="dfc-label">Last Name *</label>
-                <input type="text" id="lname" name="last_name" placeholder="Last name" required class="dfc-input" autocomplete="family-name"/>
-              </div>
-            </div>
-            <div class="dfc-row">
-              <div class="dfc-field">
-                <label for="email" class="dfc-label">Email *</label>
-                <input type="email" id="email" name="email" placeholder="your@email.com" required class="dfc-input" autocomplete="email"/>
               </div>
               <div class="dfc-field">
                 <label for="phone" class="dfc-label">Phone *</label>
@@ -1417,10 +1404,23 @@ main p a:not(.btn):not(.nav-cta), main li a:not(.btn), .faq-answer-inner a { tex
               </div>
             </div>
             <input type="hidden" name="source_page" id="source-page" value="direct">
+
+            <details class="dfc-more">
+              <summary>Add email and details (optional)</summary>
+              <div class="dfc-row">
+                <div class="dfc-field">
+                  <label for="lname" id="lname-label" class="dfc-label">Last name</label>
+                  <input type="text" id="lname" name="last_name" placeholder="Last name" class="dfc-input" autocomplete="family-name"/>
+                </div>
+                <div class="dfc-field">
+                  <label for="email" class="dfc-label">Email</label>
+                  <input type="email" id="email" name="email" placeholder="your@email.com" class="dfc-input" autocomplete="email"/>
+                </div>
+              </div>
             <div class="dfc-field">
-              <label for="level" class="dfc-label">Experience Level *</label>
-              <select id="level" name="experience_level" required class="dfc-input dfc-select">
-                <option value="" disabled selected>Select your level</option>
+              <label for="level" class="dfc-label">Experience level</label>
+              <select id="level" name="experience_level" class="dfc-input dfc-select">
+                <option value="" selected>Select your level</option>
                 <option value="beginner">Complete Beginner</option>
                 <option value="some">Some Experience</option>
                 <option value="intermediate">Intermediate</option>
@@ -1431,6 +1431,7 @@ main p a:not(.btn):not(.nav-cta), main li a:not(.btn), .faq-answer-inner a { tex
               <label for="notes" class="dfc-label">Anything else we should know?</label>
               <textarea id="notes" name="notes" placeholder="Questions, injuries, scheduling preferences" class="dfc-input dfc-textarea"></textarea>
             </div>
+            </details>
 
             <!-- SMS Consent — A2P 10DLC (GHL). Optional checkboxes; do not pre-check. -->
             <div class="sms-consent">
@@ -1463,6 +1464,23 @@ main p a:not(.btn):not(.nav-cta), main li a:not(.btn), .faq-answer-inner a { tex
     </div>
   </div>
 
+  <div class="trial-value-props" style="margin-top: 56px;">
+    <div class="trial-prop">
+      <h2 class="as-h4">Real Coaching</h2>
+      <p class="body-text">Every class is led by experienced coaches, not a video on a screen.</p>
+    </div>
+    <div class="trial-prop">
+      <h2 class="as-h4">All Levels</h2>
+      <p class="body-text">Never trained before? Perfect. We'll meet you where you are.</p>
+    </div>
+    <div class="trial-prop">
+      <h2 class="as-h4">No Strings</h2>
+      <p class="body-text">One free class. No credit card. No obligation. Just come train.</p>
+    </div>
+  </div>
+
+  <p class="body-text" style="margin: 0 auto 20px; text-align: center;">Not sure where to start? Read about <a href="/jiu-jitsu">Jiu-Jitsu</a>, <a href="/boxing">boxing</a>, <a href="/muay-thai">Muay Thai</a>, and <a href="/mma">MMA</a>, browse the <a href="/schedule">schedule</a>, and review <a href="/pricing">pricing</a>.</p>
+
   <div style="text-align: center; margin-top: 48px;">
     <p class="body-text" style="margin: 0 auto;">
       <strong>Detroit Fight Company</strong><br>
@@ -1478,6 +1496,7 @@ main p a:not(.btn):not(.nav-cta), main li a:not(.btn), .faq-answer-inner a { tex
 
 
 </main>
+<div class="sticky-book" id="sticky-book"><a href="#dfc-form-wrap">Book My Free Class</a></div>
 
 <!-- ===== FOOTER ===== -->
 <footer class="footer">
@@ -1668,7 +1687,7 @@ function buildPayload(form) {
     age.required = on;
     // For kids classes the top name fields are the student's; the parent fills the fields below.
     fLabel.textContent = on ? 'Student first name *' : 'First Name *';
-    lLabel.textContent = on ? 'Student last name *' : 'Last Name *';
+    lLabel.textContent = on ? 'Student last name' : 'Last name';
     fname.placeholder = on ? 'Student first name' : 'First name';
     lname.placeholder = on ? 'Student last name' : 'Last name';
     fname.autocomplete = on ? 'off' : 'given-name';
@@ -1770,6 +1789,17 @@ document.getElementById('dfc-booking-form')?.addEventListener('submit', async fu
     alert('Something went wrong sending your request. Please call (407) 696-6969 or email sean@detroitfight.com so we can get you booked. Sorry for the trouble.');
   }
 });
+
+// ===== Sticky book bar on phones: shows while the form is off screen =====
+(function () {
+  const bar = document.getElementById('sticky-book');
+  const root = document.getElementById('dfc-booking-root');
+  if (!bar || !root || !('IntersectionObserver' in window)) return;
+  new IntersectionObserver(function (entries) {
+    const formLeft = !!document.getElementById('dfc-booking-form');
+    bar.classList.toggle('show', formLeft && !entries[0].isIntersecting);
+  }).observe(root);
+})();
 
 // ===== Menu and FAQ controls (section 5) =====
 (function () {
