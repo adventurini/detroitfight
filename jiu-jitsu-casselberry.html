@@ -24,6 +24,7 @@ gtag('config', 'AW-18500089527');
   var s=us.toLowerCase(),label='Direct';
   if(s==='yelp')label='Yelp';
   else if(adClick||(s==='google'&&/cpc|ppc|paid/i.test(um)))label='Google Ads';
+  else if(s==='google'&&/^gbp/i.test(um))label='Google Business Profile';
   else if(us)label=us;
   else if(/(^|\.)yelp\.com$/.test(host))label='Yelp';
   else if(/(^|\.)google\.[a-z.]+$/.test(host))label='Google search';
@@ -1510,6 +1511,22 @@ picture source { display: none; }
   <p class="body-text" style="margin-bottom: 20px;">Your first class is free. Arrive ten minutes early, tell the front desk it is your first visit, and the coach takes it from there. Loaner gear is available, so bring workout clothes, a water bottle and a towel.</p>
   <p class="body-text">Call 407-696-6969 or text 407-955-5004 with any question.</p>
   <p style="margin-top: 28px;"><a href="/free-trial" class="btn btn-primary">Book Your Free Trial Class</a></p>
+</section>
+
+<section class="section fade-in" aria-labelledby="directions-heading">
+  <p class="section-tag">Getting Here</p>
+  <h2 id="directions-heading" style="margin-bottom: 20px;">Directions and Neighborhoods Served</h2>
+  <p class="body-text" style="margin-bottom: 20px;">Detroit Fight Company is in the Promenade at Tuskawilla, near Tuskawilla Road and Red Bug Lake Road, in the Tuskawilla area of Winter Springs. From Casselberry, take Red Bug Lake Road east. Red Bug Lake Park is about 1.5 miles from the gym. Parking is free in front of the door.</p>
+  <p class="body-text" style="margin-bottom: 24px;">We welcome students from across Casselberry, including the neighborhoods along Red Bug Lake Road.</p>
+  <div class="map-container">
+    <iframe
+      src="https://maps.google.com/maps?q=1425+Tuskawilla+Rd+%23209,+Winter+Springs,+FL+32708&output=embed"
+      allowfullscreen=""
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"
+      title="Map to Detroit Fight Company"
+    ></iframe>
+  </div>
 </section>
 
 <section class="section fade-in" aria-labelledby="faq-heading">

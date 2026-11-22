@@ -24,6 +24,7 @@ gtag('config', 'AW-18500089527');
   var s=us.toLowerCase(),label='Direct';
   if(s==='yelp')label='Yelp';
   else if(adClick||(s==='google'&&/cpc|ppc|paid/i.test(um)))label='Google Ads';
+  else if(s==='google'&&/^gbp/i.test(um))label='Google Business Profile';
   else if(us)label=us;
   else if(/(^|\.)yelp\.com$/.test(host))label='Yelp';
   else if(/(^|\.)google\.[a-z.]+$/.test(host))label='Google search';
@@ -306,6 +307,14 @@ fbq('track', 'PageView');
           "acceptedAnswer": {
             "@type": "Answer",
             "text": "All Access is $199 per month with a one time $150 Enrollment Kit, or $599 for the 3 Month Commit with the kit included. It covers Jiu-Jitsu, boxing, Muay Thai and MMA. No contract, 30 days written notice to cancel."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is there Jiu-Jitsu or MMA near UCF?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Detroit Fight Company is about 5 miles from the University of Central Florida main campus. One All Access Membership covers Gi and No Gi Jiu-Jitsu, Muay Thai, boxing and MMA, and the first class is free."
           }
         }
       ]
@@ -1512,6 +1521,28 @@ picture source { display: none; }
   <p style="margin-top: 28px;"><a href="/free-trial" class="btn btn-primary">Book Your Free Trial Class</a></p>
 </section>
 
+<section class="section fade-in" aria-labelledby="ucf-heading">
+  <p class="section-tag">Near UCF</p>
+  <h2 id="ucf-heading" style="margin-bottom: 20px;">Jiu-Jitsu, Muay Thai and MMA Near UCF</h2>
+  <p class="body-text">The University of Central Florida main campus is about 5 miles from Detroit Fight Company. One <a href="/pricing">All Access Membership</a> at $199 per month covers Gi and No Gi <a href="/jiu-jitsu">Jiu-Jitsu</a>, <a href="/muay-thai">Muay Thai</a>, <a href="/boxing">boxing</a> and <a href="/mma">MMA</a>, with no contract. Evening Jiu-Jitsu runs Monday to Friday from 6:00 PM to 7:30 PM, and Muay Thai or MMA follows at 7:30 PM Monday to Thursday. Your first class is free.</p>
+</section>
+
+<section class="section fade-in" aria-labelledby="directions-heading">
+  <p class="section-tag">Getting Here</p>
+  <h2 id="directions-heading" style="margin-bottom: 20px;">Directions and Neighborhoods Served</h2>
+  <p class="body-text" style="margin-bottom: 20px;">Detroit Fight Company is in the Promenade at Tuskawilla, near Tuskawilla Road and Red Bug Lake Road, in the Tuskawilla area of Winter Springs. From Oviedo, take Mitchell Hammock Road or Red Bug Lake Road west toward Tuskawilla Road. Parking is free in front of the door.</p>
+  <p class="body-text" style="margin-bottom: 24px;">We welcome students from across Oviedo, including Oviedo on the Park, Alafaya Woods, Live Oak Reserve, and the neighborhoods around Oviedo High School and Hagerty High School.</p>
+  <div class="map-container">
+    <iframe
+      src="https://maps.google.com/maps?q=1425+Tuskawilla+Rd+%23209,+Winter+Springs,+FL+32708&output=embed"
+      allowfullscreen=""
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"
+      title="Map to Detroit Fight Company"
+    ></iframe>
+  </div>
+</section>
+
 <section class="section fade-in" aria-labelledby="faq-heading">
   <div style="text-align: center; margin-bottom: 40px;">
     <p class="section-tag">Oviedo FAQ</p>
@@ -1545,6 +1576,10 @@ picture source { display: none; }
     <div class="faq-item">
       <button class="faq-question" type="button" id="faq-q-7" aria-expanded="false" aria-controls="faq-a-7">What does membership cost?</button>
       <div class="faq-answer" id="faq-a-7" role="region" aria-labelledby="faq-q-7" hidden><div class="faq-answer-inner"><a href="/pricing">All Access</a> is $199 per month with a one time $150 Enrollment Kit, or $599 for the 3 Month Commit with the kit included. It covers Jiu-Jitsu, boxing, Muay Thai and MMA. No contract, 30 days written notice to cancel.</div></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" type="button" id="faq-q-8" aria-expanded="false" aria-controls="faq-a-8">Is there Jiu-Jitsu or MMA near UCF?</button>
+      <div class="faq-answer" id="faq-a-8" role="region" aria-labelledby="faq-q-8" hidden><div class="faq-answer-inner">Yes. Detroit Fight Company is about 5 miles from the University of Central Florida main campus. One All Access Membership covers Gi and No Gi Jiu-Jitsu, Muay Thai, boxing and MMA, and the first class is free.</div></div>
     </div>
   </div>
 </section>
