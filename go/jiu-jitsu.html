@@ -1643,7 +1643,12 @@ document.getElementById('dfc-booking-form')?.addEventListener('submit', async fu
   };
 
   try {
-    const res = await fetch('https://services.leadconnectorhq.com/hooks/5UfUHR9jXCKSbSjObvIS/webhook-trigger/3cc0ca60-ed9c-4e19-8b26-0d70e3ef6a5f', {
+    // Lead webhook. Default: the live GoHighLevel account. Test mode: opening this page with ?ghl=new
+    // sends this one submission to the gym's own GoHighLevel account instead, and skips the ad conversions.
+    const dfcTestHook = new URLSearchParams(window.location.search).get('ghl') === 'new';
+    const res = await fetch(dfcTestHook
+      ? 'https://services.leadconnectorhq.com/hooks/5bVqPk3IPZiE4m0X8Reo/webhook-trigger/OXYabAykTclLoGx7V5bK'
+      : 'https://services.leadconnectorhq.com/hooks/5UfUHR9jXCKSbSjObvIS/webhook-trigger/3cc0ca60-ed9c-4e19-8b26-0d70e3ef6a5f', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload),
@@ -1652,7 +1657,7 @@ document.getElementById('dfc-booking-form')?.addEventListener('submit', async fu
 
     if (!res.ok) throw new Error('Webhook returned status ' + res.status);
 
-    if (typeof gtag === 'function') {
+    if (!dfcTestHook && typeof gtag === 'function') {
       gtag('event', 'generate_lead', {
         event_category: 'form',
         event_label: 'free_trial_request',
@@ -1665,7 +1670,7 @@ document.getElementById('dfc-booking-form')?.addEventListener('submit', async fu
         currency: 'USD'
       });
     }
-    if (typeof fbq === 'function') {
+    if (!dfcTestHook && typeof fbq === 'function') {
       fbq('track', 'Lead');
     }
 
