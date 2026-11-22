@@ -24,6 +24,7 @@ gtag('config', 'AW-18500089527');
   var s=us.toLowerCase(),label='Direct';
   if(s==='yelp')label='Yelp';
   else if(adClick||(s==='google'&&/cpc|ppc|paid/i.test(um)))label='Google Ads';
+  else if(s==='google'&&/^gbp/i.test(um))label='Google Business Profile';
   else if(us)label=us;
   else if(/(^|\.)yelp\.com$/.test(host))label='Yelp';
   else if(/(^|\.)google\.[a-z.]+$/.test(host))label='Google search';
@@ -325,10 +326,10 @@ fbq('track', 'PageView');
         },
         {
           "@type": "Question",
-          "name": "Do you welcome visiting BJJ drop-ins and open mat guests?",
+          "name": "Can visiting grapplers drop in or join an open mat?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes. Visiting grapplers are welcome in the adult Gi and No Gi Jiu-Jitsu classes and at open mat. Text 407-955-5004 with your name, your belt rank and the day you want to train, and we will confirm the class."
+            "text": "Yes. Visitors from any academy are welcome. Dropping in on an adult Gi or No Gi Jiu-Jitsu class is $40. On the first Saturday of every month, the 11:00 AM to 12:30 PM class is an open mat that is free for everyone, all affiliations welcome. Text 407-955-5004 with your name, your belt rank and the day you want to train, and we will confirm the class."
           }
         }
       ]
@@ -1534,7 +1535,7 @@ picture source { display: none; }
     <div class="sub-program-card">
       <p class="section-tag">Open Mat</p>
       <h3 class="as-h4">Open Mat</h3>
-      <p class="body-text">Free rolling and drilling for all members regardless of program enrollment. Open mat follows every evening class and weekend session. Bring your game, test your techniques, and train with partners at every level.</p>
+      <p class="body-text">Free rolling and drilling for all members regardless of program enrollment. Open mat follows every evening class and weekend session. On the first Saturday of every month, the 11:00 AM to 12:30 PM class is an open mat that is free for everyone, and visitors from any academy are welcome. Bring your game, test your techniques, and train with partners at every level.</p>
     </div>
     <div class="sub-program-card">
       <p class="section-tag">Kids Jiu-Jitsu</p>
@@ -1618,8 +1619,8 @@ picture source { display: none; }
       <div class="faq-answer" id="faq-a-9" role="region" aria-labelledby="faq-q-9" hidden><div class="faq-answer-inner">It is the name of the Jiu-Jitsu program at Detroit Fight Company. Head Coach and owner Sean Goolsby earned his brown and black belts in São Paulo under Claudio Calasans, and Detroit Fight Company is an official affiliate of Esporte Dez / Instituto Calasans Camargo. Classes are at 1425 Tuskawilla Rd #209 in Winter Springs, FL.</div></div>
     </div>
     <div class="faq-item">
-      <button class="faq-question" type="button" id="faq-q-10" aria-expanded="false" aria-controls="faq-a-10">Do you welcome visiting BJJ drop-ins and open mat guests?</button>
-      <div class="faq-answer" id="faq-a-10" role="region" aria-labelledby="faq-q-10" hidden><div class="faq-answer-inner">Yes. Visiting grapplers are welcome in the adult Gi and No Gi Jiu-Jitsu classes and at open mat. Text <a href="sms:+14079555004">407-955-5004</a> with your name, your belt rank and the day you want to train, and we will confirm the class.</div></div>
+      <button class="faq-question" type="button" id="faq-q-10" aria-expanded="false" aria-controls="faq-a-10">Can visiting grapplers drop in or join an open mat?</button>
+      <div class="faq-answer" id="faq-a-10" role="region" aria-labelledby="faq-q-10" hidden><div class="faq-answer-inner">Yes. Visitors from any academy are welcome. Dropping in on an adult Gi or No Gi Jiu-Jitsu class is $40. On the first Saturday of every month, the 11:00 AM to 12:30 PM class is an open mat that is free for everyone, all affiliations welcome. Text <a href="sms:+14079555004">407-955-5004</a> with your name, your belt rank and the day you want to train, and we will confirm the class.</div></div>
     </div>
   </div>
 </section>

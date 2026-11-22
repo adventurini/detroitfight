@@ -24,6 +24,7 @@ gtag('config', 'AW-18500089527');
   var s=us.toLowerCase(),label='Direct';
   if(s==='yelp')label='Yelp';
   else if(adClick||(s==='google'&&/cpc|ppc|paid/i.test(um)))label='Google Ads';
+  else if(s==='google'&&/^gbp/i.test(um))label='Google Business Profile';
   else if(us)label=us;
   else if(/(^|\.)yelp\.com$/.test(host))label='Yelp';
   else if(/(^|\.)google\.[a-z.]+$/.test(host))label='Google search';
