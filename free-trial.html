@@ -1739,12 +1739,14 @@ document.getElementById('dfc-booking-form')?.addEventListener('submit', async fu
   const payload = buildPayload(form);
 
   try {
-    // Lead webhook. Test mode: opening this page with ?ghl=new posts this one submission
-    // to the test webhook and skips the lead and conversion events.
-    const dfcTestHook = new URLSearchParams(window.location.search).get('ghl') === 'new';
-    const res = await fetch(dfcTestHook
-      ? 'https://services.leadconnectorhq.com/hooks/5bVqPk3IPZiE4m0X8Reo/webhook-trigger/OXYabAykTclLoGx7V5bK'
-      : 'https://services.leadconnectorhq.com/hooks/5UfUHR9jXCKSbSjObvIS/webhook-trigger/3cc0ca60-ed9c-4e19-8b26-0d70e3ef6a5f', {
+    // Lead webhook. Live leads go to the gym's own HighLevel account (location 5bVqPk3IPZiE4m0X8Reo).
+    // Test mode: ?ghl=new posts this one submission to that same account, and ?ghl=old posts it to the
+    // former agency account (location 5UfUHR9jXCKSbSjObvIS). Either one skips the lead and conversion events.
+    const dfcHookParam = new URLSearchParams(window.location.search).get('ghl');
+    const dfcTestHook = dfcHookParam === 'new' || dfcHookParam === 'old';
+    const res = await fetch(dfcHookParam === 'old'
+      ? 'https://services.leadconnectorhq.com/hooks/5UfUHR9jXCKSbSjObvIS/webhook-trigger/3cc0ca60-ed9c-4e19-8b26-0d70e3ef6a5f'
+      : 'https://services.leadconnectorhq.com/hooks/5bVqPk3IPZiE4m0X8Reo/webhook-trigger/OXYabAykTclLoGx7V5bK', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload),
