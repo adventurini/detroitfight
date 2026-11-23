@@ -39,7 +39,7 @@ Design tokens live in a per-page `:root`: `--deep-black #0A0A0A` (page bg), `--b
 
 ## Routing
 
-`vercel.json` sets `cleanUrls: true`, so all internal links use extensionless paths (`/boxing`, `/free-trial`). It also holds a temporary redirect from `/review` to the Google review form (for the front desk QR card), and permanent redirects for retired routes (`/camp`, `/kids-camp` → `/`) and canonicalization (`/index.html` → `/`, `/privacy-policy.html` → `/privacy-policy`). New pages need a sitemap entry; retired pages need a redirect here, not just a deletion.
+`vercel.json` sets `cleanUrls: true`, so all internal links use extensionless paths (`/boxing`, `/free-trial`). It also holds a temporary redirect from `/review` to the Google review form (for the front desk QR card), a temporary redirect from `/waiver` to the Gymdesk sign up form "Free Trial Waiver" (form 40702, visitor only, waiver required, no membership or payment; the HighLevel trial confirmation and reminder texts link to it), and permanent redirects for retired routes (`/camp`, `/kids-camp` → `/`) and canonicalization (`/index.html` → `/`, `/privacy-policy.html` → `/privacy-policy`). New pages need a sitemap entry; retired pages need a redirect here, not just a deletion.
 
 On `index.html` the logo and Home link point at `#home` (the page has in-page anchor sections); on every other page they point at `/`.
 
