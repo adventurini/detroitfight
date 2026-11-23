@@ -18,6 +18,11 @@
       "permanent": false
     },
     {
+      "source": "/waiver",
+      "destination": "https://detroit-fight-llc.gymdesk.com/signup/v/65Qod",
+      "permanent": false
+    },
+    {
       "source": "/camp",
       "destination": "/",
       "permanent": true
