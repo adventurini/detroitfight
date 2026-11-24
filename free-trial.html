@@ -1373,16 +1373,21 @@ main p a:not(.btn):not(.nav-cta), main li a:not(.btn), .faq-answer-inner a { tex
               <label for="program" class="dfc-label">Class Interest *</label>
               <select id="program" name="class_interest" required class="dfc-input dfc-select">
                 <option value="" disabled selected>Select a program</option>
-                <option value="boxing" data-label="Boxing" data-schedule="Monday to Friday at 10 AM, 5:30 PM and 6:45 PM, Saturday at 10 AM" data-param="boxing">Boxing &amp; Conditioning</option>
-                <option value="muay_thai" data-label="Muay Thai" data-schedule="Monday and Wednesday at 7:30 PM" data-param="muay-thai">Muay Thai</option>
-                <option value="mma" data-label="MMA" data-schedule="Tuesday and Thursday at 7:30 PM" data-param="mma">MMA</option>
-                <option value="bjj_gi" data-label="Jiu-Jitsu (Gi)" data-schedule="Monday to Friday at 6 PM, Monday and Wednesday at 6 AM, Saturday at 11 AM" data-param="gi">Jiu-Jitsu (Gi)</option>
-                <option value="bjj_nogi" data-label="Jiu-Jitsu (No Gi)" data-schedule="Monday to Friday at 6 PM, Monday and Wednesday at 6 AM, Saturday at 11 AM" data-param="no-gi">Jiu-Jitsu (No Gi)</option>
-                <option value="kids_bjj" data-label="Kids Jiu-Jitsu" data-schedule="Monday to Friday at 4:45 PM, Saturday at 10 AM" data-param="kids" data-youth="1" data-adult="bjj_gi" data-adult-label="Jiu-Jitsu">Kids Jiu-Jitsu</option>
-                <option value="youth_boxing" data-label="Youth Boxing" data-schedule="Monday, Wednesday and Friday at 4:30 PM" data-param="youth-boxing" data-youth="1" data-adult="boxing" data-adult-label="Boxing">Youth Boxing</option>
+                <option value="boxing" data-calendar="7jCUOLzJdGiD8ypboyLa" data-label="Boxing" data-schedule="Monday to Friday at 10 AM, 5:30 PM and 6:45 PM, Saturday at 10 AM" data-param="boxing">Boxing &amp; Conditioning</option>
+                <option value="muay_thai" data-calendar="mLxmWgMMyiv4fWzS1pBG" data-label="Muay Thai" data-schedule="Monday and Wednesday at 7:30 PM" data-param="muay-thai">Muay Thai</option>
+                <option value="mma" data-calendar="fpCtXoskFspF3ZTe4F7L" data-label="MMA" data-schedule="Tuesday and Thursday at 7:30 PM" data-param="mma">MMA</option>
+                <option value="bjj_gi" data-calendar="ZyXyGuClLbVXPldhcHqD" data-label="Jiu-Jitsu (Gi)" data-schedule="Monday to Friday at 6 PM, Monday and Wednesday at 6 AM, Saturday at 11 AM" data-param="gi">Jiu-Jitsu (Gi)</option>
+                <option value="bjj_nogi" data-calendar="ZyXyGuClLbVXPldhcHqD" data-label="Jiu-Jitsu (No Gi)" data-schedule="Monday to Friday at 6 PM, Monday and Wednesday at 6 AM, Saturday at 11 AM" data-param="no-gi">Jiu-Jitsu (No Gi)</option>
+                <option value="kids_bjj" data-calendar="ghqmRB4Z37K77RF6NSIk" data-label="Kids Jiu-Jitsu" data-schedule="Monday to Friday at 4:45 PM, Saturday at 10 AM" data-param="kids" data-youth="1" data-adult="bjj_gi" data-adult-label="Jiu-Jitsu">Kids Jiu-Jitsu</option>
+                <option value="youth_boxing" data-calendar="OL0zzRflcDkRORFbjFiP" data-label="Youth Boxing" data-schedule="Monday, Wednesday and Friday at 4:30 PM" data-param="youth-boxing" data-youth="1" data-adult="boxing" data-adult-label="Boxing">Youth Boxing</option>
                 <option value="homeschool" data-label="Homeschool PE" data-schedule="Monday to Thursday, 10 AM to 12 PM, starting January 11" data-param="homeschool" data-youth="1">Homeschool or Daytime</option>
                 <option value="unsure" data-label="Not sure yet" data-schedule="classes run every weekday and Saturday morning, full schedule at detroitfight.com/schedule">Not Sure Yet</option>
               </select>
+            </div>
+            <div class="dfc-field" id="time-field" hidden>
+              <label for="class-time" class="dfc-label">Pick your class time *</label>
+              <select id="class-time" name="class_time" class="dfc-input dfc-select"></select>
+              <p class="dfc-notice" id="time-note">All times are Eastern. Pick a time and your spot is confirmed by text right away.</p>
             </div>
             <div id="youth-fields" hidden>
               <div class="dfc-row">
@@ -1445,8 +1450,8 @@ main p a:not(.btn):not(.nav-cta), main li a:not(.btn), .faq-answer-inner a { tex
               </label>
             </div>
 
-            <button type="submit" class="dfc-btn">Request My Free Class</button>
-            <p class="dfc-notice">Requesting a class is not a confirmed booking yet. We text or call within one business day to set your class time.</p>
+            <button type="submit" class="dfc-btn">Book My Free Class</button>
+            <p class="dfc-notice" id="booking-note">Pick a class time and you are booked on the spot. Not sure which time? Choose "None of these work" and we text you to set one.</p>
             <p class="dfc-notice">By submitting this form you agree to be contacted by Detroit Fight Company about your request. We use your information only to respond to you and to run the gym, as described in our <a href="/privacy-policy">Privacy Policy</a>.</p>
             <p class="form-policy-links">
               See also our <a href="/privacy-policy">Privacy Policy</a> and
@@ -1620,6 +1625,7 @@ function buildPayload(form) {
   const opt = sel && sel.selectedIndex > 0 ? sel.options[sel.selectedIndex] : null;
   const youth = !!(opt && opt.dataset.youth);
   const src = leadSource();
+  const slot = typeof dfcPickedSlot === 'function' ? dfcPickedSlot(form) : { calendarId: '', time: '', label: '' };
   // Kids classes: the parent is the contact (GoHighLevel texts the contact by first name),
   // and the child's name and age travel in student_* fields.
   const gFirst = youth ? val('guardian_first_name') : '';
@@ -1662,6 +1668,10 @@ function buildPayload(form) {
     utm_campaign: src.utm_campaign,
     referrer: src.referrer,
     landing_page: src.landing_page,
+    class_calendar_id: slot.calendarId,
+    class_time: slot.time,
+    class_time_label: slot.label,
+    booking_requested: slot.time ? 'yes' : 'no',
     submittedAt: new Date().toISOString()
   };
 }
@@ -1717,6 +1727,110 @@ function buildPayload(form) {
   document.getElementById('source-page').value = source;
   syncYouth();
 })();
+
+// ===== Class time picker =====
+// Lists the next open times of the chosen class from its HighLevel calendar (public free slots),
+// shown in Eastern time. A kids option switches to the adult calendar for a student aged 15 or older.
+// Programs without a calendar (Homeschool, Not sure yet) keep the request flow: we text to set a time.
+const DFC_TZ = 'America/New_York';
+const dfcSlotCache = {};
+function dfcSlotLabel(iso) {
+  const parts = {};
+  new Intl.DateTimeFormat('en-US', { timeZone: DFC_TZ, weekday: 'short', month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' })
+    .formatToParts(new Date(iso)).forEach(p => { parts[p.type] = p.value; });
+  return parts.weekday + ', ' + parts.month + ' ' + parts.day + ' at ' + parts.hour + ':' + parts.minute + ' ' + parts.dayPeriod;
+}
+function dfcEffectiveOption(form) {
+  const sel = form.querySelector('select[name="class_interest"]');
+  const opt = sel && sel.selectedIndex > 0 ? sel.options[sel.selectedIndex] : null;
+  if (!opt) return null;
+  const age = parseInt((form.querySelector('input[name="student_age"]') || {}).value, 10);
+  if (opt.dataset.youth && opt.dataset.adult && age >= 15) return sel.querySelector('option[value="' + opt.dataset.adult + '"]') || opt;
+  return opt;
+}
+function dfcPickedSlot(form) {
+  const opt = dfcEffectiveOption(form);
+  const tsel = document.getElementById('class-time');
+  const field = document.getElementById('time-field');
+  const v = tsel && field && !field.hidden ? tsel.value : '';
+  if (!opt || !opt.dataset.calendar || !v || v === 'text') return { calendarId: '', time: '', label: '' };
+  return { calendarId: opt.dataset.calendar, time: v, label: dfcSlotLabel(v) };
+}
+async function dfcFetchSlots(calendarId) {
+  if (dfcSlotCache[calendarId]) return dfcSlotCache[calendarId];
+  const start = Date.now();
+  const end = start + 9 * 864e5;
+  const res = await fetch('https://backend.leadconnectorhq.com/calendars/' + calendarId + '/free-slots?startDate=' + start + '&endDate=' + end + '&timezone=' + encodeURIComponent(DFC_TZ));
+  if (!res.ok) throw new Error('slots ' + res.status);
+  const data = await res.json();
+  const soonest = Date.now() + 60 * 60 * 1000;
+  const list = Object.keys(data).filter(k => /^\d{4}-\d{2}-\d{2}$/.test(k)).sort()
+    .flatMap(k => (data[k] && data[k].slots) || [])
+    .filter(s => new Date(s).getTime() >= soonest)
+    .slice(0, 14);
+  dfcSlotCache[calendarId] = list;
+  return list;
+}
+(function () {
+  const form = document.getElementById('dfc-booking-form');
+  if (!form) return;
+  const sel = form.querySelector('select[name="class_interest"]');
+  const age = form.querySelector('input[name="student_age"]');
+  const field = document.getElementById('time-field');
+  const tsel = document.getElementById('class-time');
+  const btn = form.querySelector('button[type="submit"]');
+  let current = '';
+  async function sync() {
+    const opt = dfcEffectiveOption(form);
+    const cal = opt && opt.dataset.calendar ? opt.dataset.calendar : '';
+    if (cal === current) return;
+    current = cal;
+    if (!cal) { field.hidden = true; tsel.required = false; tsel.innerHTML = ''; btn.textContent = sel.selectedIndex > 0 ? 'Request My Free Class' : 'Book My Free Class'; return; }
+    field.hidden = false;
+    tsel.required = true;
+    tsel.innerHTML = '<option value="" disabled selected>Loading class times...</option>';
+    try {
+      const slots = await dfcFetchSlots(cal);
+      if (current !== cal) return;
+      if (!slots.length) throw new Error('none');
+      tsel.innerHTML = '<option value="" disabled selected>Pick a day and time</option>' +
+        slots.map(s => '<option value="' + s + '">' + dfcSlotLabel(s) + '</option>').join('') +
+        '<option value="text">None of these work, text me</option>';
+      btn.textContent = 'Book My Free Class';
+    } catch (e) {
+      // No times to show: fall back to the request flow.
+      if (current !== cal) return;
+      field.hidden = true; tsel.required = false; tsel.innerHTML = '';
+      btn.textContent = 'Request My Free Class';
+    }
+  }
+  sel.addEventListener('change', sync);
+  if (age) age.addEventListener('input', sync);
+  tsel.addEventListener('change', () => { btn.textContent = tsel.value === 'text' ? 'Request My Free Class' : 'Book My Free Class'; });
+  sync();
+})();
+
+// Books the picked time through /api/book (Vercel function, HighLevel calendar API).
+async function dfcBookSlot(payload, form) {
+  const studentFirst = payload.student_first_name || '';
+  const res = await fetch('/api/book', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      calendarId: payload.class_calendar_id,
+      startTime: payload.class_time,
+      firstName: payload.firstName,
+      lastName: payload.lastName,
+      phone: payload.phone,
+      email: payload.email,
+      studentFirstName: studentFirst,
+      website_url_hp: (form.querySelector('input[name="website_url_hp"]') || {}).value || ''
+    })
+  });
+  let body = {};
+  try { body = await res.json(); } catch (e) { body = {}; }
+  return res.ok && body.ok ? body : Promise.reject(new Error(body.error || ('book ' + res.status)));
+}
 
 document.getElementById('dfc-booking-form')?.addEventListener('submit', async function (e) {
   e.preventDefault();
@@ -1774,18 +1888,48 @@ document.getElementById('dfc-booking-form')?.addEventListener('submit', async fu
       fbq('track', 'Lead');
     }
 
+    // Book the picked class time. A failed booking falls back to the request flow:
+    // the lead is sent again with booking_requested "no" so the first text asks for a day.
+    let booked = false;
+    if (payload.booking_requested === 'yes' && dfcHookParam !== 'old') {
+      if (submitBtn) submitBtn.textContent = 'Booking your class...';
+      try {
+        await dfcBookSlot(payload, form);
+        booked = true;
+      } catch (bookErr) {
+        console.error('Booking failed:', bookErr);
+        try {
+          await fetch('https://services.leadconnectorhq.com/hooks/5bVqPk3IPZiE4m0X8Reo/webhook-trigger/OXYabAykTclLoGx7V5bK', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(Object.assign({}, payload, { booking_requested: 'no', booking_failed: 'yes' })),
+            mode: 'cors'
+          });
+        } catch (e2) { console.error('Fallback lead failed:', e2); }
+      }
+    }
+
+    const mapLink = '<a href="https://www.google.com/maps/dir/?api=1&amp;destination=Detroit+Fight+Company&amp;destination_place_id=ChIJ-QiCsMdu54gRm_zyZoDN1Pg" target="_blank" rel="noopener noreferrer" style="color:#7D9B76;">1425 Tuskawilla Rd #209, Winter Springs, FL</a>';
+    const esc = (t) => String(t).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
     const wrap = document.getElementById('dfc-form-wrap');
     if (wrap) {
-      wrap.innerHTML = '<h2 id="dfc-form-heading" style="text-align:center;">You\'re In.</h2>' +
-        '<p class="dfc-sub" style="text-align:center;">We text or call within one business day.</p>' +
-        '<hr class="dfc-divider">' +
-        '<p style="text-align:center; color:#999; font-size:15px; line-height:1.6; max-width:480px; margin:0 auto;">' +
-        'Requesting a class is not a confirmed booking yet. We text or call within one business day to set your class time. ' +
-        'You can find us at <a href="https://www.google.com/maps/dir/?api=1&amp;destination=Detroit+Fight+Company&amp;destination_place_id=ChIJ-QiCsMdu54gRm_zyZoDN1Pg" target="_blank" rel="noopener noreferrer" style="color:#7D9B76;">1425 Tuskawilla Rd #209, Winter Springs, FL</a>, or call us at ' +
-        '<a href="tel:4076966969" style="color:#7D9B76;">(407) 696-6969</a>.' +
-        '</p>';
+      wrap.innerHTML = booked
+        ? '<h2 id="dfc-form-heading" style="text-align:center;">You\'re Booked.</h2>' +
+          '<p class="dfc-sub" style="text-align:center;">' + esc(payload.class_label) + (payload.student_first_name ? ' for ' + esc(payload.student_first_name) : '') + ', ' + esc(payload.class_time_label) + '</p>' +
+          '<hr class="dfc-divider">' +
+          '<p style="text-align:center; color:#999; font-size:15px; line-height:1.6; max-width:480px; margin:0 auto;">' +
+          'A confirmation text is on its way. Save time at the door: <a href="/waiver" style="color:#7D9B76;">sign your waiver now</a>' + (payload.student_first_name ? ' (a parent signs for a child)' : '') + '. ' +
+          'Wear workout clothes and bring water. We are at ' + mapLink + '. Questions? Call <a href="tel:4076966969" style="color:#7D9B76;">(407) 696-6969</a>.' +
+          '</p>'
+        : '<h2 id="dfc-form-heading" style="text-align:center;">You\'re In.</h2>' +
+          '<p class="dfc-sub" style="text-align:center;">We text you shortly to set your class time.</p>' +
+          '<hr class="dfc-divider">' +
+          '<p style="text-align:center; color:#999; font-size:15px; line-height:1.6; max-width:480px; margin:0 auto;">' +
+          'You can find us at ' + mapLink + ', or call us at ' +
+          '<a href="tel:4076966969" style="color:#7D9B76;">(407) 696-6969</a>.' +
+          '</p>';
     } else {
-      alert('Thanks. We text or call within one business day to set your class time.');
+      alert(booked ? 'You are booked. A confirmation text is on its way.' : 'Thanks. We text you shortly to set your class time.');
     }
   } catch (err) {
     console.error('Form submission failed:', err);
