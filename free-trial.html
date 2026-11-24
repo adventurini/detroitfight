@@ -1365,9 +1365,13 @@ main p a:not(.btn):not(.nav-cta), main li a:not(.btn), .faq-answer-inner a { tex
                 <input type="text" id="fname" name="first_name" placeholder="First name" required class="dfc-input" autocomplete="given-name"/>
               </div>
               <div class="dfc-field">
-                <label for="phone" class="dfc-label">Phone *</label>
-                <input type="tel" id="phone" name="phone" placeholder="(407) 000-0000" required class="dfc-input" autocomplete="tel"/>
+                <label for="lname" id="lname-label" class="dfc-label">Last Name *</label>
+                <input type="text" id="lname" name="last_name" required placeholder="Last name" class="dfc-input" autocomplete="family-name"/>
               </div>
+            </div>
+            <div class="dfc-field">
+              <label for="phone" class="dfc-label">Phone *</label>
+              <input type="tel" id="phone" name="phone" placeholder="(407) 000-0000" required class="dfc-input" autocomplete="tel"/>
             </div>
             <div class="dfc-field">
               <label for="program" class="dfc-label">Class Interest *</label>
@@ -1413,10 +1417,6 @@ main p a:not(.btn):not(.nav-cta), main li a:not(.btn), .faq-answer-inner a { tex
             <details class="dfc-more">
               <summary>Add email and details (optional)</summary>
               <div class="dfc-row">
-                <div class="dfc-field">
-                  <label for="lname" id="lname-label" class="dfc-label">Last name</label>
-                  <input type="text" id="lname" name="last_name" placeholder="Last name" class="dfc-input" autocomplete="family-name"/>
-                </div>
                 <div class="dfc-field">
                   <label for="email" class="dfc-label">Email</label>
                   <input type="email" id="email" name="email" placeholder="your@email.com" class="dfc-input" autocomplete="email"/>
@@ -1697,7 +1697,8 @@ function buildPayload(form) {
     age.required = on;
     // For kids classes the top name fields are the student's; the parent fills the fields below.
     fLabel.textContent = on ? 'Student first name *' : 'First Name *';
-    lLabel.textContent = on ? 'Student last name' : 'Last name';
+    lLabel.textContent = on ? 'Student last name' : 'Last Name *';
+    lname.required = !on;
     fname.placeholder = on ? 'Student first name' : 'First name';
     lname.placeholder = on ? 'Student last name' : 'Last name';
     fname.autocomplete = on ? 'off' : 'given-name';
