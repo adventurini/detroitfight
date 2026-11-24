@@ -23,6 +23,16 @@
       "permanent": false
     },
     {
+      "source": "/lp",
+      "destination": "/go/jiu-jitsu",
+      "permanent": true
+    },
+    {
+      "source": "/lp.html",
+      "destination": "/go/jiu-jitsu",
+      "permanent": true
+    },
+    {
       "source": "/camp",
       "destination": "/",
       "permanent": true
