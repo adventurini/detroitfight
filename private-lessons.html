@@ -82,8 +82,9 @@ gtag('config', 'AW-18500089527');
 <script>
 !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
 n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
-n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];
+s=function(){t=b.createElement(e);t.async=!0;t.src=v;b.head.appendChild(t)};
+b.readyState==='complete'?s():f.addEventListener('load',s)}
 (window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
 fbq('init', '1510598542567332');
 fbq('track', 'PageView');
@@ -1402,7 +1403,7 @@ picture source { display: none; }
 <main id="main">
 
 <section class="pl-hero">
-  <div class="pl-hero-inner fade-in">
+  <div class="pl-hero-inner">
     <div>
       <p class="hero-eyebrow">One on one with the Head Coach</p>
       <h1>Private Lessons</h1>

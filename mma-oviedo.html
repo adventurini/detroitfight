@@ -82,8 +82,9 @@ gtag('config', 'AW-18500089527');
 <script>
 !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
 n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
-n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];
+s=function(){t=b.createElement(e);t.async=!0;t.src=v;b.head.appendChild(t)};
+b.readyState==='complete'?s():f.addEventListener('load',s)}
 (window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
 fbq('init', '1510598542567332');
 fbq('track', 'PageView');
@@ -1434,7 +1435,7 @@ picture source { display: none; }
   </div>
 </nav>
 <main id="main">
-<section class="sub-hero fade-in">
+<section class="sub-hero">
   <p class="hero-eyebrow">Mixed Martial Arts</p>
   <h1 style="text-wrap: balance;">MMA Classes for Oviedo,&nbsp;FL</h1>
   <p class="body-text">Jiu-Jitsu, wrestling, judo, kickboxing, Muay Thai and karate in one class, about 2 miles from Oviedo Mall.</p>
