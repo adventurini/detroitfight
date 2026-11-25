@@ -90,8 +90,9 @@ imagesrcset="/images/gym/jiu-jitsu-coach-01-480.webp 480w, /images/gym/jiu-jitsu
 <script>
 !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
 n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
-n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];
+s=function(){t=b.createElement(e);t.async=!0;t.src=v;b.head.appendChild(t)};
+b.readyState==='complete'?s():f.addEventListener('load',s)}
 (window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
 fbq('init', '1510598542567332');
 fbq('track', 'PageView');
@@ -211,7 +212,7 @@ srcset="/images/gym/jiu-jitsu-coach-01-480.webp 480w, /images/gym/jiu-jitsu-coac
 <img src="/images/gym/jiu-jitsu-coach-01.jpg" width="1600" height="1067" fetchpriority="high" decoding="async"
 alt="Head Coach and owner Sean Goolsby explaining a Jiu-Jitsu technique to students at Detroit Fight Company">
 </picture>
-<div class="hero-content fade-in">
+<div class="hero-content">
 <p class="hero-eyebrow">Built for the Fight. Not the Followers.</p>
 <h1>Brazilian Jiu-Jitsu (BJJ), Muay&nbsp;Thai, MMA and Boxing in Winter Springs &amp; Oviedo,&nbsp;FL</h1>
 <p class="body-text">Gi and No Gi Brazilian Jiu-Jitsu, boxing, Muay Thai and MMA. A martial arts school with real coaches who compete.</p>
@@ -654,6 +655,27 @@ if (a.dataset.plan) gtag('event', 'select_plan', { plan: a.dataset.plan });
 
 <!-- Text opt in chat widget (Detroit Fight Company's own HighLevel account, location 5bVqPk3IPZiE4m0X8Reo).
      Home page only: carriers require it to be the only phone collecting form on the page it is registered for. -->
-<script src="https://widgets.leadconnectorhq.com/loader.js" data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js" data-widget-id="6b02f77829fc2dc00f1cb2f4"></script>
+<script>
+// Loads on the first scroll, tap, key press or mouse move, or 5 seconds after the page has loaded,
+// whichever comes first, so it does not compete with the first paint.
+(function () {
+var started = false;
+var events = ['scroll', 'pointerdown', 'touchstart', 'keydown', 'mousemove'];
+var opts = { passive: true };
+function loadChat() {
+if (started) return;
+started = true;
+events.forEach(function (name) { window.removeEventListener(name, loadChat, opts); });
+var s = document.createElement('script');
+s.src = 'https://widgets.leadconnectorhq.com/loader.js';
+s.setAttribute('data-resources-url', 'https://widgets.leadconnectorhq.com/chat-widget/loader.js');
+s.setAttribute('data-widget-id', '6b02f77829fc2dc00f1cb2f4');
+document.body.appendChild(s);
+}
+events.forEach(function (name) { window.addEventListener(name, loadChat, opts); });
+function arm() { setTimeout(loadChat, 5000); }
+if (document.readyState === 'complete') arm(); else window.addEventListener('load', arm);
+})();
+</script>
 </body>
 </html>
