@@ -32,7 +32,12 @@ STRINGS = os.path.join(ROOT, ".github", "i18n", "pt.json")
 SITE = "https://detroitfight.com"
 
 # English pages that have a Portuguese twin. Add a page here when it is translated.
-PAGES = ["index.html", "jiu-jitsu.html", "kids.html", "schedule.html", "free-trial.html", "pricing.html"]
+PAGES = [
+    "index.html", "jiu-jitsu.html", "kids.html", "schedule.html", "free-trial.html", "pricing.html",
+    "boxing.html", "muay-thai.html", "mma.html", "martial-arts.html", "coaches.html",
+    "coaches/sean-goolsby.html", "coaches/paulo-games.html", "the-gym.html", "private-lessons.html",
+    "homeschool.html", "competition-team.html",
+]
 
 TOKEN_RE = re.compile(r"(<!--.*?-->|<script\b.*?</script>|<style\b.*?</style>|<svg\b.*?</svg>|<[^>]+>)", re.S | re.I)
 INLINE = {"a", "strong", "em", "b", "i", "span", "br", "small", "sup", "sub", "u", "abbr", "wbr"}
@@ -479,6 +484,7 @@ def main(argv):
     os.makedirs(os.path.join(ROOT, "pt"), exist_ok=True)
     for page, text in outputs.items():
         dest = os.path.join(ROOT, "pt", page)
+        os.makedirs(os.path.dirname(dest), exist_ok=True)
         old = open(dest, encoding="utf-8").read() if os.path.exists(dest) else None
         if old != text:
             changed.append("pt/" + page)

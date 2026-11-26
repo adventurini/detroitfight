@@ -28,7 +28,7 @@ Design tokens live in a per-page `:root`: `--deep-black #0A0A0A` (page bg), `--b
 
 ## Portuguese pages (/pt)
 
-Six pages have a Brazilian Portuguese twin in `/pt` (added November 25, 2026): `index`, `jiu-jitsu`, `kids`, `schedule`, `free-trial`, `pricing`. Same file names, so `/pricing` pairs with `/pt/pricing` and `/` with `/pt`. The rest of the site is English only for now; on a Portuguese page a link to a page with no twin goes to the English page.
+Seventeen pages have a Brazilian Portuguese twin in `/pt` (added November 25, 2026): `index`, `jiu-jitsu`, `kids`, `schedule`, `free-trial`, `pricing`, `boxing`, `muay-thai`, `mma`, `martial-arts`, `coaches`, `coaches/sean-goolsby`, `coaches/paulo-games`, `the-gym`, `private-lessons`, `homeschool`, `competition-team`. The list that counts is `PAGES` in the build script. Same file names, so `/pricing` pairs with `/pt/pricing` and `/` with `/pt`. Not translated yet: the city pages, the guides, `beginners-jiu-jitsu`, `no-gi-jiu-jitsu`, `self-defense`, `jiu-jitsu-near-ucf`, `go/jiu-jitsu`, `black-friday`, the two legal pages, `404` and `thank-you`. The rest of the site is English only for now; on a Portuguese page a link to a page with no twin goes to the English page.
 
 **Never edit a file in `/pt` by hand.** The pages are written by `.github/scripts/build_pt.py` from the English page plus `.github/i18n/pt.json` (English string to Portuguese string). It is a helper, not a deploy step: its output is committed and Vercel serves plain files as before. `.vercelignore` keeps `.github` off the site.
 
@@ -44,9 +44,9 @@ Rules for the Portuguese copy:
 
 - The owner's rule on dashes applies: no hyphens or dashes except in phone numbers and "Jiu-Jitsu". Write "segunda", "email", "faixa preta", and reword around "bem-vindo" and verb forms like "inscreva-se".
 - Class times stay in the 12 hour AM and PM form, to match the Gymdesk schedule, the booking picker and the texts.
-- Fixed terms: "aula experimental grátis", "com kimono" and "sem kimono", "Jiu-Jitsu Infantil", "Boxe Infantil", "professor principal e proprietário" (Head Coach and owner), "taxa de matrícula", "Mês a Mês", "Plano de 3 Meses", "medalhista de prata" (never "vice campeão"). The business name stays "Detroit Fight Company".
+- Fixed terms: "aula experimental grátis", "com kimono" and "sem kimono", "Jiu-Jitsu Infantil", "Boxe Infantil", "professor principal e proprietário" (Head Coach and owner), "taxa de matrícula", "Mês a Mês", "Plano de 3 Meses", "medalhista de prata" (never "vice campeão"), "Pesadíssimo" (Ultra Heavy), "Absoluto" (Open Class), "superleve" (light welterweight), "foi boxeador profissional" (former professional boxer, never "ex" with a hyphen). The business name stays "Detroit Fight Company".
 - Google reviews are shown translated and say so ("traduzida do inglês").
-- "Sean Goolsby fala português" is on the home and free trial pages because he answers Portuguese leads himself (owner, November 25, 2026). Do not write that classes are taught in Portuguese.
+- "Sean Goolsby fala português" is on the home, free trial and private lessons pages because he answers Portuguese leads himself (owner, November 25, 2026). Do not write that classes are taught in Portuguese.
 
 Shared chrome on a page with a twin: three `hreflang` links under the canonical (`en`, `pt-BR`, `x-default`), the language link twice (in `.nav-contact` for screens 1280 px and wider, and as `li.nav-lang`, the first item of the menu, below that) marked `data-lang-switch`, and the small `.nav-lang` style block before `</head>`. The build turns the link around on the Portuguese page. To give another page a twin: add those three things to the English page, add the file to `PAGES` in the build script, translate its strings, add both URLs to `sitemap.xml` and the page to `llms.txt`.
 
