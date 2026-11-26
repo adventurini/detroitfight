@@ -403,10 +403,10 @@ PT_SLOT_LABEL = r"""// Portuguese label for the time picker and the on page conf
 function dfcSlotLabelPt(iso) {
   const d = new Date(iso);
   const en = {}; const pt = {};
-  new Intl.DateTimeFormat('en-US', { timeZone: DFC_TZ, day: 'numeric', hour: 'numeric', minute: '2-digit' }).formatToParts(d).forEach(p => { en[p.type] = p.value; });
+  new Intl.DateTimeFormat('en-US', { timeZone: DFC_TZ, day: 'numeric', hour: '2-digit', minute: '2-digit', hourCycle: 'h23' }).formatToParts(d).forEach(p => { en[p.type] = p.value; });
   new Intl.DateTimeFormat('pt-BR', { timeZone: DFC_TZ, weekday: 'short', month: 'short' }).formatToParts(d).forEach(p => { pt[p.type] = p.value.replace('.', ''); });
   const wd = pt.weekday.charAt(0).toUpperCase() + pt.weekday.slice(1);
-  return wd + ', ' + en.day + ' de ' + pt.month + ' às ' + en.hour + ':' + en.minute + ' ' + en.dayPeriod;
+  return wd + ', ' + en.day + ' de ' + pt.month + ' às ' + en.hour + ':' + en.minute;
 }
 function dfcEffectiveOption(form) {"""
 
@@ -461,14 +461,14 @@ SCRIPT_PATCHES = {
         ("alert('Something went wrong sending your request. Please call (407) 696-6969 or email sean@detroitfight.com so we can get you booked. Sorry for the trouble.');",
          "alert('Algo deu errado ao enviar seu pedido. Ligue para (407) 696-6969 ou escreva para sean@detroitfight.com e nós agendamos sua aula. Desculpe o transtorno.');", 1),
         # Portuguese class names and times on the class options (sent as class_label_pt and class_schedule_pt).
-        ('data-label="Boxing" data-schedule=', 'data-label-pt="Boxe" data-schedule-pt="segunda a sexta às 10 AM, 5:30 PM e 6:45 PM, sábado às 10 AM" data-label="Boxing" data-schedule=', 1),
-        ('data-label="Muay Thai" data-schedule=', 'data-label-pt="Muay Thai" data-schedule-pt="segunda e quarta às 7:30 PM" data-label="Muay Thai" data-schedule=', 1),
-        ('data-label="MMA" data-schedule=', 'data-label-pt="MMA" data-schedule-pt="terça e quinta às 7:30 PM" data-label="MMA" data-schedule=', 1),
-        ('data-label="Jiu-Jitsu (Gi)" data-schedule=', 'data-label-pt="Jiu-Jitsu (com kimono)" data-schedule-pt="segunda a sexta às 6 PM, segunda e quarta às 6 AM, sábado às 11 AM" data-label="Jiu-Jitsu (Gi)" data-schedule=', 1),
-        ('data-label="Jiu-Jitsu (No Gi)" data-schedule=', 'data-label-pt="Jiu-Jitsu (sem kimono)" data-schedule-pt="segunda a sexta às 6 PM, segunda e quarta às 6 AM, sábado às 11 AM" data-label="Jiu-Jitsu (No Gi)" data-schedule=', 1),
-        ('data-label="Kids Jiu-Jitsu" data-schedule=', 'data-label-pt="Jiu-Jitsu Infantil" data-adult-label-pt="Jiu-Jitsu" data-schedule-pt="segunda a sexta às 4:45 PM, sábado às 10 AM" data-label="Kids Jiu-Jitsu" data-schedule=', 1),
-        ('data-label="Youth Boxing" data-schedule=', 'data-label-pt="Boxe Infantil" data-adult-label-pt="Boxe" data-schedule-pt="segunda, quarta e sexta às 4:30 PM" data-label="Youth Boxing" data-schedule=', 1),
-        ('data-label="Homeschool PE" data-schedule=', 'data-label-pt="Educação Física Homeschool" data-schedule-pt="segunda a quinta, das 10 AM às 12 PM, a partir de 11 de janeiro" data-label="Homeschool PE" data-schedule=', 1),
+        ('data-label="Boxing" data-schedule=', 'data-label-pt="Boxe" data-schedule-pt="segunda a sexta às 10:00, 17:30 e 18:45, sábado às 10:00" data-label="Boxing" data-schedule=', 1),
+        ('data-label="Muay Thai" data-schedule=', 'data-label-pt="Muay Thai" data-schedule-pt="segunda e quarta às 19:30" data-label="Muay Thai" data-schedule=', 1),
+        ('data-label="MMA" data-schedule=', 'data-label-pt="MMA" data-schedule-pt="terça e quinta às 19:30" data-label="MMA" data-schedule=', 1),
+        ('data-label="Jiu-Jitsu (Gi)" data-schedule=', 'data-label-pt="Jiu-Jitsu (com kimono)" data-schedule-pt="segunda a sexta às 18:00, segunda e quarta às 06:00, sábado às 11:00" data-label="Jiu-Jitsu (Gi)" data-schedule=', 1),
+        ('data-label="Jiu-Jitsu (No Gi)" data-schedule=', 'data-label-pt="Jiu-Jitsu (sem kimono)" data-schedule-pt="segunda a sexta às 18:00, segunda e quarta às 06:00, sábado às 11:00" data-label="Jiu-Jitsu (No Gi)" data-schedule=', 1),
+        ('data-label="Kids Jiu-Jitsu" data-schedule=', 'data-label-pt="Jiu-Jitsu Infantil" data-adult-label-pt="Jiu-Jitsu" data-schedule-pt="segunda a sexta às 16:45, sábado às 10:00" data-label="Kids Jiu-Jitsu" data-schedule=', 1),
+        ('data-label="Youth Boxing" data-schedule=', 'data-label-pt="Boxe Infantil" data-adult-label-pt="Boxe" data-schedule-pt="segunda, quarta e sexta às 16:30" data-label="Youth Boxing" data-schedule=', 1),
+        ('data-label="Homeschool PE" data-schedule=', 'data-label-pt="Educação Física Homeschool" data-schedule-pt="segunda a quinta, das 10:00 às 12:00, a partir de 11 de janeiro" data-label="Homeschool PE" data-schedule=', 1),
         ('data-label="Not sure yet" data-schedule=', 'data-label-pt="Ainda não sei" data-schedule-pt="temos aulas todos os dias úteis e sábado de manhã, horários completos em detroitfight.com/pt/schedule" data-label="Not sure yet" data-schedule=', 1),
     ],
 }
