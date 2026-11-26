@@ -1573,6 +1573,7 @@ function buildPayload(form) {
     class_calendar_id: slot.calendarId,
     class_time: slot.time,
     class_time_label: slot.label,
+    class_time_label_pt: slot.time ? dfcSlotLabelPt(slot.time) : '',
     booking_requested: slot.time ? 'yes' : 'no',
     submittedAt: new Date().toISOString()
   };
