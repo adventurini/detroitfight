@@ -81,6 +81,11 @@ else window.addEventListener('load',l);
 @font-face { font-family: 'Bebas Neue'; font-style: normal; font-weight: 400; font-display: swap; src: url('/fonts/bebas-neue-400.woff2') format('woff2'); }
 @font-face { font-family: 'Barlow Condensed'; font-style: normal; font-weight: 400; font-display: swap; src: url('/fonts/barlow-condensed-400.woff2') format('woff2'); }
 @font-face { font-family: 'Barlow Condensed'; font-style: normal; font-weight: 700; font-display: swap; src: url('/fonts/barlow-condensed-700.woff2') format('woff2'); }
+/* Fallback faces sized to the web fonts' widths, sitting on the same baseline, so text takes the same lines before and after the web font arrives (no layout shift). */
+@font-face { font-family: 'Bebas Neue Fallback'; src: local('Arial'), local('Liberation Sans'), local('Arimo'), local('Roboto'), local('Helvetica'); size-adjust: 58.6%; ascent-override: 153.6%; descent-override: 51.2%; line-gap-override: 0%; }
+@font-face { font-family: 'Barlow Condensed Fallback'; font-weight: 400; src: local('Arial'), local('Liberation Sans'), local('Arimo'), local('Roboto'), local('Helvetica'); size-adjust: 76.1%; ascent-override: 131.4%; descent-override: 26.3%; line-gap-override: 0%; }
+@font-face { font-family: 'Barlow Condensed Fallback'; font-weight: 700; src: local('Arial Bold'), local('Liberation Sans Bold'), local('Arimo Bold'), local('Roboto Bold'), local('Helvetica Bold'); size-adjust: 75.7%; ascent-override: 132.1%; descent-override: 26.4%; line-gap-override: 0%; }
+h1, h2, h3, h4 { text-transform: uppercase; }
 </style>
 
 <!-- Meta Pixel 1510598542567332, owned by the Detroit Fight Company business portfolio.
@@ -326,8 +331,8 @@ fbq('track', 'PageView');
   --white: #FFFFFF;
   --grey: #D8D8D8;
   --light-grey: #999;
-  --font-heading: 'Bebas Neue', sans-serif;
-  --font-body: 'Barlow Condensed', sans-serif;
+  --font-heading: 'Bebas Neue', 'Bebas Neue Fallback', sans-serif;
+  --font-body: 'Barlow Condensed', 'Barlow Condensed Fallback', sans-serif;
 }
 
 html {
