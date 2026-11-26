@@ -37,6 +37,10 @@ PAGES = [
     "boxing.html", "muay-thai.html", "mma.html", "martial-arts.html", "coaches.html",
     "coaches/sean-goolsby.html", "coaches/paulo-games.html", "the-gym.html", "private-lessons.html",
     "homeschool.html", "competition-team.html",
+    "jiu-jitsu-oviedo.html", "jiu-jitsu-casselberry.html", "jiu-jitsu-winter-park.html", "muay-thai-oviedo.html",
+    "mma-oviedo.html", "jiu-jitsu-near-ucf.html", "beginners-jiu-jitsu.html", "no-gi-jiu-jitsu.html",
+    "self-defense.html", "guides/gi-vs-no-gi.html", "guides/bjj-vs-karate-taekwondo-kids.html",
+    "guides/step-up-homeschool-jiu-jitsu.html", "privacy-policy.html", "terms.html",
 ]
 
 TOKEN_RE = re.compile(r"(<!--.*?-->|<script\b.*?</script>|<style\b.*?</style>|<svg\b.*?</svg>|<[^>]+>)", re.S | re.I)
