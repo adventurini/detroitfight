@@ -1272,6 +1272,11 @@ main p a:not(.btn):not(.nav-cta), main li a:not(.btn), .faq-answer-inner a { tex
               <input type="tel" id="phone" name="phone" placeholder="(407) 000-0000" required class="dfc-input" autocomplete="tel"/>
             </div>
             <div class="dfc-field">
+              <label for="email" class="dfc-label">Email *</label>
+              <input type="email" id="email" name="email" placeholder="seu@email.com" required class="dfc-input" autocomplete="email"/>
+              <p class="dfc-notice">A confirmação e um convite de calendário vão para este email.</p>
+            </div>
+            <div class="dfc-field">
               <label for="program" class="dfc-label">Aula de interesse *</label>
               <select id="program" name="class_interest" required class="dfc-input dfc-select">
                 <option value="" disabled selected>Escolha um programa</option>
@@ -1313,13 +1318,7 @@ main p a:not(.btn):not(.nav-cta), main li a:not(.btn), .faq-answer-inner a { tex
             <input type="hidden" name="source_page" id="source-page" value="direct">
 
             <details class="dfc-more">
-              <summary>Adicionar email e detalhes (opcional)</summary>
-              <div class="dfc-row">
-                <div class="dfc-field">
-                  <label for="email" class="dfc-label">Email</label>
-                  <input type="email" id="email" name="email" placeholder="seu@email.com" class="dfc-input" autocomplete="email"/>
-                </div>
-              </div>
+              <summary>Adicionar detalhes (opcional)</summary>
             <div class="dfc-field">
               <label for="level" class="dfc-label">Nível de experiência</label>
               <select id="level" name="experience_level" class="dfc-input dfc-select">

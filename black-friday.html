@@ -1400,6 +1400,11 @@ main p a:not(.btn):not(.nav-cta), main li a:not(.btn), .faq-answer-inner a { tex
               </div>
             </div>
             <div class="dfc-field">
+              <label for="email" class="dfc-label">Email *</label>
+              <input type="email" id="email" name="email" placeholder="your@email.com" required class="dfc-input" autocomplete="email"/>
+              <p class="dfc-notice">Your confirmation and a calendar invite go here.</p>
+            </div>
+            <div class="dfc-field">
               <label for="program" class="dfc-label">Class Interest *</label>
               <select id="program" name="class_interest" required class="dfc-input dfc-select">
                 <option value="" disabled selected>Select a program</option>
@@ -1436,15 +1441,11 @@ main p a:not(.btn):not(.nav-cta), main li a:not(.btn), .faq-answer-inner a { tex
             <input type="hidden" name="source_page" id="source-page" value="direct">
 
             <details class="dfc-more">
-              <summary>Add email and details (optional)</summary>
+              <summary>Add details (optional)</summary>
               <div class="dfc-row">
                 <div class="dfc-field">
                   <label for="lname" id="lname-label" class="dfc-label">Last name</label>
                   <input type="text" id="lname" name="last_name" placeholder="Last name" class="dfc-input" autocomplete="family-name"/>
-                </div>
-                <div class="dfc-field">
-                  <label for="email" class="dfc-label">Email</label>
-                  <input type="email" id="email" name="email" placeholder="your@email.com" class="dfc-input" autocomplete="email"/>
                 </div>
               </div>
             <div class="dfc-field">
