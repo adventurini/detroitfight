@@ -381,8 +381,6 @@
  "Parent or guardian last name *": "Sobrenome do pai, da mãe ou do responsável *",
  "Student age *": "Idade do aluno *",
  "Students 15 and older train in our adult classes. We will send you those class times.": "Alunos a partir de 15 anos treinam nas aulas de adultos. Vamos enviar os horários dessas aulas.",
- "Add email and details (optional)": "Adicionar email e detalhes (opcional)",
- "Email": "Email",
  "Experience level": "Nível de experiência",
  "Select your level": "Escolha seu nível",
  "Complete Beginner": "Iniciante Total",
@@ -1584,5 +1582,8 @@
  "These Terms are governed by the laws of the State of Florida, without regard to conflict of law principles, except where preempted by applicable federal law.": "Estes Termos são regidos pelas leis do Estado da Flórida, sem considerar princípios de conflito de leis, exceto onde a lei federal aplicável prevalecer.",
  "Contact": "Contato",
  "{1}Detroit Fight Company{/1} (Detroit Fight LLC){br} 1425 Tuskawilla Rd #209{br} Winter Springs, FL 32708{br} Email: {2}sean@detroitfight.com{/2}": "{1}Detroit Fight Company{/1} (Detroit Fight LLC){br} 1425 Tuskawilla Rd #209{br} Winter Springs, FL 32708{br} Email: {2}sean@detroitfight.com{/2}",
- "Terms and Conditions for membership and use of Detroit Fight Company facilities and services.": "Termos e Condições dos planos e do uso das instalações e dos serviços da Detroit Fight Company."
+ "Terms and Conditions for membership and use of Detroit Fight Company facilities and services.": "Termos e Condições dos planos e do uso das instalações e dos serviços da Detroit Fight Company.",
+ "Email *": "Email *",
+ "Your confirmation and a calendar invite go here.": "A confirmação e um convite de calendário vão para este email.",
+ "Add details (optional)": "Adicionar detalhes (opcional)"
 }
