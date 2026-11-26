@@ -675,8 +675,9 @@ if (a.dataset.plan) gtag('event', 'select_plan', { plan: a.dataset.plan });
 });
 </script>
 
-<!-- Text opt in chat widget (Detroit Fight Company's own HighLevel account, location 5bVqPk3IPZiE4m0X8Reo).
-     Home page only: carriers require it to be the only phone collecting form on the page it is registered for. -->
+<!-- Live chat widget "Website Live Chat" (Detroit Fight Company's own HighLevel account, location 5bVqPk3IPZiE4m0X8Reo).
+     The Front desk booking bot answers in the chat window. It asks for name and phone with the SMS consent box.
+     Home page only: keep it the only phone collecting form on this page. -->
 <script>
 // Loads on the first scroll, tap, key press or mouse move, or 5 seconds after the page has loaded,
 // whichever comes first, so it does not compete with the first paint.
@@ -691,7 +692,7 @@ events.forEach(function (name) { window.removeEventListener(name, loadChat, opts
 var s = document.createElement('script');
 s.src = 'https://widgets.leadconnectorhq.com/loader.js';
 s.setAttribute('data-resources-url', 'https://widgets.leadconnectorhq.com/chat-widget/loader.js');
-s.setAttribute('data-widget-id', '6b02f77829fc2dc00f1cb2f4');
+s.setAttribute('data-widget-id', '6b082ba39a7c2063046150bd');
 document.body.appendChild(s);
 }
 events.forEach(function (name) { window.addEventListener(name, loadChat, opts); });
