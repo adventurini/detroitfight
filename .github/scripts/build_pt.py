@@ -428,6 +428,9 @@ SCRIPT_PATCHES = {
         ("    program: opt ? opt.textContent.trim() : '',\n", "    program: opt ? (opt.dataset.label || opt.textContent.trim()) : '',\n", 1),
         ("    class_line: cls.line,\n",
          "    class_line: cls.line,\n    language: 'pt-BR',\n    class_label_pt: clsPt.label,\n    class_schedule_pt: clsPt.schedule,\n    class_line_pt: clsPt.line,\n", 1),
+        # The class time in Portuguese, for the Portuguese booking confirmation text in HighLevel.
+        ("    class_time_label: slot.label,\n",
+         "    class_time_label: slot.label,\n    class_time_label_pt: slot.time ? dfcSlotLabelPt(slot.time) : '',\n", 1),
         ("fLabel.textContent = on ? 'Student first name *' : 'First Name *';", "fLabel.textContent = on ? 'Nome do aluno *' : 'Nome *';", 1),
         ("lLabel.textContent = on ? 'Student last name' : 'Last Name *';", "lLabel.textContent = on ? 'Sobrenome do aluno' : 'Sobrenome *';", 1),
         ("fname.placeholder = on ? 'Student first name' : 'First name';", "fname.placeholder = on ? 'Nome do aluno' : 'Nome';", 1),
