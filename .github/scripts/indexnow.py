@@ -32,13 +32,17 @@ NEVER = {"thank-you.html", "lp.html", "404.html"}
 def url_for(path):
     """Changed file -> public URL, or None if it is not an indexable page."""
     path = path.strip()
+    # Portuguese twins live in /pt (pt/index.html -> /pt, pt/kids.html -> /pt/kids).
+    prefix = ""
+    if path.startswith("pt/"):
+        prefix, path = "/pt", path[3:]
     if "/" in path or not path.endswith(".html"):
         return None
     if path in NEVER or path.startswith("googled"):
         return None
     if path == "index.html":
-        return f"https://{HOST}/"
-    return f"https://{HOST}/{path[:-5]}"
+        return f"https://{HOST}{prefix or '/'}"
+    return f"https://{HOST}{prefix}/{path[:-5]}"
 
 
 def changed_urls(sha):
