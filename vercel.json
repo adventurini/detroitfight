@@ -23,6 +23,11 @@
       "permanent": false
     },
     {
+      "source": "/join",
+      "destination": "https://detroit-fight-llc.gymdesk.com/signup/v/AqjEJ",
+      "permanent": false
+    },
+    {
       "source": "/lp",
       "destination": "/go/jiu-jitsu",
       "permanent": true
