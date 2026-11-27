@@ -43,6 +43,18 @@ else window.addEventListener('load',l);
   sessionStorage.setItem(key,JSON.stringify({lead_source:label,utm_source:us,utm_medium:um,utm_campaign:uc,referrer:host,landing_page:location.pathname}));
 }catch(e){}})();
 </script>
+<script>
+// Ad click ids: keeps the newest Google (gclid, gbraid, wbraid) and Meta (fbclid) click id for 90 days,
+// so a trial request made later can be reported back to the ad platform when the person joins.
+(function(){try{
+  var q=new URLSearchParams(location.search),k='dfc_click_ids',o={},n=Date.now(),got=false;
+  try{o=JSON.parse(localStorage.getItem(k)||'{}');}catch(e){}
+  if(o.ts&&n-o.ts>7776e6)o={};
+  ['gclid','gbraid','wbraid','fbclid'].forEach(function(p){var v=q.get(p);if(v){o[p]=v.slice(0,250);got=true;}});
+  if(q.get('fbclid'))o.fbc='fb.1.'+n+'.'+q.get('fbclid').slice(0,250);
+  if(got){o.ts=n;localStorage.setItem(k,JSON.stringify(o));}
+}catch(e){}})();
+</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -1653,6 +1665,17 @@ window.addEventListener('scroll', () => {
 
 
 // Reads the visit source saved by the snippet in <head>. Falls back to Direct when storage is unavailable.
+// Reads the ad click ids saved by the snippet in <head>, plus Meta's _fbp and _fbc cookies when the pixel set them.
+function dfcClickIds() {
+  const out = { gclid: '', gbraid: '', wbraid: '', fbclid: '', fbc: '', fbp: '' };
+  try { Object.assign(out, JSON.parse(localStorage.getItem('dfc_click_ids') || '{}')); } catch (e) {}
+  const cookie = (name) => { const m = document.cookie.match(new RegExp('(?:^|; )' + name + '=([^;]*)')); return m ? decodeURIComponent(m[1]) : ''; };
+  out.fbp = cookie('_fbp') || out.fbp || '';
+  if (!out.fbc) out.fbc = cookie('_fbc');
+  delete out.ts;
+  return out;
+}
+
 function leadSource() {
   const fallback = { lead_source: 'Direct', utm_source: '', utm_medium: '', utm_campaign: '', referrer: '', landing_page: window.location.pathname };
   try { return Object.assign(fallback, JSON.parse(sessionStorage.getItem('dfc_lead_source') || '{}')); }
@@ -1710,6 +1733,12 @@ function buildPayload(form) {
     utm_campaign: src.utm_campaign,
     referrer: src.referrer,
     landing_page: src.landing_page,
+    gclid: dfcClickIds().gclid,
+    gbraid: dfcClickIds().gbraid,
+    wbraid: dfcClickIds().wbraid,
+    fbclid: dfcClickIds().fbclid,
+    fbc: dfcClickIds().fbc,
+    fbp: dfcClickIds().fbp,
     submittedAt: new Date().toISOString()
   };
 }
